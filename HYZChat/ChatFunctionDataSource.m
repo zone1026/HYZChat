@@ -9,6 +9,8 @@
 #import "ChatFunctionDataSource.h"
 #import "UIView+HYZFrame.h"
 
+static const CGFloat textViewMaxHeight = 88.0;
+
 @interface ChatFunctionDataSource ()
 
 @end
@@ -92,8 +94,8 @@
 
 - (void)textViewDidChange:(UITextView *)textView {
     CGSize size = [textView sizeThatFits:CGSizeMake(textView.contentSize.width, CGFLOAT_MAX)];
-    if (textView.height != MIN(size.height, 66.0)) {
-        CGFloat height = MIN(size.height, 66.0);
+    if (textView.height != MIN(size.height, textViewMaxHeight)) {
+        CGFloat height = MIN(size.height, textViewMaxHeight);
         [textView addHeight:height - textView.height];
         if (self.delegate != nil && [self.delegate respondsToSelector:@selector(updateTopViewHeight:)]) {
             [self.delegate updateTopViewHeight:height];
@@ -101,7 +103,7 @@
     }
     
     if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0) {
-        textView.scrollEnabled = (size.height > 66.0);
+        textView.scrollEnabled = (size.height > textViewMaxHeight);
     }
     else {
         textView.scrollEnabled = YES;
