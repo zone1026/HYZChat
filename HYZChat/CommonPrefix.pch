@@ -1,0 +1,26 @@
+//
+//  CommonPrefix.pch
+//  HYZChat
+//
+//  Created by 黄亚州 on 2017/9/1.
+//  Copyright © 2017年 黄亚州. All rights reserved.
+//
+
+#ifndef CommonPrefix_pch
+#define CommonPrefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <CoreGraphics/CoreGraphics.h>
+    #import <CoreData/CoreData.h>
+
+    #import "Constants.h"
+    #import "NotificationName.h"
+    #import "HYZUtil.h"
+#endif
+
+#endif /* CommonPrefix_pch */
