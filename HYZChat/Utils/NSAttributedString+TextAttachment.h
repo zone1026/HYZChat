@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#warning Change the value if not @"[附件]"
+//#warning Change the value if not @"[附件]"
 #define attachmentMarkLeft @"["
 #define attachmentMarkRight @"]"
 

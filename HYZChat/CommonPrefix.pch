@@ -23,4 +23,16 @@
     #import "HYZUtil.h"
 #endif
 
+// 三色值配色
+#define RGBA_COLOR(R, G, B, A) [UIColor colorWithRed:((R) / 255.0f) green:((G) / 255.0f) blue:((B) / 255.0f) alpha:A]
+#define RGB_COLOR(R, G, B) [UIColor colorWithRed:((R) / 255.0f) green:((G) / 255.0f) blue:((B) / 255.0f) alpha:1.0f]
+
+// 判断设备系统
+#define IOS         [[[UIDevice currentDevice] systemVersion]floatValue]>=8
+
+// 获取屏幕的尺寸
+#define kScreenHeight   ([UIScreen mainScreen].bounds.size.height)
+#define kScreenWidth    ([UIScreen mainScreen].bounds.size.width)
+#define kContentHeight  ([UIScreen mainScreen].bounds.size.height - self.bottomLayoutGuide.length - self.topLayoutGuide.length)
+
 #endif /* CommonPrefix_pch */

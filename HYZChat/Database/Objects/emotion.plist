@@ -126,12 +126,6 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string>chat_btnDelEmotion</string>
-			<key>value</key>
-			<string>del</string>
-		</dict>
-		<dict>
-			<key>icon</key>
 			<string>E010</string>
 			<key>value</key>
 			<string>[发誓]</string>
@@ -249,12 +243,6 @@
 			<string>E312</string>
 			<key>value</key>
 			<string>[庆祝]</string>
-		</dict>
-		<dict>
-			<key>icon</key>
-			<string>chat_btnDelEmotion</string>
-			<key>value</key>
-			<string>del</string>
 		</dict>
 		<dict>
 			<key>icon</key>
@@ -378,12 +366,6 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string>chat_btnDelEmotion</string>
-			<key>value</key>
-			<string>del</string>
-		</dict>
-		<dict>
-			<key>icon</key>
 			<string>E334</string>
 			<key>value</key>
 			<string>[怒]</string>
@@ -501,12 +483,6 @@
 			<string>E348</string>
 			<key>value</key>
 			<string>[西瓜]</string>
-		</dict>
-		<dict>
-			<key>icon</key>
-			<string>chat_btnDelEmotion</string>
-			<key>value</key>
-			<string>del</string>
 		</dict>
 		<dict>
 			<key>icon</key>
@@ -628,12 +604,6 @@
 			<key>value</key>
 			<string>[炸弹]</string>
 		</dict>
-		<dict>
-			<key>icon</key>
-			<string>chat_btnDelEmotion</string>
-			<key>value</key>
-			<string>del</string>
-		</dict>
 	</array>
 	<key>SmallEmotionTab</key>
 	<array>
@@ -646,26 +616,5 @@
 			<string>classic</string>
 		</dict>
 	</array>
-	<key>SmallEmotionTabTODO</key>
-	<array>
-		<dict>
-			<key>name</key>
-			<string>最近</string>
-			<key>icon</key>
-			<string></string>
-			<key>value</key>
-			<string>recently</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>大表情</string>
-			<key>icon</key>
-			<string></string>
-			<key>value</key>
-			<string>big</string>
-		</dict>
-	</array>
-	<key>BigEmotionTab</key>
-	<array/>
 </dict>
 </plist>

@@ -15,5 +15,11 @@
  * @param str 待检测的字符串
  */
 + (BOOL)isEmptyOrNull:(NSString *)str;
+/**
+ * @description 获取plist文件数据
+ * @param key plist中的key键
+ * @param filename plist文件名
+ */
++ (id)getPlistData:(NSString *)key inFile:(NSString *)filename;
 
 @end

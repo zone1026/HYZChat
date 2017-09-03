@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D48566B1F5BB4AD0008AFB9 /* InputEmotionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48566A1F5BB4AD0008AFB9 /* InputEmotionData.m */; };
+		0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48566D1F5BBCE80008AFB9 /* ChatEmotionCell.m */; };
 		6BCBCC721F58E8C7000B7152 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC711F58E8C7000B7152 /* main.m */; };
 		6BCBCC751F58E8C7000B7152 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC741F58E8C7000B7152 /* AppDelegate.m */; };
 		6BCBCC781F58E8C7000B7152 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC771F58E8C7000B7152 /* ViewController.m */; };
@@ -31,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D4856691F5BB4AD0008AFB9 /* InputEmotionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputEmotionData.h; sourceTree = "<group>"; };
+		0D48566A1F5BB4AD0008AFB9 /* InputEmotionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputEmotionData.m; sourceTree = "<group>"; };
+		0D48566C1F5BBCE80008AFB9 /* ChatEmotionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatEmotionCell.h; sourceTree = "<group>"; };
+		0D48566D1F5BBCE80008AFB9 /* ChatEmotionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatEmotionCell.m; sourceTree = "<group>"; };
 		6BCBCC6D1F58E8C7000B7152 /* HYZChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYZChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCBCC711F58E8C7000B7152 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BCBCC731F58E8C7000B7152 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -165,6 +171,8 @@
 		6BCBCC961F58EE13000B7152 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0D48566C1F5BBCE80008AFB9 /* ChatEmotionCell.h */,
+				0D48566D1F5BBCE80008AFB9 /* ChatEmotionCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -197,6 +205,8 @@
 		6BCBCCA81F5909EF000B7152 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				0D4856691F5BB4AD0008AFB9 /* InputEmotionData.h */,
+				0D48566A1F5BB4AD0008AFB9 /* InputEmotionData.m */,
 				6BCBCCD61F5951B2000B7152 /* InputViewFrameChanageData.h */,
 				6BCBCCD71F5951B2000B7152 /* InputViewFrameChanageData.m */,
 				6BCBCCAC1F590A8B000B7152 /* ChatMessageAttribute.h */,
@@ -294,6 +304,7 @@
 			files = (
 				6BCBCC781F58E8C7000B7152 /* ViewController.m in Sources */,
 				6BCBCCCF1F594DD1000B7152 /* HYZUtil.m in Sources */,
+				0D48566B1F5BB4AD0008AFB9 /* InputEmotionData.m in Sources */,
 				6BCBCC8D1F58E934000B7152 /* DataManager.m in Sources */,
 				6BCBCCB71F590DA3000B7152 /* HYZChat.xcdatamodeld in Sources */,
 				6BCBCCA41F58FBDD000B7152 /* RichLabel.m in Sources */,
@@ -304,6 +315,7 @@
 				6BCBCCBA1F590F63000B7152 /* ChatDataSource.m in Sources */,
 				6BCBCCCC1F594CB1000B7152 /* CALayer+HYZUtil.m in Sources */,
 				6BCBCCBD1F593733000B7152 /* ChatFunctionController.m in Sources */,
+				0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */,
 				6BCBCC721F58E8C7000B7152 /* main.m in Sources */,
 				6BCBCCD81F5951B2000B7152 /* InputViewFrameChanageData.m in Sources */,
 				6BCBCCA71F59006D000B7152 /* NSAttributedString+TextAttachment.m in Sources */,

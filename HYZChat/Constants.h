@@ -16,4 +16,9 @@ typedef NS_ENUM(NSInteger, ChatTextViewCurrentInputTarget)
     ChatTextViewCurrentInputTargetEmotion
 };
 
+typedef NS_ENUM(NSInteger, ChatBottomCollectionViewTag) {
+    ChatBottomCollectionViewTagEmotion = 100,
+    ChatBottomCollectionViewTagFunction
+};
+
 #endif /* Constants_h */

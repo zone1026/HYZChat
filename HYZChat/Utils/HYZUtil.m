@@ -34,4 +34,10 @@
     }
 }
 
++ (id)getPlistData:(NSString *)key inFile:(NSString *)filename {
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *plistPath = [bundle pathForResource:filename ofType:@"plist"];
+    return [[[NSDictionary alloc] initWithContentsOfFile:plistPath] objectForKey:key];
+}
+
 @end

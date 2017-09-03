@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SEu-x6-RYk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SEu-x6-RYk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -270,7 +270,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTf-bs-8Ar" userLabel="viewTop">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9i0-DJ-nZI">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9i0-DJ-nZI" userLabel="语音／键盘切换按钮">
                                         <rect key="frame" x="5" y="8" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="SGM-Dv-1Ip"/>
@@ -282,19 +282,35 @@
                                             <action selector="btnAudioTouchUpInside:" destination="vfo-nC-JZM" eventType="touchUpInside" id="GJv-ZA-nTa"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8d1-1a-DJH">
+                                        <rect key="frame" x="45" y="8" width="248" height="34"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="gep-5N-k72"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="按住 说话">
+                                            <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnRecordTouchDown:" destination="vfo-nC-JZM" eventType="touchDown" id="Dz8-Bx-Flz"/>
+                                            <action selector="btnRecordTouchUpInside:" destination="vfo-nC-JZM" eventType="touchUpInside" id="gUB-1K-7x3"/>
+                                            <action selector="btnRecordTouchUpOutside:" destination="vfo-nC-JZM" eventType="touchUpOutside" id="fxt-ss-WVp"/>
+                                        </connections>
+                                    </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" text="输入框" translatesAutoresizingMaskIntoConstraints="NO" id="qf2-hI-8mb">
                                         <rect key="frame" x="45" y="8" width="248" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="lnC-ne-pau" id="lDN-Tv-P9L"/>
                                         </connections>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2D-H3-Xgo">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2D-H3-Xgo" userLabel="表情／键盘切换按钮">
                                         <rect key="frame" x="301" y="8" width="32" height="32"/>
-                                        <state key="normal" image="CHAT_BTN_EMOJI">
+                                        <state key="normal" image="CHAT_BTN_EMOTION">
                                             <color key="titleColor" red="0.0" green="0.49803921569999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <state key="disabled" title="发送">
@@ -302,10 +318,10 @@
                                         </state>
                                         <state key="selected" image="CHAT_BTN_TEXT"/>
                                         <connections>
-                                            <action selector="btnEmojiTouchUpInside:" destination="vfo-nC-JZM" eventType="touchUpInside" id="gkE-ub-Lee"/>
+                                            <action selector="btnEmotionTouchUpInside:" destination="vfo-nC-JZM" eventType="touchUpInside" id="o4W-3W-Crp"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohY-Ci-JMP">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohY-Ci-JMP" userLabel="功能加号">
                                         <rect key="frame" x="338" y="8" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="0Ca-s0-SFp"/>
@@ -333,9 +349,12 @@
                                     <constraint firstItem="9i0-DJ-nZI" firstAttribute="bottom" secondItem="qf2-hI-8mb" secondAttribute="bottom" constant="-2" id="Znc-yi-udY"/>
                                     <constraint firstItem="O2D-H3-Xgo" firstAttribute="leading" secondItem="qf2-hI-8mb" secondAttribute="trailing" constant="8" id="bxk-aU-lea"/>
                                     <constraint firstAttribute="trailing" secondItem="ohY-Ci-JMP" secondAttribute="trailing" constant="5" id="clA-AG-zGM"/>
+                                    <constraint firstItem="8d1-1a-DJH" firstAttribute="leading" secondItem="qf2-hI-8mb" secondAttribute="leading" id="hIi-Z3-Qtm"/>
                                     <constraint firstItem="qf2-hI-8mb" firstAttribute="top" secondItem="TTf-bs-8Ar" secondAttribute="top" constant="8" id="jPq-pc-PjT"/>
+                                    <constraint firstItem="8d1-1a-DJH" firstAttribute="width" secondItem="qf2-hI-8mb" secondAttribute="width" id="mAt-cZ-ogO"/>
                                     <constraint firstItem="O2D-H3-Xgo" firstAttribute="height" secondItem="ohY-Ci-JMP" secondAttribute="height" id="mPL-UT-ynX"/>
                                     <constraint firstItem="ohY-Ci-JMP" firstAttribute="leading" secondItem="O2D-H3-Xgo" secondAttribute="trailing" constant="5" id="pwv-iD-zvO"/>
+                                    <constraint firstItem="8d1-1a-DJH" firstAttribute="top" secondItem="qf2-hI-8mb" secondAttribute="top" id="skb-SH-jWy"/>
                                     <constraint firstAttribute="bottom" secondItem="qf2-hI-8mb" secondAttribute="bottom" constant="8" id="uKh-aa-Evs"/>
                                 </constraints>
                             </view>
@@ -350,7 +369,7 @@
                                         </constraints>
                                     </view>
                                     <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cgK-KI-TFA">
-                                        <rect key="frame" x="0.0" y="15" width="375" height="587"/>
+                                        <rect key="frame" x="0.0" y="15" width="375" height="577"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="dDb-ET-esB">
                                             <size key="itemSize" width="50" height="50"/>
@@ -359,7 +378,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emotionCell" id="5HZ-6L-Ikx" customClass="LiveShowInputEmotionsCollectionViewCell">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emotionCell" id="5HZ-6L-Ikx" customClass="ChatEmotionCell">
                                                 <rect key="frame" x="10" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -380,17 +399,17 @@
                                                     <constraint firstItem="ug1-rQ-BEA" firstAttribute="leading" secondItem="5HZ-6L-Ikx" secondAttribute="leading" constant="4" id="dL5-jT-T2J"/>
                                                 </constraints>
                                                 <connections>
-                                                    <outlet property="imgEmotion" destination="ug1-rQ-BEA" id="kpH-iF-GhH"/>
+                                                    <outlet property="imgEmotion" destination="ug1-rQ-BEA" id="2hu-Ys-X18"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
                                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerView" id="MjR-8N-zq3">
-                                            <rect key="frame" x="0.0" y="0.0" width="10" height="587"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="10" height="577"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </collectionReusableView>
                                         <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="footerView" id="620-yK-Ela">
-                                            <rect key="frame" x="60" y="0.0" width="10" height="587"/>
+                                            <rect key="frame" x="60" y="0.0" width="10" height="577"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </collectionReusableView>
@@ -407,8 +426,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.93746662140000003" blue="0.92470067739999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="SNT-0A-FKQ" firstAttribute="top" secondItem="cgK-KI-TFA" secondAttribute="bottom" constant="-20" id="1MY-DM-3wS"/>
-                                    <constraint firstAttribute="bottom" secondItem="cgK-KI-TFA" secondAttribute="bottom" constant="15" id="5Js-eR-s1X"/>
+                                    <constraint firstItem="SNT-0A-FKQ" firstAttribute="top" secondItem="cgK-KI-TFA" secondAttribute="bottom" constant="-10" id="1MY-DM-3wS"/>
+                                    <constraint firstAttribute="bottom" secondItem="cgK-KI-TFA" secondAttribute="bottom" constant="25" id="5Js-eR-s1X"/>
                                     <constraint firstItem="AX6-ev-ePv" firstAttribute="centerX" secondItem="pcl-Ne-pOp" secondAttribute="centerX" id="69m-QN-1iB"/>
                                     <constraint firstItem="AX6-ev-ePv" firstAttribute="top" secondItem="pcl-Ne-pOp" secondAttribute="top" id="CLC-44-nE8"/>
                                     <constraint firstItem="cgK-KI-TFA" firstAttribute="top" secondItem="pcl-Ne-pOp" secondAttribute="top" constant="15" id="Ggy-eS-Kr9"/>
@@ -433,11 +452,12 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
+                        <outlet property="btnRecord" destination="8d1-1a-DJH" id="HEM-mn-TWj"/>
                         <outlet property="chatFunctionData" destination="lnC-ne-pau" id="Td5-ii-22z"/>
-                        <outlet property="collectionViewEmoji" destination="cgK-KI-TFA" id="nGX-bz-fhQ"/>
-                        <outlet property="pageControlEmoji" destination="SNT-0A-FKQ" id="P6G-xN-ghn"/>
+                        <outlet property="collectionViewEmotion" destination="cgK-KI-TFA" id="Pl9-gc-WFb"/>
+                        <outlet property="pageControlEmotion" destination="SNT-0A-FKQ" id="kCi-Ll-jTe"/>
                         <outlet property="textView" destination="qf2-hI-8mb" id="um6-Qj-NvJ"/>
-                        <outlet property="viewEmoji" destination="pcl-Ne-pOp" id="a5g-KR-wk1"/>
+                        <outlet property="viewEmotion" destination="pcl-Ne-pOp" id="0Kh-th-ccI"/>
                         <outlet property="viewTop" destination="TTf-bs-8Ar" id="H5X-Ol-zge"/>
                         <outlet property="viewTopConstraintHeight" destination="Aae-tB-3ky" id="WDH-ES-qaq"/>
                     </connections>
@@ -450,7 +470,7 @@
     </scenes>
     <resources>
         <image name="CHAT_BTN_AUDIO" width="32" height="32"/>
-        <image name="CHAT_BTN_EMOJI" width="32" height="32"/>
+        <image name="CHAT_BTN_EMOTION" width="32" height="32"/>
         <image name="CHAT_BTN_PLUS" width="32" height="32"/>
         <image name="CHAT_BTN_TEXT" width="32" height="32"/>
     </resources>
