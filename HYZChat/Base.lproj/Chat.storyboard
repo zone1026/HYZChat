@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SEu-x6-RYk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SEu-x6-RYk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -369,7 +369,7 @@
                                         </constraints>
                                     </view>
                                     <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cgK-KI-TFA">
-                                        <rect key="frame" x="0.0" y="15" width="375" height="577"/>
+                                        <rect key="frame" x="0.0" y="22" width="375" height="520"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="dDb-ET-esB">
                                             <size key="itemSize" width="50" height="50"/>
@@ -404,12 +404,12 @@
                                             </collectionViewCell>
                                         </cells>
                                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerView" id="MjR-8N-zq3">
-                                            <rect key="frame" x="0.0" y="0.0" width="10" height="577"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="10" height="520"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </collectionReusableView>
                                         <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="footerView" id="620-yK-Ela">
-                                            <rect key="frame" x="60" y="0.0" width="10" height="577"/>
+                                            <rect key="frame" x="60" y="0.0" width="10" height="520"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </collectionReusableView>
@@ -418,23 +418,87 @@
                                             <outlet property="delegate" destination="lnC-ne-pau" id="RsA-hd-SWu"/>
                                         </connections>
                                     </collectionView>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXM-ad-DXs" userLabel="表情Tab视图">
+                                        <rect key="frame" x="-0.5" y="579" width="375" height="38"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCg-3d-h6N">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="Zm8-dn-4Rc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="36"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="-5" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fN7-b2-dh8">
+                                                <rect key="frame" x="40" y="0.0" width="291" height="38"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LjR-ye-TiP">
+                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="f6P-cc-A1x">
+                                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </view>
+                                                        <size key="customSize" width="44" height="44"/>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lm-C5-1Rx">
+                                                <rect key="frame" x="331" y="-0.5" width="44" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="44" id="d32-Hw-ACq"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="发送">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="0lm-C5-1Rx" firstAttribute="leading" secondItem="fN7-b2-dh8" secondAttribute="trailing" id="BLA-WN-e5Q"/>
+                                            <constraint firstItem="LCg-3d-h6N" firstAttribute="height" secondItem="kXM-ad-DXs" secondAttribute="height" id="Bah-d6-0wX"/>
+                                            <constraint firstAttribute="height" constant="38" id="Efc-x1-5Og"/>
+                                            <constraint firstItem="LCg-3d-h6N" firstAttribute="centerY" secondItem="kXM-ad-DXs" secondAttribute="centerY" id="JbN-7a-FG3"/>
+                                            <constraint firstItem="LCg-3d-h6N" firstAttribute="leading" secondItem="kXM-ad-DXs" secondAttribute="leading" id="Qt7-7U-SHk"/>
+                                            <constraint firstItem="0lm-C5-1Rx" firstAttribute="height" secondItem="kXM-ad-DXs" secondAttribute="height" id="ax7-pY-sV8"/>
+                                            <constraint firstItem="0lm-C5-1Rx" firstAttribute="centerY" secondItem="kXM-ad-DXs" secondAttribute="centerY" id="dsi-aO-dIO"/>
+                                            <constraint firstItem="fN7-b2-dh8" firstAttribute="centerY" secondItem="kXM-ad-DXs" secondAttribute="centerY" id="flw-Ja-dQG"/>
+                                            <constraint firstAttribute="trailing" secondItem="0lm-C5-1Rx" secondAttribute="trailing" id="n7e-WV-8Nv"/>
+                                            <constraint firstItem="fN7-b2-dh8" firstAttribute="height" secondItem="kXM-ad-DXs" secondAttribute="height" id="nZE-Ow-Hyy"/>
+                                            <constraint firstItem="fN7-b2-dh8" firstAttribute="leading" secondItem="LCg-3d-h6N" secondAttribute="trailing" id="yAp-PK-77b"/>
+                                        </constraints>
+                                    </view>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="SNT-0A-FKQ">
-                                        <rect key="frame" x="176" y="582" width="23" height="37"/>
+                                        <rect key="frame" x="176" y="549" width="23" height="37"/>
                                         <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.93746662140000003" blue="0.92470067739999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="SNT-0A-FKQ" firstAttribute="top" secondItem="cgK-KI-TFA" secondAttribute="bottom" constant="-10" id="1MY-DM-3wS"/>
-                                    <constraint firstAttribute="bottom" secondItem="cgK-KI-TFA" secondAttribute="bottom" constant="25" id="5Js-eR-s1X"/>
+                                    <constraint firstItem="kXM-ad-DXs" firstAttribute="width" secondItem="pcl-Ne-pOp" secondAttribute="width" id="0Uh-ks-PP6"/>
+                                    <constraint firstItem="SNT-0A-FKQ" firstAttribute="top" secondItem="cgK-KI-TFA" secondAttribute="bottom" constant="7" id="1MY-DM-3wS"/>
+                                    <constraint firstAttribute="bottom" secondItem="kXM-ad-DXs" secondAttribute="bottom" id="2bY-VC-8dL"/>
                                     <constraint firstItem="AX6-ev-ePv" firstAttribute="centerX" secondItem="pcl-Ne-pOp" secondAttribute="centerX" id="69m-QN-1iB"/>
                                     <constraint firstItem="AX6-ev-ePv" firstAttribute="top" secondItem="pcl-Ne-pOp" secondAttribute="top" id="CLC-44-nE8"/>
-                                    <constraint firstItem="cgK-KI-TFA" firstAttribute="top" secondItem="pcl-Ne-pOp" secondAttribute="top" constant="15" id="Ggy-eS-Kr9"/>
+                                    <constraint firstItem="cgK-KI-TFA" firstAttribute="top" secondItem="pcl-Ne-pOp" secondAttribute="top" constant="22" id="Ggy-eS-Kr9"/>
                                     <constraint firstItem="AX6-ev-ePv" firstAttribute="width" secondItem="pcl-Ne-pOp" secondAttribute="width" id="Lpa-Hs-Ifz"/>
+                                    <constraint firstItem="kXM-ad-DXs" firstAttribute="centerX" secondItem="pcl-Ne-pOp" secondAttribute="centerX" id="WiR-IX-9Yf"/>
                                     <constraint firstItem="cgK-KI-TFA" firstAttribute="width" secondItem="pcl-Ne-pOp" secondAttribute="width" id="YUL-OW-oqb"/>
                                     <constraint firstItem="SNT-0A-FKQ" firstAttribute="centerX" secondItem="pcl-Ne-pOp" secondAttribute="centerX" id="d6n-fP-K0f"/>
                                     <constraint firstItem="cgK-KI-TFA" firstAttribute="centerX" secondItem="pcl-Ne-pOp" secondAttribute="centerX" id="djm-3e-PKM"/>
+                                    <constraint firstItem="kXM-ad-DXs" firstAttribute="top" secondItem="cgK-KI-TFA" secondAttribute="bottom" constant="37" id="xNR-O9-56B"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -452,12 +516,17 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
+                        <outlet property="btnAddEmotion" destination="LCg-3d-h6N" id="dvL-op-s1L"/>
                         <outlet property="btnRecord" destination="8d1-1a-DJH" id="HEM-mn-TWj"/>
+                        <outlet property="btnSendEmotoin" destination="0lm-C5-1Rx" id="grM-51-dlu"/>
                         <outlet property="chatFunctionData" destination="lnC-ne-pau" id="Td5-ii-22z"/>
                         <outlet property="collectionViewEmotion" destination="cgK-KI-TFA" id="Pl9-gc-WFb"/>
+                        <outlet property="collectionViewEmotionTab" destination="fN7-b2-dh8" id="rO9-9H-gOu"/>
                         <outlet property="pageControlEmotion" destination="SNT-0A-FKQ" id="kCi-Ll-jTe"/>
                         <outlet property="textView" destination="qf2-hI-8mb" id="um6-Qj-NvJ"/>
                         <outlet property="viewEmotion" destination="pcl-Ne-pOp" id="0Kh-th-ccI"/>
+                        <outlet property="viewEmotionTab" destination="kXM-ad-DXs" id="e0r-ag-7qD"/>
+                        <outlet property="viewEmotionTabConstraintHeight" destination="Efc-x1-5Og" id="d3c-ha-MXj"/>
                         <outlet property="viewTop" destination="TTf-bs-8Ar" id="H5X-Ol-zge"/>
                         <outlet property="viewTopConstraintHeight" destination="Aae-tB-3ky" id="WDH-ES-qaq"/>
                     </connections>

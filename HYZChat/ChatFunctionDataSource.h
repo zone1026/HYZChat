@@ -12,8 +12,8 @@ static const NSInteger emotionLineNum = 3;
 static const NSInteger emotionLineSpacing = 7;
 static const NSInteger emotionItemSpacing = 12;
 static const NSInteger emotionCellWidth = 28 + 4 + 4;
-static const NSInteger emotionCellTopSpace = 15;
-static const NSInteger emotionCellBottomSpace = 26;
+static const NSInteger emotionCellTopSpacing = 22;
+static const NSInteger emotionCollectionView2EmotionTabSpacing = 37;
 
 @protocol ChatFunctionDataSourceDelegate <NSObject>
 

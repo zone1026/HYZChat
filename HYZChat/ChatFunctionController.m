@@ -24,6 +24,12 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionViewEmotion;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControlEmotion;
 
+@property (weak, nonatomic) IBOutlet UIView *viewEmotionTab;
+@property (weak, nonatomic) IBOutlet UIButton *btnAddEmotion;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionViewEmotionTab;
+@property (weak, nonatomic) IBOutlet UIButton *btnSendEmotoin;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewEmotionTabConstraintHeight;
+
 @property (nonatomic) NSRange chatEmotionShouldChangeRange;//表情在输入框将要插入的光标Range
 
 @end
@@ -39,6 +45,7 @@
     [self.btnRecord.layer setBorder:0.3 withColor:[UIColor lightGrayColor] withCorner:3.0];
     [self.view layoutIfNeeded];
     
+    self.viewEmotionTabConstraintHeight.constant = 0.0;
     self.collectionViewEmotion.tag = ChatBottomCollectionViewTagEmotion;
     self.chatFunctionData.collectionViewEmotionHeight = self.collectionViewEmotion.height;
     [self.chatFunctionData parseEmotionsPlistData];
@@ -84,15 +91,17 @@
     self.chatEmotionShouldChangeRange = self.textView.selectedRange;
     if (self.chatFunctionData.target == ChatTextViewCurrentInputTargetText) {
         self.chatFunctionData.target = ChatTextViewCurrentInputTargetEmotion;
+        self.viewEmotionTabConstraintHeight.constant = 38.0;
         [self.view endEditing:YES];
         InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
         data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
-        data.inputViewHeight = self.viewTopConstraintHeight.constant + emotionCellTopSpace + emotionLineNum*emotionCellWidth + (emotionLineNum - 1)*emotionItemSpacing + emotionCellBottomSpace;
+        data.inputViewHeight = self.viewTopConstraintHeight.constant + (emotionCellTopSpacing + emotionLineNum*emotionCellWidth + (emotionLineNum - 1)*emotionItemSpacing) + emotionCollectionView2EmotionTabSpacing + self.viewEmotionTabConstraintHeight.constant;
         data.isEmotionModel = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的出现 导致整个view的frame变化
     }
     else if (self.chatFunctionData.target == ChatTextViewCurrentInputTargetEmotion) {
         self.chatFunctionData.target = ChatTextViewCurrentInputTargetText;
+        self.viewEmotionTabConstraintHeight.constant = 0.0;
         [self.textView becomeFirstResponder];
         InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
         data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
@@ -139,7 +148,7 @@
     
     InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
     data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
-    data.inputViewHeight = self.chatFunctionData.target == ChatTextViewCurrentInputTargetEmotion ? self.viewTopConstraintHeight.constant + self.collectionViewEmotion.height + emotionCellBottomSpace : self.viewTopConstraintHeight.constant;
+    data.inputViewHeight = self.chatFunctionData.target == ChatTextViewCurrentInputTargetEmotion ? self.viewTopConstraintHeight.constant + self.collectionViewEmotion.height + emotionCollectionView2EmotionTabSpacing + self.viewEmotionTabConstraintHeight.constant : self.viewTopConstraintHeight.constant;
     data.isEmotionModel = self.chatFunctionData.target == ChatTextViewCurrentInputTargetEmotion;
     data.isInputChanage = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于输入字符换行 导致输入框view的frame变化
