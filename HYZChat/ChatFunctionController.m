@@ -45,7 +45,6 @@
     self.pageControlEmotion.numberOfPages = self.chatFunctionData.emotionPageNum;
     [self.collectionViewEmotion reloadData];
     
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,7 +87,7 @@
         [self.view endEditing:YES];
         InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
         data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
-        data.inputViewHeight = self.viewTopConstraintHeight.constant + emotionCellTopSpace + emotionRLineNum*emotionCellWidth + emotionCellBottomSpace;
+        data.inputViewHeight = self.viewTopConstraintHeight.constant + emotionCellTopSpace + emotionLineNum*emotionCellWidth + (emotionLineNum - 1)*emotionItemSpacing + emotionCellBottomSpace;
         data.isEmotionModel = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的出现 导致整个view的frame变化
     }
@@ -148,6 +147,12 @@
 
 - (void)sendChatMessage:(NSString *)content {
     
+}
+
+- (void)pageControlValueChange:(NSInteger)pageNum withCollectionViewTag:(ChatBottomCollectionViewTag)tag {
+    if (tag == ChatBottomCollectionViewTagEmotion) {
+        self.pageControlEmotion.currentPage = pageNum;
+    }
 }
 
 @end

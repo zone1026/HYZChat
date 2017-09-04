@@ -42,7 +42,7 @@ static const CGFloat textViewMaxHeight = 88.0;
         NSInteger delPosIndex = onePageItemCount - 1;
         self.emotionPageNum = pageNum;
         self.emotionsArr = [self getEmptyCellData:totalNum];
-        NSInteger cellRow = onePageItemCount / emotionRLineNum;
+        NSInteger cellRow = onePageItemCount / emotionLineNum;
         for (NSInteger i = 0; i < totalNum; i++) {
             if (i < (emotions.count + pageNum - 1)) {//最后一页的删除按钮 不用重新赋值，getEmptyCellData已生成
                 InputEmotionData *data = [[InputEmotionData alloc] init];
@@ -57,7 +57,8 @@ static const CGFloat textViewMaxHeight = 88.0;
                     data.imgName = [dict objectForKey:@"icon"];
                 }
                 NSInteger row = i / cellRow;
-                NSInteger ind = row + (i % cellRow)*emotionRLineNum + (i / onePageItemCount)*(onePageItemCount - emotionRLineNum);
+                NSInteger ind = row + (i % cellRow)*emotionLineNum + (i / onePageItemCount)*(onePageItemCount - emotionLineNum);
+                NSLog(@"index == %ld", (long)ind);
                 self.emotionsArr[ind] = data;
             }
         }
@@ -97,7 +98,19 @@ static const CGFloat textViewMaxHeight = 88.0;
 
 - (NSInteger)itemCount2Section {
     NSInteger row = (kScreenWidth - emotionLineSpacing * 2 + emotionLineSpacing) / (emotionCellWidth + emotionLineSpacing);
-    return emotionRLineNum * row;
+    return emotionLineNum * row;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.tag == ChatBottomCollectionViewTagEmotion || scrollView.tag == ChatBottomCollectionViewTagFunction) {
+        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(pageControlValueChange:withCollectionViewTag:)]) {
+            CGPoint offset = scrollView.contentOffset;
+            NSInteger currentPage = (offset.x + scrollView.frame.size.width - 1) / scrollView.frame.size.width;
+            [self.delegate pageControlValueChange:currentPage withCollectionViewTag:scrollView.tag];
+        }
+    }
 }
 
 #pragma mark - collection view data source
@@ -129,7 +142,8 @@ static const CGFloat textViewMaxHeight = 88.0;
     if (collectionView.tag == ChatBottomCollectionViewTagEmotion) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"emotionCell" forIndexPath:indexPath];
         if ([cell isKindOfClass:[ChatEmotionCell class]]) {
-            InputEmotionData *data = [self.emotionsArr objectAtIndex:indexPath.item];
+            NSInteger index = indexPath.item + indexPath.section * [self itemCount2Section];
+            InputEmotionData *data = [self.emotionsArr objectAtIndex:index];
             [(ChatEmotionCell *)cell updateInfo:data.imgName];
         }
     }
@@ -198,6 +212,12 @@ static const CGFloat textViewMaxHeight = 88.0;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    if (collectionView.tag == ChatBottomCollectionViewTagEmotion) {
+        return emotionItemSpacing;
+    }
+    else if (collectionView.tag == ChatBottomCollectionViewTagFunction) {
+        
+    }
     return 0.01;
 }
 

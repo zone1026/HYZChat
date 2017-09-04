@@ -31,8 +31,7 @@
 
 #pragma mark - update uiimage view image
 
-- (void)updateInfo:(NSString *)imgName
-{
+- (void)updateInfo:(NSString *)imgName {
     if ([HYZUtil isEmptyOrNull:imgName]) {
         self.imgEmotion.image = nil;
         return;
