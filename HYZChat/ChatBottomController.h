@@ -1,5 +1,5 @@
 //
-//  ChatFunctionController.h
+//  ChatBottomController.h
 //  HYZChat
 //
 //  Created by 黄亚州 on 2017/9/1.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatFunctionController : UIViewController
+@interface ChatBottomController : UIViewController
 
 @end

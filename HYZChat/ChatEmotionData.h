@@ -33,4 +33,5 @@ static const NSInteger emotionCollectionView2EmotionTabSpacing = 37;
  * @description 解析表情plist数据
  */
 - (void)parseEmotionsPlistData;
+
 @end

@@ -12,6 +12,8 @@
 		6B48F4CB1F5EA6C300C9DCDC /* ChatTabEmotionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4CA1F5EA6C300C9DCDC /* ChatTabEmotionData.m */; };
 		6B48F4CE1F5EA74600C9DCDC /* ChatEmotionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4CD1F5EA74600C9DCDC /* ChatEmotionData.m */; };
 		6B48F4D11F5EBD1400C9DCDC /* ChatEmotionTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4D01F5EBD1400C9DCDC /* ChatEmotionTabCell.m */; };
+		6B48F4D41F5ED74100C9DCDC /* ChatFunctionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4D31F5ED74100C9DCDC /* ChatFunctionData.m */; };
+		6B48F4D71F5ED92700C9DCDC /* PlusFunctionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4D61F5ED92700C9DCDC /* PlusFunctionInfo.m */; };
 		6BCBCC721F58E8C7000B7152 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC711F58E8C7000B7152 /* main.m */; };
 		6BCBCC751F58E8C7000B7152 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC741F58E8C7000B7152 /* AppDelegate.m */; };
 		6BCBCC781F58E8C7000B7152 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC771F58E8C7000B7152 /* ViewController.m */; };
@@ -27,8 +29,8 @@
 		6BCBCCB61F590DA3000B7152 /* emotion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BCBCCB31F590DA3000B7152 /* emotion.plist */; };
 		6BCBCCB71F590DA3000B7152 /* HYZChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCB41F590DA3000B7152 /* HYZChat.xcdatamodeld */; };
 		6BCBCCBA1F590F63000B7152 /* ChatDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCB91F590F63000B7152 /* ChatDataSource.m */; };
-		6BCBCCBD1F593733000B7152 /* ChatFunctionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCBC1F593733000B7152 /* ChatFunctionController.m */; };
-		6BCBCCC01F5938AE000B7152 /* ChatFunctionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCBF1F5938AE000B7152 /* ChatFunctionDataSource.m */; };
+		6BCBCCBD1F593733000B7152 /* ChatBottomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCBC1F593733000B7152 /* ChatBottomController.m */; };
+		6BCBCCC01F5938AE000B7152 /* ChatBottomDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCBF1F5938AE000B7152 /* ChatBottomDataSource.m */; };
 		6BCBCCCC1F594CB1000B7152 /* CALayer+HYZUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCCB1F594CB1000B7152 /* CALayer+HYZUtil.m */; };
 		6BCBCCCF1F594DD1000B7152 /* HYZUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCCE1F594DD1000B7152 /* HYZUtil.m */; };
 		6BCBCCD51F594EC1000B7152 /* UIView+HYZFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCD41F594EC1000B7152 /* UIView+HYZFrame.m */; };
@@ -46,6 +48,10 @@
 		6B48F4CD1F5EA74600C9DCDC /* ChatEmotionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatEmotionData.m; sourceTree = "<group>"; };
 		6B48F4CF1F5EBD1400C9DCDC /* ChatEmotionTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatEmotionTabCell.h; sourceTree = "<group>"; };
 		6B48F4D01F5EBD1400C9DCDC /* ChatEmotionTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatEmotionTabCell.m; sourceTree = "<group>"; };
+		6B48F4D21F5ED74100C9DCDC /* ChatFunctionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatFunctionData.h; sourceTree = "<group>"; };
+		6B48F4D31F5ED74100C9DCDC /* ChatFunctionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatFunctionData.m; sourceTree = "<group>"; };
+		6B48F4D51F5ED92700C9DCDC /* PlusFunctionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlusFunctionInfo.h; sourceTree = "<group>"; };
+		6B48F4D61F5ED92700C9DCDC /* PlusFunctionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlusFunctionInfo.m; sourceTree = "<group>"; };
 		6BCBCC6D1F58E8C7000B7152 /* HYZChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYZChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCBCC711F58E8C7000B7152 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BCBCC731F58E8C7000B7152 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,10 +77,10 @@
 		6BCBCCB51F590DA3000B7152 /* HyzChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HyzChat.xcdatamodel; sourceTree = "<group>"; };
 		6BCBCCB81F590F63000B7152 /* ChatDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatDataSource.h; sourceTree = "<group>"; };
 		6BCBCCB91F590F63000B7152 /* ChatDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatDataSource.m; sourceTree = "<group>"; };
-		6BCBCCBB1F593733000B7152 /* ChatFunctionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatFunctionController.h; sourceTree = "<group>"; };
-		6BCBCCBC1F593733000B7152 /* ChatFunctionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatFunctionController.m; sourceTree = "<group>"; };
-		6BCBCCBE1F5938AE000B7152 /* ChatFunctionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatFunctionDataSource.h; sourceTree = "<group>"; };
-		6BCBCCBF1F5938AE000B7152 /* ChatFunctionDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatFunctionDataSource.m; sourceTree = "<group>"; };
+		6BCBCCBB1F593733000B7152 /* ChatBottomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBottomController.h; sourceTree = "<group>"; };
+		6BCBCCBC1F593733000B7152 /* ChatBottomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBottomController.m; sourceTree = "<group>"; };
+		6BCBCCBE1F5938AE000B7152 /* ChatBottomDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBottomDataSource.h; sourceTree = "<group>"; };
+		6BCBCCBF1F5938AE000B7152 /* ChatBottomDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBottomDataSource.m; sourceTree = "<group>"; };
 		6BCBCCC11F593C2E000B7152 /* CommonPrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonPrefix.pch; sourceTree = "<group>"; };
 		6BCBCCC21F593D97000B7152 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6BCBCCC31F593DD3000B7152 /* NotificationName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationName.h; sourceTree = "<group>"; };
@@ -164,8 +170,8 @@
 				6BCBCCA81F5909EF000B7152 /* DataSource */,
 				6BCBCC8F1F58E96A000B7152 /* ChatViewController.h */,
 				6BCBCC901F58E96A000B7152 /* ChatViewController.m */,
-				6BCBCCBB1F593733000B7152 /* ChatFunctionController.h */,
-				6BCBCCBC1F593733000B7152 /* ChatFunctionController.m */,
+				6BCBCCBB1F593733000B7152 /* ChatBottomController.h */,
+				6BCBCCBC1F593733000B7152 /* ChatBottomController.m */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -221,16 +227,20 @@
 				0D48566A1F5BB4AD0008AFB9 /* InputEmotionData.m */,
 				6BCBCCD61F5951B2000B7152 /* InputViewFrameChanageData.h */,
 				6BCBCCD71F5951B2000B7152 /* InputViewFrameChanageData.m */,
+				6B48F4D51F5ED92700C9DCDC /* PlusFunctionInfo.h */,
+				6B48F4D61F5ED92700C9DCDC /* PlusFunctionInfo.m */,
 				6BCBCCAC1F590A8B000B7152 /* ChatMessageAttribute.h */,
 				6BCBCCAD1F590A8B000B7152 /* ChatMessageAttribute.m */,
 				6BCBCCB81F590F63000B7152 /* ChatDataSource.h */,
 				6BCBCCB91F590F63000B7152 /* ChatDataSource.m */,
-				6BCBCCBE1F5938AE000B7152 /* ChatFunctionDataSource.h */,
-				6BCBCCBF1F5938AE000B7152 /* ChatFunctionDataSource.m */,
+				6BCBCCBE1F5938AE000B7152 /* ChatBottomDataSource.h */,
+				6BCBCCBF1F5938AE000B7152 /* ChatBottomDataSource.m */,
 				6B48F4CC1F5EA74600C9DCDC /* ChatEmotionData.h */,
 				6B48F4CD1F5EA74600C9DCDC /* ChatEmotionData.m */,
 				6B48F4C91F5EA6C300C9DCDC /* ChatTabEmotionData.h */,
 				6B48F4CA1F5EA6C300C9DCDC /* ChatTabEmotionData.m */,
+				6B48F4D21F5ED74100C9DCDC /* ChatFunctionData.h */,
+				6B48F4D31F5ED74100C9DCDC /* ChatFunctionData.m */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -323,7 +333,7 @@
 				6BCBCC8D1F58E934000B7152 /* DataManager.m in Sources */,
 				6BCBCCB71F590DA3000B7152 /* HYZChat.xcdatamodeld in Sources */,
 				6BCBCCA41F58FBDD000B7152 /* RichLabel.m in Sources */,
-				6BCBCCC01F5938AE000B7152 /* ChatFunctionDataSource.m in Sources */,
+				6BCBCCC01F5938AE000B7152 /* ChatBottomDataSource.m in Sources */,
 				6B48F4D11F5EBD1400C9DCDC /* ChatEmotionTabCell.m in Sources */,
 				6B48F4CB1F5EA6C300C9DCDC /* ChatTabEmotionData.m in Sources */,
 				6BCBCC911F58E96A000B7152 /* ChatViewController.m in Sources */,
@@ -332,10 +342,12 @@
 				6BCBCCBA1F590F63000B7152 /* ChatDataSource.m in Sources */,
 				6BCBCCCC1F594CB1000B7152 /* CALayer+HYZUtil.m in Sources */,
 				6B48F4CE1F5EA74600C9DCDC /* ChatEmotionData.m in Sources */,
-				6BCBCCBD1F593733000B7152 /* ChatFunctionController.m in Sources */,
+				6BCBCCBD1F593733000B7152 /* ChatBottomController.m in Sources */,
 				0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */,
 				6BCBCC721F58E8C7000B7152 /* main.m in Sources */,
 				6BCBCCD81F5951B2000B7152 /* InputViewFrameChanageData.m in Sources */,
+				6B48F4D71F5ED92700C9DCDC /* PlusFunctionInfo.m in Sources */,
+				6B48F4D41F5ED74100C9DCDC /* ChatFunctionData.m in Sources */,
 				6BCBCCA71F59006D000B7152 /* NSAttributedString+TextAttachment.m in Sources */,
 				6BCBCCAE1F590A8B000B7152 /* ChatMessageAttribute.m in Sources */,
 			);

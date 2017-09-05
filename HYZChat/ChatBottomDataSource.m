@@ -1,22 +1,22 @@
 //
-//  ChatFunctionDataSource.m
+//  ChatBottomDataSource.m
 //  HYZChat
 //
 //  Created by 黄亚州 on 2017/9/1.
 //  Copyright © 2017年 黄亚州. All rights reserved.
 //
 
-#import "ChatFunctionDataSource.h"
+#import "ChatBottomDataSource.h"
 #import "UIView+HYZFrame.h"
 
 
 static const CGFloat textViewMaxHeight = 88.0;
 
-@interface ChatFunctionDataSource ()
+@interface ChatBottomDataSource ()
 
 @end
 
-@implementation ChatFunctionDataSource
+@implementation ChatBottomDataSource
 
 - (instancetype)init {
     if (self = [super init]) {
