@@ -11,8 +11,10 @@
 #import "CALayer+HYZUtil.h"
 #import "UIView+HYZFrame.h"
 #import "InputViewFrameChanageData.h"
+#import "ChatEmotionData.h"
+#import "ChatTabEmotionData.h"
 
-@interface ChatFunctionController ()<ChatFunctionDataSourceDelegate>
+@interface ChatFunctionController ()<ChatFunctionDataSourceDelegate , ChatEmotionDataDelegate, ChatTabEmotionDataDelegate>
 @property (strong, nonatomic) IBOutlet ChatFunctionDataSource *chatFunctionData;
 
 @property (weak, nonatomic) IBOutlet UIView *viewTop;
@@ -20,10 +22,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnRecord;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewTopConstraintHeight;
 
+@property (strong, nonatomic) IBOutlet ChatEmotionData *chatEmotionData;
 @property (weak, nonatomic) IBOutlet UIView *viewEmotion;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionViewEmotion;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControlEmotion;
 
+@property (strong, nonatomic) IBOutlet ChatTabEmotionData *chatTabEmotionData;
 @property (weak, nonatomic) IBOutlet UIView *viewEmotionTab;
 @property (weak, nonatomic) IBOutlet UIButton *btnAddEmotion;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionViewEmotionTab;
@@ -39,19 +43,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.chatFunctionData.delegate = self;
+    //input view
     self.textView.text = @"";
     [self.textView.layer setBorder:0.3 withColor:[UIColor lightGrayColor] withCorner:3.0];
     [self.btnRecord.layer setBorder:0.3 withColor:[UIColor lightGrayColor] withCorner:3.0];
     [self.view layoutIfNeeded];
+    self.chatFunctionData.delegate = self;
     
+    //chat emotion view
+    self.chatEmotionData.delegate = self;
     self.viewEmotionTabConstraintHeight.constant = 0.0;
-    self.collectionViewEmotion.tag = ChatBottomCollectionViewTagEmotion;
-    self.chatFunctionData.collectionViewEmotionHeight = self.collectionViewEmotion.height;
-    [self.chatFunctionData parseEmotionsPlistData];
-    self.pageControlEmotion.numberOfPages = self.chatFunctionData.emotionPageNum;
+    self.chatEmotionData.collectionViewEmotionHeight = self.collectionViewEmotion.height;
+    [self.chatEmotionData parseEmotionsPlistData];
+    self.pageControlEmotion.numberOfPages = self.chatEmotionData.emotionPageNum;
     [self.collectionViewEmotion reloadData];
     
+    //chat emotion tab view
+    self.chatTabEmotionData.delegate = self;
+    [self.collectionViewEmotionTab reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -155,13 +164,23 @@
 }
 
 - (void)sendChatMessage:(NSString *)content {
-    
 }
 
-- (void)pageControlValueChange:(NSInteger)pageNum withCollectionViewTag:(ChatBottomCollectionViewTag)tag {
-    if (tag == ChatBottomCollectionViewTagEmotion) {
-        self.pageControlEmotion.currentPage = pageNum;
-    }
+#pragma mark - ChatEmotionDataDelegate
+
+- (void)pageControlValueChangeForEmotion:(NSInteger)pageNum {
+    self.pageControlEmotion.currentPage = pageNum;
+}
+
+#pragma mark - ChatTabEmotionDataDelegate
+
+- (void)openEmotionTab:(NSInteger)tab withEmotionTabValue:(NSString *)tabValue {
+    NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForItem:self.chatFunctionData.selectedEmotionTab inSection:0];
+    NSIndexPath *willSelectIndexPath = [NSIndexPath indexPathForItem:tab inSection:0];
+    [self.collectionViewEmotionTab reloadItemsAtIndexPaths:@[selectedIndexPath, willSelectIndexPath]];
+    self.chatFunctionData.selectedEmotionTab = tab;
+#warning update collectionViewEmotion icon
+//    [self.collectionViewEmotion reloadData];
 }
 
 @end

@@ -605,13 +605,13 @@
 			<string>[炸弹]</string>
 		</dict>
 	</array>
-	<key>SmallEmotionTab</key>
+	<key>EmotionTab</key>
 	<array>
 		<dict>
 			<key>name</key>
 			<string>经典</string>
 			<key>icon</key>
-			<string></string>
+			<string>TAB_CLASSIC</string>
 			<key>value</key>
 			<string>classic</string>
 		</dict>

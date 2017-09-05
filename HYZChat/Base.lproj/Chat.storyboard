@@ -414,8 +414,8 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </collectionReusableView>
                                         <connections>
-                                            <outlet property="dataSource" destination="lnC-ne-pau" id="aLU-Ef-gf8"/>
-                                            <outlet property="delegate" destination="lnC-ne-pau" id="RsA-hd-SWu"/>
+                                            <outlet property="dataSource" destination="RE0-6I-fYh" id="82a-N0-ks6"/>
+                                            <outlet property="delegate" destination="RE0-6I-fYh" id="Y7z-gK-016"/>
                                         </connections>
                                     </collectionView>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXM-ad-DXs" userLabel="表情Tab视图">
@@ -423,6 +423,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCg-3d-h6N">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="38"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Zm8-dn-4Rc"/>
                                                 </constraints>
@@ -434,24 +435,53 @@
                                             </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fN7-b2-dh8">
                                                 <rect key="frame" x="40" y="0.0" width="291" height="38"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LjR-ye-TiP">
+                                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LjR-ye-TiP">
                                                     <size key="itemSize" width="50" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="f6P-cc-A1x">
-                                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emotionTabCell" id="f6P-cc-A1x" customClass="ChatEmotionTabCell">
+                                                        <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V8w-sd-iCi">
+                                                                    <rect key="frame" x="8" y="8" width="22" height="22"/>
+                                                                </imageView>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3D-k3-mLT">
+                                                                    <rect key="frame" x="37.5" y="5" width="0.5" height="28"/>
+                                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="0.5" id="JG6-7L-AFc"/>
+                                                                    </constraints>
+                                                                </view>
+                                                            </subviews>
                                                         </view>
-                                                        <size key="customSize" width="44" height="44"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="S3D-k3-mLT" secondAttribute="trailing" id="8q3-5t-Nps"/>
+                                                            <constraint firstItem="S3D-k3-mLT" firstAttribute="top" secondItem="f6P-cc-A1x" secondAttribute="top" constant="5" id="CwN-g2-iIH"/>
+                                                            <constraint firstAttribute="bottom" secondItem="V8w-sd-iCi" secondAttribute="bottom" constant="8" id="RfH-0f-dww"/>
+                                                            <constraint firstItem="V8w-sd-iCi" firstAttribute="leading" secondItem="f6P-cc-A1x" secondAttribute="leading" constant="8" id="eqJ-Ar-TCP"/>
+                                                            <constraint firstItem="V8w-sd-iCi" firstAttribute="top" secondItem="f6P-cc-A1x" secondAttribute="top" constant="8" id="mdo-Kg-rV1"/>
+                                                            <constraint firstAttribute="bottom" secondItem="S3D-k3-mLT" secondAttribute="bottom" constant="5" id="niC-iK-1Qc"/>
+                                                            <constraint firstAttribute="trailing" secondItem="V8w-sd-iCi" secondAttribute="trailing" constant="8" id="oAJ-CL-wC6"/>
+                                                        </constraints>
+                                                        <size key="customSize" width="38" height="38"/>
+                                                        <connections>
+                                                            <outlet property="imgEmotionTab" destination="V8w-sd-iCi" id="o0k-KK-BhJ"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="XDM-wg-bKe" id="Rrm-X5-PWp"/>
+                                                    <outlet property="delegate" destination="XDM-wg-bKe" id="29t-VH-yXL"/>
+                                                </connections>
                                             </collectionView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lm-C5-1Rx">
                                                 <rect key="frame" x="331" y="-0.5" width="44" height="38"/>
@@ -464,7 +494,7 @@
                                                 </state>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="0lm-C5-1Rx" firstAttribute="leading" secondItem="fN7-b2-dh8" secondAttribute="trailing" id="BLA-WN-e5Q"/>
                                             <constraint firstItem="LCg-3d-h6N" firstAttribute="height" secondItem="kXM-ad-DXs" secondAttribute="height" id="Bah-d6-0wX"/>
@@ -519,7 +549,9 @@
                         <outlet property="btnAddEmotion" destination="LCg-3d-h6N" id="dvL-op-s1L"/>
                         <outlet property="btnRecord" destination="8d1-1a-DJH" id="HEM-mn-TWj"/>
                         <outlet property="btnSendEmotoin" destination="0lm-C5-1Rx" id="grM-51-dlu"/>
+                        <outlet property="chatEmotionData" destination="RE0-6I-fYh" id="8iT-BU-Bpz"/>
                         <outlet property="chatFunctionData" destination="lnC-ne-pau" id="Td5-ii-22z"/>
+                        <outlet property="chatTabEmotionData" destination="XDM-wg-bKe" id="bgp-Z1-DyR"/>
                         <outlet property="collectionViewEmotion" destination="cgK-KI-TFA" id="Pl9-gc-WFb"/>
                         <outlet property="collectionViewEmotionTab" destination="fN7-b2-dh8" id="rO9-9H-gOu"/>
                         <outlet property="pageControlEmotion" destination="SNT-0A-FKQ" id="kCi-Ll-jTe"/>
@@ -533,6 +565,8 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aC7-6o-deA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="lnC-ne-pau" customClass="ChatFunctionDataSource"/>
+                <customObject id="RE0-6I-fYh" customClass="ChatEmotionData"/>
+                <customObject id="XDM-wg-bKe" customClass="ChatTabEmotionData"/>
             </objects>
             <point key="canvasLocation" x="2000" y="0.0"/>
         </scene>

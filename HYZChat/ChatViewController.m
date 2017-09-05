@@ -122,7 +122,7 @@ static const CGFloat animateDuration = 0.3f;
             if (data.isInputChanage) {
                 [UIView animateWithDuration:animateDuration animations:^{
                     self.viewBottomConstraintHeight.constant = data.inputViewHeight;
-                    [self.view layoutIfNeeded];
+                    
                 } completion:^(BOOL finished) {
 //                    [[NSNotificationCenter defaultCenter] postNotificationName:NotiLiveshowInteractionScrollCellToBottom object:nil];
                 }];
@@ -131,7 +131,7 @@ static const CGFloat animateDuration = 0.3f;
                 self.inputModel = data.isEmotionModel == YES ? ChatTextViewCurrentInputTargetEmotion : ChatTextViewCurrentInputTargetText;
                 [UIView animateWithDuration:animateDuration animations:^{
                     self.viewBottomConstraintHeight.constant = data.inputViewHeight;
-                    [self.view layoutIfNeeded];
+//                    [self.view layoutIfNeeded];
                 } completion:^(BOOL finished) {
                     if (self.inputModel == ChatTextViewCurrentInputTargetEmotion) {
 //                        [[NSNotificationCenter defaultCenter] postNotificationName:NotiLiveshowInteractionScrollCellToBottom object:nil];
