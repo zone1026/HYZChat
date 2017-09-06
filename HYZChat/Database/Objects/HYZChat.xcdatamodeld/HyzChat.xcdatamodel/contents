@@ -1,4 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="CNChatMessage" representedClassName="CNChatMessage" syncable="YES">
+        <attribute name="msg_content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="msg_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="msg_state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="msg_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="send_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="send_userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="target_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="assign_res" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CNChatResource" inverseName="belong_chatMessage" inverseEntity="CNChatResource" syncable="YES"/>
+        <relationship name="belong_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNUser" inverseName="has_chatMessage" inverseEntity="CNUser" syncable="YES"/>
+    </entity>
+    <entity name="CNChatResource" representedClassName="CNChatResource" syncable="YES">
+        <attribute name="res_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="res_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="res_url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belong_chatMessage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNChatMessage" inverseName="assign_res" inverseEntity="CNChatMessage" syncable="YES"/>
+    </entity>
+    <entity name="CNUser" representedClassName="CNUser" syncable="YES">
+        <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="user_identity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="user_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_sex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="has_chatMessage" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CNChatMessage" inverseName="belong_user" inverseEntity="CNChatMessage" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CNUser" positionX="-747" positionY="72" width="128" height="133"/>
+        <element name="CNChatMessage" positionX="-540" positionY="-162" width="128" height="178"/>
+        <element name="CNChatResource" positionX="-245" positionY="-105" width="128" height="103"/>
+    </elements>
 </model>

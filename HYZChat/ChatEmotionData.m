@@ -26,7 +26,7 @@
 #pragma mark - emotions plist data
 
 - (void)parseEmotionsPlistData {
-    NSArray *emotions = [HYZUtil getPlistData:@"Emotions" inFile:@"emotion"];
+    NSArray *emotions = [HYZUtil getPlistData:@"Emotions" inFile:@"Emotion"];
     if (emotions.count == 0) {
         NSLog(@"plist file not exist !");
     }
