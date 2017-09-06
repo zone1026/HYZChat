@@ -14,8 +14,12 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @description 通知输入框的高度发生变化
+ * @description 输入框的高度发生变化的通知
  */
 #define NotiInputViewFrameChanage             @"NotiInputViewFrameChanage"
+/**
+ * @description 聊天底部功能按钮的点击通知
+ */
+#define NotiChatBottomFunctionButtonClick     @"NotiChatBottomFunctionButtonClick"
 
 #endif /* NotificationName_h */

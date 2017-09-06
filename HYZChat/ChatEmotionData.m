@@ -19,6 +19,8 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        self.emotionPageNum = 0;
+        self.collectionViewEmotionHeight = 0.0;
     }
     return self;
 }
@@ -53,7 +55,6 @@
                 }
                 NSInteger row = i / cellRow;
                 NSInteger ind = row + (i % cellRow)*emotionLineNum + (i / onePageItemCount)*(onePageItemCount - emotionLineNum);
-                NSLog(@"index == %ld", (long)ind);
                 self.emotionsArr[ind] = data;
             }
         }
@@ -71,7 +72,7 @@
         }
         else {
             data.name = @"空数据";
-            data.imgName = @"empty";
+            data.imgName = @"";
             data.isEmpty = YES;
         }
         [arr addObject:data];
@@ -124,7 +125,7 @@
     ChatEmotionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"emotionCell" forIndexPath:indexPath];
     NSInteger index = indexPath.item + indexPath.section * [self itemCount2Section];
     InputEmotionData *data = [self.emotionsArr objectAtIndex:index];
-    [(ChatEmotionCell *)cell updateInfo:data.imgName];
+    [cell updateInfo:data.imgName];
     return cell;
 }
 

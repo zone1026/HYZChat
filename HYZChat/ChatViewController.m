@@ -77,6 +77,7 @@ static const CGFloat animateDuration = 0.3f;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiInputViewFrameChanage:) name:NotiInputViewFrameChanage object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiChatBottomFunctionButtonClick:) name:NotiChatBottomFunctionButtonClick object:nil];
 }
 
 - (void)removeMessageNoitication {
@@ -86,6 +87,7 @@ static const CGFloat animateDuration = 0.3f;
     [[NSNotificationCenter defaultCenter] removeObserver:self name: UIKeyboardWillHideNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiInputViewFrameChanage object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiChatBottomFunctionButtonClick object:nil];
 }
 
 //键盘弹出
@@ -140,6 +142,90 @@ static const CGFloat animateDuration = 0.3f;
             }
         }
     }
+}
+
+- (void)handleNotiChatBottomFunctionButtonClick:(NSNotification *)notification {
+    if (notification.object != nil) {
+        NSInteger btnValue = [notification.object integerValue];
+        switch (btnValue) {
+            case 0:
+                [self openImage];
+                break;
+            case 1:
+                [self openPhoto];
+                break;
+            case 2:
+                [self openOnlineVideo];
+                break;
+            case 3:
+                [self openLocation];
+                break;
+            case 4:
+                [self openRedEnvelope];
+                break;
+            case 5:
+                [self openSight];
+                break;
+            case 6:
+                [self openUserReport];
+                break;
+            case 7:
+                [self openMyCard];
+                break;
+            case 8:
+                [self openCollect];
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+#pragma mark - chat bottom function button jump
+
+//照片
+- (void)openImage {
+    
+}
+
+//相机
+- (void)openPhoto {
+    
+}
+
+//打开网络视频
+- (void)openOnlineVideo {
+    
+}
+
+//打开位置
+- (void)openLocation {
+    
+}
+
+//打开发红包
+- (void)openRedEnvelope {
+    
+}
+
+//打开小视频
+- (void)openSight {
+    
+}
+
+//打开用户举报
+- (void)openUserReport {
+    
+}
+
+//打开个人名片
+- (void)openMyCard {
+    
+}
+
+//打开个人名片
+- (void)openCollect {
+    
 }
 
 @end

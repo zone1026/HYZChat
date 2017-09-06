@@ -21,5 +21,10 @@
  * @param filename plist文件名
  */
 + (id)getPlistData:(NSString *)key inFile:(NSString *)filename;
+/**
+ * @description 生成纯色的image对象
+ * @param color image颜色值
+ */
++ (UIImage *)imageWithColor:(UIColor *)color;
 
 @end

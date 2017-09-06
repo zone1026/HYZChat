@@ -15,7 +15,7 @@
 #import "ChatTabEmotionData.h"
 #import "ChatFunctionData.h"
 
-@interface ChatBottomController ()<ChatBottomDataSourceDelegate , ChatEmotionDataDelegate, ChatTabEmotionDataDelegate>
+@interface ChatBottomController ()<ChatBottomDataSourceDelegate , ChatEmotionDataDelegate, ChatTabEmotionDataDelegate, ChatFunctionDataDelegate>
 @property (strong, nonatomic) IBOutlet ChatBottomDataSource *chatBottomData;
 
 //chat top input view
@@ -66,11 +66,20 @@
     self.chatEmotionData.collectionViewEmotionHeight = self.collectionViewEmotion.height;
     [self.chatEmotionData parseEmotionsPlistData];
     self.pageControlEmotion.numberOfPages = self.chatEmotionData.emotionPageNum;
+    self.pageControlEmotion.hidden = self.chatEmotionData.emotionPageNum <= 1;
     [self.collectionViewEmotion reloadData];
     
     //chat emotion tab view
     self.chatTabEmotionData.delegate = self;
     [self.collectionViewEmotionTab reloadData];
+    
+    //chat function view
+    self.chatFunctionData.delegate = self;
+    self.chatFunctionData.collectionViewFunctionHeight = self.collectionViewFunction.height;
+    [self.chatFunctionData parseFunctionsPlistData];
+    self.pageControlFunction.numberOfPages = self.chatFunctionData.functionPageNum;
+    self.pageControlFunction.hidden = self.chatFunctionData.functionPageNum <= 1;
+    [self.collectionViewFunction reloadData];
     
     self.viewEmotion.hidden = NO;
     self.viewFunction.hidden = YES;
@@ -109,6 +118,10 @@
 
 - (IBAction)btnEmotionTouchUpInside:(UIButton *)sender {
     [sender setSelected:!sender.isSelected];
+    if (self.viewEmotion.isHidden == YES) {
+        self.viewEmotion.hidden = NO;
+        self.viewFunction.hidden = YES;
+    }
     self.chatBottomData.endLocationInput = (self.textView.selectedRange.location >= self.textView.text.length);
     self.chatEmotionShouldChangeRange = self.textView.selectedRange;
     if (self.chatBottomData.target == ChatTextViewCurrentInputTargetText) {
@@ -134,7 +147,29 @@
 }
 
 - (IBAction)btnPlusTouchUpInside:(UIButton *)sender {
+    if (self.viewFunction.isHidden == YES) {
+        self.viewEmotion.hidden = YES;
+        self.viewFunction.hidden = NO;
+    }
     
+    if (self.chatBottomData.target == ChatTextViewCurrentInputTargetText) {
+        self.chatBottomData.target = ChatTextViewCurrentInputTargetEmotion;
+        [self.view endEditing:YES];
+        InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
+        data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
+        data.inputViewHeight = self.viewTopConstraintHeight.constant + (functionCellTopSpacing + functionLineNum*functionCellHeight + (functionLineNum - 1)*functionItemSpacing) + functionColl2BottomSpacing;
+//        data.isEmotionModel = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的出现 导致整个view的frame变化
+    }
+    else if (self.chatBottomData.target == ChatTextViewCurrentInputTargetEmotion) {
+        self.chatBottomData.target = ChatTextViewCurrentInputTargetText;
+        [self.textView becomeFirstResponder];
+        InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
+        data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
+        data.inputViewHeight = self.viewTopConstraintHeight.constant;
+        data.isEmotionModel = NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的消失 导致整个view的frame变化
+    }
 }
 
 - (IBAction)btnRecordTouchUpInside:(UIButton *)sender {
@@ -194,6 +229,12 @@
     self.chatBottomData.selectedEmotionTab = tab;
 #warning update collectionViewEmotion icon
 //    [self.collectionViewEmotion reloadData];
+}
+
+#pragma mark - ChatFunctionDataDelegate
+
+- (void)pageControlValueChangeForFunction:(NSInteger)pageNum {
+    self.pageControlFunction.currentPage = pageNum;
 }
 
 @end

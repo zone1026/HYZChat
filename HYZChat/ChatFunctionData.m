@@ -7,6 +7,7 @@
 //
 
 #import "ChatFunctionData.h"
+#import "ChatFunctionCell.h"
 #import "PlusFunctionInfo.h"
 
 @interface ChatFunctionData ()
@@ -17,42 +18,36 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        self.functionPageNum = 0;
+        self.collectionViewFunctionHeight = 0.0;
     }
     return self;
 }
 
 #pragma mark - emotions plist data
-
-- (void)allocFunctionData {
-    NSArray *emotions = [HYZUtil getPlistData:@"Emotions" inFile:@"emotion"];
-    if (emotions.count == 0) {
+- (void)parseFunctionsPlistData {
+    NSArray *functions = [HYZUtil getPlistData:@"ChatFunction" inFile:@"Chat"];
+    if (functions.count <= 0) {
         NSLog(@"plist file not exist !");
     }
     else {
         NSInteger onePageItemCount = [self itemCount2Section];
-        NSInteger pageNum = emotions.count / (onePageItemCount - 1) + 1;//-1 代表删除占位
+        NSInteger pageNum = functions.count / onePageItemCount + 1;
         NSInteger totalNum = pageNum * onePageItemCount;
-        NSInteger delPosIndex = onePageItemCount - 1;
         self.functionPageNum = pageNum;
-        self.emotionsArr = [self getEmptyCellData:totalNum];
-        NSInteger cellRow = onePageItemCount / emotionLineNum;
+        self.functionsArr = [self getEmptyCellData:totalNum];
+        NSInteger cellRow = onePageItemCount / functionLineNum;
         for (NSInteger i = 0; i < totalNum; i++) {
-            if (i < (emotions.count + pageNum - 1)) {//最后一页的删除按钮 不用重新赋值，getEmptyCellData已生成
-                InputEmotionData *data = [[InputEmotionData alloc] init];
-                data.isEmpty = NO;
-                if (i % onePageItemCount == delPosIndex) {
-                    data.name = @"删除";
-                    data.imgName = @"CHT_BTN_DEL_EMOTION";
-                }
-                else {
-                    NSDictionary *dict = [emotions objectAtIndex:i - i / onePageItemCount];
-                    data.name = [dict objectForKey:@"value"];
-                    data.imgName = [dict objectForKey:@"icon"];
-                }
+            if (i < functions.count) {
+                PlusFunctionInfo *info = [[PlusFunctionInfo alloc] init];
+                info.isEmpty = NO;
+                NSDictionary *dict = [functions objectAtIndex:i];
+                info.value = [[dict objectForKey:@"value"] integerValue];
+                info.name = [dict objectForKey:@"name"];
+                info.imgName = [dict objectForKey:@"icon"];
                 NSInteger row = i / cellRow;
-                NSInteger ind = row + (i % cellRow)*emotionLineNum + (i / onePageItemCount)*(onePageItemCount - emotionLineNum);
-                NSLog(@"index == %ld", (long)ind);
-                self.emotionsArr[ind] = data;
+                NSInteger ind = row + (i % cellRow)*functionLineNum + (i / onePageItemCount)*(onePageItemCount - functionLineNum);
+                self.functionsArr[ind] = info;
             }
         }
     }
@@ -62,45 +57,40 @@
 - (NSMutableArray *)getEmptyCellData:(NSInteger)num {
     NSMutableArray *arr = [NSMutableArray array];
     for (NSInteger i = 0; i < num; i++) {
-        InputEmotionData *data = [[InputEmotionData alloc] init];
-        if (i == num - 1) {
-            data.name = @"删除";
-            data.imgName = @"CHT_BTN_DEL_EMOTION";
-        }
-        else {
-            data.name = @"空数据";
-            data.imgName = @"empty";
-            data.isEmpty = YES;
-        }
-        [arr addObject:data];
+        PlusFunctionInfo *info = [[PlusFunctionInfo alloc] init];
+        info.name = @"空数据";
+        info.imgName = @"";
+        info.value = -1;
+        info.isEmpty = YES;
+        [arr addObject:info];
     }
     return arr;
 }
 
 - (BOOL)isEmptyEmotionData {
-    if (self.emotionsArr == nil || self.emotionsArr.count <= 0)
+    if (self.functionsArr == nil || self.functionsArr.count <= 0)
         return YES;
     
     return NO;
 }
 
 - (NSInteger)getEmotionNeedPageNum {
-    NSInteger section = self.emotionsArr.count / [self itemCount2Section];
+    NSInteger section = self.functionsArr.count / [self itemCount2Section];
     return section;
 }
 
 - (NSInteger)itemCount2Section {
-    NSInteger row = (kScreenWidth - emotionLineSpacing * 2 + emotionLineSpacing) / (emotionCellWidth + emotionLineSpacing);
-    return emotionLineNum * row;
+    NSInteger row = 4;//(kScreenWidth - functionLineSpacing) / (functionCellWidth + functionLineSpacing);
+    return functionLineNum * row;
 }
 
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(pageControlValueChangeForEmotion:)]) {
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(pageControlValueChangeForFunction:)]) {
         CGPoint offset = scrollView.contentOffset;
         NSInteger currentPage = (offset.x + scrollView.frame.size.width - 1) / scrollView.frame.size.width;
-        [self.delegate pageControlValueChangeForEmotion:currentPage];
+        [self.delegate pageControlValueChangeForFunction:currentPage];
     }
 }
 
@@ -119,10 +109,10 @@
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ChatEmotionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"emotionCell" forIndexPath:indexPath];
+    ChatFunctionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"functionCell" forIndexPath:indexPath];
     NSInteger index = indexPath.item + indexPath.section * [self itemCount2Section];
-    InputEmotionData *data = [self.emotionsArr objectAtIndex:index];
-    [(ChatEmotionCell *)cell updateInfo:data.imgName];
+    PlusFunctionInfo *info = [self.functionsArr objectAtIndex:index];
+    [cell updateInfo:info.imgName withFunctionName:info.name withButtonValue:info.value];
     return cell;
 }
 
@@ -135,27 +125,24 @@
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(emotionCellWidth, emotionCellWidth);
+    return CGSizeMake(functionCellWidth, functionCellHeight);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    NSInteger row = (kScreenWidth - emotionLineSpacing * 2 + emotionLineSpacing) / (emotionCellWidth + emotionLineSpacing);
-    CGFloat width = (kScreenWidth - row*emotionCellWidth - (row - 1)*emotionLineSpacing) / 2;
-    return CGSizeMake(width, self.collectionViewEmotionHeight);
+    return CGSizeMake(functionHeaderOrFooterSpacing, self.collectionViewFunctionHeight);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
-    NSInteger row = (kScreenWidth - emotionLineSpacing * 2 + emotionLineSpacing) / (emotionCellWidth + emotionLineSpacing);
-    CGFloat width = (kScreenWidth - row*emotionCellWidth - (row - 1)*emotionLineSpacing) / 2;
-    return CGSizeMake(width, self.collectionViewEmotionHeight);
+    return CGSizeMake(functionHeaderOrFooterSpacing, self.collectionViewFunctionHeight);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return emotionLineSpacing;
+    NSInteger row = [self itemCount2Section] / functionLineNum;
+    return (kScreenWidth - row*functionCellWidth - functionHeaderOrFooterSpacing*2) / (row - 1);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return emotionItemSpacing;
+    return functionItemSpacing;
 }
 
 @end

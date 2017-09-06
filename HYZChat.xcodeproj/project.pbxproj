@@ -22,6 +22,7 @@
 		6B8E3DFF1F5F8D3B00020626 /* CNChatMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E3DF71F5F8D3B00020626 /* CNChatMessage+CoreDataProperties.m */; };
 		6B8E3E001F5F8D3B00020626 /* CNUser+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E3DF91F5F8D3B00020626 /* CNUser+CoreDataClass.m */; };
 		6B8E3E011F5F8D3B00020626 /* CNUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E3DFB1F5F8D3B00020626 /* CNUser+CoreDataProperties.m */; };
+		6B8E3E041F5F970D00020626 /* ChatFunctionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E3E031F5F970D00020626 /* ChatFunctionCell.m */; };
 		6BCBCC721F58E8C7000B7152 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC711F58E8C7000B7152 /* main.m */; };
 		6BCBCC751F58E8C7000B7152 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC741F58E8C7000B7152 /* AppDelegate.m */; };
 		6BCBCC781F58E8C7000B7152 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC771F58E8C7000B7152 /* ViewController.m */; };
@@ -73,6 +74,8 @@
 		6B8E3DF91F5F8D3B00020626 /* CNUser+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CNUser+CoreDataClass.m"; sourceTree = "<group>"; };
 		6B8E3DFA1F5F8D3B00020626 /* CNUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CNUser+CoreDataProperties.h"; sourceTree = "<group>"; };
 		6B8E3DFB1F5F8D3B00020626 /* CNUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CNUser+CoreDataProperties.m"; sourceTree = "<group>"; };
+		6B8E3E021F5F970D00020626 /* ChatFunctionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatFunctionCell.h; sourceTree = "<group>"; };
+		6B8E3E031F5F970D00020626 /* ChatFunctionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatFunctionCell.m; sourceTree = "<group>"; };
 		6BCBCC6D1F58E8C7000B7152 /* HYZChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYZChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCBCC711F58E8C7000B7152 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BCBCC731F58E8C7000B7152 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 				0D48566D1F5BBCE80008AFB9 /* ChatEmotionCell.m */,
 				6B48F4CF1F5EBD1400C9DCDC /* ChatEmotionTabCell.h */,
 				6B48F4D01F5EBD1400C9DCDC /* ChatEmotionTabCell.m */,
+				6B8E3E021F5F970D00020626 /* ChatFunctionCell.h */,
+				6B8E3E031F5F970D00020626 /* ChatFunctionCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -386,6 +391,7 @@
 				0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */,
 				6BCBCC721F58E8C7000B7152 /* main.m in Sources */,
 				6BCBCCD81F5951B2000B7152 /* InputViewFrameChanageData.m in Sources */,
+				6B8E3E041F5F970D00020626 /* ChatFunctionCell.m in Sources */,
 				6B48F4D71F5ED92700C9DCDC /* PlusFunctionInfo.m in Sources */,
 				6B48F4D41F5ED74100C9DCDC /* ChatFunctionData.m in Sources */,
 				6BCBCCA71F59006D000B7152 /* NSAttributedString+TextAttachment.m in Sources */,

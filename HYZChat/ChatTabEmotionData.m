@@ -25,7 +25,7 @@
 
 - (NSArray *)emotionTabArr {
     if (_emotionTabArr == nil)
-        _emotionTabArr = [HYZUtil getPlistData:@"EmotionTab" inFile:@"emotion"];
+        _emotionTabArr = [HYZUtil getPlistData:@"EmotionTab" inFile:@"Emotion"];
     
     return _emotionTabArr;
 }
@@ -65,7 +65,7 @@
     ChatEmotionTabCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"emotionTabCell" forIndexPath:indexPath];
     NSDictionary *dict = [self.emotionTabArr objectAtIndex:indexPath.item];
     [cell updateInfo:dict[@"icon"]];
-    cell.backgroundColor = self.selectedTabIndex == indexPath.item ? [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0]: [UIColor clearColor];
+    cell.backgroundColor = self.selectedTabIndex == indexPath.item ? RGB_COLOR(235.0, 235.0, 235.0): [UIColor clearColor];
     return cell;
 }
 
