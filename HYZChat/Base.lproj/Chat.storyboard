@@ -235,7 +235,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rdY-eF-blk">
-                        <barButtonItem key="leftBarButtonItem" title="退出" id="MGx-dM-hdZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MGx-dM-hdZ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="barBtnBackSelector:" destination="BbH-lb-YNE" id="hhH-Ei-NaO"/>

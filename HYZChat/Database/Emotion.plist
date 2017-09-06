@@ -615,6 +615,14 @@
 			<key>value</key>
 			<string>classic</string>
 		</dict>
+		<dict>
+			<key>name</key>
+			<string>收藏</string>
+			<key>icon</key>
+			<string>TAB_COLLECT</string>
+			<key>value</key>
+			<string>collect</string>
+		</dict>
 	</array>
 </dict>
 </plist>
