@@ -21,6 +21,7 @@
     if (self = [super init]) {
         self.emotionPageNum = 0;
         self.collectionViewEmotionHeight = 0.0;
+        self.selectedEmotionTab = 0;
     }
     return self;
 }

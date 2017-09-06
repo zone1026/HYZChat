@@ -28,6 +28,7 @@ static const NSInteger emotionCollectionView2EmotionTabSpacing = 37;
 @property (weak, nonatomic) id <ChatEmotionDataDelegate> delegate;
 @property (assign, nonatomic) NSInteger emotionPageNum;
 @property (assign, nonatomic) CGFloat collectionViewEmotionHeight;
+@property (assign, nonatomic) NSInteger selectedEmotionTab;
 
 /**
  * @description 解析表情plist数据

@@ -24,6 +24,5 @@
 @property (assign, nonatomic) BOOL endLocationInput;
 @property (assign, nonatomic) ChatTextViewCurrentInputTarget target;
 @property (weak, nonatomic) id <ChatBottomDataSourceDelegate> delegate;
-@property (assign, nonatomic) NSInteger selectedEmotionTab;
 
 @end

@@ -15,7 +15,7 @@
 #import "ChatTabEmotionData.h"
 #import "ChatFunctionData.h"
 
-@interface ChatBottomController ()<ChatBottomDataSourceDelegate , ChatEmotionDataDelegate, ChatTabEmotionDataDelegate, ChatFunctionDataDelegate>
+@interface ChatBottomController ()<ChatBottomDataSourceDelegate>
 @property (strong, nonatomic) IBOutlet ChatBottomDataSource *chatBottomData;
 
 //chat top input view
@@ -25,24 +25,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewTopConstraintHeight;
 
 //chat emotion view
-@property (strong, nonatomic) IBOutlet ChatEmotionData *chatEmotionData;
 @property (weak, nonatomic) IBOutlet UIView *viewEmotion;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionViewEmotion;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControlEmotion;
-
-//chat emotion tab view
-@property (strong, nonatomic) IBOutlet ChatTabEmotionData *chatTabEmotionData;
-@property (weak, nonatomic) IBOutlet UIView *viewEmotionTab;
-@property (weak, nonatomic) IBOutlet UIButton *btnAddEmotion;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionViewEmotionTab;
-@property (weak, nonatomic) IBOutlet UIButton *btnSendEmotoin;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewEmotionTabConstraintHeight;
 
 //chat function view
-@property (strong, nonatomic) IBOutlet ChatFunctionData *chatFunctionData;
 @property (weak, nonatomic) IBOutlet UIView *viewFunction;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionViewFunction;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControlFunction;
 
 @property (nonatomic) NSRange chatEmotionShouldChangeRange;//表情在输入框将要插入的光标Range
 
@@ -59,27 +45,6 @@
     [self.btnRecord.layer setBorder:0.3 withColor:[UIColor lightGrayColor] withCorner:3.0];
     [self.view layoutIfNeeded];
     self.chatBottomData.delegate = self;
-    
-    //chat emotion view
-    self.chatEmotionData.delegate = self;
-    self.viewEmotionTabConstraintHeight.constant = 0.0;
-    self.chatEmotionData.collectionViewEmotionHeight = self.collectionViewEmotion.height;
-    [self.chatEmotionData parseEmotionsPlistData];
-    self.pageControlEmotion.numberOfPages = self.chatEmotionData.emotionPageNum;
-    self.pageControlEmotion.hidden = self.chatEmotionData.emotionPageNum <= 1;
-    [self.collectionViewEmotion reloadData];
-    
-    //chat emotion tab view
-    self.chatTabEmotionData.delegate = self;
-    [self.collectionViewEmotionTab reloadData];
-    
-    //chat function view
-    self.chatFunctionData.delegate = self;
-    self.chatFunctionData.collectionViewFunctionHeight = self.collectionViewFunction.height;
-    [self.chatFunctionData parseFunctionsPlistData];
-    self.pageControlFunction.numberOfPages = self.chatFunctionData.functionPageNum;
-    self.pageControlFunction.hidden = self.chatFunctionData.functionPageNum <= 1;
-    [self.collectionViewFunction reloadData];
     
     self.viewEmotion.hidden = NO;
     self.viewFunction.hidden = YES;
@@ -112,8 +77,9 @@
 
 - (IBAction)btnAudioTouchUpInside:(UIButton *)sender {
     [sender setSelected:!sender.isSelected];
-    self.btnRecord.hidden = !sender.isSelected;
-    self.textView.hidden = sender.isSelected;
+//    self.btnRecord.hidden = !sender.isSelected;
+//    self.textView.hidden = sender.isSelected;
+    [self updateTopViewHeight:52];
 }
 
 - (IBAction)btnEmotionTouchUpInside:(UIButton *)sender {
@@ -126,17 +92,15 @@
     self.chatEmotionShouldChangeRange = self.textView.selectedRange;
     if (self.chatBottomData.target == ChatTextViewCurrentInputTargetText) {
         self.chatBottomData.target = ChatTextViewCurrentInputTargetEmotion;
-        self.viewEmotionTabConstraintHeight.constant = 38.0;
         [self.view endEditing:YES];
         InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
         data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
-        data.inputViewHeight = self.viewTopConstraintHeight.constant + (emotionCellTopSpacing + emotionLineNum*emotionCellWidth + (emotionLineNum - 1)*emotionItemSpacing) + emotionCollectionView2EmotionTabSpacing + self.viewEmotionTabConstraintHeight.constant;
+        data.inputViewHeight = self.viewTopConstraintHeight.constant + (emotionCellTopSpacing + emotionLineNum*emotionCellWidth + (emotionLineNum - 1)*emotionItemSpacing) + emotionCollectionView2EmotionTabSpacing + 38.0;
         data.isEmotionModel = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的出现 导致整个view的frame变化
     }
     else if (self.chatBottomData.target == ChatTextViewCurrentInputTargetEmotion) {
         self.chatBottomData.target = ChatTextViewCurrentInputTargetText;
-        self.viewEmotionTabConstraintHeight.constant = 0.0;
         [self.textView becomeFirstResponder];
         InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
         data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
@@ -205,36 +169,14 @@
     
     InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
     data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
-    data.inputViewHeight = self.chatBottomData.target == ChatTextViewCurrentInputTargetEmotion ? self.viewTopConstraintHeight.constant + self.collectionViewEmotion.height + emotionCollectionView2EmotionTabSpacing + self.viewEmotionTabConstraintHeight.constant : self.viewTopConstraintHeight.constant;
+    data.inputViewHeight = self.chatBottomData.target == ChatTextViewCurrentInputTargetEmotion ? self.viewTopConstraintHeight.constant + self.viewEmotion.height : self.viewTopConstraintHeight.constant;
     data.isEmotionModel = self.chatBottomData.target == ChatTextViewCurrentInputTargetEmotion;
     data.isInputChanage = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于输入字符换行 导致输入框view的frame变化
 }
 
 - (void)sendChatMessage:(NSString *)content {
-}
-
-#pragma mark - ChatEmotionDataDelegate
-
-- (void)pageControlValueChangeForEmotion:(NSInteger)pageNum {
-    self.pageControlEmotion.currentPage = pageNum;
-}
-
-#pragma mark - ChatTabEmotionDataDelegate
-
-- (void)openEmotionTab:(NSInteger)tab withEmotionTabValue:(NSString *)tabValue {
-    NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForItem:self.chatBottomData.selectedEmotionTab inSection:0];
-    NSIndexPath *willSelectIndexPath = [NSIndexPath indexPathForItem:tab inSection:0];
-    [self.collectionViewEmotionTab reloadItemsAtIndexPaths:@[selectedIndexPath, willSelectIndexPath]];
-    self.chatBottomData.selectedEmotionTab = tab;
-#warning update collectionViewEmotion icon
-//    [self.collectionViewEmotion reloadData];
-}
-
-#pragma mark - ChatFunctionDataDelegate
-
-- (void)pageControlValueChangeForFunction:(NSInteger)pageNum {
-    self.pageControlFunction.currentPage = pageNum;
+    self.textView.text = @"";
 }
 
 @end

@@ -117,14 +117,13 @@ static const CGFloat animateDuration = 0.3f;
     if (notification.object != nil && [notification.object isKindOfClass:[InputViewFrameChanageData class]]) {
         InputViewFrameChanageData *data = notification.object;
         if (data.isImmediatelyChanageInputHeight == YES) {
-            self.viewBottomConstraintHeight.constant = 44.0;
+            self.viewBottomConstraintHeight.constant = 50.0;
             self.inputModel = ChatTextViewCurrentInputTargetFree;
         }
         else {
             if (data.isInputChanage) {
+                self.viewBottomConstraintHeight.constant = data.inputViewHeight;
                 [UIView animateWithDuration:animateDuration animations:^{
-                    self.viewBottomConstraintHeight.constant = data.inputViewHeight;
-                    
                 } completion:^(BOOL finished) {
 //                    [[NSNotificationCenter defaultCenter] postNotificationName:NotiLiveshowInteractionScrollCellToBottom object:nil];
                 }];

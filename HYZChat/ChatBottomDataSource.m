@@ -21,7 +21,7 @@ static const CGFloat textViewMaxHeight = 88.0;
 - (instancetype)init {
     if (self = [super init]) {
         self.target = ChatTextViewCurrentInputTargetText;
-        self.selectedEmotionTab = 0;
+
     }
     return self;
 }
