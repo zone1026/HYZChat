@@ -26,9 +26,11 @@
 
 //chat emotion view
 @property (weak, nonatomic) IBOutlet UIView *viewEmotion;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewEmotionConstraintTop;
 
 //chat function view
 @property (weak, nonatomic) IBOutlet UIView *viewFunction;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewFunctionConstraintTop;
 
 @property (nonatomic) NSRange chatEmotionShouldChangeRange;//表情在输入框将要插入的光标Range
 
@@ -77,9 +79,17 @@
 
 - (IBAction)btnAudioTouchUpInside:(UIButton *)sender {
     [sender setSelected:!sender.isSelected];
-//    self.btnRecord.hidden = !sender.isSelected;
-//    self.textView.hidden = sender.isSelected;
-    [self updateTopViewHeight:52];
+    self.btnRecord.hidden = !sender.isSelected;
+    self.textView.hidden = sender.isSelected;
+    if (self.btnRecord.isHidden == NO) {//录音模式
+        [self.view endEditing:YES];
+        [self restoreInputTextViewHeight];
+    }
+    else {
+        CGFloat height = [self.textView sizeThatFits:CGSizeMake(self.textView.contentSize.width, CGFLOAT_MAX)].height;
+        [self updateTopViewHeight:height];
+        [self.textView becomeFirstResponder];
+    }
 }
 
 - (IBAction)btnEmotionTouchUpInside:(UIButton *)sender {
@@ -88,6 +98,7 @@
         self.viewEmotion.hidden = NO;
         self.viewFunction.hidden = YES;
     }
+    
     self.chatBottomData.endLocationInput = (self.textView.selectedRange.location >= self.textView.text.length);
     self.chatEmotionShouldChangeRange = self.textView.selectedRange;
     if (self.chatBottomData.target == ChatTextViewCurrentInputTargetText) {
@@ -98,15 +109,21 @@
         data.inputViewHeight = self.viewTopConstraintHeight.constant + (emotionCellTopSpacing + emotionLineNum*emotionCellWidth + (emotionLineNum - 1)*emotionItemSpacing) + emotionCollectionView2EmotionTabSpacing + 38.0;
         data.isEmotionModel = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的出现 导致整个view的frame变化
+        [UIView animateWithDuration:0.3 animations:^{
+            self.viewEmotionConstraintTop.constant = self.viewTopConstraintHeight.constant;
+        } completion:nil];
     }
     else if (self.chatBottomData.target == ChatTextViewCurrentInputTargetEmotion) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.viewEmotionConstraintTop.constant = self.view.height;
+        } completion:nil];
         self.chatBottomData.target = ChatTextViewCurrentInputTargetText;
-        [self.textView becomeFirstResponder];
         InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
         data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
         data.inputViewHeight = self.viewTopConstraintHeight.constant;
         data.isEmotionModel = NO;
         [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的消失 导致整个view的frame变化
+        [self.textView becomeFirstResponder];
     }
 }
 
@@ -115,7 +132,7 @@
         self.viewEmotion.hidden = YES;
         self.viewFunction.hidden = NO;
     }
-    
+    self.viewEmotionConstraintTop.constant = self.viewFunctionConstraintTop.constant = self.viewTopConstraintHeight.constant;
     if (self.chatBottomData.target == ChatTextViewCurrentInputTargetText) {
         self.chatBottomData.target = ChatTextViewCurrentInputTargetEmotion;
         [self.view endEditing:YES];
@@ -164,9 +181,8 @@
 #pragma mark - ChatBottomDataSourceDelegate
 
 - (void)updateTopViewHeight:(CGFloat)height {
-    
-    self.viewTopConstraintHeight.constant = 8.0 + height + 8.0;
-    
+    self.viewTopConstraintHeight.constant = 8.0 + height + 8.0;//顶部输入框的高度
+    self.viewEmotionConstraintTop.constant = self.viewFunctionConstraintTop.constant = self.viewTopConstraintHeight.constant;
     InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
     data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
     data.inputViewHeight = self.chatBottomData.target == ChatTextViewCurrentInputTargetEmotion ? self.viewTopConstraintHeight.constant + self.viewEmotion.height : self.viewTopConstraintHeight.constant;
@@ -179,4 +195,29 @@
     self.textView.text = @"";
 }
 
+#pragma mark - change input textview height
+
+//恢复到输入框默认高度
+- (void)restoreInputTextViewHeight {
+    self.viewTopConstraintHeight.constant = viewTopDefaultHeight;
+    InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
+    data.inputViewHeight = self.viewTopConstraintHeight.constant;
+    data.isEmotionModel = NO;
+    data.isImmediatelyChanageInputHeight = YES;//还原输入view初始
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];
+}
+
+//根据输入框中的文本所占高度调整bottomView高度
+- (void)adjustmentBottomViewHeightByInputTextHeight {
+    
+//    self.viewTopConstraintHeight.constant = 8.0 + height + 8.0;
+//    InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
+//    data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
+//    data.inputViewHeight = self.viewTopConstraintHeight.constant;
+//    data.isEmotionModel = NO;
+//    data.isImmediatelyChanageInputHeight = NO;//还原输入view初始
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];
+}
+
 @end
+

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -264,11 +263,11 @@
                         <viewControllerLayoutGuide type="top" id="8W0-oD-gpQ"/>
                         <viewControllerLayoutGuide type="bottom" id="LzV-rO-Okm"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="q7l-YW-nq8">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="q7l-YW-nq8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTf-bs-8Ar" userLabel="viewTop">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTf-bs-8Ar" userLabel="viewTop">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9i0-DJ-nZI" userLabel="语音／键盘切换按钮">
@@ -376,15 +375,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.95294117649999999" green="0.93746662140000003" blue="0.92470067739999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="TTf-bs-8Ar" firstAttribute="top" secondItem="8W0-oD-gpQ" secondAttribute="bottom" id="0Vk-Gp-S53"/>
                             <constraint firstAttribute="trailing" secondItem="cVX-fR-U3E" secondAttribute="trailing" id="1M7-Gk-Fog"/>
                             <constraint firstItem="cVX-fR-U3E" firstAttribute="leading" secondItem="q7l-YW-nq8" secondAttribute="leading" id="24R-sh-FzK"/>
-                            <constraint firstItem="cVX-fR-U3E" firstAttribute="top" secondItem="TTf-bs-8Ar" secondAttribute="bottom" id="40o-Hx-fYL"/>
+                            <constraint firstItem="cVX-fR-U3E" firstAttribute="top" secondItem="q7l-YW-nq8" secondAttribute="top" constant="50" id="4dd-UW-UJI"/>
                             <constraint firstItem="gdn-7t-gN8" firstAttribute="leading" secondItem="q7l-YW-nq8" secondAttribute="leading" id="ASH-K7-ti3"/>
                             <constraint firstItem="TTf-bs-8Ar" firstAttribute="leading" secondItem="q7l-YW-nq8" secondAttribute="leading" id="OQ1-Hu-mSm"/>
                             <constraint firstAttribute="bottom" secondItem="cVX-fR-U3E" secondAttribute="bottom" id="P5S-WS-WTG"/>
-                            <constraint firstItem="gdn-7t-gN8" firstAttribute="top" secondItem="TTf-bs-8Ar" secondAttribute="bottom" id="Qoh-d4-nvc"/>
+                            <constraint firstItem="TTf-bs-8Ar" firstAttribute="top" secondItem="q7l-YW-nq8" secondAttribute="top" id="Rep-OM-zKs"/>
                             <constraint firstAttribute="bottom" secondItem="gdn-7t-gN8" secondAttribute="bottom" id="XS4-A7-kLY"/>
+                            <constraint firstItem="gdn-7t-gN8" firstAttribute="top" secondItem="q7l-YW-nq8" secondAttribute="top" constant="50" id="fsI-pn-cEl"/>
                             <constraint firstAttribute="trailing" secondItem="TTf-bs-8Ar" secondAttribute="trailing" id="hs0-wa-1xw"/>
                             <constraint firstAttribute="trailing" secondItem="gdn-7t-gN8" secondAttribute="trailing" id="vJB-of-TbI"/>
                         </constraints>
@@ -398,7 +397,9 @@
                         <outlet property="chatBottomData" destination="lnC-ne-pau" id="0ZL-Kj-Ejv"/>
                         <outlet property="textView" destination="qf2-hI-8mb" id="um6-Qj-NvJ"/>
                         <outlet property="viewEmotion" destination="cVX-fR-U3E" id="nVi-YE-ifJ"/>
+                        <outlet property="viewEmotionConstraintTop" destination="4dd-UW-UJI" id="K9E-A2-vXH"/>
                         <outlet property="viewFunction" destination="gdn-7t-gN8" id="RI9-Mz-jf5"/>
+                        <outlet property="viewFunctionConstraintTop" destination="fsI-pn-cEl" id="MfS-Ge-mP3"/>
                         <outlet property="viewTop" destination="TTf-bs-8Ar" id="H5X-Ol-zge"/>
                         <outlet property="viewTopConstraintHeight" destination="Aae-tB-3ky" id="WDH-ES-qaq"/>
                     </connections>
@@ -412,6 +413,10 @@
         <scene sceneID="yKo-n9-dt7">
             <objects>
                 <viewController id="8fq-IE-ObU" customClass="ChatFunctionController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zJ8-8m-tkb"/>
+                        <viewControllerLayoutGuide type="bottom" id="dA1-Ut-A2N"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EWL-bd-QqD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -542,12 +547,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PsS-CI-kXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="Ntj-fg-vDk" customClass="ChatFunctionData"/>
             </objects>
-            <point key="canvasLocation" x="1842" y="795"/>
+            <point key="canvasLocation" x="1500" y="800"/>
         </scene>
         <!--Chat Emotion Controller-->
         <scene sceneID="qlc-Rn-k9c">
             <objects>
                 <viewController id="Jjt-IJ-rKh" customClass="ChatEmotionController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Bj-Nn-8es"/>
+                        <viewControllerLayoutGuide type="bottom" id="V4L-b0-PAB"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bEq-uV-4fT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -751,7 +760,7 @@
                 <customObject id="RE0-6I-fYh" customClass="ChatEmotionData"/>
                 <customObject id="XDM-wg-bKe" customClass="ChatTabEmotionData"/>
             </objects>
-            <point key="canvasLocation" x="2698" y="805"/>
+            <point key="canvasLocation" x="2500" y="800"/>
         </scene>
     </scenes>
     <resources>

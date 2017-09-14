@@ -7,6 +7,7 @@
 //
 
 #import "ChatDataSource.h"
+#import "ChatDataSource+TableView.h"
 
 @implementation ChatDataSource
 
@@ -21,8 +22,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"" forIndexPath:indexPath];
-    return cell;
+    return [self proxyForTableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
 #pragma mark - table view delegate

@@ -11,8 +11,10 @@
 #import "ChatDataSource.h"
 #import "InputViewFrameChanageData.h"
 #import "UIView+HYZFrame.h"
+#import "ChatBottomController.h"
+#import "ChatDataSource+TableView.h"
 
-static const CGFloat animateDuration = 0.3f;
+static const CGFloat chatAnimateDuration = 0.3f;
 
 @interface ChatViewController ()
 @property (strong, nonatomic) IBOutlet ChatDataSource *chatDataSource;
@@ -25,6 +27,7 @@ static const CGFloat animateDuration = 0.3f;
 
 @property (strong, nonatomic) ChatMessageAttribute *messageAttribute;
 @property (assign, nonatomic) ChatTextViewCurrentInputTarget inputModel;
+@property (assign, nonatomic) CGFloat inputTextViewHeight;
 
 @end
 
@@ -33,6 +36,7 @@ static const CGFloat animateDuration = 0.3f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.inputTextViewHeight = viewTopDefaultHeight;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -95,19 +99,19 @@ static const CGFloat animateDuration = 0.3f;
     NSDictionary* info = [notification userInfo];
     CGRect kbRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     kbRect = [self.view convertRect:kbRect fromView:nil];
-    CGAffineTransform transform = CGAffineTransformIdentity;
-    transform = CGAffineTransformTranslate(transform, 0.0, -kbRect.size.height);
-    [UIView animateWithDuration:animateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.chatTableView.transform = self.viewBottom.transform = transform;
+    [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.viewBottomConstraintHeight.constant = self.inputTextViewHeight;
+        self.viewBottomConstraintBottom.constant = kbRect.size.height;
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
     }];
 }
 
 //键盘隐藏
 - (void)keyboardWillHide:(NSNotification *)notification {
-    CGAffineTransform transform = CGAffineTransformIdentity;
-    [UIView animateWithDuration:animateDuration animations:^{
-        self.chatTableView.transform = self.viewBottom.transform = transform;
+    [UIView animateWithDuration:chatAnimateDuration animations:^{
+        self.viewBottomConstraintBottom.constant = 0.0;
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
     }];
 }
@@ -117,29 +121,35 @@ static const CGFloat animateDuration = 0.3f;
     if (notification.object != nil && [notification.object isKindOfClass:[InputViewFrameChanageData class]]) {
         InputViewFrameChanageData *data = notification.object;
         if (data.isImmediatelyChanageInputHeight == YES) {
-            self.viewBottomConstraintHeight.constant = 50.0;
+            [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                self.viewBottomConstraintHeight.constant = data.inputViewHeight;
+                self.viewBottomConstraintBottom.constant = 0.0;
+                [self.view layoutIfNeeded];
+            } completion:nil];
             self.inputModel = ChatTextViewCurrentInputTargetFree;
         }
         else {
-            if (data.isInputChanage) {
-                self.viewBottomConstraintHeight.constant = data.inputViewHeight;
-                [UIView animateWithDuration:animateDuration animations:^{
+            if (data.isInputChanage == YES) {
+                [UIView animateWithDuration:chatAnimateDuration animations:^{
+                    self.viewBottomConstraintHeight.constant = data.inputViewHeight;
                 } completion:^(BOOL finished) {
 //                    [[NSNotificationCenter defaultCenter] postNotificationName:NotiLiveshowInteractionScrollCellToBottom object:nil];
                 }];
             }
             else {
                 self.inputModel = data.isEmotionModel == YES ? ChatTextViewCurrentInputTargetEmotion : ChatTextViewCurrentInputTargetText;
-                [UIView animateWithDuration:animateDuration animations:^{
+                [UIView animateWithDuration:chatAnimateDuration animations:^{    
                     self.viewBottomConstraintHeight.constant = data.inputViewHeight;
-//                    [self.view layoutIfNeeded];
+                    if (data.isEmotionModel == YES) {
+                        self.viewBottomConstraintBottom.constant = 0.0;
+                    }
                 } completion:^(BOOL finished) {
                     if (self.inputModel == ChatTextViewCurrentInputTargetEmotion) {
-//                        [[NSNotificationCenter defaultCenter] postNotificationName:NotiLiveshowInteractionScrollCellToBottom object:nil];
                     }
                 }];
             }
         }
+        self.inputTextViewHeight = data.inputTextViewHeight;
     }
 }
 
