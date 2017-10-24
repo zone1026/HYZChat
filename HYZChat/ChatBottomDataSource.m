@@ -8,7 +8,7 @@
 
 #import "ChatBottomDataSource.h"
 #import "UIView+HYZFrame.h"
-
+#import "ChatManager.h"
 
 static const CGFloat textViewMaxHeight = 88.0;
 
@@ -20,8 +20,7 @@ static const CGFloat textViewMaxHeight = 88.0;
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.target = ChatTextViewCurrentInputTargetText;
-
+        
     }
     return self;
 }
@@ -76,10 +75,10 @@ static const CGFloat textViewMaxHeight = 88.0;
         }
     }
     else {
-        if (ChatTextViewCurrentInputTargetEmotion == self.target) {
+        if (ChatBottomTargetEmotion == [ChatManager defaultInstance].bottomMode) {
             needScrollToLastLine = self.endLocationInput;
         }
-        else if (ChatTextViewCurrentInputTargetText == self.target)
+        else if (ChatBottomTargetText == [ChatManager defaultInstance].bottomMode)
         {
             if (textView.selectedRange.location >= textView.text.length) {
                 needScrollToLastLine = YES;

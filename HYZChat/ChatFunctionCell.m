@@ -39,7 +39,7 @@
 }
 
 - (IBAction)btnFunctionTouchUpInside:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NotiChatBottomFunctionButtonClick object:@(self.buttonValue)];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotiChatFunctionBtnClick object:@(self.buttonValue)];
 }
 
 #pragma mark - update ui data

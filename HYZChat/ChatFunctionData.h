@@ -9,13 +9,10 @@
 #import <Foundation/Foundation.h>
 
 static const NSInteger functionLineNum = 2;
-static const NSInteger functionHeaderOrFooterSpacing = 26;
-//static const NSInteger functionLineSpacing = 7;
-static const NSInteger functionItemSpacing = 12;
+static const NSInteger functionHeaderOrFooterSpacing = 20;
+static const NSInteger functionItemSpacing = 1;
 static const NSInteger functionCellWidth = 70;
 static const NSInteger functionCellHeight = 90;
-static const NSInteger functionCellTopSpacing = 22;
-static const NSInteger functionColl2BottomSpacing = 37;
 
 @protocol ChatFunctionDataDelegate <NSObject>
 

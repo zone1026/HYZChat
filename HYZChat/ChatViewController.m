@@ -13,8 +13,7 @@
 #import "UIView+HYZFrame.h"
 #import "ChatBottomController.h"
 #import "ChatDataSource+TableView.h"
-
-static const CGFloat chatAnimateDuration = 0.3f;
+#import "ChatManager.h"
 
 @interface ChatViewController ()
 @property (strong, nonatomic) IBOutlet ChatDataSource *chatDataSource;
@@ -26,8 +25,8 @@ static const CGFloat chatAnimateDuration = 0.3f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewBottomConstraintBottom;
 
 @property (strong, nonatomic) ChatMessageAttribute *messageAttribute;
-@property (assign, nonatomic) ChatTextViewCurrentInputTarget inputModel;
 @property (assign, nonatomic) CGFloat inputTextViewHeight;
+@property (assign, nonatomic) CGFloat kbHeight;
 
 @end
 
@@ -37,6 +36,7 @@ static const CGFloat chatAnimateDuration = 0.3f;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.inputTextViewHeight = viewTopDefaultHeight;
+    self.viewBottomConstraintBottom.constant = 0.0;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -81,7 +81,7 @@ static const CGFloat chatAnimateDuration = 0.3f;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiInputViewFrameChanage:) name:NotiInputViewFrameChanage object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiChatBottomFunctionButtonClick:) name:NotiChatBottomFunctionButtonClick object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiChatBottomFunctionButtonClick:) name:NotiChatFunctionBtnClick object:nil];
 }
 
 - (void)removeMessageNoitication {
@@ -91,7 +91,7 @@ static const CGFloat chatAnimateDuration = 0.3f;
     [[NSNotificationCenter defaultCenter] removeObserver:self name: UIKeyboardWillHideNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiInputViewFrameChanage object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiChatBottomFunctionButtonClick object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiChatFunctionBtnClick object:nil];
 }
 
 //键盘弹出
@@ -100,20 +100,17 @@ static const CGFloat chatAnimateDuration = 0.3f;
     CGRect kbRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     kbRect = [self.view convertRect:kbRect fromView:nil];
     [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.viewBottomConstraintHeight.constant = self.inputTextViewHeight;
-        self.viewBottomConstraintBottom.constant = kbRect.size.height;
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-    }];
+        self.viewBottomConstraintHeight.constant = self.inputTextViewHeight + kbRect.size.height;
+    } completion:^(BOOL finished) {}];
+    self.kbHeight = kbRect.size.height;
 }
 
 //键盘隐藏
 - (void)keyboardWillHide:(NSNotification *)notification {
     [UIView animateWithDuration:chatAnimateDuration animations:^{
-        self.viewBottomConstraintBottom.constant = 0.0;
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-    }];
+        self.viewBottomConstraintHeight.constant = self.inputTextViewHeight;
+    } completion:^(BOOL finished) {}];
+    self.kbHeight = 0.0;
 }
 
 //viewbottom 高度发生变化
@@ -123,28 +120,22 @@ static const CGFloat chatAnimateDuration = 0.3f;
         if (data.isImmediatelyChanageInputHeight == YES) {
             [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 self.viewBottomConstraintHeight.constant = data.inputViewHeight;
-                self.viewBottomConstraintBottom.constant = 0.0;
-                [self.view layoutIfNeeded];
             } completion:nil];
-            self.inputModel = ChatTextViewCurrentInputTargetFree;
+            [ChatManager defaultInstance].bottomMode = ChatBottomTargetFree;
         }
         else {
             if (data.isInputChanage == YES) {
                 [UIView animateWithDuration:chatAnimateDuration animations:^{
-                    self.viewBottomConstraintHeight.constant = data.inputViewHeight;
+                    self.viewBottomConstraintHeight.constant = self.kbHeight + data.inputTextViewHeight;
                 } completion:^(BOOL finished) {
 //                    [[NSNotificationCenter defaultCenter] postNotificationName:NotiLiveshowInteractionScrollCellToBottom object:nil];
                 }];
             }
             else {
-                self.inputModel = data.isEmotionModel == YES ? ChatTextViewCurrentInputTargetEmotion : ChatTextViewCurrentInputTargetText;
                 [UIView animateWithDuration:chatAnimateDuration animations:^{    
                     self.viewBottomConstraintHeight.constant = data.inputViewHeight;
-                    if (data.isEmotionModel == YES) {
-                        self.viewBottomConstraintBottom.constant = 0.0;
-                    }
                 } completion:^(BOOL finished) {
-                    if (self.inputModel == ChatTextViewCurrentInputTargetEmotion) {
+                    if ([ChatManager defaultInstance].bottomMode == ChatBottomTargetEmotion) {
                     }
                 }];
             }

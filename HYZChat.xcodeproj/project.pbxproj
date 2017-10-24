@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D48566B1F5BB4AD0008AFB9 /* InputEmotionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48566A1F5BB4AD0008AFB9 /* InputEmotionData.m */; };
 		0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48566D1F5BBCE80008AFB9 /* ChatEmotionCell.m */; };
+		6B0AB7A31F9F0CBB002A2797 /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0AB7A21F9F0CBB002A2797 /* ChatManager.m */; };
 		6B10F0D31F692813008D40C0 /* ChatDataSource+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F0D21F692813008D40C0 /* ChatDataSource+TableView.m */; };
 		6B48F4CB1F5EA6C300C9DCDC /* ChatTabEmotionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4CA1F5EA6C300C9DCDC /* ChatTabEmotionData.m */; };
 		6B48F4CE1F5EA74600C9DCDC /* ChatEmotionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4CD1F5EA74600C9DCDC /* ChatEmotionData.m */; };
@@ -53,6 +54,8 @@
 		0D48566A1F5BB4AD0008AFB9 /* InputEmotionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputEmotionData.m; sourceTree = "<group>"; };
 		0D48566C1F5BBCE80008AFB9 /* ChatEmotionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatEmotionCell.h; sourceTree = "<group>"; };
 		0D48566D1F5BBCE80008AFB9 /* ChatEmotionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatEmotionCell.m; sourceTree = "<group>"; };
+		6B0AB7A11F9F0CBB002A2797 /* ChatManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatManager.h; sourceTree = "<group>"; };
+		6B0AB7A21F9F0CBB002A2797 /* ChatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatManager.m; sourceTree = "<group>"; };
 		6B10F0D11F692813008D40C0 /* ChatDataSource+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChatDataSource+TableView.h"; sourceTree = "<group>"; };
 		6B10F0D21F692813008D40C0 /* ChatDataSource+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChatDataSource+TableView.m"; sourceTree = "<group>"; };
 		6B48F4C91F5EA6C300C9DCDC /* ChatTabEmotionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTabEmotionData.h; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 				6BCBCCB91F590F63000B7152 /* ChatDataSource.m */,
 				6B10F0D11F692813008D40C0 /* ChatDataSource+TableView.h */,
 				6B10F0D21F692813008D40C0 /* ChatDataSource+TableView.m */,
+				6B0AB7A11F9F0CBB002A2797 /* ChatManager.h */,
+				6B0AB7A21F9F0CBB002A2797 /* ChatManager.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -364,12 +369,12 @@
 		6BCBCC651F58E8C7000B7152 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "黄亚州";
 				TargetAttributes = {
 					6BCBCC6C1F58E8C7000B7152 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = KMPNM792KA;
+						DevelopmentTeam = P5M2XEQ4ZK;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -440,6 +445,7 @@
 				0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */,
 				6BCBCC721F58E8C7000B7152 /* main.m in Sources */,
 				6BCBCCD81F5951B2000B7152 /* InputViewFrameChanageData.m in Sources */,
+				6B0AB7A31F9F0CBB002A2797 /* ChatManager.m in Sources */,
 				6B8E3E041F5F970D00020626 /* ChatFunctionCell.m in Sources */,
 				6B10F0D31F692813008D40C0 /* ChatDataSource+TableView.m in Sources */,
 				6B48F4D71F5ED92700C9DCDC /* PlusFunctionInfo.m in Sources */,
@@ -489,7 +495,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -497,7 +505,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -537,7 +549,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -545,7 +559,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -573,10 +591,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KMPNM792KA;
+				DEVELOPMENT_TEAM = P5M2XEQ4ZK;
 				GCC_PREFIX_HEADER = HYZChat/CommonPrefix.pch;
 				INFOPLIST_FILE = HYZChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyz.HYZChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -587,10 +605,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KMPNM792KA;
+				DEVELOPMENT_TEAM = P5M2XEQ4ZK;
 				GCC_PREFIX_HEADER = HYZChat/CommonPrefix.pch;
 				INFOPLIST_FILE = HYZChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyz.HYZChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";

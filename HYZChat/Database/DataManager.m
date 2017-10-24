@@ -55,7 +55,7 @@ static NSString *const coreDataModelFileName = @"HYZChat";
         if (self.persistentStoreCoordinator == nil) {
             return nil;
         }
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
     }
     return _managedObjectContext;

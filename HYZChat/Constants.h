@@ -9,11 +9,13 @@
 #ifndef Constants_h
 #define Constants_h
 
-typedef NS_ENUM(NSInteger, ChatTextViewCurrentInputTarget)
+typedef NS_ENUM(NSInteger, ChatBottomTarget)
 {
-    ChatTextViewCurrentInputTargetFree = 0,
-    ChatTextViewCurrentInputTargetText,
-    ChatTextViewCurrentInputTargetEmotion
+    ChatBottomTargetFree = 0,
+    ChatBottomTargetText,
+    ChatBottomTargetEmotion,
+    ChatBottomTargetFunction,
+    ChatBottomTargetAudio
 };
 
 

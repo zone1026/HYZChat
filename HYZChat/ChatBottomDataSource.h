@@ -22,7 +22,6 @@
 
 @interface ChatBottomDataSource : NSObject <UITextViewDelegate>
 @property (assign, nonatomic) BOOL endLocationInput;
-@property (assign, nonatomic) ChatTextViewCurrentInputTarget target;
 @property (weak, nonatomic) id <ChatBottomDataSourceDelegate> delegate;
 
 @end

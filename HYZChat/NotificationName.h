@@ -20,6 +20,10 @@
 /**
  * @description 聊天底部功能按钮的点击通知
  */
-#define NotiChatBottomFunctionButtonClick     @"NotiChatBottomFunctionButtonClick"
+#define NotiChatFunctionBtnClick     @"NotiChatFunctionBtnClick"
+/**
+ * @description 恢复文本／表情按钮默认状态通知
+ */
+#define NotiEmotionBtnDefaultStauts    @"NotiEmotionBtnDefaultStauts"
 
 #endif /* NotificationName_h */
