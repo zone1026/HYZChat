@@ -10,7 +10,7 @@
 
 @implementation ChatManager
 
-+ (instancetype)defaultInstance {
++ (instancetype)sharedManager {
     static ChatManager *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

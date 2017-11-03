@@ -21,8 +21,10 @@
 
 //chat top input view
 @property (weak, nonatomic) IBOutlet UIView *viewTop;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnAudio;
 @property (weak, nonatomic) IBOutlet UIButton *btnRecord;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewTopConstraintHeight;
 @property (weak, nonatomic) IBOutlet UIButton *btnEmotion;
 
@@ -88,7 +90,9 @@
     self.textView.hidden = sender.isSelected;
     if (self.btnRecord.isHidden == NO) {//录音模式
         [self.view endEditing:YES];
+        [ChatManager sharedManager].bottomMode = ChatBottomTargetAudio;
         [self restoreInputTextViewHeight];
+        [self handleNotiEmotionBtnDefaultStauts:nil];
     }
     else {
         CGFloat height = [self.textView sizeThatFits:CGSizeMake(self.textView.contentSize.width, CGFLOAT_MAX)].height;
@@ -99,15 +103,23 @@
 
 - (IBAction)btnEmotionTouchUpInside:(UIButton *)sender {
     [sender setSelected:!sender.isSelected];
+    //切换表情／功能视图的展示
     if (self.viewEmotion.isHidden == YES) {
         self.viewEmotion.hidden = NO;
         self.viewFunction.hidden = YES;
+    }
+    if (self.btnRecord.isHidden == NO) {//隐藏音频按钮
+        [self.btnAudio setSelected:NO];
+        self.btnRecord.hidden = YES;
+        self.textView.hidden = NO;
+        CGFloat height = [self.textView sizeThatFits:CGSizeMake(self.textView.contentSize.width, CGFLOAT_MAX)].height;
+        [self updateTopViewHeight:height];
     }
     
     self.chatBottomData.endLocationInput = (self.textView.selectedRange.location >= self.textView.text.length);
     self.chatEmotionShouldChangeRange = self.textView.selectedRange;
     if (sender.isSelected == YES) {
-        if ([ChatManager defaultInstance].bottomMode == ChatBottomTargetFunction) {
+        if ([ChatManager sharedManager].bottomMode == ChatBottomTargetFunction) {
             CGAffineTransform transform = CGAffineTransformIdentity;
             transform = CGAffineTransformTranslate(transform, 0.0, self.viewEmotion.height);
             self.viewEmotion.transform = transform;
@@ -123,11 +135,10 @@
             data.isEmotionModel = YES;
             [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的出现 导致整个view的frame变化
         }
-        [ChatManager defaultInstance].bottomMode = ChatBottomTargetEmotion;
-        
+        [ChatManager sharedManager].bottomMode = ChatBottomTargetEmotion;
     }
     else {
-        [ChatManager defaultInstance].bottomMode = ChatBottomTargetText;
+        [ChatManager sharedManager].bottomMode = ChatBottomTargetText;
         InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
         data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
         data.inputViewHeight = self.viewTopConstraintHeight.constant;
@@ -138,13 +149,24 @@
 }
 
 - (IBAction)btnPlusTouchUpInside:(UIButton *)sender {
+    //切换表情／功能视图的展示
     if (self.viewFunction.isHidden == YES) {
         self.viewEmotion.hidden = YES;
         self.viewFunction.hidden = NO;
     }
+    
+    if (self.btnRecord.isHidden == NO) {//隐藏音频按钮
+        [self.btnAudio setSelected:NO];
+        self.btnRecord.hidden = YES;
+        self.textView.hidden = NO;
+        CGFloat height = [self.textView sizeThatFits:CGSizeMake(self.textView.contentSize.width, CGFLOAT_MAX)].height;
+        [self updateTopViewHeight:height];
+    }
+    
     [self handleNotiEmotionBtnDefaultStauts:nil];//表情按钮恢复默认状态
-    if ([ChatManager defaultInstance].bottomMode != ChatBottomTargetFunction) {
-        if ([ChatManager defaultInstance].bottomMode == ChatBottomTargetEmotion) {
+    
+    if ([ChatManager sharedManager].bottomMode != ChatBottomTargetFunction) {
+        if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion) {
             CGAffineTransform transform = CGAffineTransformIdentity;
             transform = CGAffineTransformTranslate(transform, 0.0, self.viewFunction.height);
             self.viewFunction.transform = transform;
@@ -159,10 +181,10 @@
             data.inputViewHeight = self.viewTopConstraintHeight.constant + self.emotionViewHeiht;
             [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的出现 导致整个view的frame变化
         }
-        [ChatManager defaultInstance].bottomMode = ChatBottomTargetFunction;
+        [ChatManager sharedManager].bottomMode = ChatBottomTargetFunction;
     }
     else {
-        [ChatManager defaultInstance].bottomMode = ChatBottomTargetText;
+        [ChatManager sharedManager].bottomMode = ChatBottomTargetText;
         InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
         data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
         data.inputViewHeight = self.viewTopConstraintHeight.constant;
@@ -210,15 +232,18 @@
     self.viewTopConstraintHeight.constant = 8.0 + height + 8.0;//顶部输入框的高度
     InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
     data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
-    data.inputViewHeight = [ChatManager defaultInstance].bottomMode == ChatBottomTargetEmotion ?
+    data.inputViewHeight = [ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion ?
     self.viewTopConstraintHeight.constant + self.viewEmotion.height : self.viewTopConstraintHeight.constant;
-    data.isEmotionModel = [ChatManager defaultInstance].bottomMode == ChatBottomTargetEmotion;
+    data.isEmotionModel = [ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion;
     data.isInputChanage = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于输入字符换行 导致输入框view的frame变化
 }
 
 - (void)sendChatMessage:(NSString *)content {
     self.textView.text = @"";
+    [self restoreInputTextViewHeight];
+    [self handleNotiEmotionBtnDefaultStauts:nil];
+    [ChatManager sharedManager].bottomMode = ChatBottomTargetFree;
 }
 
 #pragma mark - change input textview height

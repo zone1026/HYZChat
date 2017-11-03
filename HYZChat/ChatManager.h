@@ -15,6 +15,6 @@ static const CGFloat chatAnimateDuration = 0.3f;
 @property (assign, nonatomic) ChatBottomTarget bottomMode;
 
 //单例模式
-+ (instancetype)defaultInstance;
++ (instancetype)sharedManager;
 
 @end

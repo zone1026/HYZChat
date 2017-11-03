@@ -75,10 +75,10 @@ static const CGFloat textViewMaxHeight = 88.0;
         }
     }
     else {
-        if (ChatBottomTargetEmotion == [ChatManager defaultInstance].bottomMode) {
+        if (ChatBottomTargetEmotion == [ChatManager sharedManager].bottomMode) {
             needScrollToLastLine = self.endLocationInput;
         }
-        else if (ChatBottomTargetText == [ChatManager defaultInstance].bottomMode)
+        else if (ChatBottomTargetText == [ChatManager sharedManager].bottomMode)
         {
             if (textView.selectedRange.location >= textView.text.length) {
                 needScrollToLastLine = YES;

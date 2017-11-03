@@ -96,6 +96,8 @@
 
 //键盘弹出
 - (void)keyboardWillShow:(NSNotification *)notification {
+    [ChatManager sharedManager].bottomMode = ChatBottomTargetText;
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotiEmotionBtnDefaultStauts object:nil];
     NSDictionary* info = [notification userInfo];
     CGRect kbRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     kbRect = [self.view convertRect:kbRect fromView:nil];
@@ -119,9 +121,9 @@
         InputViewFrameChanageData *data = notification.object;
         if (data.isImmediatelyChanageInputHeight == YES) {
             [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                self.viewBottomConstraintHeight.constant = data.inputViewHeight;
+                self.viewBottomConstraintHeight.constant = self.kbHeight + data.inputViewHeight;
             } completion:nil];
-            [ChatManager defaultInstance].bottomMode = ChatBottomTargetFree;
+            [ChatManager sharedManager].bottomMode = ChatBottomTargetFree;
         }
         else {
             if (data.isInputChanage == YES) {
@@ -135,7 +137,7 @@
                 [UIView animateWithDuration:chatAnimateDuration animations:^{    
                     self.viewBottomConstraintHeight.constant = data.inputViewHeight;
                 } completion:^(BOOL finished) {
-                    if ([ChatManager defaultInstance].bottomMode == ChatBottomTargetEmotion) {
+                    if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion) {
                     }
                 }];
             }
