@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *chatTableView;
 @property (weak, nonatomic) IBOutlet UIView *viewBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewBottomConstraintHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewBottomConstraintBottom;
 
 @property (strong, nonatomic) ChatMessageAttribute *messageAttribute;
 @property (assign, nonatomic) CGFloat inputTextViewHeight;
@@ -36,7 +35,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.inputTextViewHeight = viewTopDefaultHeight;
-    self.viewBottomConstraintBottom.constant = 0.0;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

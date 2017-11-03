@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ChatDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
+/**消息存放数组*/
+@property (strong, nonatomic) NSMutableArray *msgArr;
 
 @end

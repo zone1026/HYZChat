@@ -247,7 +247,6 @@
                         <outlet property="chatTableView" destination="ewu-pA-6X8" id="pP5-hf-gFZ"/>
                         <outlet property="imgBg" destination="cyR-oa-exF" id="26N-67-VHP"/>
                         <outlet property="viewBottom" destination="VH9-BF-FlH" id="GPG-wR-E3y"/>
-                        <outlet property="viewBottomConstraintBottom" destination="hUY-in-A5o" id="4c9-sv-n8U"/>
                         <outlet property="viewBottomConstraintHeight" destination="D9M-yZ-NCX" id="32I-ru-x3R"/>
                     </connections>
                 </viewController>

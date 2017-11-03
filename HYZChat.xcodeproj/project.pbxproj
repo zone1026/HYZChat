@@ -180,6 +180,7 @@
 		6B10F0D71F692B09008D40C0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6BCBCC961F58EE13000B7152 /* Cells */,
 				6BAC6F591F5FF7E200E896FB /* ChatFunctionController.h */,
 				6BAC6F5A1F5FF7E200E896FB /* ChatFunctionController.m */,
 				6BAC6F5C1F5FFBD300E896FB /* ChatEmotionController.h */,
@@ -250,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				6BCBCC921F58E972000B7152 /* Chat.storyboard */,
-				6BCBCC961F58EE13000B7152 /* Cells */,
 				6BCBCCA81F5909EF000B7152 /* Data */,
 				6B10F0D71F692B09008D40C0 /* View */,
 				6BCBCC8F1F58E96A000B7152 /* ChatViewController.h */,
