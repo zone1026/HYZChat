@@ -15,6 +15,7 @@
 #import "ChatTabEmotionData.h"
 #import "ChatFunctionData.h"
 #import "ChatManager.h"
+#import "NSAttributedString+TextAttachment.h"
 
 @interface ChatBottomController ()<ChatBottomDataSourceDelegate>
 @property (strong, nonatomic) IBOutlet ChatBottomDataSource *chatBottomData;
@@ -95,7 +96,7 @@
         [self handleNotiEmotionBtnDefaultStauts:nil];
     }
     else {
-        CGFloat height = [self.textView sizeThatFits:CGSizeMake(self.textView.contentSize.width, CGFLOAT_MAX)].height;
+        CGFloat height = MIN(textViewMaxHeight, [self.textView sizeThatFits:CGSizeMake(self.textView.contentSize.width, CGFLOAT_MAX)].height);
         [self updateTopViewHeight:height];
         [self.textView becomeFirstResponder];
     }
@@ -112,7 +113,7 @@
         [self.btnAudio setSelected:NO];
         self.btnRecord.hidden = YES;
         self.textView.hidden = NO;
-        CGFloat height = [self.textView sizeThatFits:CGSizeMake(self.textView.contentSize.width, CGFLOAT_MAX)].height;
+        CGFloat height = MIN(textViewMaxHeight, [self.textView sizeThatFits:CGSizeMake(self.textView.contentSize.width, CGFLOAT_MAX)].height);
         [self updateTopViewHeight:height];
     }
     
@@ -159,7 +160,7 @@
         [self.btnAudio setSelected:NO];
         self.btnRecord.hidden = YES;
         self.textView.hidden = NO;
-        CGFloat height = [self.textView sizeThatFits:CGSizeMake(self.textView.contentSize.width, CGFLOAT_MAX)].height;
+        CGFloat height = MIN(textViewMaxHeight, [self.textView sizeThatFits:CGSizeMake(self.textView.contentSize.width, CGFLOAT_MAX)].height);
         [self updateTopViewHeight:height];
     }
     
@@ -213,17 +214,33 @@
 #pragma mark - message notification
 
 - (void)registerMessageNotification {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiEmotionBtnDefaultStauts:) name:NotiEmotionBtnDefaultStauts object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiEmotionBtnDefaultStauts:)
+                                                 name:NotiEmotionBtnDefaultStauts object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiUpdateInputTextByEmotionStr:)
+                                                 name:NotiUpdateInputTextByEmotionStr object:nil];
 }
 
 - (void)removeMessageNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiEmotionBtnDefaultStauts object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiUpdateInputTextByEmotionStr object:nil];
 }
 
 - (void)handleNotiEmotionBtnDefaultStauts:(NSNotification *)notification {
     if (self.btnEmotion.isSelected == NO)
         return;
     [self.btnEmotion setSelected:NO];
+}
+
+- (void)handleNotiUpdateInputTextByEmotionStr:(NSNotification *)notification {
+    if (notification.object != nil) {
+        if ([notification.object isKindOfClass:[NSString class]]) {
+            NSString *emotionStr = notification.object;
+            if ([emotionStr isEqualToString:@"del"])
+                [self willDeleteEmotion];
+            else
+                [self willInsertEmotion:emotionStr];
+        }
+    }
 }
 
 #pragma mark - ChatBottomDataSourceDelegate
@@ -246,9 +263,9 @@
     [ChatManager sharedManager].bottomMode = ChatBottomTargetFree;
 }
 
-#pragma mark - change input textview height
+#pragma mark - 私有方法
 
-//恢复到输入框默认高度
+/** 恢复到输入框默认高度 */
 - (void)restoreInputTextViewHeight {
     self.viewTopConstraintHeight.constant = viewTopDefaultHeight;
     InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
@@ -256,6 +273,44 @@
     data.isEmotionModel = NO;
     data.isImmediatelyChanageInputHeight = YES;//还原输入view初始
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];
+}
+
+- (void)willInsertEmotion:(NSString *)value {
+    NSMutableString *inputText = [[NSMutableString alloc] initWithString:self.textView.text];
+    [inputText insertString:value atIndex:self.chatEmotionShouldChangeRange.location];
+    self.textView.text = inputText;
+    [self.chatBottomData textChangedByEmotionStr:self.textView];
+    
+    NSRange range = self.chatEmotionShouldChangeRange;
+    range.location += value.length;
+    self.chatEmotionShouldChangeRange = range;
+}
+
+- (void)willDeleteEmotion {
+    NSMutableString *inputText = [[NSMutableString alloc] initWithString:self.textView.text];
+    if (inputText.length > 0) {
+        NSRange rangeLeft = [inputText rangeOfString:attachmentMarkLeft options:NSBackwardsSearch range:NSMakeRange(0, self.chatEmotionShouldChangeRange.location)];
+        NSRange rangeRight = [inputText rangeOfString:attachmentMarkRight options:NSBackwardsSearch range:NSMakeRange(0, self.chatEmotionShouldChangeRange.location)];
+        if (rangeLeft.location == NSNotFound || rangeRight.location == NSNotFound) {
+            return;
+        }
+        if (rangeLeft.location < rangeRight.location) {
+            NSRange rangeEmotion = NSMakeRange(rangeLeft.location, rangeRight.location - rangeLeft.location + 1);
+            [inputText replaceCharactersInRange:rangeEmotion withString:@""];
+            
+            NSString *value = [self.textView.text substringWithRange:rangeEmotion];
+            if (value && ![value isEqualToString:@""]) {
+                NSRange range = self.chatEmotionShouldChangeRange;
+                range.location -= value.length;
+                self.chatEmotionShouldChangeRange = range;
+            }
+        }
+        else {
+            [inputText replaceCharactersInRange:NSMakeRange(inputText.length - 1, 1) withString:@""];
+        }
+        self.textView.text = inputText;
+        [self.chatBottomData textChangedByEmotionStr:self.textView];
+    }
 }
 
 @end

@@ -133,7 +133,12 @@
 #pragma mark - collection view delegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    NSInteger index = indexPath.item + indexPath.section * [self itemCount2Section];
+    InputEmotionData *data = [self.emotionsArr objectAtIndex:index];
+    if (data == nil || data.isEmpty == YES)
+        return;
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotiUpdateInputTextByEmotionStr
+                                                        object:[data.imgName isEqualToString:@"CHT_BTN_DEL_EMOTION"] == YES ? @"del" : data.name];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -161,5 +166,9 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return emotionItemSpacing;
 }
+
+#pragma mark - 私有方法
+
+
 
 @end

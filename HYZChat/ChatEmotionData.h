@@ -17,6 +17,10 @@ static const NSInteger emotionCollectionView2EmotionTabSpacing = 37;
 
 @protocol ChatEmotionDataDelegate <NSObject>
 @required
+/**
+ * @description 滑动表情页改变page的值
+ * @param pageNum 页数
+ */
 - (void)pageControlValueChangeForEmotion:(NSInteger)pageNum;
 
 @optional

@@ -16,14 +16,18 @@
 /**
  * @description 输入框的高度发生变化的通知
  */
-#define NotiInputViewFrameChanage             @"NotiInputViewFrameChanage"
+#define NotiInputViewFrameChanage               @"NotiInputViewFrameChanage"
 /**
  * @description 聊天底部功能按钮的点击通知
  */
-#define NotiChatFunctionBtnClick     @"NotiChatFunctionBtnClick"
+#define NotiChatFunctionBtnClick                @"NotiChatFunctionBtnClick"
 /**
  * @description 恢复文本／表情按钮默认状态通知
  */
-#define NotiEmotionBtnDefaultStauts    @"NotiEmotionBtnDefaultStauts"
+#define NotiEmotionBtnDefaultStauts             @"NotiEmotionBtnDefaultStauts"
+/**
+ * @description 通过表情描述信息更新输入文本
+ */
+#define NotiUpdateInputTextByEmotionStr         @"NotiUpdateInputTextByEmotionStr"
 
 #endif /* NotificationName_h */

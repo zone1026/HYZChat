@@ -26,6 +26,7 @@
 @property (strong, nonatomic) ChatMessageAttribute *messageAttribute;
 @property (assign, nonatomic) CGFloat inputTextViewHeight;
 @property (assign, nonatomic) CGFloat kbHeight;
+@property (assign, nonatomic) CGFloat emotionViewHeiht;
 
 @end
 
@@ -126,7 +127,11 @@
         else {
             if (data.isInputChanage == YES) {
                 [UIView animateWithDuration:chatAnimateDuration animations:^{
-                    self.viewBottomConstraintHeight.constant = self.kbHeight + data.inputTextViewHeight;
+                    if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion)
+                        self.viewBottomConstraintHeight.constant = self.emotionViewHeiht + data.inputTextViewHeight;
+                    else if ([ChatManager sharedManager].bottomMode == ChatBottomTargetText)
+                        self.viewBottomConstraintHeight.constant = self.kbHeight + data.inputTextViewHeight;
+                    
                 } completion:^(BOOL finished) {
 //                    [[NSNotificationCenter defaultCenter] postNotificationName:NotiLiveshowInteractionScrollCellToBottom object:nil];
                 }];
@@ -136,6 +141,7 @@
                     self.viewBottomConstraintHeight.constant = data.inputViewHeight;
                 } completion:^(BOOL finished) {
                     if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion) {
+                        self.emotionViewHeiht = data.inputViewHeight - data.inputTextViewHeight;
                     }
                 }];
             }

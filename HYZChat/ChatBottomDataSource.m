@@ -10,8 +10,6 @@
 #import "UIView+HYZFrame.h"
 #import "ChatManager.h"
 
-static const CGFloat textViewMaxHeight = 88.0;
-
 @interface ChatBottomDataSource ()
 
 @end
@@ -90,4 +88,9 @@ static const CGFloat textViewMaxHeight = 88.0;
     }
 }
 
+#pragma mark - 公开方法
+
+- (void)textChangedByEmotionStr:(UITextView *)textView {
+    [self textViewDidChange:textView];
+}
 @end
