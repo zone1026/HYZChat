@@ -47,7 +47,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="herTextCell" rowHeight="80" id="P39-am-pw9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="herTextCell" rowHeight="80" id="P39-am-pw9" customClass="ChatMsgTextCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P39-am-pw9" id="d0G-jz-Pai">
@@ -71,7 +71,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qE9-Vu-TCm" userLabel="消息背景">
-                                                    <rect key="frame" x="53" y="0.0" width="122" height="68"/>
+                                                    <rect key="frame" x="53" y="26" width="122" height="42"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gi-x1-x17" userLabel="尖角">
                                                             <rect key="frame" x="0.0" y="10" width="10" height="10"/>
@@ -82,7 +82,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vP2-DQ-h4D" userLabel="背景">
-                                                            <rect key="frame" x="10" y="0.0" width="112" height="68"/>
+                                                            <rect key="frame" x="10" y="0.0" width="112" height="42"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
                                                     </subviews>
@@ -97,7 +97,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一条消息" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiF-ae-g4d" userLabel="文本消息" customClass="RichLabel">
-                                                    <rect key="frame" x="73" y="8" width="92" height="52"/>
+                                                    <rect key="frame" x="73" y="34" width="92" height="26"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="JwM-bo-m5s"/>
@@ -111,7 +111,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="E2v-qI-TM8" secondAttribute="trailing" constant="60" id="3UN-R5-AzN"/>
                                                 <constraint firstItem="qE9-Vu-TCm" firstAttribute="bottom" secondItem="QiF-ae-g4d" secondAttribute="bottom" constant="8" id="7jK-B4-0rX"/>
                                                 <constraint firstItem="E2v-qI-TM8" firstAttribute="leading" secondItem="d0G-jz-Pai" secondAttribute="leading" constant="60" id="G1e-hX-v6G"/>
-                                                <constraint firstItem="QiF-ae-g4d" firstAttribute="top" secondItem="d0G-jz-Pai" secondAttribute="top" constant="8" id="K7n-cz-KyN"/>
                                                 <constraint firstItem="qE9-Vu-TCm" firstAttribute="leading" secondItem="QiF-ae-g4d" secondAttribute="leading" constant="-20" id="MOh-gZ-C13"/>
                                                 <constraint firstItem="qE9-Vu-TCm" firstAttribute="trailing" secondItem="QiF-ae-g4d" secondAttribute="trailing" constant="10" id="Ufe-Cb-xDm"/>
                                                 <constraint firstItem="oMt-ar-7f4" firstAttribute="top" secondItem="d0G-jz-Pai" secondAttribute="top" constant="8" id="VRx-jI-eJf"/>
@@ -119,11 +118,20 @@
                                                 <constraint firstItem="QiF-ae-g4d" firstAttribute="leading" secondItem="d0G-jz-Pai" secondAttribute="leading" constant="73" id="WiT-vs-ty6"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qE9-Vu-TCm" secondAttribute="trailing" constant="60" id="dTf-X4-BIL"/>
                                                 <constraint firstItem="qE9-Vu-TCm" firstAttribute="top" secondItem="QiF-ae-g4d" secondAttribute="top" constant="-8" id="hhe-ps-RJr"/>
+                                                <constraint firstItem="QiF-ae-g4d" firstAttribute="top" secondItem="E2v-qI-TM8" secondAttribute="bottom" constant="8" id="l9N-iH-TJ9"/>
                                                 <constraint firstItem="oMt-ar-7f4" firstAttribute="leading" secondItem="d0G-jz-Pai" secondAttribute="leading" constant="8" id="oug-Oc-pGt"/>
                                                 <constraint firstItem="E2v-qI-TM8" firstAttribute="top" secondItem="d0G-jz-Pai" secondAttribute="top" constant="8" id="soF-uK-snI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="imgLogo" destination="oMt-ar-7f4" id="fiJ-F4-nyE"/>
+                                            <outlet property="lblMsg" destination="QiF-ae-g4d" id="Lqt-E0-rpG"/>
+                                            <outlet property="lblNick" destination="E2v-qI-TM8" id="AKZ-de-CDh"/>
+                                            <outlet property="viewArrow" destination="6gi-x1-x17" id="7j4-fE-yv5"/>
+                                            <outlet property="viewMsgBg" destination="vP2-DQ-h4D" id="fQG-VA-WgN"/>
+                                            <outlet property="viewMsgContent" destination="qE9-Vu-TCm" id="YoR-tB-PNr"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="meTextCell" rowHeight="80" id="jXy-PB-yYr">
                                         <rect key="frame" x="0.0" y="108" width="375" height="80"/>
@@ -149,7 +157,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xW-5k-3tw" userLabel="消息背景">
-                                                    <rect key="frame" x="200" y="0.0" width="125" height="68"/>
+                                                    <rect key="frame" x="200" y="26" width="125" height="42"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caa-Hr-DI5" userLabel="尖角">
                                                             <rect key="frame" x="115" y="10" width="10" height="10"/>
@@ -160,7 +168,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAo-BS-v6A" userLabel="背景">
-                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="68"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="42"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
                                                     </subviews>
@@ -175,7 +183,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一条消息" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1x-67-RVi" userLabel="文本消息" customClass="RichLabel">
-                                                    <rect key="frame" x="210" y="8" width="92" height="52"/>
+                                                    <rect key="frame" x="210" y="34" width="92" height="26"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="JPb-yg-05w"/>
@@ -192,10 +200,10 @@
                                                 <constraint firstItem="9xW-5k-3tw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BUg-Ah-dC0" secondAttribute="leading" constant="60" id="DkH-E4-Ijj"/>
                                                 <constraint firstItem="9xW-5k-3tw" firstAttribute="bottom" secondItem="b1x-67-RVi" secondAttribute="bottom" constant="8" id="H1R-YM-STD"/>
                                                 <constraint firstItem="9xW-5k-3tw" firstAttribute="leading" secondItem="b1x-67-RVi" secondAttribute="leading" constant="-10" id="IT1-Fe-sbt"/>
+                                                <constraint firstItem="b1x-67-RVi" firstAttribute="top" secondItem="2hk-wl-Hqz" secondAttribute="bottom" constant="8" id="JIc-P9-7xa"/>
                                                 <constraint firstAttribute="bottom" secondItem="b1x-67-RVi" secondAttribute="bottom" constant="20" id="MZl-kz-Adr"/>
                                                 <constraint firstItem="2hk-wl-Hqz" firstAttribute="top" secondItem="BUg-Ah-dC0" secondAttribute="top" constant="8" id="TGz-Fl-c0r"/>
                                                 <constraint firstAttribute="trailing" secondItem="8fq-IF-B4L" secondAttribute="trailing" constant="8" id="euJ-Cj-0Sw"/>
-                                                <constraint firstItem="b1x-67-RVi" firstAttribute="top" secondItem="BUg-Ah-dC0" secondAttribute="top" constant="8" id="p1M-B1-MLF"/>
                                                 <constraint firstAttribute="trailing" secondItem="2hk-wl-Hqz" secondAttribute="trailing" constant="60" id="txp-g1-eD7"/>
                                                 <constraint firstItem="8fq-IF-B4L" firstAttribute="top" secondItem="BUg-Ah-dC0" secondAttribute="top" constant="8" id="xNX-ch-TOS"/>
                                                 <constraint firstAttribute="trailing" secondItem="b1x-67-RVi" secondAttribute="trailing" constant="73" id="z6P-Es-9l8"/>
