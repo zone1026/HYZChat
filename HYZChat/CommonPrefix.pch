@@ -21,6 +21,7 @@
     #import "Constants.h"
     #import "NotificationName.h"
     #import "HYZUtil.h"
+    #import "DataManager.h"
 #endif
 
 // 三色值配色

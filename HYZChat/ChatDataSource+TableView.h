@@ -10,6 +10,17 @@
 
 @interface ChatDataSource (TableView)
 
+/**
+ * @description 创建消息单元格
+ * @param tableView 列表视图
+ * @param indexPath 单元格索引
+ */
 - (UITableViewCell *)proxyForTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+/**
+ * @description 计算消息单元格的高度
+ * @param tableView 列表视图
+ * @param indexPath 单元格索引
+ */
+- (CGFloat)proxyForTableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

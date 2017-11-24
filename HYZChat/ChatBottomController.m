@@ -213,6 +213,7 @@
 
 #pragma mark - message notification
 
+/** 注册消息通知 */
 - (void)registerMessageNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiEmotionBtnDefaultStauts:)
                                                  name:NotiEmotionBtnDefaultStauts object:nil];
@@ -220,17 +221,20 @@
                                                  name:NotiUpdateInputTextByEmotionStr object:nil];
 }
 
+/** 移除消息通知 */
 - (void)removeMessageNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiEmotionBtnDefaultStauts object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiUpdateInputTextByEmotionStr object:nil];
 }
 
+/** 表情按钮默认状态通知响应方法 */
 - (void)handleNotiEmotionBtnDefaultStauts:(NSNotification *)notification {
     if (self.btnEmotion.isSelected == NO)
         return;
     [self.btnEmotion setSelected:NO];
 }
 
+/** 向输入框内插入表情描述文本通知响应方法 */
 - (void)handleNotiUpdateInputTextByEmotionStr:(NSNotification *)notification {
     if (notification.object != nil) {
         if ([notification.object isKindOfClass:[NSString class]]) {
@@ -275,6 +279,10 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];
 }
 
+/**
+ * @description 将要插入表情描述文本
+ * @parm value 表情描述文本
+ */
 - (void)willInsertEmotion:(NSString *)value {
     NSMutableString *inputText = [[NSMutableString alloc] initWithString:self.textView.text];
     [inputText insertString:value atIndex:self.chatEmotionShouldChangeRange.location];
@@ -286,14 +294,15 @@
     self.chatEmotionShouldChangeRange = range;
 }
 
+/** 将要闪退表情描述文本 */
 - (void)willDeleteEmotion {
     NSMutableString *inputText = [[NSMutableString alloc] initWithString:self.textView.text];
     if (inputText.length > 0) {
         NSRange rangeLeft = [inputText rangeOfString:attachmentMarkLeft options:NSBackwardsSearch range:NSMakeRange(0, self.chatEmotionShouldChangeRange.location)];
         NSRange rangeRight = [inputText rangeOfString:attachmentMarkRight options:NSBackwardsSearch range:NSMakeRange(0, self.chatEmotionShouldChangeRange.location)];
-        if (rangeLeft.location == NSNotFound || rangeRight.location == NSNotFound) {
+        if (rangeLeft.location == NSNotFound || rangeRight.location == NSNotFound)
             return;
-        }
+        
         if (rangeLeft.location < rangeRight.location) {
             NSRange rangeEmotion = NSMakeRange(rangeLeft.location, rangeRight.location - rangeLeft.location + 1);
             [inputText replaceCharactersInRange:rangeEmotion withString:@""];
@@ -305,9 +314,9 @@
                 self.chatEmotionShouldChangeRange = range;
             }
         }
-        else {
+        else
             [inputText replaceCharactersInRange:NSMakeRange(inputText.length - 1, 1) withString:@""];
-        }
+
         self.textView.text = inputText;
         [self.chatBottomData textChangedByEmotionStr:self.textView];
     }

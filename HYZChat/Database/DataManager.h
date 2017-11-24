@@ -6,8 +6,16 @@
 //  Copyright © 2017年 黄亚州. All rights reserved.
 //
 
+#import "CNUser+CoreDataClass.h"
+
 @interface DataManager : NSObject
 
+/** 当前的用户信息 */
+@property (strong, nonatomic) CNUser *currentUser;
+
+/**
+ *  @description 单例
+ */
 + (instancetype)sharedManager;
 
 #pragma mark - NSManagedObjectContext Methods

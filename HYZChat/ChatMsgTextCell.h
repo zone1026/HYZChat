@@ -10,5 +10,4 @@
 
 @interface ChatMsgTextCell : ChatMsgCell
 
-
 @end

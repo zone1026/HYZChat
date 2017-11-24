@@ -15,6 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CNUser : NSManagedObject
 
+/**
+ * @description 获取用户的聊天信息
+ */
+- (NSArray *)getSubChatMessageSequence;
+
 @end
 
 NS_ASSUME_NONNULL_END

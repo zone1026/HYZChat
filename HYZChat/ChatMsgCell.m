@@ -8,11 +8,11 @@
 
 #import "ChatMsgCell.h"
 
-static const CGFloat kDefaultArrowWidth = 22.0;
-static const CGFloat kDefaultArrowHeight = 12.0;
+static const CGFloat kDefaultArrowWidth = 10.0;
+static const CGFloat kDefaultArrowHeight = 10.0;
 
 @interface ChatMsgCell ()
-@property (strong, nonatomic) YZChatMsgObject *msgObject;
+@property (strong, nonatomic) CNChatMessage *msgObject;
 @end
 
 @implementation ChatMsgCell
@@ -38,15 +38,15 @@ static const CGFloat kDefaultArrowHeight = 12.0;
 }
 
 #pragma mark - 共有方法
-- (void)updateMessageData:(YZChatMsgObject *)msgData {
+- (void)updateMessageData:(CNChatMessage *)msgData {
     
 }
 
-- (void)updateMessageData:(YZChatMsgObject *)msgData withMeMsg:(BOOL)isMe {
+- (void)updateMessageData:(CNChatMessage *)msgData withMeMsg:(BOOL)isMe {
     self.msgObject = msgData;
     self.isMeSend = isMe;
     self.imgLogo.image = [UIImage imageNamed:@"DEFAULT_LOGO"];
-    self.lblNick.text = self.msgObject.chatMessage.send_nick;
+    self.lblNick.text = self.msgObject.send_nick;
 }
 
 #pragma mark - 私有方法

@@ -28,4 +28,11 @@
     // Configure the view for the selected state
 }
 
+#pragma mark - 消息
+
+- (void)updateMessageData:(CNChatMessage *)msgData withMeMsg:(BOOL)isMe {
+    [super updateMessageData:msgData withMeMsg:isMe];
+    self.lblMsg.text = @"暂未消息";
+}
+
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "YZChatMsgObject.h"
+#import "CNChatMessage+CoreDataClass.h"
 
 @interface ChatMsgCell : UITableViewCell
 
@@ -25,11 +25,11 @@
  * @param msgData 聊天消息数据
  * @param isMe 是否是自己发送的
  */
-- (void)updateMessageData:(YZChatMsgObject *)msgData withMeMsg:(BOOL)isMe;
+- (void)updateMessageData:(CNChatMessage *)msgData withMeMsg:(BOOL)isMe;
 /**
  * @description 更新聊天消息内容，不需要指定发送方
  * @param msgData 聊天消息数据
  */
-- (void)updateMessageData:(YZChatMsgObject *)msgData;
+- (void)updateMessageData:(CNChatMessage *)msgData;
 
 @end

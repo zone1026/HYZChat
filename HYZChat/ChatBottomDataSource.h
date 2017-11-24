@@ -13,7 +13,15 @@ static const CGFloat textViewMaxHeight = 88.0;
 @protocol ChatBottomDataSourceDelegate <NSObject>
 
 @required
+/**
+ * @description 更新顶部视图的高度
+ * @param height 高度
+ */
 - (void)updateTopViewHeight:(CGFloat)height;
+/**
+ * @description 发送消息
+ * @param content 发送内容
+ */
 - (void)sendChatMessage:(NSString *)content;
 
 @optional

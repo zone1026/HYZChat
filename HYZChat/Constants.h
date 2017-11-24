@@ -18,5 +18,13 @@ typedef NS_ENUM(NSInteger, ChatBottomTarget)
     ChatBottomTargetAudio
 };
 
+typedef NS_ENUM(NSInteger, ChatMsgType) {
+    ChatMsgTypeFree,
+    ChatMsgTypeText,
+    ChatMsgTypeImage,
+    ChatMsgTypeAudio,
+    ChatMsgTypeVideo,
+    ChatMsgTypeUpperLimit   //消息所支持的类型上限
+};
 
 #endif /* Constants_h */
