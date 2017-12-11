@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B1003" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="CNChatMessage" representedClassName="CNChatMessage" syncable="YES">
         <attribute name="msg_content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="msg_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -9,6 +9,7 @@
         <attribute name="send_time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="send_userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="target_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="target_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="assign_res" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CNChatResource" inverseName="belong_chatMessage" inverseEntity="CNChatResource" syncable="YES"/>
         <relationship name="belong_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNUser" inverseName="has_chatMessages" inverseEntity="CNUser" syncable="YES"/>
     </entity>
@@ -27,7 +28,7 @@
         <relationship name="has_chatMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CNChatMessage" inverseName="belong_user" inverseEntity="CNChatMessage" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CNChatMessage" positionX="-540" positionY="-162" width="128" height="193"/>
+        <element name="CNChatMessage" positionX="-540" positionY="-162" width="128" height="210"/>
         <element name="CNChatResource" positionX="-245" positionY="-105" width="128" height="103"/>
         <element name="CNUser" positionX="-747" positionY="72" width="128" height="135"/>
     </elements>
