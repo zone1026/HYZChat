@@ -9,10 +9,11 @@
 #import "ChatViewController.h"
 #import "ChatMessageAttribute.h"
 #import "ChatDataSource.h"
+#import "ChatDataSource+TableView.h"
+#import "ChatDataSource+ChatMsg.h"
 #import "InputViewFrameChanageData.h"
 #import "UIView+HYZFrame.h"
 #import "ChatBottomController.h"
-#import "ChatDataSource+TableView.h"
 #import "ChatManager.h"
 
 @interface ChatViewController ()
@@ -75,12 +76,18 @@
 
 - (void)registerMessageNotification {
     //注册键盘出现通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
     //注册键盘隐藏通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiInputViewFrameChanage:) name:NotiInputViewFrameChanage object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiChatBottomFunctionButtonClick:) name:NotiChatFunctionBtnClick object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiInputViewFrameChanage:)
+                                                 name:NotiInputViewFrameChanage object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiChatBottomFunctionButtonClick:)
+                                                 name:NotiChatFunctionBtnClick object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiUpdateChatViewForSendMsg:)
+                                                 name:NotiUpdateChatViewForSendMsg object:nil];
 }
 
 - (void)removeMessageNoitication {
@@ -91,6 +98,7 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiInputViewFrameChanage object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiChatFunctionBtnClick object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiUpdateChatViewForSendMsg object:nil];
 }
 
 //键盘弹出
@@ -184,6 +192,16 @@
             default:
                 break;
         }
+    }
+}
+
+- (void)handleNotiUpdateChatViewForSendMsg:(NSNotification *)notification {
+    if (notification.userInfo != nil) {
+        ChatMsgType msgType = [notification.userInfo[@"type"] integerValue];
+        NSString *content = notification.userInfo[@"content"];
+#warning send chat msg
+        [self.chatDataSource addChatMsg:msgType withMsgContent:content];
+        [self.chatTableView reloadData];
     }
 }
 

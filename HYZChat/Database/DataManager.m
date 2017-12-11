@@ -47,7 +47,7 @@ static NSString *const coreDataModelFileName = @"HYZChat";
             NSLog(@"Error: %@", error);
         }
     }
-    return [NSURL URLWithString:[coreDataDir stringByAppendingString:[NSString stringWithFormat:@"%@.sqlite", coreDataModelFileName]]];
+    return [NSURL fileURLWithPath:[coreDataDir stringByAppendingString:[NSString stringWithFormat:@"%@.sqlite", coreDataModelFileName]]];
 }
 
 - (NSManagedObjectContext *)managedObjectContext {
@@ -75,7 +75,9 @@ static NSString *const coreDataModelFileName = @"HYZChat";
         NSURL *storeURL = [self applicationDatabaseDirectory];
         NSLog(@"数据库地址：%@", storeURL.absoluteString);
         NSError *error = nil;
-        NSDictionary *optionsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];//自动轻量级迁移
+        NSDictionary *optionsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],
+                                           NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES],
+                                           NSInferMappingModelAutomaticallyOption, nil];//自动轻量级迁移
         if ([_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:optionsDictionary error:&error] == nil) {
             NSLog(@"Failed to initialize the application's saved data");
         }

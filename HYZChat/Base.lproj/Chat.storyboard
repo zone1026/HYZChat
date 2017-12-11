@@ -133,7 +133,7 @@
                                             <outlet property="viewMsgContent" destination="qE9-Vu-TCm" id="YoR-tB-PNr"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="meTextCell" rowHeight="80" id="jXy-PB-yYr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="meTextCell" rowHeight="80" id="jXy-PB-yYr" customClass="ChatMsgTextCell">
                                         <rect key="frame" x="0.0" y="108" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jXy-PB-yYr" id="BUg-Ah-dC0">
@@ -210,6 +210,14 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="imgLogo" destination="8fq-IF-B4L" id="uEa-br-YfW"/>
+                                            <outlet property="lblMsg" destination="b1x-67-RVi" id="IgN-qv-T7G"/>
+                                            <outlet property="lblNick" destination="2hk-wl-Hqz" id="BFt-oz-wzV"/>
+                                            <outlet property="viewArrow" destination="caa-Hr-DI5" id="IWB-w3-aY3"/>
+                                            <outlet property="viewMsgBg" destination="hAo-BS-v6A" id="U8e-6t-Lrh"/>
+                                            <outlet property="viewMsgContent" destination="9xW-5k-3tw" id="1C5-6h-KT5"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -399,11 +407,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
-                        <outlet property="btnAddEmotion" destination="LCg-3d-h6N" id="dvL-op-s1L"/>
                         <outlet property="btnAudio" destination="9i0-DJ-nZI" id="XsB-f5-Rvb"/>
                         <outlet property="btnEmotion" destination="O2D-H3-Xgo" id="6RX-Lm-jIf"/>
                         <outlet property="btnRecord" destination="8d1-1a-DJH" id="HEM-mn-TWj"/>
-                        <outlet property="btnSendEmotoin" destination="0lm-C5-1Rx" id="grM-51-dlu"/>
                         <outlet property="chatBottomData" destination="lnC-ne-pau" id="0ZL-Kj-Ejv"/>
                         <outlet property="textView" destination="qf2-hI-8mb" id="um6-Qj-NvJ"/>
                         <outlet property="viewEmotion" destination="cVX-fR-U3E" id="nVi-YE-ifJ"/>
@@ -643,6 +649,9 @@
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnAddEmotionTouchUpInside:" destination="Jjt-IJ-rKh" eventType="touchUpInside" id="SX1-VR-9nm"/>
+                                                </connections>
                                             </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fN7-b2-dh8">
                                                 <rect key="frame" x="40" y="0.0" width="291" height="38"/>
@@ -703,6 +712,9 @@
                                                 <state key="normal" title="发送">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnSendEmotoinTouchUpInside:" destination="Jjt-IJ-rKh" eventType="touchUpInside" id="LdL-YU-bEI"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

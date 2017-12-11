@@ -7,6 +7,7 @@
 //
 
 #import "HYZUtil.h"
+#import <CoreText/CoreText.h>
 
 @implementation HYZUtil
 
@@ -67,6 +68,42 @@
     textSize.height = ceil(textSize.height);
     textSize.width = ceil(textSize.width);
     return textSize;
+}
+
++ (NSString *)getUUID {
+    CFUUIDRef uuid_ref = CFUUIDCreate(NULL);
+    CFStringRef uuid_string_ref= CFUUIDCreateString(NULL, uuid_ref);
+    CFRelease(uuid_ref);
+    
+    NSString *uuid = [NSString stringWithString:(NSString*)CFBridgingRelease(uuid_string_ref)];
+    return uuid;
+}
+
++ (NSDictionary *)getWrapModeAttributes {
+    CTParagraphStyleSetting lineBreakMode;
+    CTLineBreakMode lineBreak = kCTLineBreakByCharWrapping;
+    lineBreakMode.spec = kCTParagraphStyleSpecifierLineBreakMode;
+    lineBreakMode.value = &lineBreak;
+    lineBreakMode.valueSize = sizeof(CTLineBreakMode);
+    
+    CTParagraphStyleSetting settings[] = {
+        lineBreakMode
+    };
+    
+    CTParagraphStyleRef style = CTParagraphStyleCreate(settings, 1);
+    
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObject:(__bridge id)style forKey:(id)kCTParagraphStyleAttributeName ];
+    
+    CFRelease(style);
+    return attributes;
+}
+
+#pragma mark - /// 时间相关静态方法 ///
+
++ (NSTimeInterval)getCurrentTimestamp {
+    NSDate *date = [NSDate date];
+    NSTimeInterval timestamp = [date timeIntervalSince1970];
+    return timestamp;
 }
 
 @end

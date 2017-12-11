@@ -47,7 +47,7 @@ static const CGFloat kDefaultArrowHeight = 10.0;
     self.msgObject = msgData;
     self.isMeSend = isMe;
     self.imgLogo.image = [UIImage imageNamed:@"DEFAULT_LOGO"];
-    self.lblNick.text = self.msgObject.send_nick;
+    self.lblNick.text = [HYZUtil isEmptyOrNull:self.msgObject.send_nick] == YES ? @"未知" : self.msgObject.send_nick;
 }
 
 #pragma mark - 私有方法
@@ -58,9 +58,9 @@ static const CGFloat kDefaultArrowHeight = 10.0;
 - (void)leftArrowView {
     CGSize size = CGSizeMake(kDefaultArrowWidth, kDefaultArrowHeight);
     UIBezierPath *path = [[UIBezierPath alloc] init];
-    [path moveToPoint:CGPointMake(0, size.width / 2.0)];
+    [path moveToPoint:CGPointMake(0.0, size.height/2.0)];
+    [path addLineToPoint:CGPointMake(size.width, 0.0)];
     [path addLineToPoint:CGPointMake(size.width, size.height)];
-    [path addLineToPoint:CGPointMake(size.width, 0)];
     path.lineWidth = 1.0;
     
     CAShapeLayer *arrowLayer = [CAShapeLayer layer];
@@ -74,9 +74,9 @@ static const CGFloat kDefaultArrowHeight = 10.0;
 - (void)rightArrowView {
     CGSize size = CGSizeMake(kDefaultArrowWidth, kDefaultArrowHeight);
     UIBezierPath *path = [[UIBezierPath alloc] init];
-    [path moveToPoint:CGPointMake(size.width / 2.0, size.height)];
-    [path addLineToPoint:CGPointMake(size.width, size.height)];
-    [path addLineToPoint:CGPointMake(0, 0)];
+    [path moveToPoint:CGPointMake(0.0, 0.0)];
+    [path addLineToPoint:CGPointMake(size.width, size.height/2)];
+    [path addLineToPoint:CGPointMake(0, size.height)];
     path.lineWidth = 1.0;
     
     CAShapeLayer *arrowLayer = [CAShapeLayer layer];

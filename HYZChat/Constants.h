@@ -27,4 +27,16 @@ typedef NS_ENUM(NSInteger, ChatMsgType) {
     ChatMsgTypeUpperLimit   //消息所支持的类型上限
 };
 
+typedef NS_ENUM(NSInteger, ChatMsgState) {
+    ChatMsgStateNoSend,
+    ChatMsgStateSending,
+    ChatMsgStateSendSuccess,
+    ChatMsgStateFailed
+};
+
+typedef NS_ENUM(NSInteger, ChatTargetType) {
+    ChatTargetTypeP2P,//私聊
+    ChatTargetTypeP2G//群聊
+};
+
 #endif /* Constants_h */

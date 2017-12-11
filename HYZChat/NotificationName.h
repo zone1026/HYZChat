@@ -29,5 +29,13 @@
  * @description 通过表情描述信息更新输入文本
  */
 #define NotiUpdateInputTextByEmotionStr         @"NotiUpdateInputTextByEmotionStr"
+/**
+ * @description 通过表情的发送按钮发送消息
+ */
+#define NotiSendMsgByEmotionBtnSend             @"NotiSendMsgByEmotionBtnSend"
+/**
+ * @description 通过聊天消息更新聊天表格
+ */
+#define NotiUpdateChatViewForSendMsg            @"NotiUpdateChatViewForSendMsg"
 
 #endif /* NotificationName_h */

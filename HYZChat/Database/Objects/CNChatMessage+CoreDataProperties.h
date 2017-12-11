@@ -2,7 +2,7 @@
 //  CNChatMessage+CoreDataProperties.h
 //  HYZChat
 //
-//  Created by 黄亚州 on 2017/11/24.
+//  Created by 黄亚州 on 2017/12/11.
 //  Copyright © 2017年 黄亚州. All rights reserved.
 //
 //
@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *send_time;
 @property (nonatomic) int64_t send_userId;
 @property (nonatomic) int64_t target_id;
+@property (nonatomic) int16_t target_type;
 @property (nullable, nonatomic, retain) CNChatResource *assign_res;
 @property (nullable, nonatomic, retain) CNUser *belong_user;
 

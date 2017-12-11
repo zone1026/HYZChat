@@ -125,9 +125,9 @@
     
     _linkDetectionTypes = LinkDetectionTypeAll;
     
-    self.linkBackgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
     self.linkColor = [UIColor blueColor];
     self.linkHighlightColor = [UIColor redColor];
+    self.linkBackgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
     
     [self updateTextStoreWithText];
     
@@ -260,9 +260,7 @@
 - (NSAttributedString *)addLinkAttributesToAttributedString:(NSAttributedString *)string linkRanges:(NSArray *)linkRanges {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:string];
     
-    NSDictionary *attributes = @{
-                                 NSForegroundColorAttributeName : self.linkColor
-                                 };
+    NSDictionary *attributes = @{NSForegroundColorAttributeName : self.linkColor};
     
     for (NSDictionary *dictionary in linkRanges)
     {
@@ -636,6 +634,23 @@
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesCancelled:touches withEvent:event];
     self.selectedRange = NSMakeRange(0, 0);
+}
+
+#pragma mark - 私有方法
+
+#pragma mark - 共有方法
+
+- (void)updateTextContent:(NSString *)content {
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:self.font, NSFontAttributeName, nil];
+    //设置换行模式，表情图标出界自动换行
+    [attributes setValuesForKeysWithDictionary:[HYZUtil getWrapModeAttributes]];
+    //设置行间距
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 3.0;
+    [attributes setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
+    
+    NSAttributedString *attributedString = [NSAttributedString attachmentAttributedStringFrom:content attributes:attributes];
+    self.attributedText = attributedString;
 }
 
 @end

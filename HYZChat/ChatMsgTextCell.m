@@ -32,12 +32,13 @@
 
 - (void)updateMessageData:(CNChatMessage *)msgData {
     [super updateMessageData:msgData];
-    self.lblMsg.text = @"暂未消息";
+    [self.lblMsg updateTextContent:msgData.msg_content];
+    
 }
 
 - (void)updateMessageData:(CNChatMessage *)msgData withMeMsg:(BOOL)isMe {
     [super updateMessageData:msgData withMeMsg:isMe];
-    self.lblMsg.text = @"暂未消息";
+    [self.lblMsg updateTextContent:msgData.msg_content];
 }
 
 @end

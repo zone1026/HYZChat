@@ -53,6 +53,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - event
+
+- (IBAction)btnAddEmotionTouchUpInside:(UIButton *)sender {
+    
+}
+
+- (IBAction)btnSendEmotoinTouchUpInside:(UIButton *)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotiSendMsgByEmotionBtnSend object:nil];
+}
+
 #pragma mark - ChatEmotionDataDelegate
 
 - (void)pageControlValueChangeForEmotion:(NSInteger)pageNum {

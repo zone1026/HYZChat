@@ -33,5 +33,19 @@
  * @param font 文本的字体属性
  */
 + (CGSize)autoFitSizeOfStr:(NSString *)str withWidth:(CGFloat)width withFont:(UIFont *)font;
+/**
+ * @description 获取一个UUID
+ */
++ (NSString *)getUUID;
+
+/**
+ * @description 获得换行模式属性
+ */
++ (NSDictionary *)getWrapModeAttributes;
+
+/**
+ * @description 获取当前时间戳
+ */
++ (NSTimeInterval)getCurrentTimestamp;
 
 @end

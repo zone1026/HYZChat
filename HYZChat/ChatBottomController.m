@@ -219,6 +219,8 @@
                                                  name:NotiEmotionBtnDefaultStauts object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiUpdateInputTextByEmotionStr:)
                                                  name:NotiUpdateInputTextByEmotionStr object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiSendMsgByEmotionBtnSend:)
+                                                 name:NotiSendMsgByEmotionBtnSend object:nil];
 }
 
 /** 移除消息通知 */
@@ -247,6 +249,14 @@
     }
 }
 
+- (void)handleNotiSendMsgByEmotionBtnSend:(NSNotification *)notification {
+    if ([HYZUtil isEmptyOrNull:self.textView.text] == YES)
+        return;
+    
+    [self sendTextChatMsg2ChatView:self.textView.text];
+    self.textView.text = @"";
+}
+
 #pragma mark - ChatBottomDataSourceDelegate
 
 - (void)updateTopViewHeight:(CGFloat)height {
@@ -265,6 +275,7 @@
     [self restoreInputTextViewHeight];
     [self handleNotiEmotionBtnDefaultStauts:nil];
     [ChatManager sharedManager].bottomMode = ChatBottomTargetFree;
+    [self sendTextChatMsg2ChatView:content];
 }
 
 #pragma mark - 私有方法
@@ -294,7 +305,7 @@
     self.chatEmotionShouldChangeRange = range;
 }
 
-/** 将要闪退表情描述文本 */
+/** 将要删除表情描述文本 */
 - (void)willDeleteEmotion {
     NSMutableString *inputText = [[NSMutableString alloc] initWithString:self.textView.text];
     if (inputText.length > 0) {
@@ -320,6 +331,15 @@
         self.textView.text = inputText;
         [self.chatBottomData textChangedByEmotionStr:self.textView];
     }
+}
+
+/**
+ * @description 发送文本消息信息
+ * @parm textContent 文本信息
+ */
+- (void)sendTextChatMsg2ChatView:(NSString *)textContent {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotiUpdateChatViewForSendMsg object:nil
+                                                userInfo:@{@"type":@(ChatMsgTypeText), @"content":textContent}];
 }
 
 @end

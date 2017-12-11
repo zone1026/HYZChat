@@ -138,7 +138,7 @@
     if (data == nil || data.isEmpty == YES)
         return;
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiUpdateInputTextByEmotionStr
-                                                        object:[data.imgName isEqualToString:@"CHT_BTN_DEL_EMOTION"] == YES ? @"del" : data.name];
+                                        object:[data.imgName isEqualToString:@"CHT_BTN_DEL_EMOTION"] == YES ? @"del" : data.name];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout

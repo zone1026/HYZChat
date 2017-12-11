@@ -10,7 +10,7 @@
 			<key>className</key>
 			<string>ChatMsgTextCell</string>
 			<key>indentifier</key>
-			<string>text</string>
+			<string>Text</string>
 		</dict>
 	</array>
 	<key>ChatFunction</key>

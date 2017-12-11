@@ -50,4 +50,10 @@ typedef void (^LinkLongHandler)(LinkType linkType, NSString *string, NSRange ran
 
 @property (copy, nonatomic) LinkLongHandler linkLongHandler;
 
+/**
+ * @description 更新文本内容
+ * @param content 文本内容
+ */
+- (void)updateTextContent:(NSString *)content;
+- (void)sfdfds;
 @end

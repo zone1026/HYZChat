@@ -8,6 +8,7 @@
 
 #import "ChatDataSource+TableView.h"
 #import "ChatMsgTextCell.h"
+#import "NSAttributedString+TextAttachment.h"
 
 @implementation ChatDataSource (TableView)
 
@@ -15,9 +16,10 @@
     CNChatMessage *chatMsg = [self.chatMsgArr objectAtIndex:indexPath.row];
     ChatTableCellInfo *info = [self.chatCellInfoDict objectForKey:@(chatMsg.msg_type)];
     if (info == nil || [chatMsg checkMsgTypeCanSupport] == NO)//没有拿到cell所用的配置信息
-        return [tableView dequeueReusableCellWithIdentifier:@"text"];
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:info.indentifier forIndexPath:indexPath];
+        return [tableView dequeueReusableCellWithIdentifier:@"herTextCell"];
+    NSString *identifierStr = [NSString stringWithFormat:@"%@%@Cell", (chatMsg.send_userId != [DataManager sharedManager].currentUser.user_id ? @"her": @"me"),
+                               info.indentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierStr forIndexPath:indexPath];
     [self updateTableCellUI:cell cellForRowAtIndexPath:indexPath];
     
     return cell;
@@ -68,9 +70,21 @@
     switch (chatMsg.msg_type) {
         case ChatMsgTypeText:
         {
-            CGFloat textHeight = [HYZUtil autoFitSizeOfStr:chatMsg.msg_content withWidth:(kScreenWidth - 70.0f - 70.0f)
-                                                  withFont:[UIFont systemFontOfSize:15.0f]].height;
-            return 23.0f + textHeight + 23.0f;
+//            CGFloat textHeight = [HYZUtil autoFitSizeOfStr:chatMsg.msg_content withWidth:(kScreenWidth - 73.0f - 60.0f - 10.0f)
+//                                                  withFont:[UIFont systemFontOfSize:15.0f]].height;
+            NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:15.0f], NSFontAttributeName, nil];
+            //设置换行模式，表情图标出界自动换行
+            [attributes setValuesForKeysWithDictionary:[HYZUtil getWrapModeAttributes]];
+            //设置行间距
+            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            paragraphStyle.lineSpacing = 3.0;
+            [attributes setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
+            
+            CGRect attributeRect = [NSAttributedString boundsForString:chatMsg.msg_content
+                                        size:CGSizeMake((kScreenWidth - 73.0f - 60.0f - 10.0f), CGFLOAT_MAX) attributes:attributes];
+            CGFloat textHeight = attributeRect.size.height + 3.0f;
+            
+            return 34.0f + textHeight + 20.0f;
         }
             break;
         case ChatMsgTypeImage:
