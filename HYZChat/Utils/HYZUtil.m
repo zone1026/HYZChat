@@ -54,4 +54,19 @@
     return image;
 }
 
++ (CGSize)autoFitSizeOfStr:(NSString *)str withWidth:(CGFloat)width withFont:(UIFont *)font {
+    if (nil == str) {
+        str = @" ";
+    }
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    NSDictionary *attributes = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle};
+    CGSize textSize = [str boundingRectWithSize:CGSizeMake(width, 0.0f) options:NSStringDrawingUsesLineFragmentOrigin |
+                        NSStringDrawingUsesFontLeading | NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+    textSize.height = ceil(textSize.height);
+    textSize.width = ceil(textSize.width);
+    return textSize;
+}
+
 @end

@@ -39,7 +39,8 @@ static const CGFloat kDefaultArrowHeight = 10.0;
 
 #pragma mark - 共有方法
 - (void)updateMessageData:(CNChatMessage *)msgData {
-    
+    CNUser *currentUser = [DataManager sharedManager].currentUser;
+    [self updateMessageData:msgData withMeMsg:(msgData.send_userId == currentUser.user_id)];
 }
 
 - (void)updateMessageData:(CNChatMessage *)msgData withMeMsg:(BOOL)isMe {

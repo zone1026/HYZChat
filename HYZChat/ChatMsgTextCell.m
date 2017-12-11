@@ -30,6 +30,11 @@
 
 #pragma mark - 消息
 
+- (void)updateMessageData:(CNChatMessage *)msgData {
+    [super updateMessageData:msgData];
+    self.lblMsg.text = @"暂未消息";
+}
+
 - (void)updateMessageData:(CNChatMessage *)msgData withMeMsg:(BOOL)isMe {
     [super updateMessageData:msgData withMeMsg:isMe];
     self.lblMsg.text = @"暂未消息";

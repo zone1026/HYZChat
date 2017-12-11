@@ -7,30 +7,86 @@
 //
 
 #import "ChatDataSource+TableView.h"
+#import "ChatMsgTextCell.h"
 
 @implementation ChatDataSource (TableView)
 
 - (UITableViewCell *)proxyForTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CNChatMessage *chatMsg = [self.chatMsgArr objectAtIndex:indexPath.row];
-    UITableViewCell *cell; //= [self createTableCell:chatMsg.msg_type];
+    ChatTableCellInfo *info = [self.chatCellInfoDict objectForKey:@(chatMsg.msg_type)];
+    if (info == nil || [chatMsg checkMsgTypeCanSupport] == NO)//没有拿到cell所用的配置信息
+        return [tableView dequeueReusableCellWithIdentifier:@"text"];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:info.indentifier forIndexPath:indexPath];
+    [self updateTableCellUI:cell cellForRowAtIndexPath:indexPath];
     
     return cell;
 }
 
 - (CGFloat)proxyForTableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return 0.01;
+    CNChatMessage *chatMsg = [self.chatMsgArr objectAtIndex:indexPath.row];
+    return [self calculateTableCellHeightByChatMsgData:chatMsg];
 }
 
 #pragma mark - 私有方法
-
-- (UITableViewCell *)createTableCell:(ChatMsgType)type withTableView:(UITableView *)tableView {
-    ChatTableCellInfo *info = [self.chatCellInfoDict objectForKey:@(type)];
-    if (info == nil)//没有拿到cell所用的配置信息
-        return nil;
-//    UITableViewCell *cell = []
-    
+/**
+ * @description 通过聊天数据更新单元格UI
+ * @param cell 单元格
+ * @param indexPath 单元格的索引
+ */
+- (void)updateTableCellUI:(UITableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CNChatMessage *chatMsg = [self.chatMsgArr objectAtIndex:indexPath.row];
+    switch (chatMsg.msg_type) {
+        case ChatMsgTypeText:
+        {
+            ChatMsgTextCell *textCell = (ChatMsgTextCell *)cell;
+            [textCell updateMessageData:chatMsg];
+        }
+            break;
+        case ChatMsgTypeImage:
+            
+            break;
+        case ChatMsgTypeAudio:
+            
+            break;
+        case ChatMsgTypeVideo:
+            
+            break;
+        default:
+            break;
+    }
 }
 
-//- (void)
+/**
+ * @description 通过聊天数据计算cell高度
+ * @param chatMsg 聊天消息数据
+ */
+- (CGFloat)calculateTableCellHeightByChatMsgData:(CNChatMessage *)chatMsg {
+    if (chatMsg == nil || [chatMsg checkMsgTypeCanSupport] == NO)
+        return 0.01f;
+    
+    switch (chatMsg.msg_type) {
+        case ChatMsgTypeText:
+        {
+            CGFloat textHeight = [HYZUtil autoFitSizeOfStr:chatMsg.msg_content withWidth:(kScreenWidth - 70.0f - 70.0f)
+                                                  withFont:[UIFont systemFontOfSize:15.0f]].height;
+            return 23.0f + textHeight + 23.0f;
+        }
+            break;
+        case ChatMsgTypeImage:
+            
+            break;
+        case ChatMsgTypeAudio:
+            
+            break;
+        case ChatMsgTypeVideo:
+            
+            break;
+        default:
+            break;
+    }
+    
+    return 0.01f;
+}
+
 @end

@@ -26,5 +26,12 @@
  * @param color image颜色值
  */
 + (UIImage *)imageWithColor:(UIColor *)color;
+/**
+ * @description 文本所需要占用的尺寸
+ * @param str 文本信息
+ * @param width 文本所占用的宽度
+ * @param font 文本的字体属性
+ */
++ (CGSize)autoFitSizeOfStr:(NSString *)str withWidth:(CGFloat)width withFont:(UIFont *)font;
 
 @end
