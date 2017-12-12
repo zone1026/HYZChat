@@ -11,7 +11,14 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
 @property (weak, nonatomic) IBOutlet UITextField *tfPassword;
+@property (weak, nonatomic) IBOutlet UITextField *tfNickName;
+@property (weak, nonatomic) IBOutlet UISwitch *switchSex;
+@property (weak, nonatomic) IBOutlet UISwitch *switchVip;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewSupplementConstraintHeight;
+
 @property (weak, nonatomic) IBOutlet UIButton *btnStart;
+
+@property (assign, nonatomic) BOOL isExistUser;
 
 @end
 
@@ -21,6 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.btnStart.layer.cornerRadius = 5.0f;
+    self.isExistUser = YES;
+    self.viewSupplementConstraintHeight.constant = 0.0f;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -59,6 +68,10 @@
     [self startUserLogoin];
 }
 
+- (IBAction)switchValueChanged:(UISwitch *)sender {
+    
+}
+
 #pragma mark - 私有方法
 
 /**
@@ -85,18 +98,57 @@
         return;
     }
     
-    CNUser *user = [[DataManager sharedManager] findUserFromCoredataByPhone:self.tfPhone.text];
-    if ([HYZUtil isEmptyOrNull:user.user_password] == YES) {//还没密码，说明是新用户
-        user.user_password = self.tfPassword.text;
-        [[DataManager sharedManager] saveContext];
-    }
-    else {
-        if ([user.user_password isEqualToString:self.tfPassword.text] == NO) {
-            [HYZAlert showInfo:[NSString stringWithFormat:@"密码错误，您之前设置的密码是：<%@>，请您重新输入", user.user_password] underTitle:@"提示"];
+    if (self.isExistUser == NO) {
+        if ([HYZUtil isEmptyOrNull:self.tfNickName.text] == YES) {
+            [HYZAlert showInfo:@"昵称不能为空" underTitle:@"提示"];
             return;
         }
+        
+        if ([self.tfNickName.text length] > 10) {
+            [HYZAlert showInfo:@"昵称不能超过10字符" underTitle:@"提示"];
+            return;
+        }
+        CNUser *user = [DataManager sharedManager].currentUser;
+        user.user_name = self.tfNickName.text;
+        user.user_sex = self.switchSex.on == YES ? UserSexWoman : UserSexMan;
+        user.user_identity = self.switchVip.on == YES ? UserIdentityNormal : UserIdentityVIP;
+        [[DataManager sharedManager] saveContext];
+        
+        self.isExistUser = YES;
+        self.tfPhone.enabled = YES;
+        self.tfPassword.enabled = YES;
+        self.viewSupplementConstraintHeight.constant = 0.0f;
+        [self.btnStart setTitle:@"开始聊天" forState:UIControlStateNormal];
+        [self openChatUI];
     }
-    [DataManager sharedManager].currentUser = user;
+    else {
+        CNUser *user = [[DataManager sharedManager] findUserFromCoredataByPhone:self.tfPhone.text];
+        [DataManager sharedManager].currentUser = user;
+        
+        if ([HYZUtil isEmptyOrNull:user.user_password] == YES) {//还没密码，说明是新用户
+            user.user_password = self.tfPassword.text;
+            [[DataManager sharedManager] saveContext];
+            self.tfPhone.enabled = NO;
+            self.tfPassword.enabled = NO;
+            self.viewSupplementConstraintHeight.constant = 92.0f;
+            self.isExistUser = NO;
+            [self.btnStart setTitle:@"完善信息" forState:UIControlStateNormal];
+        }
+        else {
+            if ([user.user_password isEqualToString:self.tfPassword.text] == NO) {
+                [HYZAlert showInfo:[NSString stringWithFormat:@"密码错误，您之前设置的密码是：< %@ >，请您重新输入", user.user_password] underTitle:@"提示"];
+                return;
+            }
+            [self openChatUI];
+        }
+    }
+}
+
+/** 打开聊天界面 */
+- (void)openChatUI {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Chat" bundle:nil];
+    UINavigationController *nc = [storyboard instantiateViewControllerWithIdentifier:@"NaviChat"];
+    [self presentViewController:nc animated:YES completion:nil];
 }
 
 @end

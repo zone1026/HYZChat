@@ -93,8 +93,88 @@
                                     <constraint firstItem="JdB-Wt-TjK" firstAttribute="centerY" secondItem="6lW-YV-kao" secondAttribute="centerY" id="xu5-z9-rFS"/>
                                 </constraints>
                             </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kbz-ah-qQc" userLabel="补充信息">
+                                <rect key="frame" x="14.5" y="222" width="345" height="92"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的昵称，不要超过10个字符" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2A5-eK-x1l">
+                                        <rect key="frame" x="0.0" y="12" width="295" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="S3J-29-F34"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldEditChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="VMP-AU-izL"/>
+                                        </connections>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFN-xL-h3W">
+                                        <rect key="frame" x="-0.5" y="39" width="345" height="0.5"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="VLL-lc-gBE"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男生：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBs-mz-cxi">
+                                        <rect key="frame" x="0.0" y="55.5" width="46" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="5A5-xs-usx"/>
+                                            <constraint firstAttribute="height" constant="20" id="H0X-uG-NF6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UVi-Ci-b1Z">
+                                        <rect key="frame" x="46" y="50" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="switchValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="bCb-4B-Dg3"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DwT-pw-NuH">
+                                        <rect key="frame" x="242" y="56.5" width="46" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EtY-8A-zJf">
+                                        <rect key="frame" x="288" y="50" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="switchValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="UH0-i7-0Qg"/>
+                                        </connections>
+                                    </switch>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8GQ-v7-YU9">
+                                        <rect key="frame" x="-0.5" y="91.5" width="345" height="0.5"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="Poo-hr-qbL"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstItem="GFN-xL-h3W" firstAttribute="width" secondItem="Kbz-ah-qQc" secondAttribute="width" id="6Y8-AT-Dkk"/>
+                                    <constraint firstItem="8GQ-v7-YU9" firstAttribute="width" secondItem="Kbz-ah-qQc" secondAttribute="width" id="6oY-ho-1SK"/>
+                                    <constraint firstItem="bBs-mz-cxi" firstAttribute="leading" secondItem="Kbz-ah-qQc" secondAttribute="leading" id="H6U-Rn-zvI"/>
+                                    <constraint firstAttribute="bottom" secondItem="8GQ-v7-YU9" secondAttribute="bottom" id="HTT-pp-MRr"/>
+                                    <constraint firstItem="GFN-xL-h3W" firstAttribute="top" secondItem="2A5-eK-x1l" secondAttribute="bottom" constant="8" id="ILs-yE-twt"/>
+                                    <constraint firstAttribute="trailing" secondItem="2A5-eK-x1l" secondAttribute="trailing" constant="50" id="JLC-V0-6fc"/>
+                                    <constraint firstItem="GFN-xL-h3W" firstAttribute="centerX" secondItem="Kbz-ah-qQc" secondAttribute="centerX" id="MrD-Xp-Fta"/>
+                                    <constraint firstItem="DwT-pw-NuH" firstAttribute="centerY" secondItem="EtY-8A-zJf" secondAttribute="centerY" id="ORA-wx-4h9"/>
+                                    <constraint firstItem="EtY-8A-zJf" firstAttribute="centerY" secondItem="UVi-Ci-b1Z" secondAttribute="centerY" id="OkO-DW-kHt"/>
+                                    <constraint firstItem="bBs-mz-cxi" firstAttribute="top" secondItem="GFN-xL-h3W" secondAttribute="bottom" constant="16" id="P4r-AX-WzH"/>
+                                    <constraint firstItem="8GQ-v7-YU9" firstAttribute="centerX" secondItem="Kbz-ah-qQc" secondAttribute="centerX" id="XJ7-RS-0pz"/>
+                                    <constraint firstItem="UVi-Ci-b1Z" firstAttribute="centerY" secondItem="bBs-mz-cxi" secondAttribute="centerY" id="XLk-5Z-buy"/>
+                                    <constraint firstItem="UVi-Ci-b1Z" firstAttribute="leading" secondItem="bBs-mz-cxi" secondAttribute="trailing" id="YTY-Fi-kwi"/>
+                                    <constraint firstItem="2A5-eK-x1l" firstAttribute="leading" secondItem="Kbz-ah-qQc" secondAttribute="leading" id="a6X-d4-jDp"/>
+                                    <constraint firstItem="2A5-eK-x1l" firstAttribute="top" secondItem="Kbz-ah-qQc" secondAttribute="top" constant="12" id="eCF-Z1-hLu"/>
+                                    <constraint firstAttribute="trailing" secondItem="EtY-8A-zJf" secondAttribute="trailing" constant="8" id="pjp-w1-IMs"/>
+                                    <constraint firstItem="EtY-8A-zJf" firstAttribute="leading" secondItem="DwT-pw-NuH" secondAttribute="trailing" id="vzT-aB-qCc"/>
+                                    <constraint firstAttribute="height" constant="92" id="zxE-SH-Inb"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0R-mY-sZm">
-                                <rect key="frame" x="15" y="238" width="345" height="40"/>
+                                <rect key="frame" x="15" y="330" width="345" height="40"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5v1-bf-x4W"/>
@@ -104,7 +184,6 @@
                                 </state>
                                 <connections>
                                     <action selector="btnStartTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kYY-zV-bPm"/>
-                                    <segue destination="ehf-Ue-au3" kind="presentation" id="0Ff-d9-7W5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -113,12 +192,15 @@
                             <constraint firstItem="T0R-mY-sZm" firstAttribute="width" secondItem="6lW-YV-kao" secondAttribute="width" id="0LR-cj-JN2"/>
                             <constraint firstItem="iYp-i9-uSi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1fP-0K-2rR"/>
                             <constraint firstItem="pjn-va-D2i" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="44" id="3dK-sI-Voe"/>
-                            <constraint firstItem="T0R-mY-sZm" firstAttribute="top" secondItem="6lW-YV-kao" secondAttribute="bottom" constant="16" id="BcC-FA-zXI"/>
+                            <constraint firstItem="Kbz-ah-qQc" firstAttribute="width" secondItem="6lW-YV-kao" secondAttribute="width" id="4ez-r4-G7Q"/>
+                            <constraint firstItem="T0R-mY-sZm" firstAttribute="top" secondItem="Kbz-ah-qQc" secondAttribute="bottom" constant="16" id="ByY-j2-061"/>
                             <constraint firstItem="6lW-YV-kao" firstAttribute="centerX" secondItem="iYp-i9-uSi" secondAttribute="centerX" id="G1m-BH-i89"/>
+                            <constraint firstItem="Kbz-ah-qQc" firstAttribute="top" secondItem="6lW-YV-kao" secondAttribute="bottom" id="HrP-By-inb"/>
                             <constraint firstItem="6lW-YV-kao" firstAttribute="width" secondItem="iYp-i9-uSi" secondAttribute="width" id="SFo-R1-qlc"/>
                             <constraint firstItem="pjn-va-D2i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="Wp3-cg-Zj5"/>
                             <constraint firstItem="6lW-YV-kao" firstAttribute="top" secondItem="iYp-i9-uSi" secondAttribute="bottom" id="eYA-i6-wJ7"/>
                             <constraint firstItem="iYp-i9-uSi" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="-30" id="hqz-yg-Wpf"/>
+                            <constraint firstItem="Kbz-ah-qQc" firstAttribute="centerX" secondItem="6lW-YV-kao" secondAttribute="centerX" id="jpo-3p-ZS7"/>
                             <constraint firstItem="iYp-i9-uSi" firstAttribute="top" secondItem="pjn-va-D2i" secondAttribute="bottom" constant="8" id="yyo-Ur-pPu"/>
                             <constraint firstItem="T0R-mY-sZm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zcG-Cp-d1R"/>
                         </constraints>
@@ -126,13 +208,17 @@
                     <navigationItem key="navigationItem" title="登录" id="pxH-t5-XY1"/>
                     <connections>
                         <outlet property="btnStart" destination="T0R-mY-sZm" id="QVm-Hz-EFs"/>
+                        <outlet property="switchSex" destination="UVi-Ci-b1Z" id="ARk-1g-j6E"/>
+                        <outlet property="switchVip" destination="EtY-8A-zJf" id="BJD-zS-oCZ"/>
+                        <outlet property="tfNickName" destination="2A5-eK-x1l" id="yiW-D5-aoC"/>
                         <outlet property="tfPassword" destination="JdB-Wt-TjK" id="8rX-a2-mRY"/>
                         <outlet property="tfPhone" destination="RNT-M1-WpJ" id="qqR-fd-x4j"/>
+                        <outlet property="viewSupplementConstraintHeight" destination="zxE-SH-Inb" id="OgC-Oo-ucA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="54" y="117"/>
+            <point key="canvasLocation" x="151" y="117"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VdG-3K-OO0">
@@ -144,22 +230,12 @@
                         <color key="barTintColor" red="0.32820099590000001" green="0.67604690789999999" blue="0.29422101379999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vyd-A0-w3r"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="c52-p6-I69"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HdN-BA-Wjr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-929" y="118"/>
-        </scene>
-        <!--Chat-->
-        <scene sceneID="GMY-T6-mjV">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Chat" id="ehf-Ue-au3" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Uyy-Wx-3zf"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Eme-Pa-8FW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="937" y="118"/>
         </scene>
     </scenes>
 </document>
