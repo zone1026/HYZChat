@@ -11,14 +11,22 @@
 
 @interface ChatMsgCell : UITableViewCell
 
+////////////////////////////////// 共有控件 //////////////////////////////////
+/** 用户头像imageView */
 @property (weak, nonatomic) IBOutlet UIImageView *imgLogo;
+/** 用户昵称label */
 @property (weak, nonatomic) IBOutlet UILabel *lblNick;
+/** 消息内容视图 */
 @property (weak, nonatomic) IBOutlet UIView *viewMsgContent;
-@property (weak, nonatomic) IBOutlet UIView *viewArrow;
-@property (weak, nonatomic) IBOutlet UIView *viewMsgBg;
+
+////////////////////////////////// 共有约束 //////////////////////////////////
+/** 昵称label的高度 */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lblNickConstraintHeight;
 
 /** 是否是我发送的 */
 @property (assign, nonatomic) BOOL isMeSend;
+/** 单元格数据源 */
+@property (strong, nonatomic) CNChatMessage *cellData;
 
 /**
  * @description 更新聊天消息内容

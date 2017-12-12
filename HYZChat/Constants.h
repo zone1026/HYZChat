@@ -9,6 +9,11 @@
 #ifndef Constants_h
 #define Constants_h
 
+/** 聊天视图顶部输入框的默认高度 50.0 */
+static const CGFloat ChatViewTopInputViewDefaultHeight = 50.0;
+/** 聊天视图的昵称默认高度 16.0 */
+static const CGFloat ChatNickNameDefaultHeight = 16.0;
+
 typedef NS_ENUM(NSInteger, ChatBottomTarget)
 {
     ChatBottomTargetFree = 0,

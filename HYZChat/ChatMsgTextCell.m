@@ -11,6 +11,7 @@
 
 @interface ChatMsgTextCell ()
 
+@property (weak, nonatomic) IBOutlet UIView *viewMsgBg;
 @property (weak, nonatomic) IBOutlet RichLabel *lblMsg;
 
 @end
@@ -20,6 +21,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.viewMsgBg.layer.cornerRadius = 5.0f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,13 +34,18 @@
 
 - (void)updateMessageData:(CNChatMessage *)msgData {
     [super updateMessageData:msgData];
-    [self.lblMsg updateTextContent:msgData.msg_content];
-    
+    [self updateTextCellUI];
 }
 
 - (void)updateMessageData:(CNChatMessage *)msgData withMeMsg:(BOOL)isMe {
     [super updateMessageData:msgData withMeMsg:isMe];
-    [self.lblMsg updateTextContent:msgData.msg_content];
+    [self updateTextCellUI];
+}
+
+#pragma mark - 私有方法
+/** 更新textcell相关的UI */
+- (void)updateTextCellUI {
+    [self.lblMsg updateTextContent:self.cellData.msg_content];
 }
 
 @end

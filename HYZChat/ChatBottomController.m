@@ -274,7 +274,6 @@
     self.textView.text = @"";
     [self restoreInputTextViewHeight];
     [self handleNotiEmotionBtnDefaultStauts:nil];
-    [ChatManager sharedManager].bottomMode = ChatBottomTargetFree;
     [self sendTextChatMsg2ChatView:content];
 }
 
@@ -282,9 +281,10 @@
 
 /** 恢复到输入框默认高度 */
 - (void)restoreInputTextViewHeight {
-    self.viewTopConstraintHeight.constant = viewTopDefaultHeight;
+    self.viewTopConstraintHeight.constant = ChatViewTopInputViewDefaultHeight;
     InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
     data.inputViewHeight = self.viewTopConstraintHeight.constant;
+    data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
     data.isEmotionModel = NO;
     data.isImmediatelyChanageInputHeight = YES;//还原输入view初始
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];

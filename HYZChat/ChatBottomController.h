@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-static const CGFloat viewTopDefaultHeight = 50.0;
-
 @interface ChatBottomController : UIViewController
 
 @end

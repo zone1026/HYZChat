@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
  * @description 检测消息类型目前是否支持
  */
 - (BOOL)checkMsgTypeCanSupport;
+/**
+ * @description 检测是否展示昵称
+ */
+- (BOOL)checkShowNickName;
 
 @end
 

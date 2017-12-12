@@ -17,4 +17,12 @@
     return YES;
 }
 
+- (BOOL)checkShowNickName {
+    if (self.target_type == ChatTargetTypeP2P)
+        return NO;
+    else if (self.target_type == ChatTargetTypeP2G) {
+        //群组是否开启了显示昵称。。。
+    }
+    return NO;
+}
 @end

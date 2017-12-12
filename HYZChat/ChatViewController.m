@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.inputTextViewHeight = viewTopDefaultHeight;
+    self.inputTextViewHeight = ChatViewTopInputViewDefaultHeight;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -130,7 +130,6 @@
             [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 self.viewBottomConstraintHeight.constant = self.kbHeight + data.inputViewHeight;
             } completion:nil];
-            [ChatManager sharedManager].bottomMode = ChatBottomTargetFree;
         }
         else {
             if (data.isInputChanage == YES) {
