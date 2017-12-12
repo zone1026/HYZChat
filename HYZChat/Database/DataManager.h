@@ -64,9 +64,15 @@
 - (void)deleteFromCoreData:(NSManagedObject *)obj;
 
 /**
- *  @abstract 将指定的数据表格清空
+ *  @description 将指定的数据表格清空
  *  @param entityName 要删除的数据表格名
  */
 - (void)cleanCoreDatabyEntityName:(NSString*)entityName;
+/**
+ *  @description 根据手机号查找用户，有则返回，没有就新建
+ *  @param phoneStr 手机号
+ *  @return 用户信息
+ */
+- (CNUser *)findUserFromCoredataByPhone:(NSString*)phoneStr;
 
 @end

@@ -11,6 +11,16 @@
 
 @implementation HYZUtil
 
+#pragma mark - /// 时间相关静态方法 ///
+
++ (NSTimeInterval)getCurrentTimestamp {
+    NSDate *date = [NSDate date];
+    NSTimeInterval timestamp = [date timeIntervalSince1970];
+    return timestamp;
+}
+
+#pragma mark - /// 其他相关静态方法 ///
+
 + (BOOL)isEmptyOrNull:(NSString *)str {
     if (!str) // null object
         return YES;
@@ -131,12 +141,21 @@
     return currentVC;
 }
 
-#pragma mark - /// 时间相关静态方法 ///
-
-+ (NSTimeInterval)getCurrentTimestamp {
-    NSDate *date = [NSDate date];
-    NSTimeInterval timestamp = [date timeIntervalSince1970];
-    return timestamp;
++ (BOOL)isMobileNumber:(NSString *)mobileNum {
+    if ([mobileNum length] != 11) //不为11位 不是手机号
+        return NO;
+    
+    //运用正则匹配
+    NSString *patternStr = [NSString stringWithFormat:@"^(0?1[34578]\\d{9})$|^((0(10|2[1-3]|[3-9]\\d{2}))?[1-9]\\d{6,7})$"];
+    NSRegularExpression *regularexpression=[[NSRegularExpression alloc]initWithPattern:patternStr
+                                                                               options:NSRegularExpressionCaseInsensitive
+                                                                                 error:nil];
+    NSUInteger numberOfMatch = [regularexpression numberOfMatchesInString:mobileNum
+                                                                  options:NSMatchingReportProgress
+                                                                    range:NSMakeRange(0, mobileNum.length)];
+    if (numberOfMatch > 0)
+        return YES;
+    return NO;
 }
 
 @end

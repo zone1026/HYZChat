@@ -23,6 +23,7 @@
         <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="user_identity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="user_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_sex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="has_chatMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CNChatMessage" inverseName="belong_user" inverseEntity="CNChatMessage" syncable="YES"/>
@@ -30,6 +31,6 @@
     <elements>
         <element name="CNChatMessage" positionX="-540" positionY="-162" width="128" height="210"/>
         <element name="CNChatResource" positionX="-245" positionY="-105" width="128" height="103"/>
-        <element name="CNUser" positionX="-747" positionY="72" width="128" height="135"/>
+        <element name="CNUser" positionX="-747" positionY="72" width="128" height="148"/>
     </elements>
 </model>

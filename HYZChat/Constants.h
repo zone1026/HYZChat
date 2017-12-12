@@ -14,6 +14,7 @@ static const CGFloat ChatViewTopInputViewDefaultHeight = 50.0;
 /** 聊天视图的昵称默认高度 16.0 */
 static const CGFloat ChatNickNameDefaultHeight = 16.0;
 
+//聊天视图的底部对象
 typedef NS_ENUM(NSInteger, ChatBottomTarget)
 {
     ChatBottomTargetFree = 0,
@@ -23,6 +24,7 @@ typedef NS_ENUM(NSInteger, ChatBottomTarget)
     ChatBottomTargetAudio
 };
 
+//消息类型
 typedef NS_ENUM(NSInteger, ChatMsgType) {
     ChatMsgTypeFree,
     ChatMsgTypeText,
@@ -32,6 +34,7 @@ typedef NS_ENUM(NSInteger, ChatMsgType) {
     ChatMsgTypeUpperLimit   //消息所支持的类型上限
 };
 
+//消息状态
 typedef NS_ENUM(NSInteger, ChatMsgState) {
     ChatMsgStateNoSend,
     ChatMsgStateSending,
@@ -39,9 +42,22 @@ typedef NS_ENUM(NSInteger, ChatMsgState) {
     ChatMsgStateFailed
 };
 
+//聊天目标
 typedef NS_ENUM(NSInteger, ChatTargetType) {
     ChatTargetTypeP2P,//私聊
     ChatTargetTypeP2G//群聊
+};
+
+//用户身份
+typedef NS_ENUM(NSInteger, UserIdentity) {
+    UserIdentityNormal,
+    UserIdentityVIP
+};
+
+//用户性别
+typedef NS_ENUM(NSInteger, UserSex) {
+    UserSexMan,
+    UserSexWoman
 };
 
 #endif /* Constants_h */

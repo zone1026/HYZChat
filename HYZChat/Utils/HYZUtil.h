@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface HYZUtil : NSObject
+/**
+ * @description 获取当前时间戳
+ */
++ (NSTimeInterval)getCurrentTimestamp;
 
 /**
  * @description 检测字符串是否是空字符串
@@ -46,10 +50,10 @@
  * @decription 获取当前页面的ViewController
  */
 + (UIViewController *)getCurrentWindowViewController;
-
 /**
- * @description 获取当前时间戳
+ * @decription 检测手机号是否合法
+ * @param mobileNum 手机号
  */
-+ (NSTimeInterval)getCurrentTimestamp;
++ (BOOL)isMobileNumber:(NSString *)mobileNum;
 
 @end

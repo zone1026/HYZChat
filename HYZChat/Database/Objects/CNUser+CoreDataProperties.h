@@ -2,7 +2,7 @@
 //  CNUser+CoreDataProperties.h
 //  HYZChat
 //
-//  Created by 黄亚州 on 2017/11/24.
+//  Created by 黄亚州 on 2017/12/12.
 //  Copyright © 2017年 黄亚州. All rights reserved.
 //
 //
@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *user_name;
 @property (nullable, nonatomic, copy) NSString *user_phone;
 @property (nonatomic) int16_t user_sex;
+@property (nullable, nonatomic, copy) NSString *user_password;
 @property (nullable, nonatomic, retain) NSSet<CNChatMessage *> *has_chatMessages;
 
 @end

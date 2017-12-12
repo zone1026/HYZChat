@@ -23,7 +23,8 @@ static NSString *const coreDataModelFileName = @"HYZChat";
 
 - (instancetype)init {
     if (self = [super init]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handelApplicationDidEnterBackgroundNotification:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handelApplicationDidEnterBackgroundNotification:)
+                                                     name:UIApplicationDidEnterBackgroundNotification object:nil];
     }
     return self;
 }
@@ -91,12 +92,10 @@ static NSString *const coreDataModelFileName = @"HYZChat";
 - (void)saveContext {
     if (self.managedObjectContext != nil) {
         NSError *error = nil;
-        if ([self.managedObjectContext hasChanges] && [self.managedObjectContext save:&error] == NO) {
+        if ([self.managedObjectContext hasChanges] && [self.managedObjectContext save:&error] == NO)
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        }
-    }
-    else {
-        NSLog(@"数据存储成功");
+        else
+            NSLog(@"数据存储成功");
     }
 }
 
@@ -144,5 +143,23 @@ static NSString *const coreDataModelFileName = @"HYZChat";
         }
     }
 }
+
+- (CNUser *)findUserFromCoredataByPhone:(NSString*)phoneStr {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user_phone = %@", phoneStr];
+    NSArray *result = [self arrayFromCoreData:@"CNUser" predicate:predicate limitNum:1 offset:0 orderBy:nil];
+    if (result == nil || result.count <= 0) {//不存在 则创建
+        CNUser *user = (CNUser *)[self insertIntoCoreData:@"CNUser"];
+        user.user_id = [phoneStr longLongValue];
+        user.user_identity = UserIdentityNormal;
+        user.user_name = phoneStr;
+        user.user_phone = phoneStr;
+        user.user_password = @"";
+        user.user_sex = UserSexMan;
+        user.has_chatMessages = nil;
+        return user;
+    }
+    return (CNUser *)result[0];
+}
+
 
 @end
