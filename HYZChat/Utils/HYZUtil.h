@@ -42,6 +42,10 @@
  * @description 获得换行模式属性
  */
 + (NSDictionary *)getWrapModeAttributes;
+/**
+ * @decription 获取当前页面的ViewController
+ */
++ (UIViewController *)getCurrentWindowViewController;
 
 /**
  * @description 获取当前时间戳

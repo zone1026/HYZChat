@@ -38,6 +38,7 @@
     }
     
     [self.chatMsgArr addObject:chatMessage];//添加到消息列表中
+    [[DataManager sharedManager] saveContext];
 }
 
 @end

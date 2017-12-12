@@ -12,6 +12,7 @@
 @interface ChatMsgCell : UITableViewCell
 
 ////////////////////////////////// 共有控件 //////////////////////////////////
+
 /** 用户头像imageView */
 @property (weak, nonatomic) IBOutlet UIImageView *imgLogo;
 /** 用户昵称label */
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewMsgContent;
 
 ////////////////////////////////// 共有约束 //////////////////////////////////
+
 /** 昵称label的高度 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lblNickConstraintHeight;
 

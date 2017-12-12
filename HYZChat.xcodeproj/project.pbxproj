@@ -11,6 +11,9 @@
 		0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48566D1F5BBCE80008AFB9 /* ChatEmotionCell.m */; };
 		6B0AB7A31F9F0CBB002A2797 /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0AB7A21F9F0CBB002A2797 /* ChatManager.m */; };
 		6B10F0D31F692813008D40C0 /* ChatDataSource+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F0D21F692813008D40C0 /* ChatDataSource+TableView.m */; };
+		6B31AC5A1FDF89BA00F69C6F /* HYZAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B31AC591FDF89BA00F69C6F /* HYZAlert.m */; };
+		6B31AC5D1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B31AC5C1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m */; };
+		6B31AC601FDFAD2F00F69C6F /* DataManager+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B31AC5F1FDFAD2F00F69C6F /* DataManager+User.m */; };
 		6B39DFE31FC6F74400FFF7AD /* ChatMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B39DFE21FC6F74400FFF7AD /* ChatMsgCell.m */; };
 		6B39DFE61FC6F77E00FFF7AD /* ChatMsgTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B39DFE51FC6F77E00FFF7AD /* ChatMsgTextCell.m */; };
 		6B48F4CB1F5EA6C300C9DCDC /* ChatTabEmotionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4CA1F5EA6C300C9DCDC /* ChatTabEmotionData.m */; };
@@ -63,6 +66,12 @@
 		6B0AB7A21F9F0CBB002A2797 /* ChatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatManager.m; sourceTree = "<group>"; };
 		6B10F0D11F692813008D40C0 /* ChatDataSource+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChatDataSource+TableView.h"; sourceTree = "<group>"; };
 		6B10F0D21F692813008D40C0 /* ChatDataSource+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChatDataSource+TableView.m"; sourceTree = "<group>"; };
+		6B31AC581FDF89BA00F69C6F /* HYZAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HYZAlert.h; path = Utils/HYZAlert.h; sourceTree = "<group>"; };
+		6B31AC591FDF89BA00F69C6F /* HYZAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HYZAlert.m; path = Utils/HYZAlert.m; sourceTree = "<group>"; };
+		6B31AC5B1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIAlertAction+ButtonIndex.h"; path = "Utils/UIAlertAction+ButtonIndex.h"; sourceTree = "<group>"; };
+		6B31AC5C1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIAlertAction+ButtonIndex.m"; path = "Utils/UIAlertAction+ButtonIndex.m"; sourceTree = "<group>"; };
+		6B31AC5E1FDFAD2F00F69C6F /* DataManager+User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DataManager+User.h"; sourceTree = "<group>"; };
+		6B31AC5F1FDFAD2F00F69C6F /* DataManager+User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DataManager+User.m"; sourceTree = "<group>"; };
 		6B39DFE11FC6F74400FFF7AD /* ChatMsgCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatMsgCell.h; sourceTree = "<group>"; };
 		6B39DFE21FC6F74400FFF7AD /* ChatMsgCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatMsgCell.m; sourceTree = "<group>"; };
 		6B39DFE41FC6F77E00FFF7AD /* ChatMsgTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatMsgTextCell.h; sourceTree = "<group>"; };
@@ -303,6 +312,8 @@
 				6B8E3DE71F5F810F00020626 /* Emotion.plist */,
 				6BCBCC8B1F58E934000B7152 /* DataManager.h */,
 				6BCBCC8C1F58E934000B7152 /* DataManager.m */,
+				6B31AC5E1FDFAD2F00F69C6F /* DataManager+User.h */,
+				6B31AC5F1FDFAD2F00F69C6F /* DataManager+User.m */,
 				6BCBCCB21F590DA3000B7152 /* Objects */,
 			);
 			path = Database;
@@ -353,6 +364,10 @@
 				6BCBCCCE1F594DD1000B7152 /* HYZUtil.m */,
 				6BCBCCD31F594EC1000B7152 /* UIView+HYZFrame.h */,
 				6BCBCCD41F594EC1000B7152 /* UIView+HYZFrame.m */,
+				6B31AC581FDF89BA00F69C6F /* HYZAlert.h */,
+				6B31AC591FDF89BA00F69C6F /* HYZAlert.m */,
+				6B31AC5B1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.h */,
+				6B31AC5C1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -483,6 +498,8 @@
 				6BCBCCA41F58FBDD000B7152 /* RichLabel.m in Sources */,
 				6BCBCCC01F5938AE000B7152 /* ChatBottomDataSource.m in Sources */,
 				6B48F4D11F5EBD1400C9DCDC /* ChatEmotionTabCell.m in Sources */,
+				6B31AC5A1FDF89BA00F69C6F /* HYZAlert.m in Sources */,
+				6B31AC5D1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m in Sources */,
 				6B48F4CB1F5EA6C300C9DCDC /* ChatTabEmotionData.m in Sources */,
 				6B944A961FC810B900192470 /* CNChatResource+CoreDataProperties.m in Sources */,
 				6BCBCC911F58E96A000B7152 /* ChatViewController.m in Sources */,
@@ -511,6 +528,7 @@
 				6B10F0D31F692813008D40C0 /* ChatDataSource+TableView.m in Sources */,
 				6B48F4D71F5ED92700C9DCDC /* PlusFunctionInfo.m in Sources */,
 				6B48F4D41F5ED74100C9DCDC /* ChatFunctionData.m in Sources */,
+				6B31AC601FDFAD2F00F69C6F /* DataManager+User.m in Sources */,
 				6BCBCCA71F59006D000B7152 /* NSAttributedString+TextAttachment.m in Sources */,
 				6B39DFE31FC6F74400FFF7AD /* ChatMsgCell.m in Sources */,
 				6BCBCCAE1F590A8B000B7152 /* ChatMessageAttribute.m in Sources */,

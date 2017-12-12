@@ -98,6 +98,39 @@
     return attributes;
 }
 
+// 获取当前屏幕显示的viewcontroller
++ (UIViewController *)getCurrentWindowViewController {
+    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *currentVC = [self getCurrentVCFrom:rootViewController];
+    return currentVC;
+}
+
+// 获取根视图
++ (UIViewController *)getCurrentVCFrom:(UIViewController *)rootVC {
+    UIViewController *currentVC;
+    if ([rootVC presentedViewController])
+        // 视图是被presented出来的
+        rootVC = [rootVC presentedViewController];
+    
+    if ([rootVC isKindOfClass:[UITabBarController class]])
+    {
+        // 根视图为UITabBarController
+        currentVC = [self getCurrentVCFrom:[(UITabBarController *)rootVC selectedViewController]];
+    }
+    else if ([rootVC isKindOfClass:[UINavigationController class]])
+    {
+        // 根视图为UINavigationController
+        currentVC = [self getCurrentVCFrom:[(UINavigationController *)rootVC visibleViewController]];
+    }
+    else
+    {
+        // 根视图为非导航类
+        currentVC = rootVC;
+    }
+    
+    return currentVC;
+}
+
 #pragma mark - /// 时间相关静态方法 ///
 
 + (NSTimeInterval)getCurrentTimestamp {

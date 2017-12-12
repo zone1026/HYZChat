@@ -78,9 +78,8 @@
             paragraphStyle.lineSpacing = 3.0;
             [attributes setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
             
-            BOOL isMe = chatMsg.send_userId == [DataManager sharedManager].currentUser.user_id;
             CGRect attributeRect = [NSAttributedString boundsForString:chatMsg.msg_content
-                                        size:CGSizeMake((kScreenWidth - (isMe == YES ? 63.0f : 65.0f) - (60.0f + 8.0f)), CGFLOAT_MAX) attributes:attributes];
+                                        size:CGSizeMake((kScreenWidth - 65.0f - (65.0f + 8.0f)), CGFLOAT_MAX) attributes:attributes];
             CGFloat textHeight = attributeRect.size.height + 3.0f;
             
             //文本内容距离cell顶部(包含昵称label的高度)32.0f；距离cell底部20.0f；
