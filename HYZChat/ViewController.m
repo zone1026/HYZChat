@@ -9,6 +9,8 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *lblDesc;
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
 @property (weak, nonatomic) IBOutlet UITextField *tfPassword;
 @property (weak, nonatomic) IBOutlet UITextField *tfNickName;
@@ -30,6 +32,20 @@
     self.btnStart.layer.cornerRadius = 5.0f;
     self.isExistUser = YES;
     self.viewSupplementConstraintHeight.constant = 0.0f;
+    CNUser *lastUser = [[DataManager sharedManager] lastLoginUser];
+    if (lastUser != nil) {
+        self.lblDesc.text = [NSString stringWithFormat:@"欢迎您回来，%@%@", lastUser.user_name, lastUser.user_sex == UserSexMan ? @"先生" : @"女士"];
+        self.tfPhone.text = lastUser.user_phone;
+        self.tfPassword.text = lastUser.user_password;
+        self.tfNickName.text = lastUser.user_name;
+        [DataManager sharedManager].currentUser = lastUser;
+    }
+    else {
+        self.lblDesc.text = @"欢迎登录";
+        self.tfPhone.text = @"";
+        self.tfPassword.text = @"";
+        self.tfNickName.text = @"";
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -118,7 +134,7 @@
         self.tfPhone.enabled = YES;
         self.tfPassword.enabled = YES;
         self.viewSupplementConstraintHeight.constant = 0.0f;
-        [self.btnStart setTitle:@"开始聊天" forState:UIControlStateNormal];
+        [self.btnStart setTitle:@"登  录" forState:UIControlStateNormal];
         [self openChatUI];
     }
     else {

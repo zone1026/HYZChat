@@ -36,6 +36,8 @@
 		6BA5D1671FDE6EA300B8C3C6 /* ChatDataSource+ChatMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA5D1661FDE6EA300B8C3C6 /* ChatDataSource+ChatMsg.m */; };
 		6BAC6F5B1F5FF7E200E896FB /* ChatFunctionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC6F5A1F5FF7E200E896FB /* ChatFunctionController.m */; };
 		6BAC6F5E1F5FFBD300E896FB /* ChatEmotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC6F5D1F5FFBD300E896FB /* ChatEmotionController.m */; };
+		6BB093E51FE1227300D99A79 /* MsgController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB093E41FE1227300D99A79 /* MsgController.m */; };
+		6BB093E81FE1229300D99A79 /* MsgDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB093E71FE1229300D99A79 /* MsgDataSource.m */; };
 		6BCBCC721F58E8C7000B7152 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC711F58E8C7000B7152 /* main.m */; };
 		6BCBCC751F58E8C7000B7152 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC741F58E8C7000B7152 /* AppDelegate.m */; };
 		6BCBCC781F58E8C7000B7152 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC771F58E8C7000B7152 /* ViewController.m */; };
@@ -55,6 +57,7 @@
 		6BCBCCCF1F594DD1000B7152 /* HYZUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCCE1F594DD1000B7152 /* HYZUtil.m */; };
 		6BCBCCD51F594EC1000B7152 /* UIView+HYZFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCD41F594EC1000B7152 /* UIView+HYZFrame.m */; };
 		6BCBCCD81F5951B2000B7152 /* InputViewFrameChanageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCD71F5951B2000B7152 /* InputViewFrameChanageData.m */; };
+		6BD6E5AA1FE10FF50095BB50 /* Msg.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD6E5A81FE10FF50095BB50 /* Msg.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +116,10 @@
 		6BAC6F5A1F5FF7E200E896FB /* ChatFunctionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatFunctionController.m; sourceTree = "<group>"; };
 		6BAC6F5C1F5FFBD300E896FB /* ChatEmotionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatEmotionController.h; sourceTree = "<group>"; };
 		6BAC6F5D1F5FFBD300E896FB /* ChatEmotionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatEmotionController.m; sourceTree = "<group>"; };
+		6BB093E31FE1227300D99A79 /* MsgController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MsgController.h; sourceTree = "<group>"; };
+		6BB093E41FE1227300D99A79 /* MsgController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MsgController.m; sourceTree = "<group>"; };
+		6BB093E61FE1229300D99A79 /* MsgDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MsgDataSource.h; sourceTree = "<group>"; };
+		6BB093E71FE1229300D99A79 /* MsgDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MsgDataSource.m; sourceTree = "<group>"; };
 		6BCBCC6D1F58E8C7000B7152 /* HYZChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYZChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCBCC711F58E8C7000B7152 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BCBCC731F58E8C7000B7152 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -151,6 +158,7 @@
 		6BCBCCD41F594EC1000B7152 /* UIView+HYZFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+HYZFrame.m"; path = "Utils/UIView+HYZFrame.m"; sourceTree = "<group>"; };
 		6BCBCCD61F5951B2000B7152 /* InputViewFrameChanageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputViewFrameChanageData.h; sourceTree = "<group>"; };
 		6BCBCCD71F5951B2000B7152 /* InputViewFrameChanageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputViewFrameChanageData.m; sourceTree = "<group>"; };
+		6BD6E5A91FE10FF50095BB50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Msg.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,10 +285,11 @@
 		6BCBCC6F1F58E8C7000B7152 /* HYZChat */ = {
 			isa = PBXGroup;
 			children = (
-				6B944A9A1FC8148C00192470 /* Super */,
 				6BCBCCA01F58FB6E000B7152 /* Utils */,
-				6BCBCC8E1F58E937000B7152 /* Chat */,
+				6B944A9A1FC8148C00192470 /* Super */,
 				6BCBCC8A1F58E934000B7152 /* Database */,
+				6BCBCC8E1F58E937000B7152 /* Chat */,
+				6BD6E5A11FE0D18E0095BB50 /* Msg */,
 				6BCBCC731F58E8C7000B7152 /* AppDelegate.h */,
 				6BCBCC741F58E8C7000B7152 /* AppDelegate.m */,
 				6BCBCC761F58E8C7000B7152 /* ViewController.h */,
@@ -415,6 +424,18 @@
 			path = Objects;
 			sourceTree = "<group>";
 		};
+		6BD6E5A11FE0D18E0095BB50 /* Msg */ = {
+			isa = PBXGroup;
+			children = (
+				6BD6E5A81FE10FF50095BB50 /* Msg.storyboard */,
+				6BB093E31FE1227300D99A79 /* MsgController.h */,
+				6BB093E41FE1227300D99A79 /* MsgController.m */,
+				6BB093E61FE1229300D99A79 /* MsgDataSource.h */,
+				6BB093E71FE1229300D99A79 /* MsgDataSource.m */,
+			);
+			name = Msg;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -446,7 +467,7 @@
 				TargetAttributes = {
 					6BCBCC6C1F58E8C7000B7152 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = P5M2XEQ4ZK;
+						DevelopmentTeam = K2K29JTT29;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -475,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BCBCC831F58E8C7000B7152 /* LaunchScreen.storyboard in Resources */,
+				6BD6E5AA1FE10FF50095BB50 /* Msg.storyboard in Resources */,
 				6BCBCC801F58E8C7000B7152 /* Assets.xcassets in Resources */,
 				6B8E3DE91F5F810F00020626 /* Emotion.plist in Resources */,
 				6BCBCC941F58E972000B7152 /* Chat.storyboard in Resources */,
@@ -501,10 +523,12 @@
 				6B31AC5A1FDF89BA00F69C6F /* HYZAlert.m in Sources */,
 				6B31AC5D1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m in Sources */,
 				6B48F4CB1F5EA6C300C9DCDC /* ChatTabEmotionData.m in Sources */,
+				6BB093E51FE1227300D99A79 /* MsgController.m in Sources */,
 				6B944A961FC810B900192470 /* CNChatResource+CoreDataProperties.m in Sources */,
 				6BCBCC911F58E96A000B7152 /* ChatViewController.m in Sources */,
 				6B944A991FC810E600192470 /* HYZChat.xcdatamodeld in Sources */,
 				6BCBCC751F58E8C7000B7152 /* AppDelegate.m in Sources */,
+				6BB093E81FE1229300D99A79 /* MsgDataSource.m in Sources */,
 				6BCBCCD51F594EC1000B7152 /* UIView+HYZFrame.m in Sources */,
 				6BCBCCBA1F590F63000B7152 /* ChatDataSource.m in Sources */,
 				6B8E3E011F5F8D3B00020626 /* CNUser+CoreDataProperties.m in Sources */,
@@ -560,6 +584,14 @@
 				6BCBCC931F58E972000B7152 /* Base */,
 			);
 			name = Chat.storyboard;
+			sourceTree = "<group>";
+		};
+		6BD6E5A81FE10FF50095BB50 /* Msg.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BD6E5A91FE10FF50095BB50 /* Base */,
+			);
+			name = Msg.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -671,7 +703,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = P5M2XEQ4ZK;
+				DEVELOPMENT_TEAM = K2K29JTT29;
 				GCC_PREFIX_HEADER = HYZChat/CommonPrefix.pch;
 				INFOPLIST_FILE = HYZChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -685,7 +717,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = P5M2XEQ4ZK;
+				DEVELOPMENT_TEAM = K2K29JTT29;
 				GCC_PREFIX_HEADER = HYZChat/CommonPrefix.pch;
 				INFOPLIST_FILE = HYZChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

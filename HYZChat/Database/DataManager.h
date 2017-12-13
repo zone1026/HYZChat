@@ -74,5 +74,10 @@
  *  @return 用户信息
  */
 - (CNUser *)findUserFromCoredataByPhone:(NSString*)phoneStr;
+/**
+ *  @description 最近一次的登录用户信息
+ *  @return 用户信息
+ */
+- (CNUser *)lastLoginUser;
 
 @end

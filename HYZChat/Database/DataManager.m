@@ -161,5 +161,12 @@ static NSString *const coreDataModelFileName = @"HYZChat";
     return (CNUser *)result[0];
 }
 
+- (CNUser *)lastLoginUser {
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"last_time" ascending:NO]];
+    NSArray *result = [self arrayFromCoreData:@"CNUser" predicate:nil limitNum:1 offset:0 orderBy:sortDesc];
+    if (result == nil || result.count <= 0)
+        return nil;
+    return (CNUser *)result[0];
+}
 
 @end
