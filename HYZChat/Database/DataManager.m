@@ -155,6 +155,7 @@ static NSString *const coreDataModelFileName = @"HYZChat";
         user.user_phone = phoneStr;
         user.user_password = @"";
         user.user_sex = UserSexMan;
+        user.last_time = [HYZUtil getCurrentTimestamp];
         user.has_chatMessages = nil;
         return user;
     }

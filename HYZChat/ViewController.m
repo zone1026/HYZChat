@@ -128,7 +128,7 @@
         user.user_name = self.tfNickName.text;
         user.user_sex = self.switchSex.on == YES ? UserSexMan : UserSexWoman;
         user.user_identity = self.switchVip.on == YES ? UserIdentityVIP : UserIdentityNormal;
-        [[DataManager sharedManager] saveContext];
+        user.last_time = [HYZUtil getCurrentTimestamp];
         
         self.isExistUser = YES;
         self.tfPhone.enabled = YES;
@@ -143,7 +143,6 @@
         
         if ([HYZUtil isEmptyOrNull:user.user_password] == YES) {//还没密码，说明是新用户
             user.user_password = self.tfPassword.text;
-            [[DataManager sharedManager] saveContext];
             self.tfPhone.enabled = NO;
             self.tfPassword.enabled = NO;
             self.viewSupplementConstraintHeight.constant = 92.0f;
@@ -155,6 +154,7 @@
                 [HYZAlert showInfo:[NSString stringWithFormat:@"密码错误，您之前设置的密码是：< %@ >，请您重新输入", user.user_password] underTitle:@"提示"];
                 return;
             }
+            user.last_time = [HYZUtil getCurrentTimestamp];
             [self openChatUI];
         }
     }
@@ -162,6 +162,7 @@
 
 /** 打开聊天界面 */
 - (void)openChatUI {
+    [[DataManager sharedManager] saveContext];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Chat" bundle:nil];
     UINavigationController *nc = [storyboard instantiateViewControllerWithIdentifier:@"NaviChat"];
     [self presentViewController:nc animated:YES completion:nil];

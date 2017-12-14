@@ -34,6 +34,12 @@
     return _chatCellInfoDict;
 }
 
+- (NSMutableDictionary *)cellHeightDict {
+    if (_cellHeightDict == nil)
+        _cellHeightDict = [NSMutableDictionary dictionary];
+    return _cellHeightDict;
+}
+
 #pragma mark - 私有方法
 
 /** 加载本地数据库中的消息数据*/
