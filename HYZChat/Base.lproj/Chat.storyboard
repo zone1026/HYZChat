@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SEu-x6-RYk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SEu-x6-RYk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +30,7 @@
         <!--聊天-->
         <scene sceneID="OOn-7G-lzy">
             <objects>
-                <viewController storyboardIdentifier="ChatViewController" automaticallyAdjustsScrollViewInsets="NO" id="BbH-lb-YNE" customClass="ChatViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" id="BbH-lb-YNE" customClass="ChatViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qjg-fN-4Md"/>
                         <viewControllerLayoutGuide type="bottom" id="k3T-2d-nfK"/>
@@ -44,7 +44,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ewu-pA-6X8">
-                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="herTextCell" rowHeight="80" id="P39-am-pw9" customClass="ChatMsgTextCell">
@@ -240,7 +240,7 @@
                             <constraint firstItem="cyR-oa-exF" firstAttribute="width" secondItem="00p-Uz-6Wf" secondAttribute="width" id="18l-cf-3dc"/>
                             <constraint firstItem="cyR-oa-exF" firstAttribute="top" secondItem="00p-Uz-6Wf" secondAttribute="top" constant="64" id="Ab3-3D-97y"/>
                             <constraint firstItem="cyR-oa-exF" firstAttribute="centerX" secondItem="00p-Uz-6Wf" secondAttribute="centerX" id="Cev-e5-79Z"/>
-                            <constraint firstItem="ewu-pA-6X8" firstAttribute="top" secondItem="00p-Uz-6Wf" secondAttribute="top" constant="64" id="Dzt-IL-ryO"/>
+                            <constraint firstItem="ewu-pA-6X8" firstAttribute="top" secondItem="00p-Uz-6Wf" secondAttribute="top" id="Dzt-IL-ryO"/>
                             <constraint firstAttribute="bottom" secondItem="cyR-oa-exF" secondAttribute="bottom" id="Mar-pr-qzN"/>
                             <constraint firstItem="VH9-BF-FlH" firstAttribute="centerX" secondItem="00p-Uz-6Wf" secondAttribute="centerX" id="Vuf-0g-IRi"/>
                             <constraint firstItem="ewu-pA-6X8" firstAttribute="centerX" secondItem="00p-Uz-6Wf" secondAttribute="centerX" id="aD5-4C-5mh"/>
