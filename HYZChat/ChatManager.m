@@ -8,6 +8,10 @@
 
 #import "ChatManager.h"
 
+@interface ChatManager ()
+
+@end
+
 @implementation ChatManager
 
 + (instancetype)sharedManager {
@@ -23,6 +27,18 @@
     if (self = [super init]) {
     }
     return self;
+}
+
+- (NSMutableDictionary *)emotionTextDict {
+    if (_emotionTextDict == nil) {
+        NSArray *emotions = [HYZUtil getPlistData:@"Emotions" inFile:@"Emotion"];
+        _emotionTextDict = [NSMutableDictionary dictionary];
+        if (emotions != nil || emotions.count > 0) {
+            for (NSDictionary *dict in emotions)
+                [_emotionTextDict setObject:dict[@"icon"] forKey:dict[@"value"]];
+        }
+    }
+    return _emotionTextDict;
 }
 
 @end

@@ -23,28 +23,17 @@
     return contentRect;
 }
 
-+ (NSArray <AttachmentInfo *>*)textAttachmentStringArray {
-#warning text Attachment data, get plist data
-    
-    return @[];
-}
-
-+ (AttachmentInfo *)getAttachmentInfoByAttachmentDesc:(NSString *)desc {
-    NSArray *attachmentArr = [self textAttachmentStringArray];
-    if (attachmentArr == nil || attachmentArr.count <= 0) {
++ (NSString *)getAttachmentInfoByAttachmentDesc:(NSString *)desc {
+    NSMutableDictionary *attachmentDict = [ChatManager sharedManager].emotionTextDict;
+    if (attachmentDict == nil)
         return nil;
-    }
-    for (AttachmentInfo *info in attachmentArr) {
-        if ([info.attachmentDesc isEqualToString:desc]) {
-            return info;
-        }
-    }
-    return nil;
+    return [attachmentDict objectForKey:desc];
 }
 
 + (CGRect)boundsForString:(NSString *)string size:(CGSize)size attributes:(NSDictionary *)attrs {
     NSAttributedString *attributedString = [NSAttributedString attachmentAttributedStringFrom:string attributes:attrs];
-    CGRect contentRect = [attributedString boundingRectWithSize:size options: NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
+    CGRect contentRect = [attributedString boundingRectWithSize:size options: NSStringDrawingUsesLineFragmentOrigin |
+                          NSStringDrawingUsesFontLeading context:nil];
     return contentRect;
 }
 
@@ -93,14 +82,14 @@
                 {
                     [attachmentDesc appendString:c];
                 }
-                AttachmentInfo *info = [self getAttachmentInfoByAttachmentDesc:attachmentDesc];
-                if (info != nil) {
+                NSString *imageName = [self getAttachmentInfoByAttachmentDesc:attachmentDesc];
+                if ([HYZUtil isEmptyOrNull:imageName] == NO) {
                     NSRange range = NSMakeRange(i + 1 - attachmentDesc.length, attachmentDesc.length);
 
                     [attributedString replaceCharactersInRange:range withString:@" "];
                     HHTextAttachment *attachment = [[HHTextAttachment alloc] initWithData:nil ofType:nil];
                     attachment.range = NSMakeRange(i + 1 - attachmentDesc.length, 1);
-                    attachment.image = [UIImage imageNamed:info.imageName];
+                    attachment.image = [UIImage imageNamed:imageName];
 
                     i -= ([stack count] - 1);
                     [array addObject:attachment];

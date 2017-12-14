@@ -338,6 +338,7 @@
  * @parm textContent 文本信息
  */
 - (void)sendTextChatMsg2ChatView:(NSString *)textContent {
+    self.chatEmotionShouldChangeRange = NSMakeRange(0, 0);
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiUpdateChatViewForSendMsg object:nil
                                                 userInfo:@{@"type":@(ChatMsgTypeText), @"content":textContent}];
 }

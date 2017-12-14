@@ -126,8 +126,8 @@
         }
         CNUser *user = [DataManager sharedManager].currentUser;
         user.user_name = self.tfNickName.text;
-        user.user_sex = self.switchSex.on == YES ? UserSexWoman : UserSexMan;
-        user.user_identity = self.switchVip.on == YES ? UserIdentityNormal : UserIdentityVIP;
+        user.user_sex = self.switchSex.on == YES ? UserSexMan : UserSexWoman;
+        user.user_identity = self.switchVip.on == YES ? UserIdentityVIP : UserIdentityNormal;
         [[DataManager sharedManager] saveContext];
         
         self.isExistUser = YES;

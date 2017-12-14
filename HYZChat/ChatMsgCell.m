@@ -54,7 +54,7 @@
     self.isMeSend = isMe;
     self.imgLogo.image = [UIImage imageNamed:@"DEFAULT_LOGO"];
     self.lblNick.text = [HYZUtil isEmptyOrNull:self.cellData.send_nick] == YES ? @"未知" : self.cellData.send_nick;
-    self.lblNickConstraintHeight.constant =  [msgData checkShowNickName] == NO ? 0.0f : ChatNickNameDefaultHeight;
+    self.lblNickConstraintHeight.constant =  [msgData checkShowNickName] == NO ? 0.01f : ChatNickNameDefaultHeight;
 }
 
 #pragma mark - 事件
