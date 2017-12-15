@@ -71,7 +71,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qE9-Vu-TCm" userLabel="消息背景">
-                                                    <rect key="frame" x="50" y="24" width="115" height="44"/>
+                                                    <rect key="frame" x="50" y="24" width="121" height="44"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CHAT_IMG_LEFT_ARROW" translatesAutoresizingMaskIntoConstraints="NO" id="6eM-hZ-YS7">
                                                             <rect key="frame" x="0.0" y="13" width="5" height="10"/>
@@ -81,7 +81,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vP2-DQ-h4D" userLabel="背景">
-                                                            <rect key="frame" x="5" y="0.0" width="110" height="44"/>
+                                                            <rect key="frame" x="5" y="0.0" width="116" height="44"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
                                                     </subviews>
@@ -96,13 +96,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一条消息" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiF-ae-g4d" userLabel="文本消息" customClass="RichLabel">
-                                                    <rect key="frame" x="65" y="32" width="92" height="28"/>
+                                                    <rect key="frame" x="65" y="32" width="98" height="28"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="JwM-bo-m5s"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -157,17 +157,17 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xW-5k-3tw" userLabel="消息背景">
-                                                    <rect key="frame" x="209" y="24" width="115" height="44"/>
+                                                    <rect key="frame" x="203" y="24" width="121" height="44"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CHAT_IMG_RIGHT_ARROW" translatesAutoresizingMaskIntoConstraints="NO" id="zxs-Fh-cZf">
-                                                            <rect key="frame" x="110" y="13" width="5" height="10"/>
+                                                            <rect key="frame" x="116" y="13" width="5" height="10"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="5" id="UAM-6R-Iel"/>
                                                                 <constraint firstAttribute="width" secondItem="zxs-Fh-cZf" secondAttribute="height" multiplier="1:2" id="cte-Ky-pcp"/>
                                                             </constraints>
                                                         </imageView>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAo-BS-v6A" userLabel="背景">
-                                                            <rect key="frame" x="0.0" y="0.0" width="110" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="116" height="44"/>
                                                             <color key="backgroundColor" red="0.62745098040000002" green="0.90512603520000001" blue="0.35352197289999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                     </subviews>
@@ -182,13 +182,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一条消息" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1x-67-RVi" userLabel="文本消息" customClass="RichLabel">
-                                                    <rect key="frame" x="218" y="32" width="92" height="28"/>
+                                                    <rect key="frame" x="212" y="32" width="98" height="28"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="JPb-yg-05w"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

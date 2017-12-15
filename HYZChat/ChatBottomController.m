@@ -255,6 +255,7 @@
     
     [self sendTextChatMsg2ChatView:self.textView.text];
     self.textView.text = @"";
+    [self restoreInputTextViewHeight];
 }
 
 #pragma mark - ChatBottomDataSourceDelegate
@@ -285,7 +286,7 @@
     InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
     data.inputViewHeight = self.viewTopConstraintHeight.constant;
     data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
-    data.isEmotionModel = NO;
+    data.isEmotionModel = [ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion;
     data.isImmediatelyChanageInputHeight = YES;//还原输入view初始
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];
 }
@@ -323,7 +324,7 @@
                 [inputText replaceCharactersInRange:rangeEmotion withString:@""];
                 
                 NSString *value = [self.textView.text substringWithRange:rangeEmotion];
-                if (value && ![value isEqualToString:@""]) {
+                if ([HYZUtil isEmptyOrNull:value] == NO) {
                     NSRange range = self.chatEmotionShouldChangeRange;
                     range.location -= value.length;
                     self.chatEmotionShouldChangeRange = range;

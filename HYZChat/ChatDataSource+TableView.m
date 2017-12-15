@@ -72,7 +72,7 @@
         {
             CGFloat cellHeight = [[self.cellHeightDict objectForKey:chatMsg.send_time] floatValue];
             if (cellHeight == 0.0f) {
-                NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:15.0f], NSFontAttributeName, nil];
+                NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16.0f], NSFontAttributeName, nil];
                 //设置换行模式，表情图标出界自动换行
                 [attributes setValuesForKeysWithDictionary:[HYZUtil getWrapModeAttributes]];
                 //设置行间距

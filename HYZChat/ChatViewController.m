@@ -37,6 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.inputTextViewHeight = ChatViewTopInputViewDefaultHeight;
+    self.emotionViewHeiht = NSNotFound;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -126,32 +127,23 @@
 - (void)handleNotiInputViewFrameChanage:(NSNotification *)notification {
     if (notification.object != nil && [notification.object isKindOfClass:[InputViewFrameChanageData class]]) {
         InputViewFrameChanageData *data = notification.object;
-        if (data.isImmediatelyChanageInputHeight == YES) {
-            [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                self.viewBottomConstraintHeight.constant = self.kbHeight + data.inputViewHeight;
-            } completion:nil];
+        if (data.isInputChanage == YES || data.isImmediatelyChanageInputHeight == YES) {
+            [UIView animateWithDuration:chatAnimateDuration animations:^{
+                if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion)
+                    self.viewBottomConstraintHeight.constant = self.emotionViewHeiht + data.inputTextViewHeight;
+                else if ([ChatManager sharedManager].bottomMode == ChatBottomTargetText)
+                    self.viewBottomConstraintHeight.constant = self.kbHeight + data.inputTextViewHeight;
+            } completion:^(BOOL finished) {
+//                [[NSNotificationCenter defaultCenter] postNotificationName:NotiLiveshowInteractionScrollCellToBottom object:nil];
+            }];
         }
         else {
-            if (data.isInputChanage == YES) {
-                [UIView animateWithDuration:chatAnimateDuration animations:^{
-                    if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion)
-                        self.viewBottomConstraintHeight.constant = self.emotionViewHeiht + data.inputTextViewHeight;
-                    else if ([ChatManager sharedManager].bottomMode == ChatBottomTargetText)
-                        self.viewBottomConstraintHeight.constant = self.kbHeight + data.inputTextViewHeight;
-                    
-                } completion:^(BOOL finished) {
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:NotiLiveshowInteractionScrollCellToBottom object:nil];
-                }];
-            }
-            else {
-                [UIView animateWithDuration:chatAnimateDuration animations:^{    
-                    self.viewBottomConstraintHeight.constant = data.inputViewHeight;
-                } completion:^(BOOL finished) {
-                    if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion) {
-                        self.emotionViewHeiht = data.inputViewHeight - data.inputTextViewHeight;
-                    }
-                }];
-            }
+            [UIView animateWithDuration:chatAnimateDuration animations:^{
+                self.viewBottomConstraintHeight.constant = data.inputViewHeight;
+            } completion:^(BOOL finished) {
+                if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion)
+                    self.emotionViewHeiht = data.inputViewHeight - data.inputTextViewHeight;
+            }];
         }
         self.inputTextViewHeight = data.inputTextViewHeight;
     }
