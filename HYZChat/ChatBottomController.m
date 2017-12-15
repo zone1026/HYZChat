@@ -308,26 +308,35 @@
 /** 将要删除表情描述文本 */
 - (void)willDeleteEmotion {
     NSMutableString *inputText = [[NSMutableString alloc] initWithString:self.textView.text];
-    if (inputText.length > 0) {
+    if (inputText.length > 0 && self.chatEmotionShouldChangeRange.location > 0) {
         NSRange rangeLeft = [inputText rangeOfString:attachmentMarkLeft options:NSBackwardsSearch range:NSMakeRange(0, self.chatEmotionShouldChangeRange.location)];
         NSRange rangeRight = [inputText rangeOfString:attachmentMarkRight options:NSBackwardsSearch range:NSMakeRange(0, self.chatEmotionShouldChangeRange.location)];
-        if (rangeLeft.location == NSNotFound || rangeRight.location == NSNotFound)
-            return;
-        
-        if (rangeLeft.location < rangeRight.location) {
-            NSRange rangeEmotion = NSMakeRange(rangeLeft.location, rangeRight.location - rangeLeft.location + 1);
-            [inputText replaceCharactersInRange:rangeEmotion withString:@""];
-            
-            NSString *value = [self.textView.text substringWithRange:rangeEmotion];
-            if (value && ![value isEqualToString:@""]) {
+        if (rangeLeft.location == NSNotFound || rangeRight.location == NSNotFound) {//没找到表情描述文本，当作删除字符处理
+            [inputText replaceCharactersInRange:NSMakeRange(self.chatEmotionShouldChangeRange.location - 1, 1) withString:@""];
+            NSRange range = self.chatEmotionShouldChangeRange;
+            range.location -= 1;
+            self.chatEmotionShouldChangeRange = range;
+        }
+        else {
+            if (rangeLeft.location < rangeRight.location) {
+                NSRange rangeEmotion = NSMakeRange(rangeLeft.location, rangeRight.location - rangeLeft.location + 1);
+                [inputText replaceCharactersInRange:rangeEmotion withString:@""];
+                
+                NSString *value = [self.textView.text substringWithRange:rangeEmotion];
+                if (value && ![value isEqualToString:@""]) {
+                    NSRange range = self.chatEmotionShouldChangeRange;
+                    range.location -= value.length;
+                    self.chatEmotionShouldChangeRange = range;
+                }
+            }
+            else {//找到的 左右标识反了，当作删除字符处理
+                [inputText replaceCharactersInRange:NSMakeRange(self.chatEmotionShouldChangeRange.location - 1, 1) withString:@""];
                 NSRange range = self.chatEmotionShouldChangeRange;
-                range.location -= value.length;
+                range.location -= 1;
                 self.chatEmotionShouldChangeRange = range;
             }
         }
-        else
-            [inputText replaceCharactersInRange:NSMakeRange(inputText.length - 1, 1) withString:@""];
-
+        
         self.textView.text = inputText;
         [self.chatBottomData textChangedByEmotionStr:self.textView];
     }
