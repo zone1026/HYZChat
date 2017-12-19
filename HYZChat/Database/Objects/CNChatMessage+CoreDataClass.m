@@ -18,6 +18,8 @@
 }
 
 - (BOOL)checkShowNickName {
+    if (self.send_userId == [DataManager sharedManager].currentUser.user_id)//自己不显示
+        return NO;
     if (self.target_type == ChatTargetTypeP2P)
         return NO;
     else if (self.target_type == ChatTargetTypeP2G) {
