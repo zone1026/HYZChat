@@ -134,19 +134,20 @@
     [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.viewBottomConstraintHeight.constant = self.inputTextViewHeight + kbRect.size.height;
         [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
         [self scrollTableViewToBottom];
-    }];
+    } completion:^(BOOL finished) {}];
     
     self.kbHeight = kbRect.size.height;
 }
 
 /** 键盘隐藏 */
 - (void)keyboardWillHide:(NSNotification *)notification {
-    [UIView animateWithDuration:chatAnimateDuration animations:^{
-        self.viewBottomConstraintHeight.constant = self.inputTextViewHeight;
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {}];
+    if ([ChatManager sharedManager].bottomMode != ChatBottomTargetEmotion && [ChatManager sharedManager].bottomMode != ChatBottomTargetFunction) {
+        [UIView animateWithDuration:chatAnimateDuration animations:^{
+            self.viewBottomConstraintHeight.constant = self.inputTextViewHeight;
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {}];
+    }
     self.kbHeight = 0.0;
 }
 
@@ -163,18 +164,17 @@
                 else
                     self.viewBottomConstraintHeight.constant = data.inputViewHeight;
                 [self.view layoutIfNeeded];
-            } completion:^(BOOL finished) {
                 [self scrollTableViewToBottom];
-            }];
+            } completion:^(BOOL finished) {}];
         }
         else {
             [UIView animateWithDuration:chatAnimateDuration animations:^{
                 self.viewBottomConstraintHeight.constant = data.inputViewHeight;
                 [self.view layoutIfNeeded];
+                [self scrollTableViewToBottom];
             } completion:^(BOOL finished) {
                 if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion)
                     self.emotionViewHeiht = data.inputViewHeight - data.inputTextViewHeight;
-                [self scrollTableViewToBottom];
             }];
         }
         self.inputTextViewHeight = data.inputTextViewHeight;

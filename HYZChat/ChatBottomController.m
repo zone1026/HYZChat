@@ -123,12 +123,14 @@
         if ([ChatManager sharedManager].bottomMode == ChatBottomTargetFunction) {
             CGAffineTransform transform = CGAffineTransformIdentity;
             transform = CGAffineTransformTranslate(transform, 0.0, self.viewEmotion.height);
-            self.viewEmotion.transform = transform;
+            self.viewEmotion.transform = transform;//先下移出屏幕
             [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                self.viewEmotion.transform = CGAffineTransformIdentity;
+                self.viewEmotion.transform = CGAffineTransformIdentity;//在返回原来的位置
             } completion:^(BOOL finished) {}];
+            [ChatManager sharedManager].bottomMode = ChatBottomTargetEmotion;
         }
         else {
+            [ChatManager sharedManager].bottomMode = ChatBottomTargetEmotion;//要在endEditing之前，因为UIKeyboardWillHideNotification通知方法中用来做判断
             [self.view endEditing:YES];
             InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
             data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
@@ -136,17 +138,9 @@
             data.isEmotionModel = YES;
             [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的出现 导致整个view的frame变化
         }
-        [ChatManager sharedManager].bottomMode = ChatBottomTargetEmotion;
     }
-    else {
-        [ChatManager sharedManager].bottomMode = ChatBottomTargetText;
-        InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
-        data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
-        data.inputViewHeight = self.viewTopConstraintHeight.constant;
-        data.isEmotionModel = NO;
-        [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的消失 导致整个view的frame变化
+    else
         [self.textView becomeFirstResponder];
-    }
 }
 
 - (IBAction)btnPlusTouchUpInside:(UIButton *)sender {
@@ -174,24 +168,19 @@
             [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 self.viewFunction.transform = CGAffineTransformIdentity;
             } completion:^(BOOL finished) {}];
+            [ChatManager sharedManager].bottomMode = ChatBottomTargetFunction;
         }
         else {
+            [ChatManager sharedManager].bottomMode = ChatBottomTargetFunction;//要在endEditing之前，因为UIKeyboardWillHideNotification通知方法中用来做判断
             [self.view endEditing:YES];
             InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
             data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
             data.inputViewHeight = self.viewTopConstraintHeight.constant + self.emotionViewHeiht;
             [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的出现 导致整个view的frame变化
         }
-        [ChatManager sharedManager].bottomMode = ChatBottomTargetFunction;
     }
-    else {
-        [ChatManager sharedManager].bottomMode = ChatBottomTargetText;
-        InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
-        data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
-        data.inputViewHeight = self.viewTopConstraintHeight.constant;
-        [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的消失 导致整个view的frame变化
+    else
         [self.textView becomeFirstResponder];
-    }
 }
 
 - (IBAction)btnRecordTouchUpInside:(UIButton *)sender {
