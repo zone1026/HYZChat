@@ -107,6 +107,8 @@
                                                  name:NotiChatFunctionBtnClick object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiUpdateChatViewForSendMsg:)
                                                  name:NotiUpdateChatViewForSendMsg object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiChatBottomPanelShrinkage:)
+                                                 name:NotiChatBottomPanelShrinkage object:nil];
 }
 
 /** 移除消息通知 */
@@ -119,6 +121,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiInputViewFrameChanage object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiChatFunctionBtnClick object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiUpdateChatViewForSendMsg object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiChatBottomPanelShrinkage object:nil];
 }
 
 /** 键盘弹出 */
@@ -130,6 +133,7 @@
     kbRect = [self.view convertRect:kbRect fromView:nil];
     [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.viewBottomConstraintHeight.constant = self.inputTextViewHeight + kbRect.size.height;
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         [self scrollTableViewToBottom];
     }];
@@ -141,6 +145,7 @@
 - (void)keyboardWillHide:(NSNotification *)notification {
     [UIView animateWithDuration:chatAnimateDuration animations:^{
         self.viewBottomConstraintHeight.constant = self.inputTextViewHeight;
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {}];
     self.kbHeight = 0.0;
 }
@@ -222,6 +227,16 @@
         [self.chatDataSource addChatMsg:msgType withMsgContent:content];
         [self.chatTableView reloadData];
     }
+}
+
+/** 收缩聊天底部面板通知 */
+- (void)handleNotiChatBottomPanelShrinkage:(NSNotification *)notifcation {
+    [ChatManager sharedManager].bottomMode = ChatBottomTargetFree;
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotiEmotionBtnDefaultStauts object:nil];
+    [UIView animateWithDuration:chatAnimateDuration animations:^{
+        self.viewBottomConstraintHeight.constant = self.inputTextViewHeight;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {}];
 }
 
 #pragma mark - 私有方法

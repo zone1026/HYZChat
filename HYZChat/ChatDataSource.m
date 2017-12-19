@@ -106,4 +106,21 @@
     return 0.01;
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion || [ChatManager sharedManager].bottomMode == ChatBottomTargetFunction)
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotiChatBottomPanelShrinkage object:nil];
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion || [ChatManager sharedManager].bottomMode == ChatBottomTargetFunction)
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotiChatBottomPanelShrinkage object:nil];
+}
+
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+//    if (!decelerate)
+//        NSLog(@"");
+//}
+
 @end

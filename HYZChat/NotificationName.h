@@ -37,5 +37,9 @@
  * @description 通过聊天消息更新聊天表格
  */
 #define NotiUpdateChatViewForSendMsg            @"NotiUpdateChatViewForSendMsg"
+/**
+ * @description 收缩聊天底部面板通知
+ */
+#define NotiChatBottomPanelShrinkage            @"NotiChatBottomPanelShrinkage"
 
 #endif /* NotificationName_h */
