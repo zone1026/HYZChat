@@ -635,6 +635,11 @@
                                             <outlet property="delegate" destination="RE0-6I-fYh" id="Ro0-tp-JF2"/>
                                         </connections>
                                     </collectionView>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="SNT-0A-FKQ">
+                                        <rect key="frame" x="176" y="599" width="23" height="37"/>
+                                        <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                    </pageControl>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXM-ad-DXs" userLabel="表情Tab视图">
                                         <rect key="frame" x="-0.5" y="629" width="375" height="38"/>
                                         <subviews>
@@ -732,11 +737,6 @@
                                             <constraint firstItem="fN7-b2-dh8" firstAttribute="leading" secondItem="LCg-3d-h6N" secondAttribute="trailing" id="yAp-PK-77b"/>
                                         </constraints>
                                     </view>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="SNT-0A-FKQ">
-                                        <rect key="frame" x="176" y="599" width="23" height="37"/>
-                                        <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                    </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>

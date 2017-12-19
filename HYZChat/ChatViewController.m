@@ -170,6 +170,7 @@
         else {
             [UIView animateWithDuration:chatAnimateDuration animations:^{
                 self.viewBottomConstraintHeight.constant = data.inputViewHeight;
+                [self.view layoutIfNeeded];
             } completion:^(BOOL finished) {
                 if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion)
                     self.emotionViewHeiht = data.inputViewHeight - data.inputTextViewHeight;
