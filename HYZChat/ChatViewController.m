@@ -245,8 +245,7 @@
 //        [self.chatTableView reloadData];
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.chatDataSource.chatMsgArr.count - 1 inSection:0];
-        [self.chatTableView insertRowsAtIndexPaths:@[indexPath]
-                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.chatTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         [self.chatTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
 }
@@ -322,6 +321,15 @@
 
 /** 删除菜单item响应选择器 */
 - (void)cellDelSelector {
+    if (self.longPressGestureCell == nil || [self.chatDataSource isEmptyData] == YES)
+        return;
+    
+    [self.chatDataSource.chatMsgArr removeObject:self.longPressGestureCell.cellData];
+    NSIndexPath *indexPath = [self.chatTableView indexPathForCell:self.longPressGestureCell];
+    [self.chatTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [[DataManager sharedManager] deleteFromCoreData:self.longPressGestureCell.cellData];//本地数据中移除
+    [[DataManager sharedManager] saveContext];//保存数据
 }
 
 /** 重新发送菜单item响应选择器 */
