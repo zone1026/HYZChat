@@ -15,6 +15,8 @@ static const CGFloat chatAnimateDuration = 0.3f;
 @property (assign, nonatomic) ChatBottomTarget bottomMode;
 /** 表情文本集合 */
 @property (strong, nonatomic) NSMutableDictionary *emotionTextDict;
+/** 按钮cell时，设置的响应对象 */
+@property (weak, nonatomic) UIResponder *cellLongPressResponder;
 
 //单例模式
 + (instancetype)sharedManager;

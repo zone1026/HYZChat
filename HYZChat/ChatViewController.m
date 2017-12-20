@@ -104,10 +104,10 @@
 /** 注册消息通知 */
 - (void)registerMessageNotification {
     //注册键盘出现通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillShow:)
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (handleKeyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification object:nil];
     //注册键盘隐藏通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillHide:)
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (handleKeyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiInputViewFrameChanage:)
@@ -120,6 +120,8 @@
                                                  name:NotiChatBottomPanelShrinkage object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiMsgContentLongPressGesture:)
                                                  name:NotiMsgContentLongPressGesture object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuControllerWillHide:)
+                                                 name:UIMenuControllerWillHideMenuNotification object:nil];
 }
 
 /** 移除消息通知 */
@@ -134,10 +136,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiUpdateChatViewForSendMsg object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiChatBottomPanelShrinkage object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiMsgContentLongPressGesture object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIMenuControllerDidHideMenuNotification object:nil];
 }
 
 /** 键盘弹出 */
-- (void)keyboardWillShow:(NSNotification *)notification {
+- (void)handleKeyboardWillShow:(NSNotification *)notification {
     [ChatManager sharedManager].bottomMode = ChatBottomTargetText;
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiEmotionBtnDefaultStauts object:nil];
     NSDictionary* info = [notification userInfo];
@@ -153,8 +156,9 @@
 }
 
 /** 键盘隐藏 */
-- (void)keyboardWillHide:(NSNotification *)notification {
+- (void)handleKeyboardWillHide:(NSNotification *)notification {
     if ([ChatManager sharedManager].bottomMode != ChatBottomTargetEmotion && [ChatManager sharedManager].bottomMode != ChatBottomTargetFunction) {
+        [ChatManager sharedManager].bottomMode = ChatBottomTargetFree;
         [UIView animateWithDuration:chatAnimateDuration animations:^{
             self.viewBottomConstraintHeight.constant = self.inputTextViewHeight;
             [self.view layoutIfNeeded];
@@ -265,6 +269,11 @@
     }
 }
 
+/** 菜单即将消失通知 */
+- (void)handleMenuControllerWillHide:(NSNotification *)notiifcation {
+    [ChatManager sharedManager].cellLongPressResponder = nil;
+}
+
 #pragma mark - 私有方法
 
 /** 将列表信息滑动到底部 */
@@ -276,20 +285,26 @@
 
 /** 长按显示cell工具菜单 */
 - (void)showCellMenu:(ChatMsgCell *)cell {
-    self.longPressGestureCell = cell;
     NSArray *cellMenuData = [cell configCellMenu];
+    if (cellMenuData == nil || cellMenuData.count <= 0)
+        return;
+    
+    self.longPressGestureCell = cell;
     NSMutableArray *menuItems = [NSMutableArray array];
     for (NSDictionary *dictMenu in cellMenuData) {
         [menuItems addObject:[[UIMenuItem alloc] initWithTitle:[dictMenu objectForKey:KEY_CHAT_MENU_TITLE]
                                                         action:NSSelectorFromString([dictMenu objectForKey:KEY_CHAT_MENU_SELECTOR])]];
     }
-    if (menuItems.count > 0) {
+    
+    if ([ChatManager sharedManager].bottomMode != ChatBottomTargetText)
         [cell becomeFirstResponder];
-        CGRect msgContentFrame = [cell convertRect:cell.viewMsgContent.frame toView:self.view];
-        [[UIMenuController sharedMenuController] setTargetRect:msgContentFrame inView:self.view];
-        [UIMenuController sharedMenuController].menuItems = [menuItems copy];
-        [UIMenuController sharedMenuController].menuVisible = YES;
-    }
+    else
+        [ChatManager sharedManager].cellLongPressResponder = cell;
+    
+    CGRect msgContentFrame = [cell convertRect:cell.viewMsgContent.frame toView:self.view];
+    [[UIMenuController sharedMenuController] setTargetRect:msgContentFrame inView:self.view];
+    [UIMenuController sharedMenuController].menuItems = [menuItems copy];
+    [UIMenuController sharedMenuController].menuVisible = YES;
 }
 
 #pragma mark - chat cell 点击后的菜单

@@ -7,8 +7,6 @@
 		<dict>
 			<key>type</key>
 			<integer>1</integer>
-			<key>className</key>
-			<string>ChatMsgTextCell</string>
 			<key>indentifier</key>
 			<string>Text</string>
 		</dict>
