@@ -25,6 +25,8 @@
 /** 昵称label的高度 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lblNickConstraintHeight;
 
+////////////////////////////////// 共有属性 //////////////////////////////////
+
 /** 是否是我发送的 */
 @property (assign, nonatomic) BOOL isMeSend;
 /** 单元格数据源 */
@@ -41,5 +43,9 @@
  * @param msgData 聊天消息数据
  */
 - (void)updateMessageData:(CNChatMessage *)msgData;
+/**
+ * @description 配置Cell的菜单
+ */
+- (NSArray *)configCellMenu;
 
 @end

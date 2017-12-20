@@ -30,6 +30,18 @@
     // Configure the view for the selected state
 }
 
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (NSArray *)configCellMenu {
+    return @[@{KEY_CHAT_MENU_TITLE:TITLE_CHAT_MENU_ITEM_COPY, KEY_CHAT_MENU_SELECTOR:SELECTOR_CHAT_MENU_ITEM_COPY},
+             @{KEY_CHAT_MENU_TITLE:TITLE_CHAT_MENU_ITEM_TRANSPOND, KEY_CHAT_MENU_SELECTOR:SELECTOR_CHAT_MENU_ITEM_TRANSPOND},
+             @{KEY_CHAT_MENU_TITLE:TITLE_CHAT_MENU_ITEM_COLLECT, KEY_CHAT_MENU_SELECTOR:SELECTOR_CHAT_MENU_ITEM_COLLECT},
+             @{KEY_CHAT_MENU_TITLE:TITLE_CHAT_MENU_ITEM_DEL, KEY_CHAT_MENU_SELECTOR:SELECTOR_CHAT_MENU_ITEM_DEL},
+             @{KEY_CHAT_MENU_TITLE:TITLE_CHAT_MENU_ITEM_MULTICHOICE, KEY_CHAT_MENU_SELECTOR:SELECTOR_CHAT_MENU_ITEM_MULTICHOICE}];
+}
+
 #pragma mark - 消息
 
 - (void)updateMessageData:(CNChatMessage *)msgData {
@@ -46,6 +58,24 @@
 /** 更新textcell相关的UI */
 - (void)updateTextCellUI {
     [self.lblMsg updateTextContent:self.cellData.msg_content];
+    self.lblMsg.linkLongHandler = ^(LinkType linkType, NSString *string, NSRange range, CGPoint touchPoint) {
+        NSString *title;
+        NSString *openTypeString;
+        if (LinkTypeURL == linkType) {
+            title = string;
+            openTypeString = @"在Safari中打开";
+        } else if (LinkTypePhoneNumber == linkType) {
+            title = [NSString stringWithFormat:@"%@可能是一个电话号码，你可以",string];
+            openTypeString = @"呼叫";
+        }
+        else if (LinkTypeNormal == linkType) {//复制文本
+            if (self.cellData != nil)
+                [[NSNotificationCenter defaultCenter] postNotificationName:NotiMsgContentLongPressGesture object:self];
+            return;
+        }
+        else
+            return;
+    };
 }
 
 @end

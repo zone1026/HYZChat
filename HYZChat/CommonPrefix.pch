@@ -24,6 +24,7 @@
     #import "DataManager.h"
     #import "ChatManager.h"
     #import "HYZAlert.h"
+    #import "Chat.pch"
 #endif
 
 // 三色值配色

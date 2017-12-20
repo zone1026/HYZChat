@@ -79,6 +79,7 @@
 		6B39DFE21FC6F74400FFF7AD /* ChatMsgCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatMsgCell.m; sourceTree = "<group>"; };
 		6B39DFE41FC6F77E00FFF7AD /* ChatMsgTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatMsgTextCell.h; sourceTree = "<group>"; };
 		6B39DFE51FC6F77E00FFF7AD /* ChatMsgTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatMsgTextCell.m; sourceTree = "<group>"; };
+		6B45DDB21FE9F2CF00AEF8CB /* Chat.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Chat.pch; path = Pch/Chat.pch; sourceTree = "<group>"; };
 		6B48F4C91F5EA6C300C9DCDC /* ChatTabEmotionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTabEmotionData.h; sourceTree = "<group>"; };
 		6B48F4CA1F5EA6C300C9DCDC /* ChatTabEmotionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTabEmotionData.m; sourceTree = "<group>"; };
 		6B48F4CC1F5EA74600C9DCDC /* ChatEmotionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatEmotionData.h; sourceTree = "<group>"; };
@@ -242,6 +243,14 @@
 			name = Msg;
 			sourceTree = "<group>";
 		};
+		6B45DDB01FE9F26500AEF8CB /* Pch */ = {
+			isa = PBXGroup;
+			children = (
+				6B45DDB21FE9F2CF00AEF8CB /* Chat.pch */,
+			);
+			name = Pch;
+			sourceTree = "<group>";
+		};
 		6B944A7B1FC80E6400192470 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +315,7 @@
 		6BCBCC701F58E8C7000B7152 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6B45DDB01FE9F26500AEF8CB /* Pch */,
 				6BCBCC711F58E8C7000B7152 /* main.m */,
 				6BCBCCC11F593C2E000B7152 /* CommonPrefix.pch */,
 				6BCBCCC21F593D97000B7152 /* Constants.h */,

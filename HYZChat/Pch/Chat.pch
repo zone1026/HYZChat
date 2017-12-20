@@ -1,0 +1,35 @@
+//
+//  Chat.pch
+//  HYZChat
+//
+//  Created by 黄亚州 on 2017/12/20.
+//  Copyright © 2017年 黄亚州. All rights reserved.
+//
+
+#ifndef Chat_pch
+#define Chat_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//菜单相关信息对应的key
+#define KEY_CHAT_MENU_TITLE          @"menuTitle"
+#define KEY_CHAT_MENU_SELECTOR       @"menuSelector"
+
+//菜单item标题
+#define TITLE_CHAT_MENU_ITEM_DEL            @"删除"
+//#define TITLE_CHAT_MENU_ITEM_RESEND         @"重发"
+#define TITLE_CHAT_MENU_ITEM_COPY           @"复制"
+#define TITLE_CHAT_MENU_ITEM_COLLECT        @"收藏"
+#define TITLE_CHAT_MENU_ITEM_TRANSPOND      @"转发"
+#define TITLE_CHAT_MENU_ITEM_MULTICHOICE    @"多选"
+
+//菜单item响应事件
+#define SELECTOR_CHAT_MENU_ITEM_DEL             @"cellDelSelector"
+//#define SELECTOR_CHAT_MENU_ITEM_RESEND          @"cellResendSelector"
+#define SELECTOR_CHAT_MENU_ITEM_COPY            @"cellCopySelector"
+#define SELECTOR_CHAT_MENU_ITEM_COLLECT         @"cellCollectSelector"
+#define SELECTOR_CHAT_MENU_ITEM_TRANSPOND       @"cellTranspondSelector"
+#define SELECTOR_CHAT_MENU_ITEM_MULTICHOICE     @"cellMultiChoiceSelector"
+
+#endif /* Chat_pch */

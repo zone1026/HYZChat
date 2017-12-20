@@ -15,6 +15,7 @@
 #import "UIView+HYZFrame.h"
 #import "ChatBottomController.h"
 #import "ChatManager.h"
+#import "ChatMsgCell.h"
 
 @interface ChatViewController ()
 /** 列表的数据源 */
@@ -36,6 +37,8 @@
 @property (assign, nonatomic) CGFloat kbHeight;
 /** 表情视图的高度 */
 @property (assign, nonatomic) CGFloat emotionViewHeiht;
+/** 长按时的cell */
+@property (strong, nonatomic) ChatMsgCell *longPressGestureCell;
 
 @end
 
@@ -46,6 +49,7 @@
     // Do any additional setup after loading the view.
     self.inputTextViewHeight = ChatViewTopInputViewDefaultHeight;
     self.emotionViewHeiht = NSNotFound;
+    self.longPressGestureCell = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,6 +64,11 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self removeMessageNoitication];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.longPressGestureCell = nil;
 }
 
 - (void)viewWillLayoutSubviews {
@@ -109,6 +118,8 @@
                                                  name:NotiUpdateChatViewForSendMsg object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiChatBottomPanelShrinkage:)
                                                  name:NotiChatBottomPanelShrinkage object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiMsgContentLongPressGesture:)
+                                                 name:NotiMsgContentLongPressGesture object:nil];
 }
 
 /** 移除消息通知 */
@@ -122,6 +133,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiChatFunctionBtnClick object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiUpdateChatViewForSendMsg object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiChatBottomPanelShrinkage object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiMsgContentLongPressGesture object:nil];
 }
 
 /** 键盘弹出 */
@@ -224,9 +236,14 @@
     if (notification.userInfo != nil) {
         ChatMsgType msgType = [notification.userInfo[@"type"] integerValue];
         NSString *content = notification.userInfo[@"content"];
-#warning send chat msg
+#warning send chat msg request
         [self.chatDataSource addChatMsg:msgType withMsgContent:content];
-        [self.chatTableView reloadData];
+//        [self.chatTableView reloadData];
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.chatDataSource.chatMsgArr.count - 1 inSection:0];
+        [self.chatTableView insertRowsAtIndexPaths:@[indexPath]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.chatTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
 }
 
@@ -240,6 +257,14 @@
     } completion:^(BOOL finished) {}];
 }
 
+/** 聊天消息内容长按手势通知 */
+- (void)handleNotiMsgContentLongPressGesture:(NSNotification *)notiifcation {
+    if (notiifcation.object != nil) {
+        if ([notiifcation.object isKindOfClass:[ChatMsgCell class]])
+            [self showCellMenu:notiifcation.object];
+    }
+}
+
 #pragma mark - 私有方法
 
 /** 将列表信息滑动到底部 */
@@ -247,6 +272,62 @@
     if ([self.chatDataSource isEmptyData] == NO)
         [self.chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.chatDataSource.chatMsgArr.count - 1 inSection:0]
                                   atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+/** 长按显示cell工具菜单 */
+- (void)showCellMenu:(ChatMsgCell *)cell {
+    self.longPressGestureCell = cell;
+    NSArray *cellMenuData = [cell configCellMenu];
+    NSMutableArray *menuItems = [NSMutableArray array];
+    for (NSDictionary *dictMenu in cellMenuData) {
+        [menuItems addObject:[[UIMenuItem alloc] initWithTitle:[dictMenu objectForKey:KEY_CHAT_MENU_TITLE]
+                                                        action:NSSelectorFromString([dictMenu objectForKey:KEY_CHAT_MENU_SELECTOR])]];
+    }
+    if (menuItems.count > 0) {
+        [cell becomeFirstResponder];
+        CGRect msgContentFrame = [cell convertRect:cell.viewMsgContent.frame toView:self.view];
+        [[UIMenuController sharedMenuController] setTargetRect:msgContentFrame inView:self.view];
+        [UIMenuController sharedMenuController].menuItems = [menuItems copy];
+        [UIMenuController sharedMenuController].menuVisible = YES;
+    }
+}
+
+#pragma mark - chat cell 点击后的菜单
+
+/**  可以响应的方法 */
+-(BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    if (action == @selector(cellDelSelector) || action == @selector(cellResendSelector) ||
+        action == @selector(cellCopySelector) || action == @selector(cellCollectSelector) ||
+        action == @selector(cellTranspondSelector) || action == @selector(cellMultiChoiceSelector)) {
+        [UIMenuController sharedMenuController].menuItems = nil;
+        return YES;
+    }
+    return NO;
+}
+
+/** 删除菜单item响应选择器 */
+- (void)cellDelSelector {
+}
+
+/** 重新发送菜单item响应选择器 */
+- (void)cellResendSelector {}
+
+/** 复制菜单item响应选择器 */
+- (void)cellCopySelector {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.longPressGestureCell == nil ? @"" : self.longPressGestureCell.cellData.msg_content;
+}
+
+/** 收藏菜单item响应选择器 */
+- (void)cellCollectSelector {
+}
+
+/** 转发菜单item响应选择器 */
+- (void)cellTranspondSelector {
+}
+
+/** 多选item响应选择器 */
+- (void)cellMultiChoiceSelector {
 }
 
 #pragma mark - chat bottom function button jump

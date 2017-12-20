@@ -41,5 +41,10 @@
  * @description 收缩聊天底部面板通知
  */
 #define NotiChatBottomPanelShrinkage            @"NotiChatBottomPanelShrinkage"
+/**
+ * @description 聊天消息内容长按手势通知
+ */
+#define NotiMsgContentLongPressGesture          @"NotiMsgContentLongPressGesture"
+
 
 #endif /* NotificationName_h */

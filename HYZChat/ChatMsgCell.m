@@ -13,6 +13,8 @@
 @property (strong, nonatomic) UITapGestureRecognizer *imgLogoTapGesture;
 /** 头像点击手势 */
 @property (strong, nonatomic) UILongPressGestureRecognizer *imgLogoLongPressGesture;
+/** 消息内容点击手势 */
+@property (strong, nonatomic) UILongPressGestureRecognizer *viewMsgContentLongPressGesture;
 
 @end
 
@@ -21,16 +23,24 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.imgLogoTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgLogoTapGestureSelector:)];
-    self.imgLogoTapGesture.cancelsTouchesInView = NO;
-    self.imgLogoTapGesture.numberOfTapsRequired = 1;//点击次数，默认1
-    self.imgLogoTapGesture.numberOfTouchesRequired = 1;//触点个数，默认1
-    [self.imgLogo addGestureRecognizer:self.imgLogoTapGesture];
-    
-    self.imgLogoLongPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(imgLogoLongPressGestureSelector:)];
-    self.imgLogoLongPressGesture.cancelsTouchesInView = NO;
-    self.imgLogoLongPressGesture.minimumPressDuration = 0.5f;//设置长按时间，默认0.5秒
-    [self.imgLogo addGestureRecognizer:self.imgLogoLongPressGesture];
+    if (self.imgLogo != nil) {
+        self.imgLogoTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgLogoTapGestureSelector:)];
+        self.imgLogoTapGesture.cancelsTouchesInView = NO;
+        self.imgLogoTapGesture.numberOfTapsRequired = 1;//点击次数，默认1
+        self.imgLogoTapGesture.numberOfTouchesRequired = 1;//触点个数，默认1
+        [self.imgLogo addGestureRecognizer:self.imgLogoTapGesture];
+        
+        self.imgLogoLongPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(imgLogoLongPressGestureSelector:)];
+        self.imgLogoLongPressGesture.cancelsTouchesInView = NO;
+        self.imgLogoLongPressGesture.minimumPressDuration = 0.5f;//设置长按时间，默认0.5秒
+        [self.imgLogo addGestureRecognizer:self.imgLogoLongPressGesture];
+    }
+    if (self.viewMsgContent != nil) {
+        self.viewMsgContentLongPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(viewMsgContentLongPressGestureSelector:)];
+        self.viewMsgContentLongPressGesture.cancelsTouchesInView = NO;
+        self.viewMsgContentLongPressGesture.minimumPressDuration = 0.5f;//设置长按时间，默认0.5秒
+        [self.viewMsgContent addGestureRecognizer:self.viewMsgContentLongPressGesture];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -52,23 +62,35 @@
 - (void)updateMessageData:(CNChatMessage *)msgData withMeMsg:(BOOL)isMe {
     self.cellData = msgData;
     self.isMeSend = isMe;
-    self.imgLogo.image = [UIImage imageNamed:@"DEFAULT_LOGO"];
-    self.lblNick.text = [HYZUtil isEmptyOrNull:self.cellData.send_nick] == YES ? @"未知" : self.cellData.send_nick;
-    self.lblNickConstraintHeight.constant =  [msgData checkShowNickName] == NO ? 0.01f : ChatNickNameDefaultHeight;
+    if (self.imgLogo != nil)
+        self.imgLogo.image = [UIImage imageNamed:@"DEFAULT_LOGO"];
+    if (self.lblNick != nil)
+        self.lblNick.text = [HYZUtil isEmptyOrNull:self.cellData.send_nick] == YES ? @"未知" : self.cellData.send_nick;
+    if (self.lblNickConstraintHeight != nil)
+        self.lblNickConstraintHeight.constant =  [msgData checkShowNickName] == NO ? 0.01f : ChatNickNameDefaultHeight;
+}
+
+- (NSArray *)configCellMenu {
+    return @[@{KEY_CHAT_MENU_TITLE:TITLE_CHAT_MENU_ITEM_TRANSPOND, KEY_CHAT_MENU_SELECTOR:SELECTOR_CHAT_MENU_ITEM_TRANSPOND},
+             @{KEY_CHAT_MENU_TITLE:TITLE_CHAT_MENU_ITEM_DEL, KEY_CHAT_MENU_SELECTOR:SELECTOR_CHAT_MENU_ITEM_DEL},
+             @{KEY_CHAT_MENU_TITLE:TITLE_CHAT_MENU_ITEM_MULTICHOICE, KEY_CHAT_MENU_SELECTOR:SELECTOR_CHAT_MENU_ITEM_MULTICHOICE}];
 }
 
 #pragma mark - 事件
 
 - (void)imgLogoTapGestureSelector:(UITapGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateEnded) {
+    if (sender.state == UIGestureRecognizerStateEnded)
         [HYZAlert showInfo:self.description underTitle:@"您单击了头像"];
-    }
 }
 
 - (void)imgLogoLongPressGestureSelector:(UILongPressGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateBegan) {
+    if (sender.state == UIGestureRecognizerStateBegan)
         [HYZAlert showInfo:self.description underTitle:@"您长按了头像"];
-    }
+}
+
+- (void)viewMsgContentLongPressGestureSelector:(UILongPressGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateBegan && self.cellData != nil && self.cellData.msg_type != ChatMsgTypeText)//文本消息由自己的长按事件
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotiMsgContentLongPressGesture object:self];
 }
 
 #pragma mark - 私有方法
