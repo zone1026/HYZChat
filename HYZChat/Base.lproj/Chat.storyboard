@@ -297,6 +297,10 @@
                                     <segue destination="8fq-IE-ObU" kind="embed" id="HbE-NB-ZGv"/>
                                 </connections>
                             </containerView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWu-U9-NKy" userLabel="蒙板视图">
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                                <color key="backgroundColor" red="0.81176470590000005" green="0.82325792310000001" blue="0.84396356340000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTf-bs-8Ar" userLabel="viewTop">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <subviews>
@@ -391,17 +395,21 @@
                         </subviews>
                         <color key="backgroundColor" red="0.95294117649999999" green="0.93746662140000003" blue="0.92470067739999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="fWu-U9-NKy" secondAttribute="bottom" id="13W-oZ-JQY"/>
                             <constraint firstAttribute="trailing" secondItem="cVX-fR-U3E" secondAttribute="trailing" id="1M7-Gk-Fog"/>
                             <constraint firstItem="cVX-fR-U3E" firstAttribute="leading" secondItem="q7l-YW-nq8" secondAttribute="leading" id="24R-sh-FzK"/>
+                            <constraint firstItem="fWu-U9-NKy" firstAttribute="width" secondItem="q7l-YW-nq8" secondAttribute="width" id="7rW-78-spn"/>
                             <constraint firstItem="gdn-7t-gN8" firstAttribute="leading" secondItem="q7l-YW-nq8" secondAttribute="leading" id="ASH-K7-ti3"/>
                             <constraint firstItem="gdn-7t-gN8" firstAttribute="top" secondItem="TTf-bs-8Ar" secondAttribute="bottom" id="DST-vF-FZZ"/>
                             <constraint firstItem="TTf-bs-8Ar" firstAttribute="leading" secondItem="q7l-YW-nq8" secondAttribute="leading" id="OQ1-Hu-mSm"/>
+                            <constraint firstItem="fWu-U9-NKy" firstAttribute="centerX" secondItem="q7l-YW-nq8" secondAttribute="centerX" id="Owy-dy-Mfn"/>
                             <constraint firstAttribute="bottom" secondItem="cVX-fR-U3E" secondAttribute="bottom" id="P5S-WS-WTG"/>
                             <constraint firstItem="TTf-bs-8Ar" firstAttribute="top" secondItem="q7l-YW-nq8" secondAttribute="top" id="Rep-OM-zKs"/>
                             <constraint firstAttribute="bottom" secondItem="gdn-7t-gN8" secondAttribute="bottom" id="XS4-A7-kLY"/>
                             <constraint firstItem="cVX-fR-U3E" firstAttribute="top" secondItem="TTf-bs-8Ar" secondAttribute="bottom" id="ggV-fg-98z"/>
                             <constraint firstAttribute="trailing" secondItem="TTf-bs-8Ar" secondAttribute="trailing" id="hs0-wa-1xw"/>
                             <constraint firstAttribute="trailing" secondItem="gdn-7t-gN8" secondAttribute="trailing" id="vJB-of-TbI"/>
+                            <constraint firstItem="fWu-U9-NKy" firstAttribute="top" secondItem="TTf-bs-8Ar" secondAttribute="bottom" id="zHk-sK-gYK"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -414,6 +422,7 @@
                         <outlet property="textView" destination="qf2-hI-8mb" id="um6-Qj-NvJ"/>
                         <outlet property="viewEmotion" destination="cVX-fR-U3E" id="nVi-YE-ifJ"/>
                         <outlet property="viewFunction" destination="gdn-7t-gN8" id="RI9-Mz-jf5"/>
+                        <outlet property="viewMask" destination="fWu-U9-NKy" id="njs-NN-knF"/>
                         <outlet property="viewTop" destination="TTf-bs-8Ar" id="H5X-Ol-zge"/>
                         <outlet property="viewTopConstraintHeight" destination="Aae-tB-3ky" id="WDH-ES-qaq"/>
                     </connections>

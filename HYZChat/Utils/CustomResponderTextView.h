@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/***
+ * @decription 修改UIMenuController和键盘不能共存的情况
+ */
 @interface CustomResponderTextView : UITextView
 
 @end

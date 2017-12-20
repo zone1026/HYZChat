@@ -35,6 +35,8 @@
 //chat function view
 @property (weak, nonatomic) IBOutlet UIView *viewFunction;
 
+@property (weak, nonatomic) IBOutlet UIView *viewMask;
+
 @property (assign, nonatomic) NSRange chatEmotionShouldChangeRange;//表情在输入框将要插入的光标Range
 @property (assign, nonatomic) CGFloat emotionViewHeiht;
 @end
@@ -119,18 +121,18 @@
     
     self.chatBottomData.endLocationInput = (self.textView.selectedRange.location >= self.textView.text.length);
     self.chatEmotionShouldChangeRange = self.textView.selectedRange;
+    self.viewMask.hidden = sender.isSelected;
+    
     if (sender.isSelected == YES) {
-        if ([ChatManager sharedManager].bottomMode == ChatBottomTargetFunction) {
-            CGAffineTransform transform = CGAffineTransformIdentity;
-            transform = CGAffineTransformTranslate(transform, 0.0, self.viewEmotion.height);
-            self.viewEmotion.transform = transform;//先下移出屏幕
-            [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                self.viewEmotion.transform = CGAffineTransformIdentity;//在返回原来的位置
-            } completion:^(BOOL finished) {}];
-            [ChatManager sharedManager].bottomMode = ChatBottomTargetEmotion;
-        }
-        else {
-            [ChatManager sharedManager].bottomMode = ChatBottomTargetEmotion;//要在endEditing之前，因为UIKeyboardWillHideNotification通知方法中用来做判断
+        CGAffineTransform transform = CGAffineTransformIdentity;
+        transform = CGAffineTransformTranslate(transform, 0.0, self.viewEmotion.height);
+        self.viewEmotion.transform = transform;//先下移出屏幕
+        [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            self.viewEmotion.transform = CGAffineTransformIdentity;//在返回原来的位置
+        } completion:^(BOOL finished) {}];
+        
+        [ChatManager sharedManager].bottomMode = ChatBottomTargetEmotion;//要在endEditing之前，因为UIKeyboardWillHideNotification通知方法中用来做判断
+        if ([ChatManager sharedManager].bottomMode != ChatBottomTargetFunction) {
             [self.view endEditing:YES];
             InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
             data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
@@ -159,19 +161,19 @@
     }
     
     [self handleNotiEmotionBtnDefaultStauts:nil];//表情按钮恢复默认状态
+    self.viewMask.hidden = [ChatManager sharedManager].bottomMode != ChatBottomTargetFunction;//功能区域蒙板
     
     if ([ChatManager sharedManager].bottomMode != ChatBottomTargetFunction) {
-        if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion) {
-            CGAffineTransform transform = CGAffineTransformIdentity;
-            transform = CGAffineTransformTranslate(transform, 0.0, self.viewFunction.height);
-            self.viewFunction.transform = transform;
-            [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                self.viewFunction.transform = CGAffineTransformIdentity;
-            } completion:^(BOOL finished) {}];
-            [ChatManager sharedManager].bottomMode = ChatBottomTargetFunction;
-        }
-        else {
-            [ChatManager sharedManager].bottomMode = ChatBottomTargetFunction;//要在endEditing之前，因为UIKeyboardWillHideNotification通知方法中用来做判断
+        CGAffineTransform transform = CGAffineTransformIdentity;
+        transform = CGAffineTransformTranslate(transform, 0.0, self.viewFunction.height);
+        self.viewFunction.transform = transform;
+        [UIView animateWithDuration:chatAnimateDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            self.viewFunction.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {}];
+        
+        [ChatManager sharedManager].bottomMode = ChatBottomTargetFunction;//要在endEditing之前，因为UIKeyboardWillHideNotification通知方法中用来做判断
+        
+        if ([ChatManager sharedManager].bottomMode != ChatBottomTargetEmotion) {
             [self.view endEditing:YES];
             InputViewFrameChanageData *data = [[InputViewFrameChanageData alloc] init];
             data.inputTextViewHeight = self.viewTopConstraintHeight.constant;
@@ -204,6 +206,10 @@
 
 /** 注册消息通知 */
 - (void)registerMessageNotification {
+    //注册键盘出现通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (handleKeyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiEmotionBtnDefaultStauts:)
                                                  name:NotiEmotionBtnDefaultStauts object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiUpdateInputTextByEmotionStr:)
@@ -214,8 +220,16 @@
 
 /** 移除消息通知 */
 - (void)removeMessageNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiEmotionBtnDefaultStauts object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiUpdateInputTextByEmotionStr object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiSendMsgByEmotionBtnSend object:nil];
+}
+
+- (void)handleKeyboardWillShow:(NSNotification *)notification {
+    if (self.viewMask.isHidden == NO)
+        return;
+    self.viewMask.hidden = NO;
 }
 
 /** 表情按钮默认状态通知响应方法 */
