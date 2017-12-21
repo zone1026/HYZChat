@@ -280,18 +280,30 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="cwX-VN-49o"/>
                         <barButtonItem title="转发" image="TOOL_BTN_TRANSPOND" id="XbT-tz-7aw">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="toolBarBtnTranspondSelector:" destination="BbH-lb-YNE" id="Vgn-fv-jYy"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem width="30" style="plain" systemItem="fixedSpace" id="60N-46-jNz"/>
                         <barButtonItem image="CHAT_FUNCTION_COLLECT" id="Hvn-wg-yJN">
                             <color key="tintColor" white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="toolBarBtnCollectSelector:" destination="BbH-lb-YNE" id="PAg-P2-kr0"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem width="30" style="plain" systemItem="fixedSpace" id="Gnd-Pp-C8o"/>
                         <barButtonItem systemItem="trash" id="5bf-z1-mVG">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="toolBarBtnDelSelector:" destination="BbH-lb-YNE" id="tdi-SY-dub"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem width="30" style="plain" systemItem="fixedSpace" id="71A-dm-Nqm"/>
                         <barButtonItem image="TOOL_BTN_MORE" id="huL-9k-zSr">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="toolBarBtnMoreSelctor:" destination="BbH-lb-YNE" id="nFQ-Kt-14y"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="8Ox-w0-gJD"/>
                     </toolbarItems>

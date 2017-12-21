@@ -136,6 +136,28 @@
     [self.chatTableView reloadData];
 }
 
+#pragma mark - 工具栏
+
+- (IBAction)toolBarBtnTranspondSelector:(UIBarButtonItem *)sender {
+    [HYZAlert showInfo:@"我是转发，走开，都别理我" underTitle:@"少年郎"];
+}
+
+- (IBAction)toolBarBtnCollectSelector:(UIBarButtonItem *)sender {
+    [HYZAlert showInfo:@"我是收藏，走开，都别理我" underTitle:@"少年郎"];
+}
+
+- (IBAction)toolBarBtnDelSelector:(UIBarButtonItem *)sender {
+    if (nil == self.chatDataSource.multiChoiceCellIndexPath || self.chatDataSource.multiChoiceCellIndexPath.count <= 0)
+        return;
+    NSArray *indexPaths = [self.chatDataSource.multiChoiceCellIndexPath copy];
+    self.chatDataSource.multiChoiceCellIndexPath = nil;
+    [self deleteChatMsgCell:indexPaths];
+}
+
+- (IBAction)toolBarBtnMoreSelctor:(UIBarButtonItem *)sender {
+    [HYZAlert showInfo:@"我是更多，走开，都别理我" underTitle:@"少年郎"];
+}
+
 #pragma mark - message notification
 
 /** 注册消息通知 */
@@ -313,6 +335,7 @@
 /** 菜单即将消失通知 */
 - (void)handleMenuControllerWillHide:(NSNotification *)notiifcation {
     [ChatManager sharedManager].cellLongPressResponder = nil;
+    self.longPressGestureCell = nil;
 }
 
 - (void)handleNotiLogoImageGesture:(NSNotification *)notiifcation {
@@ -374,6 +397,27 @@
     [UIMenuController sharedMenuController].menuVisible = YES;
 }
 
+/**
+ * @description 删除聊天cell
+ * @param cellIndexPathArr 要删除聊天cell索引
+ */
+- (void)deleteChatMsgCell:(NSArray <NSIndexPath *>*)cellIndexPathArr {
+    if (nil == cellIndexPathArr || cellIndexPathArr.count <= 0)
+        return;
+    NSMutableArray *indexPathArr = [NSMutableArray array];
+    for (NSIndexPath *indexPath in cellIndexPathArr) {
+        if (indexPath.row < self.chatDataSource.chatMsgArr.count) {
+            CNChatMessage *cellData = [self.chatDataSource.chatMsgArr objectAtIndex:indexPath.row];
+            [self.chatDataSource.chatMsgArr removeObject:cellData];
+            [[DataManager sharedManager] deleteFromCoreData:cellData];//本地数据中移除
+            [indexPathArr addObject:indexPath];
+        }
+    }
+    [self.chatTableView deleteRowsAtIndexPaths:indexPathArr withRowAnimation:UITableViewRowAnimationFade];
+    [[DataManager sharedManager] saveContext];//保存数据
+    [self updateToolBarButtonItemState];
+}
+
 #pragma mark - chat cell 点击后的菜单
 
 /**  可以响应的方法 */
@@ -392,12 +436,7 @@
     if (self.longPressGestureCell == nil || [self.chatDataSource isEmptyData] == YES)
         return;
     
-    [self.chatDataSource.chatMsgArr removeObject:self.longPressGestureCell.cellData];
-    NSIndexPath *indexPath = [self.chatTableView indexPathForCell:self.longPressGestureCell];
-    [self.chatTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    
-    [[DataManager sharedManager] deleteFromCoreData:self.longPressGestureCell.cellData];//本地数据中移除
-    [[DataManager sharedManager] saveContext];//保存数据
+    [self deleteChatMsgCell:@[[self.chatTableView indexPathForCell:self.longPressGestureCell]]];
 }
 
 /** 重新发送菜单item响应选择器 */
