@@ -351,6 +351,8 @@
 
 /** 多选item响应选择器 */
 - (void)cellMultiChoiceSelector {
+    self.chatDataSource.isMultiChoiceMode = YES;
+    [self.chatTableView reloadData];
 }
 
 #pragma mark - chat bottom function button jump

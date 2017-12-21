@@ -24,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
  * @description 检测是否展示昵称
  */
 - (BOOL)checkShowNickName;
+/**
+ * @description 检测消息对应的cell是否有头像
+ */
+- (BOOL)checkMsgNeedUserLogo;
 
 @end
 

@@ -42,6 +42,7 @@
         case ChatMsgTypeText:
         {
             ChatMsgTextCell *textCell = (ChatMsgTextCell *)cell;
+            textCell.multiChoiceMode = self.isMultiChoiceMode;
             [textCell updateMessageData:chatMsg];
         }
             break;

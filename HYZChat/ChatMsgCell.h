@@ -19,14 +19,20 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblNick;
 /** 消息内容视图 */
 @property (weak, nonatomic) IBOutlet UIView *viewMsgContent;
+/** cell勾选框 */
+@property (weak, nonatomic) IBOutlet UIImageView *imgCheck;
 
 ////////////////////////////////// 共有约束 //////////////////////////////////
 
 /** 昵称label的高度 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lblNickConstraintHeight;
+/** 其他人（不是自己的）的头像的左间距 */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgLogoConstraintLeft;
 
 ////////////////////////////////// 共有属性 //////////////////////////////////
 
+/** 是否处于多选模式下 */
+@property (assign, nonatomic) BOOL multiChoiceMode;
 /** 是否是我发送的 */
 @property (assign, nonatomic) BOOL isMeSend;
 /** 单元格数据源 */

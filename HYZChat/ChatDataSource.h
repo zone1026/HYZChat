@@ -21,4 +21,7 @@
 @property (strong, nonatomic) RichLabel *richLabel;
 /** cell高度的缓存集合 */
 @property (strong, nonatomic) NSMutableDictionary *cellHeightDict;
+/** 是否处于多选模式 */
+@property (assign, nonatomic) BOOL isMultiChoiceMode;
+
 @end

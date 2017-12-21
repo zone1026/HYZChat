@@ -29,4 +29,12 @@
     
     return NO;
 }
+
+- (BOOL)checkMsgNeedUserLogo {
+    //以后出现了不带头像的消息类型 在这里判断
+    if (self.msg_type <= ChatMsgTypeFree || self.msg_type >= ChatMsgTypeUpperLimit)
+        return NO;
+    return YES;
+}
+
 @end

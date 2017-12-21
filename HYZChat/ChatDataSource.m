@@ -16,6 +16,7 @@
     if (self = [super init]) {
         _chatMsgArr = nil;
         _chatCellInfoDict = nil;
+        _isMultiChoiceMode = NO;
         [self loadChatCellInfoData];
         [self loadLocalChatMsgData];
     }

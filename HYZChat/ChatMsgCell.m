@@ -54,6 +54,7 @@
 }
 
 #pragma mark - 共有方法
+
 - (void)updateMessageData:(CNChatMessage *)msgData {
     CNUser *currentUser = [DataManager sharedManager].currentUser;
     [self updateMessageData:msgData withMeMsg:(msgData.send_userId == currentUser.user_id)];
@@ -68,6 +69,10 @@
         self.lblNick.text = [HYZUtil isEmptyOrNull:self.cellData.send_nick] == YES ? @"未知" : self.cellData.send_nick;
     if (self.lblNickConstraintHeight != nil)
         self.lblNickConstraintHeight.constant =  [msgData checkShowNickName] == NO ? 0.01f : ChatNickNameDefaultHeight;
+    if (self.imgLogoConstraintLeft != nil)
+        self.imgLogoConstraintLeft.constant = (self.multiChoiceMode == YES && [msgData checkMsgNeedUserLogo] == YES) ? 8.0 + 24.0 + 8.0 : 8.0;
+    if (self.imgCheck != nil)
+        self.imgCheck.hidden = !self.multiChoiceMode;
 }
 
 - (NSArray *)configCellMenu {
@@ -78,16 +83,19 @@
 
 #pragma mark - 事件
 
+/** 头像的点击手势响应方法 */
 - (void)imgLogoTapGestureSelector:(UITapGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateEnded)
         [HYZAlert showInfo:self.description underTitle:@"您单击了头像"];
 }
 
+/** 头像的按钮手势响应方法 */
 - (void)imgLogoLongPressGestureSelector:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan)
         [HYZAlert showInfo:self.description underTitle:@"您长按了头像"];
 }
 
+/** 消息内容的长按手势响应方法 */
 - (void)viewMsgContentLongPressGestureSelector:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan && self.cellData != nil && self.cellData.msg_type != ChatMsgTypeText)//文本消息由自己的长按事件
         [[NSNotificationCenter defaultCenter] postNotificationName:NotiMsgContentLongPressGesture object:self];

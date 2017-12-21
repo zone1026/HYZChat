@@ -54,6 +54,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CHAT_BTN_UNCHECK" translatesAutoresizingMaskIntoConstraints="NO" id="zrR-MD-M6R">
+                                                    <rect key="frame" x="8" y="14" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="24" id="XKF-ny-sQj"/>
+                                                        <constraint firstAttribute="width" secondItem="zrR-MD-M6R" secondAttribute="height" multiplier="1:1" id="hwT-bE-Y1c"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oMt-ar-7f4">
                                                     <rect key="frame" x="8" y="9" width="40" height="40"/>
                                                     <constraints>
@@ -62,7 +69,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2v-qI-TM8">
-                                                    <rect key="frame" x="56" y="8" width="259" height="14"/>
+                                                    <rect key="frame" x="57" y="8" width="258" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="14" id="OQk-HF-Lfm"/>
                                                     </constraints>
@@ -71,7 +78,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qE9-Vu-TCm" userLabel="消息背景">
-                                                    <rect key="frame" x="50" y="24" width="121" height="44"/>
+                                                    <rect key="frame" x="51" y="24" width="121" height="44"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CHAT_IMG_LEFT_ARROW" translatesAutoresizingMaskIntoConstraints="NO" id="6eM-hZ-YS7">
                                                             <rect key="frame" x="0.0" y="13" width="5" height="10"/>
@@ -96,7 +103,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一条消息" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiF-ae-g4d" userLabel="文本消息" customClass="RichLabel">
-                                                    <rect key="frame" x="65" y="32" width="98" height="28"/>
+                                                    <rect key="frame" x="66" y="32" width="98" height="28"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="JwM-bo-m5s"/>
@@ -107,24 +114,28 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="oMt-ar-7f4" firstAttribute="leading" secondItem="d0G-jz-Pai" secondAttribute="leading" constant="8" id="1ZQ-ng-seS"/>
                                                 <constraint firstAttribute="trailing" secondItem="E2v-qI-TM8" secondAttribute="trailing" constant="60" id="3UN-R5-AzN"/>
                                                 <constraint firstItem="qE9-Vu-TCm" firstAttribute="bottom" secondItem="QiF-ae-g4d" secondAttribute="bottom" constant="8" id="7jK-B4-0rX"/>
-                                                <constraint firstItem="E2v-qI-TM8" firstAttribute="leading" secondItem="d0G-jz-Pai" secondAttribute="leading" constant="56" id="G1e-hX-v6G"/>
+                                                <constraint firstItem="zrR-MD-M6R" firstAttribute="leading" secondItem="d0G-jz-Pai" secondAttribute="leading" constant="8" id="I7x-5I-LM5"/>
+                                                <constraint firstItem="zrR-MD-M6R" firstAttribute="top" secondItem="d0G-jz-Pai" secondAttribute="top" constant="14" id="ILg-qL-lNv"/>
+                                                <constraint firstItem="E2v-qI-TM8" firstAttribute="leading" secondItem="oMt-ar-7f4" secondAttribute="trailing" constant="9" id="MMm-b4-6qH"/>
                                                 <constraint firstItem="qE9-Vu-TCm" firstAttribute="leading" secondItem="QiF-ae-g4d" secondAttribute="leading" constant="-15" id="MOh-gZ-C13"/>
                                                 <constraint firstItem="qE9-Vu-TCm" firstAttribute="trailing" secondItem="QiF-ae-g4d" secondAttribute="trailing" constant="8" id="Ufe-Cb-xDm"/>
                                                 <constraint firstItem="oMt-ar-7f4" firstAttribute="top" secondItem="d0G-jz-Pai" secondAttribute="top" constant="9" id="VRx-jI-eJf"/>
                                                 <constraint firstAttribute="bottom" secondItem="QiF-ae-g4d" secondAttribute="bottom" constant="20" id="Van-cY-WhT"/>
-                                                <constraint firstItem="QiF-ae-g4d" firstAttribute="leading" secondItem="d0G-jz-Pai" secondAttribute="leading" constant="65" id="WiT-vs-ty6"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qE9-Vu-TCm" secondAttribute="trailing" constant="65" id="dTf-X4-BIL"/>
                                                 <constraint firstItem="qE9-Vu-TCm" firstAttribute="top" secondItem="QiF-ae-g4d" secondAttribute="top" constant="-8" id="hhe-ps-RJr"/>
                                                 <constraint firstItem="QiF-ae-g4d" firstAttribute="top" secondItem="E2v-qI-TM8" secondAttribute="bottom" constant="10" id="l9N-iH-TJ9"/>
-                                                <constraint firstItem="oMt-ar-7f4" firstAttribute="leading" secondItem="d0G-jz-Pai" secondAttribute="leading" constant="8" id="oug-Oc-pGt"/>
+                                                <constraint firstItem="QiF-ae-g4d" firstAttribute="leading" secondItem="oMt-ar-7f4" secondAttribute="trailing" constant="18" id="mao-rY-gSE"/>
                                                 <constraint firstItem="E2v-qI-TM8" firstAttribute="top" secondItem="d0G-jz-Pai" secondAttribute="top" constant="8" id="soF-uK-snI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="imgCheck" destination="zrR-MD-M6R" id="KEk-Bg-2bG"/>
                                             <outlet property="imgLogo" destination="oMt-ar-7f4" id="fiJ-F4-nyE"/>
+                                            <outlet property="imgLogoConstraintLeft" destination="1ZQ-ng-seS" id="vSa-gG-tKA"/>
                                             <outlet property="lblMsg" destination="QiF-ae-g4d" id="Lqt-E0-rpG"/>
                                             <outlet property="lblNick" destination="E2v-qI-TM8" id="AKZ-de-CDh"/>
                                             <outlet property="lblNickConstraintHeight" destination="OQk-HF-Lfm" id="kGH-S4-Pan"/>
@@ -139,6 +150,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CHAT_BTN_UNCHECK" translatesAutoresizingMaskIntoConstraints="NO" id="pYM-6R-Mgh">
+                                                    <rect key="frame" x="8" y="32" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="24" id="m4w-4P-6w3"/>
+                                                        <constraint firstAttribute="width" secondItem="pYM-6R-Mgh" secondAttribute="height" multiplier="1:1" id="p1I-kn-aZM"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8fq-IF-B4L">
                                                     <rect key="frame" x="327" y="9" width="40" height="40"/>
                                                     <gestureRecognizers/>
@@ -168,7 +186,7 @@
                                                         </imageView>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAo-BS-v6A" userLabel="背景">
                                                             <rect key="frame" x="0.0" y="0.0" width="116" height="44"/>
-                                                            <color key="backgroundColor" red="0.62745098040000002" green="0.90512603520000001" blue="0.35352197289999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.62745098039215685" green="0.90588235294117647" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -203,7 +221,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="b1x-67-RVi" secondAttribute="bottom" constant="20" id="MZl-kz-Adr"/>
                                                 <constraint firstItem="2hk-wl-Hqz" firstAttribute="top" secondItem="BUg-Ah-dC0" secondAttribute="top" constant="8" id="TGz-Fl-c0r"/>
                                                 <constraint firstAttribute="trailing" secondItem="8fq-IF-B4L" secondAttribute="trailing" constant="8" id="euJ-Cj-0Sw"/>
+                                                <constraint firstItem="pYM-6R-Mgh" firstAttribute="top" secondItem="9xW-5k-3tw" secondAttribute="top" constant="8" id="hra-5E-T54"/>
                                                 <constraint firstAttribute="trailing" secondItem="2hk-wl-Hqz" secondAttribute="trailing" constant="56" id="txp-g1-eD7"/>
+                                                <constraint firstItem="pYM-6R-Mgh" firstAttribute="leading" secondItem="BUg-Ah-dC0" secondAttribute="leading" constant="8" id="wia-Pz-yoQ"/>
                                                 <constraint firstItem="8fq-IF-B4L" firstAttribute="top" secondItem="BUg-Ah-dC0" secondAttribute="top" constant="9" id="xNX-ch-TOS"/>
                                                 <constraint firstAttribute="trailing" secondItem="b1x-67-RVi" secondAttribute="trailing" constant="65" id="z6P-Es-9l8"/>
                                             </constraints>
@@ -211,6 +231,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <connections>
+                                            <outlet property="imgCheck" destination="pYM-6R-Mgh" id="iLA-8D-8ve"/>
                                             <outlet property="imgLogo" destination="8fq-IF-B4L" id="uEa-br-YfW"/>
                                             <outlet property="lblMsg" destination="b1x-67-RVi" id="IgN-qv-T7G"/>
                                             <outlet property="lblNick" destination="2hk-wl-Hqz" id="BFt-oz-wzV"/>
@@ -797,6 +818,7 @@
         <image name="CHAT_BTN_EMOTION" width="32" height="32"/>
         <image name="CHAT_BTN_PLUS" width="32" height="32"/>
         <image name="CHAT_BTN_TEXT" width="32" height="32"/>
+        <image name="CHAT_BTN_UNCHECK" width="40" height="40"/>
         <image name="CHAT_IMG_LEFT_ARROW" width="5" height="10"/>
         <image name="CHAT_IMG_RIGHT_ARROW" width="5" height="10"/>
     </resources>
