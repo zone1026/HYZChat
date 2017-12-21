@@ -37,6 +37,8 @@
 @property (assign, nonatomic) BOOL isMeSend;
 /** 单元格数据源 */
 @property (strong, nonatomic) CNChatMessage *cellData;
+/** 是否处于选中状态 */
+@property (assign, nonatomic) BOOL checkMode;
 
 /**
  * @description 更新聊天消息内容

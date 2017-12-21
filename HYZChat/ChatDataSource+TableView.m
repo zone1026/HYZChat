@@ -22,6 +22,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierStr forIndexPath:indexPath];
     [self updateTableCellUI:cell cellForRowAtIndexPath:indexPath];
     
+    if (self.isMultiChoiceMode == YES && [cell isKindOfClass:[ChatMsgCell class]])
+        ((ChatMsgCell *)cell).checkMode = [self.multiChoiceCellIndexPath containsObject:indexPath];
+    
+    cell.contentView.userInteractionEnabled = !self.isMultiChoiceMode;//多选模式下cell内容的视图不可响应事件
+    
     return cell;
 }
 

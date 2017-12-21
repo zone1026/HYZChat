@@ -17,8 +17,17 @@ static const CGFloat chatAnimateDuration = 0.3f;
 @property (strong, nonatomic) NSMutableDictionary *emotionTextDict;
 /** 按钮cell时，设置的响应对象 */
 @property (weak, nonatomic) UIResponder *cellLongPressResponder;
+/** 聊天的目标类型（是私聊还是群聊） */
+@property (assign, nonatomic) ChatTargetType chatTargetType;
 
-//单例模式
+/** 单例模式 */
 + (instancetype)sharedManager;
+
+/**
+ * @description 打开聊天视图
+ * @param type 聊天的目标类型（是私聊还是群聊）
+ * @param fromVc 从哪个ViewController打开的
+ */
+- (void)openChatView:(ChatTargetType)type withFromViewController:(UIViewController *)fromVc;
 
 @end

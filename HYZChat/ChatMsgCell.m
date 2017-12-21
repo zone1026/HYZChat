@@ -43,6 +43,10 @@
     }
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -51,6 +55,12 @@
 
 - (void)setIsMeSend:(BOOL)isMeSend {
     _isMeSend = isMeSend;
+}
+
+- (void)setCheckMode:(BOOL)checkMode {
+    _checkMode = checkMode;
+    if (self.imgCheck != nil)
+        self.imgCheck.image = [UIImage imageNamed:checkMode == YES ? @"CHAT_BTN_CHECK" : @"CHAT_BTN_UNCHECK"];
 }
 
 #pragma mark - 共有方法
@@ -86,13 +96,17 @@
 /** 头像的点击手势响应方法 */
 - (void)imgLogoTapGestureSelector:(UITapGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateEnded)
-        [HYZAlert showInfo:self.description underTitle:@"您单击了头像"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotiLogoImageGesture object:nil
+                                                          userInfo:@{@"gestureType":@"tap", @"uid":@(self.cellData.send_userId)}];
+//        [HYZAlert showInfo:self.description underTitle:@"您单击了头像"];
 }
 
 /** 头像的按钮手势响应方法 */
 - (void)imgLogoLongPressGestureSelector:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan)
-        [HYZAlert showInfo:self.description underTitle:@"您长按了头像"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotiLogoImageGesture object:nil
+                                                          userInfo:@{@"tapGesture":@"longPress", @"uid":@(self.cellData.send_userId)}];
+//        [HYZAlert showInfo:self.description underTitle:@"您长按了头像"];
 }
 
 /** 消息内容的长按手势响应方法 */

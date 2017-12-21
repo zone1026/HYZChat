@@ -41,6 +41,12 @@
     return _cellHeightDict;
 }
 
+- (NSMutableArray <NSIndexPath *> *)multiChoiceCellIndexPath {
+    if (nil == _multiChoiceCellIndexPath)
+        _multiChoiceCellIndexPath = [NSMutableArray array];
+    return _multiChoiceCellIndexPath;
+}
+
 #pragma mark - 私有方法
 
 /** 加载本地数据库中的消息数据*/
@@ -105,6 +111,24 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.01;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    if (self.isMultiChoiceMode == NO)
+        return;
+    
+    if ([self.multiChoiceCellIndexPath containsObject:indexPath] == NO)
+        [self.multiChoiceCellIndexPath addObject:indexPath];
+    else
+        [self.multiChoiceCellIndexPath removeObject:indexPath];
+    
+    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.isMultiChoiceMode;
 }
 
 #pragma mark - UIScrollViewDelegate

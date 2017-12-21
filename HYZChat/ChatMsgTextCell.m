@@ -24,6 +24,11 @@
     self.viewMsgBg.layer.cornerRadius = 5.0f;
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.lblMsg.linkLongHandler = nil;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -75,6 +80,9 @@
         }
         else
             return;
+    };
+    self.lblMsg.linkTapHandler = ^(LinkType linkType, NSString *string, NSRange range) {
+        
     };
 }
 

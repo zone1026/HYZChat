@@ -163,9 +163,7 @@
 /** 打开聊天界面 */
 - (void)openChatUI {
     [[DataManager sharedManager] saveContext];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Chat" bundle:nil];
-    UINavigationController *nc = [storyboard instantiateViewControllerWithIdentifier:@"NaviChat"];
-    [self presentViewController:nc animated:YES completion:nil];
+    [[ChatManager sharedManager] openChatView:ChatTargetTypeP2P withFromViewController:self];
 }
 
 @end

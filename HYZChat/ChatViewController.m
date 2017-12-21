@@ -29,6 +29,11 @@
 /** 底部功能视图的高度 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewBottomConstraintHeight;
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *barBtnBack;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *barBtnInfo;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *barBtnCancel;
+
+
 /** 消息的属性 */
 @property (strong, nonatomic) ChatMessageAttribute *messageAttribute;
 /** 输入框的高度 */
@@ -50,6 +55,12 @@
     self.inputTextViewHeight = ChatViewTopInputViewDefaultHeight;
     self.emotionViewHeiht = NSNotFound;
     self.longPressGestureCell = nil;
+    
+    //导航栏bar button item
+    [self.barBtnInfo setImage:[UIImage imageNamed:([ChatManager sharedManager].chatTargetType == ChatTargetTypeP2G) ?
+                               @"NAVI_BTN_GROUPINFO" : @"NAVI_BTN_ROLEINFO"]];
+    self.navigationItem.leftBarButtonItem = self.barBtnBack;
+    self.navigationItem.rightBarButtonItem = self.barBtnInfo;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -89,14 +100,21 @@
     // Pass the selected object to the new view controller.
 }
 
+/** 返回 barButtonItem响应 */
 - (IBAction)barBtnBackSelector:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - public methon
+/** 信息 barButtonItem响应 */
+- (IBAction)barBtnInfoSelector:(UIBarButtonItem *)sender {
+}
 
-- (void)addChatMessageAttribute:(ChatMessageAttribute *)attribute {
-    self.messageAttribute = attribute;
+/** 取消 barButtonItem响应 */
+- (IBAction)barBtnCancelSelector:(UIBarButtonItem *)sender {
+    self.chatDataSource.multiChoiceCellIndexPath = nil;
+    self.chatDataSource.isMultiChoiceMode = NO;
+    self.navigationItem.leftBarButtonItems = @[self.barBtnBack];
+    [self.chatTableView reloadData];
 }
 
 #pragma mark - message notification
@@ -122,6 +140,8 @@
                                                  name:NotiMsgContentLongPressGesture object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuControllerWillHide:)
                                                  name:UIMenuControllerWillHideMenuNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiLogoImageGesture:)
+                                                 name:NotiLogoImageGesture object:nil];
 }
 
 /** 移除消息通知 */
@@ -137,6 +157,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiChatBottomPanelShrinkage object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiMsgContentLongPressGesture object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIMenuControllerDidHideMenuNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiLogoImageGesture object:nil];
 }
 
 /** 键盘弹出 */
@@ -262,6 +283,8 @@
 
 /** 聊天消息内容长按手势通知 */
 - (void)handleNotiMsgContentLongPressGesture:(NSNotification *)notiifcation {
+    if (self.chatDataSource.isMultiChoiceMode == YES)
+        return;
     if (notiifcation.object != nil) {
         if ([notiifcation.object isKindOfClass:[ChatMsgCell class]])
             [self showCellMenu:notiifcation.object];
@@ -271,6 +294,22 @@
 /** 菜单即将消失通知 */
 - (void)handleMenuControllerWillHide:(NSNotification *)notiifcation {
     [ChatManager sharedManager].cellLongPressResponder = nil;
+}
+
+- (void)handleNotiLogoImageGesture:(NSNotification *)notiifcation {
+    if (self.chatDataSource.isMultiChoiceMode == YES)
+        return;
+    
+    if (notiifcation.userInfo != nil) {
+        NSString *gestureType = [notiifcation.userInfo objectForKey:@"gestureType"];
+//        long long uid = [[notiifcation.userInfo objectForKey:@"uid"] longLongValue];
+        if ([gestureType isEqualToString:@"tap"]) {
+            [HYZAlert showInfo:@"您单击了头像" underTitle:@"提示"];
+        }
+        else if ([gestureType isEqualToString:@"longPress"]) {
+            [HYZAlert showInfo:@"您长按了头像" underTitle:@"提示"];
+        }
+    }
 }
 
 #pragma mark - 私有方法
@@ -351,6 +390,8 @@
 
 /** 多选item响应选择器 */
 - (void)cellMultiChoiceSelector {
+    self.chatDataSource.multiChoiceCellIndexPath = nil;
+    self.navigationItem.leftBarButtonItem = self.barBtnCancel;
     self.chatDataSource.isMultiChoiceMode = YES;
     [self.chatTableView reloadData];
 }

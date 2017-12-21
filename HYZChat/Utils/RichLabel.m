@@ -132,6 +132,8 @@
     [self updateTextStoreWithText];
     
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressLabel:)];
+    longPressGesture.cancelsTouchesInView = NO;
+    longPressGesture.minimumPressDuration = 0.5f;//设置长按时间，默认0.5秒
     [self addGestureRecognizer:longPressGesture];
     
     //默认的回调

@@ -20,7 +20,7 @@
     chatMessage.send_nick = currentUser.user_name;
     chatMessage.send_time = [NSString stringWithFormat:@"%.2f", [HYZUtil getCurrentTimestamp]];
     chatMessage.target_id = 0;
-    chatMessage.target_type = ChatTargetTypeP2P;
+    chatMessage.target_type = [ChatManager sharedManager].chatTargetType;
     chatMessage.belong_user = currentUser;
     
     if (type == ChatMsgTypeText) {

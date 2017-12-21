@@ -43,11 +43,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ewu-pA-6X8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ewu-pA-6X8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="herTextCell" rowHeight="80" id="P39-am-pw9" customClass="ChatMsgTextCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="herTextCell" rowHeight="80" id="P39-am-pw9" customClass="ChatMsgTextCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P39-am-pw9" id="d0G-jz-Pai">
@@ -143,7 +143,7 @@
                                             <outlet property="viewMsgContent" destination="qE9-Vu-TCm" id="YoR-tB-PNr"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="meTextCell" rowHeight="80" id="jXy-PB-yYr" customClass="ChatMsgTextCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="meTextCell" rowHeight="80" id="jXy-PB-yYr" customClass="ChatMsgTextCell">
                                         <rect key="frame" x="0.0" y="108" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jXy-PB-yYr" id="BUg-Ah-dC0">
@@ -271,15 +271,11 @@
                             <constraint firstItem="VH9-BF-FlH" firstAttribute="width" secondItem="00p-Uz-6Wf" secondAttribute="width" id="zEJ-av-Rza"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="聊天" id="rdY-eF-blk">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MGx-dM-hdZ">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="barBtnBackSelector:" destination="BbH-lb-YNE" id="hhH-Ei-NaO"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="聊天" id="rdY-eF-blk"/>
                     <connections>
+                        <outlet property="barBtnBack" destination="MGx-dM-hdZ" id="VLn-Nc-6o9"/>
+                        <outlet property="barBtnCancel" destination="j7g-J5-uLS" id="6KM-1Q-0RQ"/>
+                        <outlet property="barBtnInfo" destination="tVe-Ar-GhX" id="bKe-O8-4qG"/>
                         <outlet property="chatDataSource" destination="xqq-Gf-owI" id="528-FG-QTV"/>
                         <outlet property="chatTableView" destination="ewu-pA-6X8" id="pP5-hf-gFZ"/>
                         <outlet property="imgBg" destination="cyR-oa-exF" id="26N-67-VHP"/>
@@ -289,6 +285,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNF-Qz-ez3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="xqq-Gf-owI" customClass="ChatDataSource"/>
+                <barButtonItem image="NAVI_BTN_BACK" id="MGx-dM-hdZ">
+                    <inset key="imageInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="barBtnBackSelector:" destination="BbH-lb-YNE" id="hhH-Ei-NaO"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem image="NAVI_BTN_ROLEINFO" id="tVe-Ar-GhX">
+                    <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="barBtnInfoSelector:" destination="BbH-lb-YNE" id="OJL-dg-et9"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="取消" id="j7g-J5-uLS">
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="barBtnCancelSelector:" destination="BbH-lb-YNE" id="heD-Zv-eNW"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="999.20000000000005" y="-0.44977511244377816"/>
         </scene>
@@ -821,5 +837,7 @@
         <image name="CHAT_BTN_UNCHECK" width="40" height="40"/>
         <image name="CHAT_IMG_LEFT_ARROW" width="5" height="10"/>
         <image name="CHAT_IMG_RIGHT_ARROW" width="5" height="10"/>
+        <image name="NAVI_BTN_BACK" width="32" height="32"/>
+        <image name="NAVI_BTN_ROLEINFO" width="32" height="32"/>
     </resources>
 </document>

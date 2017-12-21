@@ -45,6 +45,10 @@
  * @description 聊天消息内容长按手势通知
  */
 #define NotiMsgContentLongPressGesture          @"NotiMsgContentLongPressGesture"
+/**
+ * @description 用户头像手势通知
+ */
+#define NotiLogoImageGesture                    @"NotiLogoImageGesture"
 
 
 #endif /* NotificationName_h */

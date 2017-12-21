@@ -25,6 +25,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        _chatTargetType = ChatTargetTypeP2P;
     }
     return self;
 }
@@ -39,6 +40,13 @@
         }
     }
     return _emotionTextDict;
+}
+
+- (void)openChatView:(ChatTargetType)type withFromViewController:(UIViewController *)fromVc {
+    self.chatTargetType = type;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Chat" bundle:nil];
+    UINavigationController *nc = [storyboard instantiateViewControllerWithIdentifier:@"NaviChat"];
+    [fromVc presentViewController:nc animated:YES completion:nil];
 }
 
 @end
