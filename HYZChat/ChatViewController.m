@@ -17,7 +17,7 @@
 #import "ChatManager.h"
 #import "ChatMsgCell.h"
 
-@interface ChatViewController ()
+@interface ChatViewController ()<ChatDataSourceDelegate>
 /** 列表的数据源 */
 @property (strong, nonatomic) IBOutlet ChatDataSource *chatDataSource;
 /** 聊天表格的背景图 */
@@ -29,10 +29,21 @@
 /** 底部功能视图的高度 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewBottomConstraintHeight;
 
+/** 导航栏返回barBtnItem */
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *barBtnBack;
+/** 导航栏信息barBtnItem */
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *barBtnInfo;
+/** 导航栏取消barBtnItem */
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *barBtnCancel;
 
+/** 工具栏取消barBtnItem */
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *toolBarBtnTranspond;
+/** 工具栏收藏barBtnItem */
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *toolBarBtnCollect;
+/** 工具栏删除barBtnItem */
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *toolBarBtnDel;
+/** 工具栏更多barBtnItem */
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *toolBarBtnMore;
 
 /** 消息的属性 */
 @property (strong, nonatomic) ChatMessageAttribute *messageAttribute;
@@ -52,6 +63,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.chatDataSource.delegate = self;
     self.inputTextViewHeight = ChatViewTopInputViewDefaultHeight;
     self.emotionViewHeiht = NSNotFound;
     self.longPressGestureCell = nil;
@@ -61,6 +73,7 @@
                                @"NAVI_BTN_GROUPINFO" : @"NAVI_BTN_ROLEINFO"]];
     self.navigationItem.leftBarButtonItem = self.barBtnBack;
     self.navigationItem.rightBarButtonItem = self.barBtnInfo;
+    [self.navigationController setToolbarHidden:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -114,6 +127,12 @@
     self.chatDataSource.multiChoiceCellIndexPath = nil;
     self.chatDataSource.isMultiChoiceMode = NO;
     self.navigationItem.leftBarButtonItems = @[self.barBtnBack];
+    
+    [self.navigationController setToolbarHidden:YES animated:YES];
+    [UIView animateWithDuration:chatAnimateDuration animations:^{
+        self.viewBottomConstraintHeight.constant = self.inputTextViewHeight;
+    }];
+    
     [self.chatTableView reloadData];
 }
 
@@ -312,6 +331,16 @@
     }
 }
 
+#pragma mark - ChatDataSourceDelegate
+
+- (void)updateToolBarButtonItemState {
+    if (self.chatDataSource.isMultiChoiceMode == NO)
+        return;
+    
+    self.toolBarBtnTranspond.enabled = self.toolBarBtnCollect.enabled = self.toolBarBtnDel.enabled = self.toolBarBtnMore.enabled
+                                                                            = self.chatDataSource.multiChoiceCellIndexPath.count > 0;
+}
+
 #pragma mark - 私有方法
 
 /** 将列表信息滑动到底部 */
@@ -391,8 +420,18 @@
 /** 多选item响应选择器 */
 - (void)cellMultiChoiceSelector {
     self.chatDataSource.multiChoiceCellIndexPath = nil;
+    if (self.longPressGestureCell != nil)
+        [self.chatDataSource.multiChoiceCellIndexPath addObject:[self.chatTableView indexPathForCell:self.longPressGestureCell]];
+
     self.navigationItem.leftBarButtonItem = self.barBtnCancel;
     self.chatDataSource.isMultiChoiceMode = YES;
+    [self updateToolBarButtonItemState];
+    
+    [self.navigationController setToolbarHidden:NO animated:YES];
+    [UIView animateWithDuration:chatAnimateDuration animations:^{
+        self.viewBottomConstraintHeight.constant = 0.0f;
+    }];
+    
     [self.chatTableView reloadData];
 }
 

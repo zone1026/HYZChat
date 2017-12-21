@@ -80,7 +80,7 @@
     if (self.lblNickConstraintHeight != nil)
         self.lblNickConstraintHeight.constant =  [msgData checkShowNickName] == NO ? 0.01f : ChatNickNameDefaultHeight;
     if (self.imgLogoConstraintLeft != nil)
-        self.imgLogoConstraintLeft.constant = (self.multiChoiceMode == YES && [msgData checkMsgNeedUserLogo] == YES) ? 8.0 + 24.0 + 8.0 : 8.0;
+        self.imgLogoConstraintLeft.constant = (self.multiChoiceMode == YES && [msgData checkMsgNeedUserLogo] == YES) ? 8.0 + 26.0 + 8.0 : 8.0;
     if (self.imgCheck != nil)
         self.imgCheck.hidden = !self.multiChoiceMode;
 }

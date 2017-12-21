@@ -125,6 +125,9 @@
         [self.multiChoiceCellIndexPath removeObject:indexPath];
     
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(updateToolBarButtonItemState)])
+        [self.delegate updateToolBarButtonItemState];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -142,10 +145,5 @@
     if ([ChatManager sharedManager].bottomMode == ChatBottomTargetEmotion || [ChatManager sharedManager].bottomMode == ChatBottomTargetFunction)
         [[NSNotificationCenter defaultCenter] postNotificationName:NotiChatBottomPanelShrinkage object:nil];
 }
-
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-//    if (!decelerate)
-//        NSLog(@"");
-//}
 
 @end

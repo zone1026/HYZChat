@@ -12,8 +12,20 @@
 #import "ChatTableCellInfo.h"
 #import "RichLabel.h"
 
+@protocol ChatDataSourceDelegate <NSObject>
+
+@optional
+/**
+ * @description 更新工具栏的按钮状态
+ */
+- (void)updateToolBarButtonItemState;
+
+@end
+
 @interface ChatDataSource : SuperDataSource <UITableViewDelegate, UITableViewDataSource>
 
+/** 聊天界面代理 */
+@property (weak, nonatomic) id <ChatDataSourceDelegate> delegate;
 /** 消息存放数组 */
 @property (strong, nonatomic) NSMutableArray *chatMsgArr;
 /** 消息所用Cell信息集合 */

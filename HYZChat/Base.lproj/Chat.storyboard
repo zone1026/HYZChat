@@ -13,12 +13,17 @@
         <!--Navigation Controller-->
         <scene sceneID="RSR-sW-Q45">
             <objects>
-                <navigationController storyboardIdentifier="NaviChat" id="SEu-x6-RYk" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NaviChat" toolbarHidden="NO" id="SEu-x6-RYk" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="dlb-s2-7Cb">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iMR-eZ-MTk">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BbH-lb-YNE" kind="relationship" relationship="rootViewController" id="YlI-wI-VXI"/>
                     </connections>
@@ -44,7 +49,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ewu-pA-6X8">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="herTextCell" rowHeight="80" id="P39-am-pw9" customClass="ChatMsgTextCell">
@@ -55,9 +60,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CHAT_BTN_UNCHECK" translatesAutoresizingMaskIntoConstraints="NO" id="zrR-MD-M6R">
-                                                    <rect key="frame" x="8" y="14" width="24" height="24"/>
+                                                    <rect key="frame" x="8" y="14" width="26" height="26"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="24" id="XKF-ny-sQj"/>
+                                                        <constraint firstAttribute="width" constant="26" id="XKF-ny-sQj"/>
                                                         <constraint firstAttribute="width" secondItem="zrR-MD-M6R" secondAttribute="height" multiplier="1:1" id="hwT-bE-Y1c"/>
                                                     </constraints>
                                                 </imageView>
@@ -151,9 +156,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CHAT_BTN_UNCHECK" translatesAutoresizingMaskIntoConstraints="NO" id="pYM-6R-Mgh">
-                                                    <rect key="frame" x="8" y="32" width="24" height="24"/>
+                                                    <rect key="frame" x="8" y="32" width="26" height="26"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="24" id="m4w-4P-6w3"/>
+                                                        <constraint firstAttribute="width" constant="26" id="m4w-4P-6w3"/>
                                                         <constraint firstAttribute="width" secondItem="pYM-6R-Mgh" secondAttribute="height" multiplier="1:1" id="p1I-kn-aZM"/>
                                                     </constraints>
                                                 </imageView>
@@ -186,7 +191,7 @@
                                                         </imageView>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAo-BS-v6A" userLabel="背景">
                                                             <rect key="frame" x="0.0" y="0.0" width="116" height="44"/>
-                                                            <color key="backgroundColor" red="0.62745098039215685" green="0.90588235294117647" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.62783509492874146" green="0.90512603521347046" blue="0.35352197289466858" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -206,7 +211,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="JPb-yg-05w"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.03081609308719635" green="0.055603586137294769" blue="0.014290802180767059" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -247,7 +252,7 @@
                                 </connections>
                             </tableView>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VH9-BF-FlH">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="573" width="375" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="D9M-yZ-NCX"/>
                                 </constraints>
@@ -263,15 +268,35 @@
                             <constraint firstItem="cyR-oa-exF" firstAttribute="centerX" secondItem="00p-Uz-6Wf" secondAttribute="centerX" id="Cev-e5-79Z"/>
                             <constraint firstItem="ewu-pA-6X8" firstAttribute="top" secondItem="00p-Uz-6Wf" secondAttribute="top" id="Dzt-IL-ryO"/>
                             <constraint firstAttribute="bottom" secondItem="cyR-oa-exF" secondAttribute="bottom" id="Mar-pr-qzN"/>
+                            <constraint firstItem="k3T-2d-nfK" firstAttribute="top" secondItem="VH9-BF-FlH" secondAttribute="bottom" id="PQ6-LT-BWi"/>
                             <constraint firstItem="VH9-BF-FlH" firstAttribute="centerX" secondItem="00p-Uz-6Wf" secondAttribute="centerX" id="Vuf-0g-IRi"/>
                             <constraint firstItem="ewu-pA-6X8" firstAttribute="centerX" secondItem="00p-Uz-6Wf" secondAttribute="centerX" id="aD5-4C-5mh"/>
                             <constraint firstItem="VH9-BF-FlH" firstAttribute="top" secondItem="ewu-pA-6X8" secondAttribute="bottom" id="eUB-mE-Qpv"/>
-                            <constraint firstAttribute="bottom" secondItem="VH9-BF-FlH" secondAttribute="bottom" id="hUY-in-A5o"/>
                             <constraint firstItem="ewu-pA-6X8" firstAttribute="width" secondItem="00p-Uz-6Wf" secondAttribute="width" id="uCT-r1-8BL"/>
                             <constraint firstItem="VH9-BF-FlH" firstAttribute="width" secondItem="00p-Uz-6Wf" secondAttribute="width" id="zEJ-av-Rza"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="cwX-VN-49o"/>
+                        <barButtonItem title="转发" image="TOOL_BTN_TRANSPOND" id="XbT-tz-7aw">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem width="30" style="plain" systemItem="fixedSpace" id="60N-46-jNz"/>
+                        <barButtonItem image="CHAT_FUNCTION_COLLECT" id="Hvn-wg-yJN">
+                            <color key="tintColor" white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem width="30" style="plain" systemItem="fixedSpace" id="Gnd-Pp-C8o"/>
+                        <barButtonItem systemItem="trash" id="5bf-z1-mVG">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem width="30" style="plain" systemItem="fixedSpace" id="71A-dm-Nqm"/>
+                        <barButtonItem image="TOOL_BTN_MORE" id="huL-9k-zSr">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="8Ox-w0-gJD"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="聊天" id="rdY-eF-blk"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barBtnBack" destination="MGx-dM-hdZ" id="VLn-Nc-6o9"/>
                         <outlet property="barBtnCancel" destination="j7g-J5-uLS" id="6KM-1Q-0RQ"/>
@@ -279,6 +304,10 @@
                         <outlet property="chatDataSource" destination="xqq-Gf-owI" id="528-FG-QTV"/>
                         <outlet property="chatTableView" destination="ewu-pA-6X8" id="pP5-hf-gFZ"/>
                         <outlet property="imgBg" destination="cyR-oa-exF" id="26N-67-VHP"/>
+                        <outlet property="toolBarBtnCollect" destination="Hvn-wg-yJN" id="mxi-C6-L5x"/>
+                        <outlet property="toolBarBtnDel" destination="5bf-z1-mVG" id="dIB-RG-TiQ"/>
+                        <outlet property="toolBarBtnMore" destination="huL-9k-zSr" id="YaS-Yd-Bwj"/>
+                        <outlet property="toolBarBtnTranspond" destination="XbT-tz-7aw" id="HTP-dA-VLN"/>
                         <outlet property="viewBottom" destination="VH9-BF-FlH" id="GPG-wR-E3y"/>
                         <outlet property="viewBottomConstraintHeight" destination="D9M-yZ-NCX" id="32I-ru-x3R"/>
                     </connections>
@@ -835,9 +864,12 @@
         <image name="CHAT_BTN_PLUS" width="32" height="32"/>
         <image name="CHAT_BTN_TEXT" width="32" height="32"/>
         <image name="CHAT_BTN_UNCHECK" width="40" height="40"/>
+        <image name="CHAT_FUNCTION_COLLECT" width="32" height="32"/>
         <image name="CHAT_IMG_LEFT_ARROW" width="5" height="10"/>
         <image name="CHAT_IMG_RIGHT_ARROW" width="5" height="10"/>
         <image name="NAVI_BTN_BACK" width="32" height="32"/>
         <image name="NAVI_BTN_ROLEINFO" width="32" height="32"/>
+        <image name="TOOL_BTN_MORE" width="32" height="32"/>
+        <image name="TOOL_BTN_TRANSPOND" width="32" height="32"/>
     </resources>
 </document>
