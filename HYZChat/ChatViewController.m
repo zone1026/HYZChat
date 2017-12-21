@@ -55,6 +55,8 @@
 @property (assign, nonatomic) CGFloat emotionViewHeiht;
 /** 长按时的cell */
 @property (strong, nonatomic) ChatMsgCell *longPressGestureCell;
+/** 断开布局视图滑动表格视图 */
+@property (assign, nonatomic) BOOL breakLayoutViewScrollTable;
 
 @end
 
@@ -67,18 +69,21 @@
     self.inputTextViewHeight = ChatViewTopInputViewDefaultHeight;
     self.emotionViewHeiht = NSNotFound;
     self.longPressGestureCell = nil;
+    self.breakLayoutViewScrollTable = NO;
     
     //导航栏bar button item
     [self.barBtnInfo setImage:[UIImage imageNamed:([ChatManager sharedManager].chatTargetType == ChatTargetTypeP2G) ?
                                @"NAVI_BTN_GROUPINFO" : @"NAVI_BTN_ROLEINFO"]];
     self.navigationItem.leftBarButtonItem = self.barBtnBack;
     self.navigationItem.rightBarButtonItem = self.barBtnInfo;
-    [self.navigationController setToolbarHidden:YES];
+    
+    [self.navigationController setToolbarHidden:YES animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self registerMessageNotification];
+    [self scrollTableViewToBottom];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -97,7 +102,14 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    [self scrollTableViewToBottom];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    if (self.breakLayoutViewScrollTable == NO) {
+        [self scrollTableViewToBottom];
+        self.breakLayoutViewScrollTable = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,11 +138,12 @@
 - (IBAction)barBtnCancelSelector:(UIBarButtonItem *)sender {
     self.chatDataSource.multiChoiceCellIndexPath = nil;
     self.chatDataSource.isMultiChoiceMode = NO;
-    self.navigationItem.leftBarButtonItems = @[self.barBtnBack];
+    self.navigationItem.leftBarButtonItem = self.barBtnBack;
     
     [self.navigationController setToolbarHidden:YES animated:YES];
     [UIView animateWithDuration:chatAnimateDuration animations:^{
         self.viewBottomConstraintHeight.constant = self.inputTextViewHeight;
+        [self.view layoutIfNeeded];
     }];
     
     [self.chatTableView reloadData];
@@ -458,6 +471,13 @@
 
 /** 多选item响应选择器 */
 - (void)cellMultiChoiceSelector {
+    if ([ChatManager sharedManager].bottomMode != ChatBottomTargetFree) {
+        if ([ChatManager sharedManager].bottomMode == ChatBottomTargetText)
+            [self.view endEditing:YES];
+        else
+            [self handleNotiChatBottomPanelShrinkage:nil];
+    }
+    
     self.chatDataSource.multiChoiceCellIndexPath = nil;
     if (self.longPressGestureCell != nil)
         [self.chatDataSource.multiChoiceCellIndexPath addObject:[self.chatTableView indexPathForCell:self.longPressGestureCell]];
@@ -469,6 +489,7 @@
     [self.navigationController setToolbarHidden:NO animated:YES];
     [UIView animateWithDuration:chatAnimateDuration animations:^{
         self.viewBottomConstraintHeight.constant = 0.0f;
+        [self.view layoutIfNeeded];
     }];
     
     [self.chatTableView reloadData];
