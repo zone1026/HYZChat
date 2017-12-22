@@ -16,8 +16,8 @@
     CNChatMessage *chatMsg = [self.chatMsgArr objectAtIndex:indexPath.row];
     ChatTableCellInfo *info = [self.chatCellInfoDict objectForKey:@(chatMsg.msg_type)];
     if (info == nil || [chatMsg checkMsgTypeCanSupport] == NO)//没有拿到cell所用的配置信息
-        return [tableView dequeueReusableCellWithIdentifier:@"herTextCell"];
-    NSString *identifierStr = [NSString stringWithFormat:@"%@%@Cell", (chatMsg.send_userId != [DataManager sharedManager].currentUser.user_id ? @"her": @"me"),
+        return [tableView dequeueReusableCellWithIdentifier:@"meTextCell"];
+    NSString *identifierStr = [NSString stringWithFormat:@"%@%@Cell", ([chatMsg checkOneselfSendMsg] == NO ? @"other": @"me"),
                                info.indentifier];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierStr forIndexPath:indexPath];
     [self updateTableCellUI:cell cellForRowAtIndexPath:indexPath];

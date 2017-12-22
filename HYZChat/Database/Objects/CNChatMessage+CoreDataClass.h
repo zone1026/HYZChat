@@ -28,6 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
  * @description 检测消息对应的cell是否有头像
  */
 - (BOOL)checkMsgNeedUserLogo;
+/**
+ * @description 检测消息是否是自己发送的
+ */
+- (BOOL)checkOneselfSendMsg;
 
 @end
 

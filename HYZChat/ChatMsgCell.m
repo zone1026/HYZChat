@@ -66,8 +66,7 @@
 #pragma mark - 共有方法
 
 - (void)updateMessageData:(CNChatMessage *)msgData {
-    CNUser *currentUser = [DataManager sharedManager].currentUser;
-    [self updateMessageData:msgData withMeMsg:(msgData.send_userId == currentUser.user_id)];
+    [self updateMessageData:msgData withMeMsg:[msgData checkOneselfSendMsg]];
 }
 
 - (void)updateMessageData:(CNChatMessage *)msgData withMeMsg:(BOOL)isMe {
@@ -80,7 +79,9 @@
     if (self.lblNickConstraintHeight != nil)
         self.lblNickConstraintHeight.constant =  [msgData checkShowNickName] == NO ? 0.01f : ChatNickNameDefaultHeight;
     if (self.imgLogoConstraintLeft != nil)
-        self.imgLogoConstraintLeft.constant = (self.multiChoiceMode == YES && [msgData checkMsgNeedUserLogo] == YES) ? 8.0 + 26.0 + 8.0 : 8.0;
+        self.imgLogoConstraintLeft.constant = (self.multiChoiceMode == YES && [msgData checkMsgNeedUserLogo] == YES) ? 4.0f + 26.0f + 4.0f : 8.0f;
+    if (self.viewMsgContentConstraintRight != nil)
+        self.viewMsgContentConstraintRight.constant = self.multiChoiceMode == YES ? 65.0f - (4.0f + 26.0f + 4.0f - 8.0f): 65.0f;
     if (self.imgCheck != nil)
         self.imgCheck.hidden = !self.multiChoiceMode;
 }
@@ -105,7 +106,7 @@
 - (void)imgLogoLongPressGestureSelector:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan)
         [[NSNotificationCenter defaultCenter] postNotificationName:NotiLogoImageGesture object:nil
-                                                          userInfo:@{@"tapGesture":@"longPress", @"uid":@(self.cellData.send_userId)}];
+                                                          userInfo:@{@"gestureType":@"longPress", @"uid":@(self.cellData.send_userId)}];
 //        [HYZAlert showInfo:self.description underTitle:@"您长按了头像"];
 }
 

@@ -52,7 +52,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="herTextCell" rowHeight="80" id="P39-am-pw9" customClass="ChatMsgTextCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="otherTextCell" rowHeight="80" id="P39-am-pw9" customClass="ChatMsgTextCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P39-am-pw9" id="d0G-jz-Pai">
@@ -60,7 +60,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CHAT_BTN_UNCHECK" translatesAutoresizingMaskIntoConstraints="NO" id="zrR-MD-M6R">
-                                                    <rect key="frame" x="8" y="14" width="26" height="26"/>
+                                                    <rect key="frame" x="4" y="14" width="26" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="26" id="XKF-ny-sQj"/>
                                                         <constraint firstAttribute="width" secondItem="zrR-MD-M6R" secondAttribute="height" multiplier="1:1" id="hwT-bE-Y1c"/>
@@ -122,7 +122,7 @@
                                                 <constraint firstItem="oMt-ar-7f4" firstAttribute="leading" secondItem="d0G-jz-Pai" secondAttribute="leading" constant="8" id="1ZQ-ng-seS"/>
                                                 <constraint firstAttribute="trailing" secondItem="E2v-qI-TM8" secondAttribute="trailing" constant="60" id="3UN-R5-AzN"/>
                                                 <constraint firstItem="qE9-Vu-TCm" firstAttribute="bottom" secondItem="QiF-ae-g4d" secondAttribute="bottom" constant="8" id="7jK-B4-0rX"/>
-                                                <constraint firstItem="zrR-MD-M6R" firstAttribute="leading" secondItem="d0G-jz-Pai" secondAttribute="leading" constant="8" id="I7x-5I-LM5"/>
+                                                <constraint firstItem="zrR-MD-M6R" firstAttribute="leading" secondItem="d0G-jz-Pai" secondAttribute="leading" constant="4" id="I7x-5I-LM5"/>
                                                 <constraint firstItem="zrR-MD-M6R" firstAttribute="top" secondItem="d0G-jz-Pai" secondAttribute="top" constant="14" id="ILg-qL-lNv"/>
                                                 <constraint firstItem="E2v-qI-TM8" firstAttribute="leading" secondItem="oMt-ar-7f4" secondAttribute="trailing" constant="9" id="MMm-b4-6qH"/>
                                                 <constraint firstItem="qE9-Vu-TCm" firstAttribute="leading" secondItem="QiF-ae-g4d" secondAttribute="leading" constant="-15" id="MOh-gZ-C13"/>
@@ -146,6 +146,7 @@
                                             <outlet property="lblNickConstraintHeight" destination="OQk-HF-Lfm" id="kGH-S4-Pan"/>
                                             <outlet property="viewMsgBg" destination="vP2-DQ-h4D" id="fQG-VA-WgN"/>
                                             <outlet property="viewMsgContent" destination="qE9-Vu-TCm" id="YoR-tB-PNr"/>
+                                            <outlet property="viewMsgContentConstraintRight" destination="dTf-X4-BIL" id="gmg-4w-2fW"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="meTextCell" rowHeight="80" id="jXy-PB-yYr" customClass="ChatMsgTextCell">

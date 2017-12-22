@@ -28,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lblNickConstraintHeight;
 /** 其他人（不是自己的）的头像的左间距 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgLogoConstraintLeft;
+/** 消息内容视图右边距（这是一个大于等于），在多选模式下（其他人发送的消息时）会修改这个值 */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewMsgContentConstraintRight;
 
 ////////////////////////////////// 共有属性 //////////////////////////////////
 
