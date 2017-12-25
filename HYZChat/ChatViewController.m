@@ -357,12 +357,15 @@
     
     if (notiifcation.userInfo != nil) {
         NSString *gestureType = [notiifcation.userInfo objectForKey:@"gestureType"];
-//        long long uid = [[notiifcation.userInfo objectForKey:@"uid"] longLongValue];
+        long long uid = [[notiifcation.userInfo objectForKey:@"uid"] longLongValue];
         if ([gestureType isEqualToString:@"tap"]) {
             [HYZAlert showInfo:@"您单击了头像" underTitle:@"提示"];
         }
         else if ([gestureType isEqualToString:@"longPress"]) {
-            [HYZAlert showInfo:@"您长按了头像" underTitle:@"提示"];
+            if ([DataManager sharedManager].currentUser.user_id == uid)
+                [HYZAlert showInfo:@"您长按了自己的头像，不能@哟" underTitle:@"提示"];
+            else
+                [HYZAlert showInfo:@"少年郎，您长按了其他人头像，不过@功能我没做，哈哈" underTitle:@"提示"];
         }
     }
 }

@@ -112,7 +112,8 @@
 
 /** 消息内容的长按手势响应方法 */
 - (void)viewMsgContentLongPressGestureSelector:(UILongPressGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateBegan && self.cellData != nil && self.cellData.msg_type != ChatMsgTypeText)//文本消息由自己的长按事件
+    if (sender.state == UIGestureRecognizerStateBegan && [ChatManager sharedManager].chatTargetType != ChatTargetTypeP2P
+                        && self.cellData != nil && self.cellData.msg_type != ChatMsgTypeText)//文本消息由自己的长按事件
         [[NSNotificationCenter defaultCenter] postNotificationName:NotiMsgContentLongPressGesture object:self];
 }
 
