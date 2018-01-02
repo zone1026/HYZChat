@@ -733,7 +733,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCg-3d-h6N">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="38"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Zm8-dn-4Rc"/>
                                                 </constraints>
@@ -747,7 +747,7 @@
                                                 </connections>
                                             </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fN7-b2-dh8">
-                                                <rect key="frame" x="40" y="0.0" width="291" height="38"/>
+                                                <rect key="frame" x="40" y="0.0" width="289" height="38"/>
                                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LjR-ye-TiP">
                                                     <size key="itemSize" width="50" height="50"/>
@@ -796,10 +796,18 @@
                                                     <outlet property="delegate" destination="XDM-wg-bKe" id="mcF-Ap-Fla"/>
                                                 </connections>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lm-C5-1Rx">
-                                                <rect key="frame" x="331" y="-0.5" width="44" height="38"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0e7-Pr-npD" userLabel="竖分割线">
+                                                <rect key="frame" x="328.5" y="0.0" width="0.5" height="38"/>
+                                                <color key="backgroundColor" white="0.75344509548611116" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="44" id="d32-Hw-ACq"/>
+                                                    <constraint firstAttribute="width" constant="0.5" id="ptS-tH-5ho"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lm-C5-1Rx">
+                                                <rect key="frame" x="329" y="-0.5" width="46" height="38"/>
+                                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="46" id="d32-Hw-ACq"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="发送">
@@ -812,10 +820,13 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstItem="0lm-C5-1Rx" firstAttribute="leading" secondItem="0e7-Pr-npD" secondAttribute="trailing" id="1Qc-9a-zuW"/>
+                                            <constraint firstItem="0e7-Pr-npD" firstAttribute="centerY" secondItem="0lm-C5-1Rx" secondAttribute="centerY" id="2x4-YX-e7O"/>
                                             <constraint firstItem="0lm-C5-1Rx" firstAttribute="leading" secondItem="fN7-b2-dh8" secondAttribute="trailing" id="BLA-WN-e5Q"/>
                                             <constraint firstItem="LCg-3d-h6N" firstAttribute="height" secondItem="kXM-ad-DXs" secondAttribute="height" id="Bah-d6-0wX"/>
                                             <constraint firstAttribute="height" constant="38" id="Efc-x1-5Og"/>
                                             <constraint firstItem="LCg-3d-h6N" firstAttribute="centerY" secondItem="kXM-ad-DXs" secondAttribute="centerY" id="JbN-7a-FG3"/>
+                                            <constraint firstItem="0e7-Pr-npD" firstAttribute="height" secondItem="0lm-C5-1Rx" secondAttribute="height" id="Qqm-XU-seY"/>
                                             <constraint firstItem="LCg-3d-h6N" firstAttribute="leading" secondItem="kXM-ad-DXs" secondAttribute="leading" id="Qt7-7U-SHk"/>
                                             <constraint firstItem="0lm-C5-1Rx" firstAttribute="height" secondItem="kXM-ad-DXs" secondAttribute="height" id="ax7-pY-sV8"/>
                                             <constraint firstItem="0lm-C5-1Rx" firstAttribute="centerY" secondItem="kXM-ad-DXs" secondAttribute="centerY" id="dsi-aO-dIO"/>

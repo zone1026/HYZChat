@@ -48,6 +48,20 @@
     [self.collectionViewEmotionTab reloadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self removeMessageNotification];
+    [super viewWillDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -61,6 +75,27 @@
 
 - (IBAction)btnSendEmotoinTouchUpInside:(UIButton *)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiSendMsgByEmotionBtnSend object:nil];
+    [self updateSendButtonState:NO];
+}
+
+#pragma mark - message notification
+
+/** 注册消息通知 */
+- (void)registerMessageNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiUpdateBottomEmotionBtnSend:)
+                                                 name:NotiUpdateBottomEmotionBtnSend object:nil];
+}
+
+/** 移除消息通知 */
+- (void)removeMessageNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiUpdateBottomEmotionBtnSend object:nil];
+}
+
+- (void)handleNotiUpdateBottomEmotionBtnSend:(NSNotification *)notifcation {
+    if (notifcation.object != nil) {
+        BOOL btnEnable = [notifcation.object boolValue];
+        [self updateSendButtonState:btnEnable];
+    }
 }
 
 #pragma mark - ChatEmotionDataDelegate
@@ -78,6 +113,19 @@
     self.chatEmotionData.selectedEmotionTab = tab;
 #warning update collectionViewEmotion icon
     //    [self.collectionViewEmotion reloadData];
+}
+
+#pragma mark - 私有方法
+/**
+ * @description 更新发送按钮的状态
+ * @param btnEnable 是否可点击
+ */
+- (void)updateSendButtonState:(BOOL)btnEnable {
+    self.btnSendEmotoin.enabled = btnEnable;
+    [self.btnSendEmotoin setBackgroundColor:(btnEnable == YES ? [UIColor colorWithRed:0.0f green:0.5f blue:1.0f alpha:1.0f] :
+                                             RGB_COLOR(250.0f, 250.0f, 250.0f))];
+    [self.btnSendEmotoin setTitleColor:(btnEnable == YES ? [UIColor whiteColor] :
+                                        [UIColor colorWithWhite:0.5f alpha:1.0f]) forState:UIControlStateNormal];
 }
 
 @end

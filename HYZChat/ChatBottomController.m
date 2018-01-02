@@ -140,6 +140,8 @@
             data.isEmotionModel = YES;
             [[NSNotificationCenter defaultCenter] postNotificationName:NotiInputViewFrameChanage object:data];//由于表情的出现 导致整个view的frame变化
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotiUpdateBottomEmotionBtnSend
+                                                            object:@([HYZUtil isEmptyOrNull:self.textView.text] == NO)];//更新表情发送按钮的状态
     }
     else
         [self.textView becomeFirstResponder];
@@ -248,6 +250,8 @@
                 [self willDeleteEmotion];
             else
                 [self willInsertEmotion:emotionStr];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotiUpdateBottomEmotionBtnSend
+                                                                object:@([HYZUtil isEmptyOrNull:self.textView.text] == NO)];//更新表情发送按钮的状态
         }
     }
 }
