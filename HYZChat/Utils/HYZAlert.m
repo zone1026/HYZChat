@@ -29,21 +29,24 @@
 
 @implementation CNAlertView
 
-// 多项显示定义初始化
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message
+               preferredStyle:(UIAlertControllerStyle)preferredStyle
                      delegate:(id <CNAlertViewDelegate>)delegate
+                     tapBlock:(CNAlertViewCompletionBlock)tapBlock
             cancelButtonTitle:(NSString *)cancelButtonTitle
-            otherButtonTitles:(NSString *)otherButtonTitles, ...
+            otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION NS_EXTENSION_UNAVAILABLE_IOS("Use UIAlertController instead.")
 {
+    
     if (self = [super init])
     {
+        self.tapBlock = tapBlock;
         self.firstOtherButtonIndex = 1;
         self.cancelButtonIndex = 0;
         self.delegate = delegate;
         self.alertController = [UIAlertController alertControllerWithTitle:title
                                                                    message:message
-                                                            preferredStyle:UIAlertControllerStyleAlert];
+                                                            preferredStyle:preferredStyle];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle
                                                                style:UIAlertActionStyleCancel
                                                              handler:^(UIAlertAction * _Nonnull action) {
@@ -91,6 +94,18 @@
         }
     }
     return self;
+}
+
+
+// 多项显示定义初始化
+- (instancetype)initWithTitle:(NSString *)title
+                      message:(NSString *)message
+                     delegate:(id <CNAlertViewDelegate>)delegate
+            cancelButtonTitle:(NSString *)cancelButtonTitle
+            otherButtonTitles:(NSString *)otherButtonTitles, ...
+{
+    return [self initWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert delegate:delegate tapBlock:nil
+             cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles, nil];
 }
 
 // 确认取消定义初始化

@@ -16,6 +16,7 @@
 #import "ChatBottomController.h"
 #import "ChatManager.h"
 #import "ChatMsgCell.h"
+#import "ChatMsgTextCell.h"
 
 @interface ChatViewController ()<ChatDataSourceDelegate>
 /** 列表的数据源 */
@@ -347,6 +348,9 @@
 
 /** 菜单即将消失通知 */
 - (void)handleMenuControllerWillHide:(NSNotification *)notiifcation {
+    if (self.longPressGestureCell != nil && [self.longPressGestureCell isKindOfClass:[ChatMsgTextCell class]])
+        [((ChatMsgTextCell *)self.longPressGestureCell) cancelContentSelected];
+    
     [ChatManager sharedManager].cellLongPressResponder = nil;
     self.longPressGestureCell = nil;
 }

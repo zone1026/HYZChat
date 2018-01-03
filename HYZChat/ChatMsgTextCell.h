@@ -9,5 +9,9 @@
 #import "ChatMsgCell.h"
 
 @interface ChatMsgTextCell : ChatMsgCell
+/**
+ * @description 取消长安选中效果
+ */
+- (void)cancelContentSelected;
 
 @end

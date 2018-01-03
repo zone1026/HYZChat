@@ -50,6 +50,8 @@ typedef void (^LinkLongHandler)(LinkType linkType, NSString *string, NSRange ran
 
 @property (copy, nonatomic) LinkLongHandler linkLongHandler;
 
+@property (nonatomic, assign) NSRange selectedRange;
+
 /**
  * @description 更新文本内容
  * @param content 文本内容

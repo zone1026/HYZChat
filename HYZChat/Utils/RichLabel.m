@@ -20,8 +20,6 @@
 
 @property (nonatomic, assign) BOOL isTouchMoved;
 
-@property (nonatomic, assign) NSRange selectedRange;
-
 @end
 
 @implementation RichLabel
@@ -132,7 +130,7 @@
     [self updateTextStoreWithText];
     
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressLabel:)];
-    longPressGesture.cancelsTouchesInView = NO;
+    longPressGesture.cancelsTouchesInView = YES;
     longPressGesture.minimumPressDuration = 0.5f;//设置长按时间，默认0.5秒
     [self addGestureRecognizer:longPressGesture];
     
@@ -583,8 +581,7 @@
         NSString *linkString = [link objectForKey:@"link"];
         LinkType linkType = (LinkType)[[link objectForKey:@"linkType"] intValue];
         self.linkLongHandler(linkType, linkString, range, location);//[recognizer locationInView:self.superview]
-    } else {
-        return;
+        self.selectedRange = NSMakeRange(0, self.text.length);
     }
 }
 
@@ -597,11 +594,10 @@
     CGPoint touchLocation = [[touches anyObject] locationInView:self];
     NSDictionary *touchedLink = [self getLinkAtLocation:touchLocation];
     
-    if (touchedLink){
+    if (touchedLink != nil)
         self.selectedRange = [[touchedLink objectForKey:@"range"] rangeValue];
-    } else {
+    else
         [super touchesBegan:touches withEvent:event];
-    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -614,7 +610,7 @@
     
     //如果拖动手指的话就不识别
     if (self.isTouchMoved) {
-        self.selectedRange = NSMakeRange(0, 0);
+        [self cancelSelectedRange];
         return;
     }
     
@@ -630,15 +626,24 @@
     } else {
         [super touchesBegan:touches withEvent:event];
     }
-    self.selectedRange = NSMakeRange(0, 0);
+    [self cancelSelectedRange];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesCancelled:touches withEvent:event];
-    self.selectedRange = NSMakeRange(0, 0);
+//    [self cancelSelectedRange];
 }
 
 #pragma mark - 私有方法
+
+/** 取消选中区域 */
+- (void)cancelSelectedRange {
+    __weak typeof (self) weakSelf = self;
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3/*延迟执行时间*/ * NSEC_PER_SEC));
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        weakSelf.selectedRange = NSMakeRange(0, 0);
+    });
+}
 
 #pragma mark - 共有方法
 

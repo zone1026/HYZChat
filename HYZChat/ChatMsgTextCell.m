@@ -55,30 +55,51 @@
     [self updateTextCellUI];
 }
 
+#pragma mark - 共有方法
+
+- (void)cancelContentSelected {
+    if (self.lblMsg != nil)
+        self.lblMsg.selectedRange = NSMakeRange(0, 0);
+}
+
 #pragma mark - 私有方法
 /** 更新textcell相关的UI */
 - (void)updateTextCellUI {
     [self.lblMsg updateTextContent:self.cellData.msg_content];
     self.lblMsg.linkLongHandler = ^(LinkType linkType, NSString *string, NSRange range, CGPoint touchPoint) {
-        NSString *title;
-        NSString *openTypeString;
-        if (LinkTypeURL == linkType) {
-            title = string;
-            openTypeString = @"在Safari中打开";
-        } else if (LinkTypePhoneNumber == linkType) {
-            title = [NSString stringWithFormat:@"%@可能是一个电话号码，你可以",string];
-            openTypeString = @"呼叫";
-        }
-        else if (LinkTypeNormal == linkType) {//复制文本
-            if (self.cellData != nil)
-                [[NSNotificationCenter defaultCenter] postNotificationName:NotiMsgContentLongPressGesture object:self];
-            return;
-        }
-        else
-            return;
+        if (self.cellData != nil)
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotiMsgContentLongPressGesture object:self];
     };
     self.lblMsg.linkTapHandler = ^(LinkType linkType, NSString *string, NSRange range) {
-        
+        if (LinkTypeURL == linkType) {
+            [HYZAlert showInfo:@"哈哈，URL跳转。我没做，没做，做" underTitle:@"少年郎"];
+        } else if (LinkTypePhoneNumber == linkType) {
+            CNAlertView *alertView = [[CNAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@可能是一个电话号码，你可以",string]
+                                preferredStyle:UIAlertControllerStyleActionSheet delegate:nil tapBlock:^(CNAlertView *alertView, NSInteger buttonIndex) {
+                                    if (buttonIndex == alertView.firstOtherButtonIndex) {//呼叫
+                                        NSString *telString = [NSString stringWithFormat:@"tel://%@",string];
+                                        return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString] options:@{} completionHandler:nil];
+                                    }
+                                    else if (buttonIndex == (alertView.firstOtherButtonIndex + 1)) {//复制
+                                        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+                                        pasteboard.string = string;
+                                    }
+                                    else if (buttonIndex == (alertView.firstOtherButtonIndex + 2)) {//添加到手机通讯录
+                                        [HYZAlert showInfo:@"哈哈，添加到手机通讯录。我没做，没做，做" underTitle:@"少年郎"];
+                                    }
+            } cancelButtonTitle:@"取消" otherButtonTitles:@"呼叫", @"复制", @"添加到手机通讯录", nil];
+            
+            UIAlertController *alertController = alertView.alertController;
+            alertController.modalPresentationStyle = UIModalPresentationPopover;
+            alertController.preferredContentSize = CGSizeMake(200, 350);
+            UIPopoverPresentationController *popover = alertController.popoverPresentationController;
+            if (popover != nil) {
+                popover.sourceView = self;
+                popover.sourceRect = popover.sourceView.bounds;
+                popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
+            }
+            [[HYZUtil getCurrentWindowViewController] presentViewController:alertController animated:YES completion:nil];
+        }
     };
 }
 

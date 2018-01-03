@@ -51,6 +51,24 @@ typedef void (^CNAlertViewCompletionBlock) (CNAlertView *alertView, NSInteger bu
 @property (assign, nonatomic) NSInteger cancelButtonIndex;
 
 /**
+ * @description 显示alert view 支持设置代理和回调
+ * @param title alert标题
+ * @param message alert内容
+ * @param preferredStyle alert类型
+ * @param delegate alert代理，如果为nil，则走block回调。参考tapBlock回调
+ * @param tapBlock tapBlock回调
+ * @param cancelButtonTitle alert取消按钮的标题
+ * @param otherButtonTitles alert另一个按钮，一般是确定
+ */
+- (instancetype)initWithTitle:(NSString *)title
+                      message:(NSString *)message
+                    preferredStyle:(UIAlertControllerStyle)preferredStyle
+                     delegate:(id <CNAlertViewDelegate>)delegate
+                     tapBlock:(CNAlertViewCompletionBlock)tapBlock
+            cancelButtonTitle:(NSString *)cancelButtonTitle
+            otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION NS_EXTENSION_UNAVAILABLE_IOS("Use UIAlertController instead.");
+
+/**
  * @description 显示alert view
  * @param title alert标题
  * @param message alert内容
