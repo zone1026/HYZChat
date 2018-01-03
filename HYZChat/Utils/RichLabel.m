@@ -125,9 +125,9 @@
     
     _linkDetectionTypes = LinkDetectionTypeAll;
     
-    self.linkColor = [UIColor blueColor];
-    self.linkHighlightColor = [UIColor redColor];
-    self.linkBackgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+    self.linkColor = [UIColor colorWithRed:0.0f green:0.6f blue:1.0f alpha:1.0f];
+    self.linkHighlightColor = [UIColor colorWithRed:0.0f green:0.6f blue:1.0f alpha:1.0f];
+    self.linkBackgroundColor = [UIColor colorWithRed:108.0f/255.0f green:206.0f/255.0f blue:64.0f/255.0f alpha:1.0f];;
     
     [self updateTextStoreWithText];
     

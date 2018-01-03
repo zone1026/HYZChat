@@ -35,10 +35,6 @@
     // Configure the view for the selected state
 }
 
-- (BOOL)canBecomeFirstResponder {
-    return YES;
-}
-
 - (NSArray *)configCellMenu {
     return @[@{KEY_CHAT_MENU_TITLE:TITLE_CHAT_MENU_ITEM_COPY, KEY_CHAT_MENU_SELECTOR:SELECTOR_CHAT_MENU_ITEM_COPY},
              @{KEY_CHAT_MENU_TITLE:TITLE_CHAT_MENU_ITEM_TRANSPOND, KEY_CHAT_MENU_SELECTOR:SELECTOR_CHAT_MENU_ITEM_TRANSPOND},
