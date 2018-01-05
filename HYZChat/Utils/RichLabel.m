@@ -195,9 +195,9 @@
     if (self.selectedRange.length && !NSEqualRanges(self.selectedRange, range)) {
         [self.textStorage removeAttribute:NSBackgroundColorAttributeName
                                     range:self.selectedRange];
-        [self.textStorage addAttribute:NSForegroundColorAttributeName
-                                 value:self.linkColor
-                                 range:self.selectedRange];
+//        [self.textStorage addAttribute:NSForegroundColorAttributeName
+//                                 value:self.linkColor
+//                                 range:self.selectedRange];
     }
     
     //选中链接绘制新颜色
@@ -205,9 +205,9 @@
         [self.textStorage addAttribute:NSBackgroundColorAttributeName
                                  value:self.linkBackgroundColor
                                  range:range];
-        [self.textStorage addAttribute:NSForegroundColorAttributeName
-                                 value:self.linkHighlightColor
-                                 range:range];
+//        [self.textStorage addAttribute:NSForegroundColorAttributeName
+//                                 value:self.linkHighlightColor
+//                                 range:range];
     }
     _selectedRange = range;
     [self setNeedsDisplay];

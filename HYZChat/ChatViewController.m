@@ -166,6 +166,7 @@
     NSArray *indexPaths = [self.chatDataSource.multiChoiceCellIndexPath copy];
     self.chatDataSource.multiChoiceCellIndexPath = nil;
     [self deleteChatMsgCell:indexPaths];
+    [self barBtnCancelSelector:nil];
 }
 
 - (IBAction)toolBarBtnMoreSelctor:(UIBarButtonItem *)sender {
