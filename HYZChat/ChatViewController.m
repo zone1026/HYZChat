@@ -17,6 +17,7 @@
 #import "ChatManager.h"
 #import "ChatMsgCell.h"
 #import "ChatMsgTextCell.h"
+#import "AMPTextMsgContentController.h"
 
 @interface ChatViewController ()<ChatDataSourceDelegate>
 /** 列表的数据源 */
@@ -198,6 +199,8 @@
                                                  name:UIMenuControllerWillHideMenuNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiLogoImageGesture:)
                                                  name:NotiLogoImageGesture object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiChatMsgContentDoubleTap:)
+                                                 name:NotiChatMsgContentDoubleTap object:nil];
 }
 
 /** 移除消息通知 */
@@ -214,6 +217,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiMsgContentLongPressGesture object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIMenuControllerDidHideMenuNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiLogoImageGesture object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NotiChatMsgContentDoubleTap object:nil];
 }
 
 /** 键盘弹出 */
@@ -328,7 +332,7 @@
 }
 
 /** 收缩聊天底部面板通知 */
-- (void)handleNotiChatBottomPanelShrinkage:(NSNotification *)notifcation {
+- (void)handleNotiChatBottomPanelShrinkage:(NSNotification *)notification {
     [ChatManager sharedManager].bottomMode = ChatBottomTargetFree;
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiEmotionBtnDefaultStauts object:nil];
     [UIView animateWithDuration:chatAnimateDuration animations:^{
@@ -338,17 +342,17 @@
 }
 
 /** 聊天消息内容长按手势通知 */
-- (void)handleNotiMsgContentLongPressGesture:(NSNotification *)notiifcation {
+- (void)handleNotiMsgContentLongPressGesture:(NSNotification *)notification {
     if (self.chatDataSource.isMultiChoiceMode == YES)
         return;
-    if (notiifcation.object != nil) {
-        if ([notiifcation.object isKindOfClass:[ChatMsgCell class]])
-            [self showCellMenu:notiifcation.object];
+    if (notification.object != nil) {
+        if ([notification.object isKindOfClass:[ChatMsgCell class]])
+            [self showCellMenu:notification.object];
     }
 }
 
 /** 菜单即将消失通知 */
-- (void)handleMenuControllerWillHide:(NSNotification *)notiifcation {
+- (void)handleMenuControllerWillHide:(NSNotification *)notification {
     if (self.longPressGestureCell != nil && [self.longPressGestureCell isKindOfClass:[ChatMsgTextCell class]])
         [((ChatMsgTextCell *)self.longPressGestureCell) cancelContentSelected];
     
@@ -356,13 +360,14 @@
     self.longPressGestureCell = nil;
 }
 
-- (void)handleNotiLogoImageGesture:(NSNotification *)notiifcation {
+/** 点击头像通知 */
+- (void)handleNotiLogoImageGesture:(NSNotification *)notification {
     if (self.chatDataSource.isMultiChoiceMode == YES)
         return;
     
-    if (notiifcation.userInfo != nil) {
-        NSString *gestureType = [notiifcation.userInfo objectForKey:@"gestureType"];
-        long long uid = [[notiifcation.userInfo objectForKey:@"uid"] longLongValue];
+    if (notification.userInfo != nil) {
+        NSString *gestureType = [notification.userInfo objectForKey:@"gestureType"];
+        long long uid = [[notification.userInfo objectForKey:@"uid"] longLongValue];
         if ([gestureType isEqualToString:@"tap"]) {
             [HYZAlert showInfo:@"您单击了头像" underTitle:@"提示"];
         }
@@ -375,6 +380,17 @@
     }
 }
 
+/** 双击消息放大显示通知 */
+- (void)handleNotiChatMsgContentDoubleTap:(NSNotification *)notification {
+    if (notification.object != nil && [notification.object isKindOfClass:[NSString class]]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ChatRelate" bundle:nil];
+        AMPTextMsgContentController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AMPTextMsgContentController"];
+        vc.view.frame = CGRectMake(0.0f, 0.0, kScreenWidth, kScreenHeight - self.bottomLayoutGuide.length);
+        vc.msgContent = notification.object;
+        [[UIApplication sharedApplication].keyWindow addSubview:vc.view];
+    }
+}
+
 #pragma mark - ChatDataSourceDelegate
 
 - (void)updateToolBarButtonItemState {
@@ -382,7 +398,7 @@
         return;
     
     self.toolBarBtnTranspond.enabled = self.toolBarBtnCollect.enabled = self.toolBarBtnDel.enabled = self.toolBarBtnMore.enabled
-                                                                            = self.chatDataSource.multiChoiceCellIndexPath.count > 0;
+                                    = self.chatDataSource.multiChoiceCellIndexPath.count > 0;
 }
 
 #pragma mark - 私有方法
@@ -442,7 +458,7 @@
 #pragma mark - chat cell 点击后的菜单
 
 /**  可以响应的方法 */
--(BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
     if (action == @selector(cellDelSelector) || action == @selector(cellResendSelector) ||
         action == @selector(cellCopySelector) || action == @selector(cellCollectSelector) ||
         action == @selector(cellTranspondSelector) || action == @selector(cellMultiChoiceSelector)) {

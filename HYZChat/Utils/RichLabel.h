@@ -37,20 +37,20 @@ typedef void (^LinkLongHandler)(LinkType linkType, NSString *string, NSRange ran
 @interface RichLabel : UILabel <NSLayoutManagerDelegate>
 
 @property (assign, getter = isAutomaticLinkDetectionEnabled, nonatomic) BOOL automaticLinkDetectionEnabled;
-
+/** 链接文本的颜色 */
 @property (strong, nonatomic) UIColor *linkColor;
-
+/** 链接文本高亮颜色 */
 @property (strong, nonatomic) UIColor *linkHighlightColor;
-
+/** 链接文本背景颜色 */
 @property (strong, nonatomic) UIColor *linkBackgroundColor;
-
+/** 可用于识别的链接类型 */
 @property (assign, nonatomic) LinkDetectionTypes linkDetectionTypes;
-
+/** label单击手势回调 */
 @property (copy, nonatomic) LinkHandler linkTapHandler;
-
+/** label长按手势回调 */
 @property (copy, nonatomic) LinkLongHandler linkLongHandler;
-
-@property (nonatomic, assign) NSRange selectedRange;
+/** 选中文本区域 */
+@property (assign, nonatomic) NSRange selectedRange;
 
 /**
  * @description 更新文本内容

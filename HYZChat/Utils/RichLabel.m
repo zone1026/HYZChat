@@ -9,17 +9,16 @@
 #import "RichLabel.h"
 
 @interface RichLabel ()
-
-@property (nonatomic, retain) NSLayoutManager *layoutManager;
-
-@property (nonatomic, retain) NSTextContainer *textContainer;
-
-@property (nonatomic, retain) NSTextStorage *textStorage;
-
-@property (nonatomic, copy) NSArray *linkRanges;
-
-@property (nonatomic, assign) BOOL isTouchMoved;
-
+/** 布局管理者 */
+@property (strong, nonatomic) NSLayoutManager *layoutManager;
+/** 文本容器 */
+@property (strong, nonatomic) NSTextContainer *textContainer;
+/** 文本存储 */
+@property (strong, nonatomic) NSTextStorage *textStorage;
+/** 文本中有关链接的位置集合 */
+@property (copy, nonatomic) NSArray *linkRanges;
+/** touch过程中是否移动 */
+@property (assign, nonatomic) BOOL isTouchMoved;
 @end
 
 @implementation RichLabel

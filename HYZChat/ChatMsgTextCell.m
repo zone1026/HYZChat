@@ -13,6 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *viewMsgBg;
 @property (weak, nonatomic) IBOutlet RichLabel *lblMsg;
+/** 消息内容双击手势 */
+@property (strong, nonatomic) UITapGestureRecognizer *viewMsgContentDoubleTapGesture;
 
 @end
 
@@ -22,6 +24,13 @@
     [super awakeFromNib];
     // Initialization code
     self.viewMsgBg.layer.cornerRadius = 5.0f;
+    if (self.viewMsgContent != nil) {
+        self.viewMsgContentDoubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewMsgContentDoubleTapGestureSelector:)];
+        self.viewMsgContentDoubleTapGesture.cancelsTouchesInView = YES;
+        self.viewMsgContentDoubleTapGesture.numberOfTapsRequired = 2;//双击
+        self.viewMsgContentDoubleTapGesture.numberOfTouchesRequired = 1;//触点个数，默认1
+        [self.viewMsgContent addGestureRecognizer:self.viewMsgContentDoubleTapGesture];
+    }
 }
 
 - (void)prepareForReuse {
@@ -101,6 +110,14 @@
             [[HYZUtil getCurrentWindowViewController] presentViewController:alertController animated:YES completion:nil];
         }
     };
+}
+
+#pragma mark - 事件
+
+/** 消息内容的双击手势响应方法 */
+- (void)viewMsgContentDoubleTapGestureSelector:(UITapGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded && self.cellData != nil)
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotiChatMsgContentDoubleTap object:self.cellData.msg_content];
 }
 
 @end

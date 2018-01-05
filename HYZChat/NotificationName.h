@@ -36,7 +36,7 @@
 /**
  * @description 更新底部表情发送按钮的状态
  */
-#define NotiUpdateBottomEmotionBtnSend           @"NotiUpdateBottomEmotionBtnSend"
+#define NotiUpdateBottomEmotionBtnSend          @"NotiUpdateBottomEmotionBtnSend"
 /**
  * @description 通过聊天消息更新聊天表格
  */
@@ -53,5 +53,9 @@
  * @description 用户头像手势通知
  */
 #define NotiLogoImageGesture                    @"NotiLogoImageGesture"
+/**
+ * @description 双击文本消息内容手势通知
+ */
+#define NotiChatMsgContentDoubleTap             @"NotiChatMsgContentDoubleTap"
 
 #endif /* NotificationName_h */

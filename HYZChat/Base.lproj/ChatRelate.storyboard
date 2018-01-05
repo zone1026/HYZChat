@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--双击消息内容放大-->
+        <scene sceneID="7MZ-n3-9iD">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pF8-N1-UjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="AMPTextMsgContentController" id="tuR-L6-G8w" userLabel="双击消息内容放大" customClass="AMPTextMsgContentController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zeP-AK-Zy7"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kpd-FK-cPZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="s0M-cf-ZdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iBt-nX-7zE">
+                                <rect key="frame" x="-0.5" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ampMsgCell" id="4zj-4p-KgE" customClass="AMPMsgCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4zj-4p-KgE" id="twg-pb-JU8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfR-BE-nct" customClass="RichLabel">
+                                                    <rect key="frame" x="0.0" y="-0.5" width="375" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="NfR-BE-nct" firstAttribute="width" secondItem="twg-pb-JU8" secondAttribute="width" id="KB2-zt-dth"/>
+                                                <constraint firstItem="NfR-BE-nct" firstAttribute="centerX" secondItem="twg-pb-JU8" secondAttribute="centerX" id="U1Y-Cb-dQo"/>
+                                                <constraint firstItem="NfR-BE-nct" firstAttribute="centerY" secondItem="twg-pb-JU8" secondAttribute="centerY" id="Wa5-KI-KEL"/>
+                                                <constraint firstItem="NfR-BE-nct" firstAttribute="height" secondItem="twg-pb-JU8" secondAttribute="height" id="v7u-gu-MU2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblMsg" destination="NfR-BE-nct" id="H7T-Aj-EVA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tuR-L6-G8w" id="VqF-aZ-Slg"/>
+                                    <outlet property="delegate" destination="tuR-L6-G8w" id="TmK-3Y-j36"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iBt-nX-7zE" firstAttribute="width" secondItem="s0M-cf-ZdC" secondAttribute="width" id="Rzt-tK-29s"/>
+                            <constraint firstItem="iBt-nX-7zE" firstAttribute="height" secondItem="s0M-cf-ZdC" secondAttribute="height" id="Vwr-SU-gwv"/>
+                            <constraint firstItem="iBt-nX-7zE" firstAttribute="centerY" secondItem="s0M-cf-ZdC" secondAttribute="centerY" id="Xdx-ZZ-aY8"/>
+                            <constraint firstItem="iBt-nX-7zE" firstAttribute="centerX" secondItem="s0M-cf-ZdC" secondAttribute="centerX" id="hIK-ru-gbU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="iBt-nX-7zE" id="Rp0-ZV-jHN"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-180" y="91"/>
+        </scene>
+    </scenes>
+</document>
