@@ -103,6 +103,11 @@
 }
 
 - (void)setupTextSystem {
+    if (nil != self.textContainer) {
+        [self updateTextStoreWithText];
+        return;
+    }
+
     self.textContainer = [[NSTextContainer alloc] init];
     self.textContainer.lineFragmentPadding = 0;
     self.textContainer.maximumNumberOfLines = 0;
@@ -127,15 +132,19 @@
     
     [self updateTextStoreWithText];
     
-    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressLabel:)];
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressLabelGesture:)];
     longPressGesture.cancelsTouchesInView = YES;
     longPressGesture.minimumPressDuration = 0.5f;//设置长按时间，默认0.5秒
     [self addGestureRecognizer:longPressGesture];
     
+    UITapGestureRecognizer *doubleTapGesture= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapLabelGesture:)];
+    doubleTapGesture.cancelsTouchesInView = YES;
+    doubleTapGesture.numberOfTapsRequired = 2;//双击
+    doubleTapGesture.numberOfTouchesRequired = 1;//触点个数，默认1
+    [self addGestureRecognizer:doubleTapGesture];
+    
     //默认的回调
     self.linkTapHandler = ^(LinkType linkType, NSString *string, NSRange range) {
-    };
-    self.linkLongHandler = ^(LinkType linkType, NSString *string, NSRange range, CGPoint touchPoint){
     };
 }
 
@@ -165,8 +174,8 @@
     NSRange lineRange;
     CGRect lineRect = [self.layoutManager lineFragmentUsedRectForGlyphAtIndex:touchedChar effectiveRange:&lineRange];
     if (CGRectContainsPoint(lineRect, location) == NO) {//触摸区域没有信息
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@(LinkTypeNormal), @"linkType",@"",@"link",nil];
-        return dict;
+//        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@(LinkTypeNormal), @"linkType",@"",@"link",nil];
+        return nil;
     }
     
     // Find the word that was touched and call the detection block
@@ -177,8 +186,8 @@
             return dictionary;
     }
     
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@(LinkTypeNormal), @"linkType",@"",@"link",nil];
-    return dict;
+//    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@(LinkTypeNormal), @"linkType",@"",@"link",nil];
+    return nil;
 }
 
 // Applies background colour to selected range. Used to hilight touched links
@@ -537,20 +546,26 @@
 
 #pragma mark - Interactions
 
-- (IBAction)longPressLabel:(UILongPressGestureRecognizer *)recognizer
-{
-    if ((recognizer.view != self) || (recognizer.state != UIGestureRecognizerStateBegan))
+- (void)longPressLabelGesture:(UILongPressGestureRecognizer *)sender {
+    if ((sender.view != self) || (sender.state != UIGestureRecognizerStateBegan))
         return;
     
-    CGPoint location = [recognizer locationInView:self];
+    /*CGPoint location = [sender locationInView:self];
     NSDictionary *link = [self getLinkAtLocation:location];
     if (link != nil) {
         NSRange range = [[link objectForKey:@"range"] rangeValue];
         NSString *linkString = [link objectForKey:@"link"];
         LinkType linkType = (LinkType)[[link objectForKey:@"linkType"] intValue];
-        self.linkLongHandler(linkType, linkString, range, location);//[recognizer locationInView:self.superview]
+        self.linkLongHandler(linkType, linkString, range, location);
         self.selectedRange = NSMakeRange(0, self.text.length);
-    }
+    }*/
+    self.selectedRange = NSMakeRange(0, self.text.length);
+    self.longHandler();
+}
+
+- (void)doubleTapLabelGesture:(UITapGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded)
+        self.doubleTapHandler();
 }
 
 /*

@@ -383,11 +383,16 @@
 /** 双击消息放大显示通知 */
 - (void)handleNotiChatMsgContentDoubleTap:(NSNotification *)notification {
     if (notification.object != nil && [notification.object isKindOfClass:[NSString class]]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ChatRelate" bundle:nil];
-        AMPTextMsgContentController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AMPTextMsgContentController"];
-        vc.view.frame = CGRectMake(0.0f, 0.0, kScreenWidth, kScreenHeight - self.bottomLayoutGuide.length);
-        vc.msgContent = notification.object;
-        [[UIApplication sharedApplication].keyWindow addSubview:vc.view];
+        [HYZAlert showInfo:@"少年郎，你双击了文本消息，想放大查看？可惜我没做，哈哈" underTitle:@"提示"];
+//        self.statusBarHidden = YES;
+//        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+//        [self.navigationController setNavigationBarHidden:YES animated:NO];
+        
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ChatRelate" bundle:nil];
+//        AMPTextMsgContentController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AMPTextMsgContentController"];
+//        vc.view.frame = CGRectMake(0.0f, 0.0, kScreenWidth, kScreenHeight - self.bottomLayoutGuide.length);
+//        vc.msgContent = notification.object;
+//        [self.view addSubview:vc.view];
     }
 }
 

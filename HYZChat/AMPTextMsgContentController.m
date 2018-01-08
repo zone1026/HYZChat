@@ -59,8 +59,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AMPMsgCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ampMsgCell" forIndexPath:indexPath];
+    cell.lblMsg.textAlignment = NSTextAlignmentCenter;
     cell.lblMsg.attributedText = [self getMsgContentAttributedString];
-    cell.lblMsg.textAlignment = [self msgCellHeight] > 20.0f ? NSTextAlignmentLeft : NSTextAlignmentCenter;
     return cell;
 }
 

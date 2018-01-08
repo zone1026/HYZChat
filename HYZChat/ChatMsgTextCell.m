@@ -13,8 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *viewMsgBg;
 @property (weak, nonatomic) IBOutlet RichLabel *lblMsg;
-/** 消息内容双击手势 */
-@property (strong, nonatomic) UITapGestureRecognizer *viewMsgContentDoubleTapGesture;
 
 @end
 
@@ -24,18 +22,13 @@
     [super awakeFromNib];
     // Initialization code
     self.viewMsgBg.layer.cornerRadius = 5.0f;
-    if (self.viewMsgContent != nil) {
-        self.viewMsgContentDoubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewMsgContentDoubleTapGestureSelector:)];
-        self.viewMsgContentDoubleTapGesture.cancelsTouchesInView = YES;
-        self.viewMsgContentDoubleTapGesture.numberOfTapsRequired = 2;//双击
-        self.viewMsgContentDoubleTapGesture.numberOfTouchesRequired = 1;//触点个数，默认1
-        [self.viewMsgContent addGestureRecognizer:self.viewMsgContentDoubleTapGesture];
-    }
 }
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    self.lblMsg.linkLongHandler = nil;
+    self.lblMsg.longHandler = nil;
+    self.lblMsg.doubleTapHandler = nil;
+    self.lblMsg.linkTapHandler = nil;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -75,10 +68,15 @@
 /** 更新textcell相关的UI */
 - (void)updateTextCellUI {
     [self.lblMsg updateTextContent:self.cellData.msg_content];
-    self.lblMsg.linkLongHandler = ^(LinkType linkType, NSString *string, NSRange range, CGPoint touchPoint) {
+    self.lblMsg.longHandler = ^{
         if (self.cellData != nil)
             [[NSNotificationCenter defaultCenter] postNotificationName:NotiMsgContentLongPressGesture object:self];
     };
+    self.lblMsg.doubleTapHandler = ^{
+        if (self.cellData != nil)
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotiChatMsgContentDoubleTap object:self.cellData.msg_content];
+    };
+    
     self.lblMsg.linkTapHandler = ^(LinkType linkType, NSString *string, NSRange range) {
         if (LinkTypeURL == linkType) {
             [HYZAlert showInfo:@"哈哈，URL跳转。我没做，没做，做" underTitle:@"少年郎"];
@@ -110,14 +108,6 @@
             [[HYZUtil getCurrentWindowViewController] presentViewController:alertController animated:YES completion:nil];
         }
     };
-}
-
-#pragma mark - 事件
-
-/** 消息内容的双击手势响应方法 */
-- (void)viewMsgContentDoubleTapGestureSelector:(UITapGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateEnded && self.cellData != nil)
-        [[NSNotificationCenter defaultCenter] postNotificationName:NotiChatMsgContentDoubleTap object:self.cellData.msg_content];
 }
 
 @end

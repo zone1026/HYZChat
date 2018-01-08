@@ -32,7 +32,9 @@ typedef NS_OPTIONS(NSUInteger, LinkDetectionTypes)
 };
 
 typedef void (^LinkHandler)(LinkType linkType, NSString *string, NSRange range);
-typedef void (^LinkLongHandler)(LinkType linkType, NSString *string, NSRange range, CGPoint touchPoint);
+//typedef void (^LinkLongHandler)(LinkType linkType, NSString *string, NSRange range, CGPoint touchPoint);
+typedef void (^LabelDoubleHandler)(void);
+typedef void (^LabelLongHandler)(void);
 
 @interface RichLabel : UILabel <NSLayoutManagerDelegate>
 
@@ -45,10 +47,12 @@ typedef void (^LinkLongHandler)(LinkType linkType, NSString *string, NSRange ran
 @property (strong, nonatomic) UIColor *linkBackgroundColor;
 /** 可用于识别的链接类型 */
 @property (assign, nonatomic) LinkDetectionTypes linkDetectionTypes;
-/** label单击手势回调 */
+/** 链接单击回调 */
 @property (copy, nonatomic) LinkHandler linkTapHandler;
+/** label双击手势回调 */
+@property (copy, nonatomic) LabelDoubleHandler doubleTapHandler;
 /** label长按手势回调 */
-@property (copy, nonatomic) LinkLongHandler linkLongHandler;
+@property (copy, nonatomic) LabelLongHandler longHandler;
 /** 选中文本区域 */
 @property (assign, nonatomic) NSRange selectedRange;
 
