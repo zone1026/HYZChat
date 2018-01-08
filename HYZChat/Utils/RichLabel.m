@@ -25,18 +25,17 @@
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    if (self){
+    if (self != nil)
         [self setupTextSystem];
-    }
     
     return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    if (self){
+    if (self != nil)
         [self setupTextSystem];
-    }
+    
     return self;
 }
 
@@ -122,9 +121,9 @@
     
     _linkDetectionTypes = LinkDetectionTypeAll;
     
-    self.linkColor = [UIColor colorWithRed:0.0f green:0.6f blue:1.0f alpha:1.0f];
-    self.linkHighlightColor = [UIColor colorWithRed:0.0f green:0.6f blue:1.0f alpha:1.0f];
-    self.linkBackgroundColor = [UIColor colorWithRed:108.0f/255.0f green:206.0f/255.0f blue:64.0f/255.0f alpha:1.0f];;
+    _linkColor = [UIColor colorWithRed:0.0f green:0.6f blue:1.0f alpha:1.0f];
+    _linkHighlightColor = [UIColor colorWithRed:0.0f green:0.6f blue:1.0f alpha:1.0f];
+    _linkBackgroundColor = [UIColor colorWithRed:108.0f/255.0f green:206.0f/255.0f blue:64.0f/255.0f alpha:1.0f];;
     
     [self updateTextStoreWithText];
     
@@ -148,9 +147,7 @@
 - (NSDictionary *)getLinkAtLocation:(CGPoint)location {
     // Do nothing if we have no text
     if (self.textStorage.string.length == 0)
-    {
         return nil;
-    }
     
     // Work out the offset of the text in the view
     CGPoint textOffset;
@@ -167,21 +164,17 @@
     // count it as a hit on the text
     NSRange lineRange;
     CGRect lineRect = [self.layoutManager lineFragmentUsedRectForGlyphAtIndex:touchedChar effectiveRange:&lineRange];
-    if (CGRectContainsPoint(lineRect, location) == NO)//触摸区域没有信息
-    {
+    if (CGRectContainsPoint(lineRect, location) == NO) {//触摸区域没有信息
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@(LinkTypeNormal), @"linkType",@"",@"link",nil];
         return dict;
     }
     
     // Find the word that was touched and call the detection block
-    for (NSDictionary *dictionary in self.linkRanges)
-    {
+    for (NSDictionary *dictionary in self.linkRanges) {
         NSRange range = [[dictionary objectForKey:@"range"] rangeValue];
         
         if ((touchedChar >= range.location) && touchedChar < (range.location + range.length))
-        {
             return dictionary;
-        }
     }
     
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@(LinkTypeNormal), @"linkType",@"",@"link",nil];
@@ -213,40 +206,34 @@
 }
 
 - (void)updateTextStoreWithText {
-    if (self.attributedText)
-    {
+    if (self.attributedText != nil) {
         NSMutableAttributedString *mutableAttributeString = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
         [mutableAttributeString addAttributes:[self attributesFromProperties] range:NSMakeRange(0, mutableAttributeString.length)];
         [self updateTextStoreWithAttributedString:mutableAttributeString];
     }
-    else if (self.text)
-    {
+    else if (self.text != nil)
         [self updateTextStoreWithAttributedString:[[NSAttributedString alloc] initWithString:self.text attributes:[self attributesFromProperties]]];
-    }
     else
-    {
         [self updateTextStoreWithAttributedString:[[NSAttributedString alloc] initWithString:@"" attributes:[self attributesFromProperties]]];
-    }
+
     [self setNeedsDisplay];
 }
 
 - (void)updateTextStoreWithAttributedString:(NSAttributedString *)attributedString {
-    if (attributedString.length != 0){
+    if (attributedString.length != 0)
         attributedString = [self sanitizeAttributedString:attributedString];
-    }
     
     if (self.isAutomaticLinkDetectionEnabled && (attributedString.length != 0)) {
         //获取所有类型的链接
         self.linkRanges = [self getRangesForLinks:attributedString];
         //对所有连接添加链接属性
         attributedString = [self addLinkAttributesToAttributedString:attributedString linkRanges:self.linkRanges];
-    } else {
+    } else
         self.linkRanges = nil;
-    }
     
-    if (self.textStorage) {
+    if (self.textStorage != nil)
         [self.textStorage setAttributedString:attributedString];
-    } else {
+    else {
         self.textStorage = [[NSTextStorage alloc] initWithAttributedString:attributedString];
         [self.textStorage addLayoutManager:self.layoutManager];
         [self.layoutManager setTextStorage:self.textStorage];
@@ -258,11 +245,9 @@
  */
 - (NSAttributedString *)addLinkAttributesToAttributedString:(NSAttributedString *)string linkRanges:(NSArray *)linkRanges {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:string];
-    
     NSDictionary *attributes = @{NSForegroundColorAttributeName : self.linkColor};
     
-    for (NSDictionary *dictionary in linkRanges)
-    {
+    for (NSDictionary *dictionary in linkRanges) {
         NSRange range = [[dictionary objectForKey:@"range"] rangeValue];
         [attributedString addAttributes:attributes range:range];
     }
@@ -275,7 +260,7 @@
 - (NSDictionary *)attributesFromProperties {
     //阴影属性
     NSShadow *shadow = [[NSShadow alloc] init];
-    if (self.shadowColor){
+    if (self.shadowColor != nil){
         shadow.shadowColor = self.shadowColor;
         shadow.shadowOffset = self.shadowOffset;
     } else {
@@ -285,11 +270,10 @@
     
     //颜色属性
     UIColor *color = self.textColor;
-    if (!self.isEnabled){
+    if (!self.isEnabled)
         color = [UIColor lightGrayColor];
-    } else if (self.isHighlighted) {
+    else if (self.isHighlighted)
         color = self.highlightedTextColor;
-    }
     
     //段落属性
     NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
@@ -314,9 +298,7 @@
     NSParagraphStyle *paragraphStyle = [attributedString attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:&range];
     
     if (paragraphStyle == nil)
-    {
         return attributedString;
-    }
     
     // Remove the line breaks
     NSMutableParagraphStyle *mutableParagraphStyle = [paragraphStyle mutableCopy];
@@ -335,25 +317,21 @@
 - (NSArray *)getRangesForLinks:(NSAttributedString *)text {
     NSMutableArray *rangesForLinks = [[NSMutableArray alloc] init];
     //用户昵称
-    if (self.linkDetectionTypes & LinkDetectionTypeUserHandle)
-    {
+    if (self.linkDetectionTypes & LinkDetectionTypeUserHandle) {
         //        [rangesForLinks addObjectsFromArray:[self getRangesForUserHandles:text.string]];
     }
     //内容标签
-    if (self.linkDetectionTypes & LinkDetectionTypeHashTag)
-    {
+    if (self.linkDetectionTypes & LinkDetectionTypeHashTag) {
         //        [rangesForLinks addObjectsFromArray:[self getRangesForHashTags:text.string]];
     }
     //链接地址
     if (self.linkDetectionTypes & LinkDetectionTypeURL)
-    {
         [rangesForLinks addObjectsFromArray:[self getRangesForURLs:self.attributedText]];
-    }
+
     //电话号码
     if (self.linkDetectionTypes & LinkDetectionTypePhoneNumber)
-    {
         [rangesForLinks addObjectsFromArray:[self getRangesForPhoneNumbers:text.string]];
-    }
+    
     //......
     
     return rangesForLinks;
@@ -371,8 +349,7 @@
     NSArray *matches = [regex matchesInString:text
                                       options:0
                                         range:NSMakeRange(0, text.length)];
-    for (NSTextCheckingResult *match in matches)
-    {
+    for (NSTextCheckingResult *match in matches) {
         NSRange matchRange = [match range];
         NSString *matchString = [text substringWithRange:matchRange];
         
@@ -397,8 +374,7 @@
     NSArray *matches = [regex matchesInString:text
                                       options:0
                                         range:NSMakeRange(0, text.length)];
-    for (NSTextCheckingResult *match in matches)
-    {
+    for (NSTextCheckingResult *match in matches) {
         NSRange matchRange = [match range];
         NSString *matchString = [text substringWithRange:matchRange];
         
@@ -424,18 +400,16 @@
                                          options:0
                                            range:NSMakeRange(0, text.length)];
     
-    for (NSTextCheckingResult *match in matches)
-    {
+    for (NSTextCheckingResult *match in matches) {
         NSRange matchRange = [match range];
         
         NSString *realURL = [text attribute:NSLinkAttributeName
                                     atIndex:matchRange.location
                              effectiveRange:nil];
-        if (realURL == nil){
+        if (realURL == nil)
             realURL = [plainText substringWithRange:matchRange];
-        }
         
-        if ([match resultType] == NSTextCheckingTypeLink){
+        if ([match resultType] == NSTextCheckingTypeLink) {
             [rangesForURLs addObject:@{
                                        @"linkType" : @(LinkTypeURL),
                                        @"range"    : [NSValue valueWithRange:matchRange],
@@ -459,12 +433,11 @@
                                          options:0
                                            range:NSMakeRange(0, text.length)];
     
-    for (NSTextCheckingResult *match in matches)
-    {
+    for (NSTextCheckingResult *match in matches) {
         NSRange matchRange = [match range];
         NSString *matchString = [text substringWithRange:matchRange];
         
-        if ([match resultType] == NSTextCheckingTypePhoneNumber){
+        if ([match resultType] == NSTextCheckingTypePhoneNumber) {
             [rangesForPhoneNumbers addObject:@{
                                                @"linkType" : @(LinkTypePhoneNumber),
                                                @"range"    : [NSValue valueWithRange:matchRange],
@@ -532,9 +505,7 @@
     CGRect textBounds = [self.layoutManager boundingRectForGlyphRange:glyphRange inTextContainer:self.textContainer];
     CGFloat paddingHeight = (self.bounds.size.height - textBounds.size.height) / 2.0f;
     if (paddingHeight > 0)
-    {
         textOffset.y = paddingHeight;
-    }
     
     return textOffset;
 }
@@ -545,14 +516,12 @@
  * 链接是否换行
  */
 -(BOOL)layoutManager:(NSLayoutManager *)layoutManager shouldBreakLineByWordBeforeCharacterAtIndex:(NSUInteger)charIndex {
-    for (NSDictionary *dictionary in self.linkRanges)
-    {
+    for (NSDictionary *dictionary in self.linkRanges) {
         NSRange range = [[dictionary objectForKey:@"range"] rangeValue];
         LinkType linkType = [[dictionary objectForKey:@"linkType"] integerValue];
         if (linkType == LinkTypeURL) {
-            if ((charIndex > range.location) && charIndex <= (range.location + range.length)) {
+            if ((charIndex > range.location) && charIndex <= (range.location + range.length))
                 return NO;
-            }
         }
     }
     return YES;
@@ -570,12 +539,12 @@
 
 - (IBAction)longPressLabel:(UILongPressGestureRecognizer *)recognizer
 {
-    if ((recognizer.view != self) || (recognizer.state != UIGestureRecognizerStateBegan)) {
+    if ((recognizer.view != self) || (recognizer.state != UIGestureRecognizerStateBegan))
         return;
-    }
+    
     CGPoint location = [recognizer locationInView:self];
     NSDictionary *link = [self getLinkAtLocation:location];
-    if (link) {
+    if (link != nil) {
         NSRange range = [[link objectForKey:@"range"] rangeValue];
         NSString *linkString = [link objectForKey:@"link"];
         LinkType linkType = (LinkType)[[link objectForKey:@"linkType"] intValue];
@@ -622,9 +591,9 @@
         LinkType linkType = (LinkType)[[touchedLink objectForKey:@"linkType"] intValue];
         
         self.linkTapHandler(linkType, touchedSubstring, range);
-    } else {
+    } else
         [super touchesBegan:touches withEvent:event];
-    }
+    
     [self cancelSelectedRange];
 }
 
