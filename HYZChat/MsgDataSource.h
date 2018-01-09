@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SuperDataSource.h"
 
-@interface MsgDataSource : NSObject
+@interface MsgDataSource : SuperDataSource <UITableViewDelegate, UITableViewDataSource>
 
 @end

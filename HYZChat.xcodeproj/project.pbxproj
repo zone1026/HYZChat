@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0D48566B1F5BB4AD0008AFB9 /* InputEmotionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48566A1F5BB4AD0008AFB9 /* InputEmotionData.m */; };
 		0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48566D1F5BBCE80008AFB9 /* ChatEmotionCell.m */; };
+		6B07F0EA2004974400F1E071 /* Msg.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0E82004974400F1E071 /* Msg.storyboard */; };
+		6B07F0F320049A3600F1E071 /* Contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0F120049A3600F1E071 /* Contact.storyboard */; };
+		6B07F0F620049AA800F1E071 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0F420049AA800F1E071 /* Feed.storyboard */; };
+		6B07F0F920049AD200F1E071 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0F720049AD200F1E071 /* Me.storyboard */; };
 		6B0AB7A31F9F0CBB002A2797 /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0AB7A21F9F0CBB002A2797 /* ChatManager.m */; };
 		6B10F0D31F692813008D40C0 /* ChatDataSource+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F0D21F692813008D40C0 /* ChatDataSource+TableView.m */; };
 		6B31AC5A1FDF89BA00F69C6F /* HYZAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B31AC591FDF89BA00F69C6F /* HYZAlert.m */; };
@@ -61,7 +65,6 @@
 		6BCBCCCF1F594DD1000B7152 /* HYZUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCCE1F594DD1000B7152 /* HYZUtil.m */; };
 		6BCBCCD51F594EC1000B7152 /* UIView+HYZFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCD41F594EC1000B7152 /* UIView+HYZFrame.m */; };
 		6BCBCCD81F5951B2000B7152 /* InputViewFrameChanageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCCD71F5951B2000B7152 /* InputViewFrameChanageData.m */; };
-		6BD6E5AA1FE10FF50095BB50 /* Msg.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD6E5A81FE10FF50095BB50 /* Msg.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +72,10 @@
 		0D48566A1F5BB4AD0008AFB9 /* InputEmotionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputEmotionData.m; sourceTree = "<group>"; };
 		0D48566C1F5BBCE80008AFB9 /* ChatEmotionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatEmotionCell.h; sourceTree = "<group>"; };
 		0D48566D1F5BBCE80008AFB9 /* ChatEmotionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatEmotionCell.m; sourceTree = "<group>"; };
+		6B07F0E92004974400F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Msg.storyboard; sourceTree = "<group>"; };
+		6B07F0F220049A3600F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Contact.storyboard; sourceTree = "<group>"; };
+		6B07F0F520049AA800F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Feed.storyboard; sourceTree = "<group>"; };
+		6B07F0F820049AD200F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Me.storyboard; sourceTree = "<group>"; };
 		6B0AB7A11F9F0CBB002A2797 /* ChatManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatManager.h; sourceTree = "<group>"; };
 		6B0AB7A21F9F0CBB002A2797 /* ChatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatManager.m; sourceTree = "<group>"; };
 		6B10F0D11F692813008D40C0 /* ChatDataSource+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChatDataSource+TableView.h"; sourceTree = "<group>"; };
@@ -170,7 +177,6 @@
 		6BCBCCD41F594EC1000B7152 /* UIView+HYZFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+HYZFrame.m"; path = "Utils/UIView+HYZFrame.m"; sourceTree = "<group>"; };
 		6BCBCCD61F5951B2000B7152 /* InputViewFrameChanageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputViewFrameChanageData.h; sourceTree = "<group>"; };
 		6BCBCCD71F5951B2000B7152 /* InputViewFrameChanageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputViewFrameChanageData.m; sourceTree = "<group>"; };
-		6BD6E5A91FE10FF50095BB50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Msg.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +190,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B07F0DE20048F8200F1E071 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		6B07F0EB2004997000F1E071 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				6B07F0F120049A3600F1E071 /* Contact.storyboard */,
+			);
+			name = Contact;
+			sourceTree = "<group>";
+		};
+		6B07F0EC2004998500F1E071 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				6B07F0F420049AA800F1E071 /* Feed.storyboard */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
+		6B07F0ED2004998C00F1E071 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				6B07F0F720049AD200F1E071 /* Me.storyboard */,
+			);
+			name = Me;
+			sourceTree = "<group>";
+		};
 		6B10F0D41F692A76008D40C0 /* Function */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +367,9 @@
 				6BCBCC8A1F58E934000B7152 /* Database */,
 				6BCBCC8E1F58E937000B7152 /* Chat */,
 				6BD6E5A11FE0D18E0095BB50 /* Msg */,
+				6B07F0EB2004997000F1E071 /* Contact */,
+				6B07F0EC2004998500F1E071 /* Feed */,
+				6B07F0ED2004998C00F1E071 /* Me */,
 				6BCBCC731F58E8C7000B7152 /* AppDelegate.h */,
 				6BCBCC741F58E8C7000B7152 /* AppDelegate.m */,
 				6BCBCC761F58E8C7000B7152 /* ViewController.h */,
@@ -471,7 +511,8 @@
 		6BD6E5A11FE0D18E0095BB50 /* Msg */ = {
 			isa = PBXGroup;
 			children = (
-				6BD6E5A81FE10FF50095BB50 /* Msg.storyboard */,
+				6B07F0E82004974400F1E071 /* Msg.storyboard */,
+				6B07F0DE20048F8200F1E071 /* Data */,
 				6BB093E31FE1227300D99A79 /* MsgController.h */,
 				6BB093E41FE1227300D99A79 /* MsgController.m */,
 				6BB093E61FE1229300D99A79 /* MsgDataSource.h */,
@@ -539,14 +580,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B07F0F620049AA800F1E071 /* Feed.storyboard in Resources */,
 				6BCBCC831F58E8C7000B7152 /* LaunchScreen.storyboard in Resources */,
+				6B07F0F320049A3600F1E071 /* Contact.storyboard in Resources */,
 				6B8954541FFF59E900A20676 /* ChatRelate.storyboard in Resources */,
-				6BD6E5AA1FE10FF50095BB50 /* Msg.storyboard in Resources */,
 				6BCBCC801F58E8C7000B7152 /* Assets.xcassets in Resources */,
 				6B8E3DE91F5F810F00020626 /* Emotion.plist in Resources */,
+				6B07F0EA2004974400F1E071 /* Msg.storyboard in Resources */,
 				6BCBCC941F58E972000B7152 /* Chat.storyboard in Resources */,
 				6B8E3DE81F5F810F00020626 /* Chat.plist in Resources */,
 				6BCBCC7B1F58E8C7000B7152 /* Main.storyboard in Resources */,
+				6B07F0F920049AD200F1E071 /* Me.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +654,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		6B07F0E82004974400F1E071 /* Msg.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B07F0E92004974400F1E071 /* Base */,
+			);
+			name = Msg.storyboard;
+			sourceTree = "<group>";
+		};
+		6B07F0F120049A3600F1E071 /* Contact.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B07F0F220049A3600F1E071 /* Base */,
+			);
+			name = Contact.storyboard;
+			sourceTree = "<group>";
+		};
+		6B07F0F420049AA800F1E071 /* Feed.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B07F0F520049AA800F1E071 /* Base */,
+			);
+			name = Feed.storyboard;
+			sourceTree = "<group>";
+		};
+		6B07F0F720049AD200F1E071 /* Me.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B07F0F820049AD200F1E071 /* Base */,
+			);
+			name = Me.storyboard;
+			sourceTree = "<group>";
+		};
 		6B8954521FFF59E900A20676 /* ChatRelate.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -640,14 +716,6 @@
 				6BCBCC931F58E972000B7152 /* Base */,
 			);
 			name = Chat.storyboard;
-			sourceTree = "<group>";
-		};
-		6BD6E5A81FE10FF50095BB50 /* Msg.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6BD6E5A91FE10FF50095BB50 /* Base */,
-			);
-			name = Msg.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

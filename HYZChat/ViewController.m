@@ -163,7 +163,7 @@
 /** 打开聊天界面 */
 - (void)openChatUI {
     [[DataManager sharedManager] saveContext];
-    [[ChatManager sharedManager] openChatView:ChatTargetTypeP2P withFromViewController:self];
+//    [[ChatManager sharedManager] openChatView:ChatTargetTypeP2P withFromViewController:self];
 }
 
 @end
