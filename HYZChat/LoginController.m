@@ -1,14 +1,14 @@
 //
-//  ViewController.m
-//  HyzChat
+//  LoginController.m
+//  HYZChat
 //
-//  Created by 黄亚州 on 2017/8/31.
-//  Copyright © 2017年 黄亚州. All rights reserved.
+//  Created by 黄亚州 on 2018/1/9.
+//  Copyright © 2018年 黄亚州. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginController.h"
 
-@interface ViewController ()
+@interface LoginController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *lblDesc;
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation ViewController
+@implementation LoginController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -163,7 +163,7 @@
 /** 打开聊天界面 */
 - (void)openChatUI {
     [[DataManager sharedManager] saveContext];
-//    [[ChatManager sharedManager] openChatView:ChatTargetTypeP2P withFromViewController:self];
+    //    [[ChatManager sharedManager] openChatView:ChatTargetTypeP2P withFromViewController:self];
 }
 
 @end

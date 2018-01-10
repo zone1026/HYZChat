@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FrameController.h
 //  HyzChat
 //
 //  Created by 黄亚州 on 2017/8/31.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface FrameController : UIViewController
 
 @end
 
