@@ -49,22 +49,33 @@
                                     <segue destination="QOJ-nM-Iub" kind="embed" identifier="mainScene" id="oyx-5E-by2"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6nq-6O-uLN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="tO6-o4-aiV" kind="embed" id="Pfa-b3-imp"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="s9z-SB-QiU" firstAttribute="height" secondItem="QW4-gU-Pzm" secondAttribute="height" id="0bl-JG-1nX"/>
                             <constraint firstItem="s9z-SB-QiU" firstAttribute="centerX" secondItem="QW4-gU-Pzm" secondAttribute="centerX" id="5LM-oa-XgM"/>
+                            <constraint firstItem="6nq-6O-uLN" firstAttribute="height" secondItem="QW4-gU-Pzm" secondAttribute="height" id="KEy-sA-YM6"/>
+                            <constraint firstItem="6nq-6O-uLN" firstAttribute="centerX" secondItem="QW4-gU-Pzm" secondAttribute="centerX" id="LNE-MW-LtJ"/>
+                            <constraint firstItem="6nq-6O-uLN" firstAttribute="centerY" secondItem="QW4-gU-Pzm" secondAttribute="centerY" id="QsI-5m-76h"/>
+                            <constraint firstItem="6nq-6O-uLN" firstAttribute="width" secondItem="QW4-gU-Pzm" secondAttribute="width" id="TYp-Qb-8ZK"/>
                             <constraint firstItem="s9z-SB-QiU" firstAttribute="width" secondItem="QW4-gU-Pzm" secondAttribute="width" id="atA-Nh-fHm"/>
                             <constraint firstItem="s9z-SB-QiU" firstAttribute="centerY" secondItem="QW4-gU-Pzm" secondAttribute="centerY" id="tXQ-cG-oXU"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mainView" destination="s9z-SB-QiU" id="NAJ-ub-luT"/>
+                        <outlet property="welcomeView" destination="6nq-6O-uLN" id="KLD-9U-qjp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lMd-l0-BON" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258" y="116"/>
+            <point key="canvasLocation" x="84" y="116"/>
         </scene>
         <!--微信Navi-->
         <scene sceneID="dEg-J1-Igf">
@@ -106,8 +117,34 @@
             </objects>
             <point key="canvasLocation" x="1769" y="574"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="lvW-og-fPt">
+            <objects>
+                <viewController id="tO6-o4-aiV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BSI-bc-Qh1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="START_BG" translatesAutoresizingMaskIntoConstraints="NO" id="ywu-sS-reO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ywu-sS-reO" firstAttribute="centerX" secondItem="BSI-bc-Qh1" secondAttribute="centerX" id="A33-q4-ZEK"/>
+                            <constraint firstItem="ywu-sS-reO" firstAttribute="height" secondItem="BSI-bc-Qh1" secondAttribute="height" id="CgK-nD-HbD"/>
+                            <constraint firstItem="ywu-sS-reO" firstAttribute="centerY" secondItem="BSI-bc-Qh1" secondAttribute="centerY" id="rwQ-Xm-fch"/>
+                            <constraint firstItem="ywu-sS-reO" firstAttribute="width" secondItem="BSI-bc-Qh1" secondAttribute="width" id="xhA-tH-jdp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I0i-fZ-mx9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="84" y="1082"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="START_BG" width="253" height="450"/>
         <image name="TAB_MAIN_CONTACT" width="32" height="32"/>
         <image name="TAB_MAIN_FEED" width="26" height="26"/>
         <image name="TAB_MAIN_ME" width="26" height="26"/>

@@ -55,5 +55,11 @@
  * @param mobileNum 手机号
  */
 + (BOOL)isMobileNumber:(NSString *)mobileNum;
+/**
+ * @decription 实例化ViewController
+ * @param identifier ViewController的标识
+ * @param name ViewController所在storyboard的文件名
+ */
++ (UIViewController *)instantiateViewController:(NSString *)identifier withStoryboardName:(NSString *)name;
 
 @end

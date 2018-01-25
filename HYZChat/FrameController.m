@@ -10,6 +10,8 @@
 
 @interface FrameController ()
 @property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (weak, nonatomic) IBOutlet UIView *welcomeView;
+
 //是否在登录界面
 @property (assign, nonatomic) BOOL inShowLogin;
 
@@ -21,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.inShowLogin = NO;
+    [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -30,9 +33,14 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    CNUser *currentUser = [DataManager sharedManager].currentUser;
-    if (nil == currentUser) {
-        
+    CNUser *lastUser = [[DataManager sharedManager] lastLoginUser];
+    if (nil == lastUser || lastUser.is_login == NO)
+        [self openLoginView];
+    else {
+        [DataManager sharedManager].currentUser = lastUser;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.welcomeView.hidden = YES;
+        });
     }
 }
 
@@ -49,7 +57,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 #pragma mark - 私有方法
 
-- (void)
+/** 打开登录界面 */
+- (void)openLoginView {
+    if (self.inShowLogin == YES)
+        return;
+    
+    self.welcomeView.hidden = YES;
+    self.inShowLogin = YES;
+    
+    UINavigationController *nc = (UINavigationController *)[HYZUtil instantiateViewController:@"LoginNavigation" withStoryboardName:@"Login"];
+    [self presentViewController:nc animated:YES completion:nil];
+}
+
 @end

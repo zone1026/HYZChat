@@ -158,4 +158,9 @@
     return NO;
 }
 
++ (UIViewController *)instantiateViewController:(NSString *)identifier withStoryboardName:(NSString *)name {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:name bundle:nil];
+    return [storyboard instantiateViewControllerWithIdentifier:identifier];
+}
+
 @end

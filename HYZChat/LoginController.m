@@ -129,6 +129,7 @@
         user.user_sex = self.switchSex.on == YES ? UserSexMan : UserSexWoman;
         user.user_identity = self.switchVip.on == YES ? UserIdentityVIP : UserIdentityNormal;
         user.last_time = [HYZUtil getCurrentTimestamp];
+        user.is_login = YES;
         
         self.isExistUser = YES;
         self.tfPhone.enabled = YES;
@@ -155,6 +156,7 @@
                 return;
             }
             user.last_time = [HYZUtil getCurrentTimestamp];
+            user.is_login = YES;
             [self openChatUI];
         }
     }
@@ -163,7 +165,7 @@
 /** 打开聊天界面 */
 - (void)openChatUI {
     [[DataManager sharedManager] saveContext];
-    //    [[ChatManager sharedManager] openChatView:ChatTargetTypeP2P withFromViewController:self];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
