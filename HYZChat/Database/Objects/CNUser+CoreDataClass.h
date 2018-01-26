@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class CNChatMessage;
+@class CNSession;
 
 NS_ASSUME_NONNULL_BEGIN
 

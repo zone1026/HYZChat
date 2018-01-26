@@ -21,7 +21,7 @@
     chatMessage.send_time = [NSString stringWithFormat:@"%.2f", [HYZUtil getCurrentTimestamp]];
     chatMessage.target_id = 0;
     chatMessage.target_type = [ChatManager sharedManager].chatTargetType;
-    chatMessage.belong_user = currentUser;
+//    chatMessage.belong_session = currentUser;
     
     if (type == ChatMsgTypeText) {
         chatMessage.msg_content = content;

@@ -7,13 +7,13 @@
 //
 
 #import "CNUser+CoreDataClass.h"
-#import "CNChatMessage+CoreDataClass.h"
+#import "CNSession+CoreDataClass.h"
 
 @implementation CNUser
 
 - (NSArray *)getSubChatMessageSequence {
-    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"send_time" ascending:YES]];//已发送时间生序，send_time是unix时间戳
-    return [self.has_chatMessages sortedArrayUsingDescriptors:sortDesc];
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"last_time" ascending:NO]];//last_time是unix时间戳
+    return [self.has_sessions sortedArrayUsingDescriptors:sortDesc];
 }
 
 @end

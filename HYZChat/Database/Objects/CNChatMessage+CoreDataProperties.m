@@ -2,8 +2,8 @@
 //  CNChatMessage+CoreDataProperties.m
 //  HYZChat
 //
-//  Created by 黄亚州 on 2017/12/11.
-//  Copyright © 2017年 黄亚州. All rights reserved.
+//  Created by 黄亚州 on 2018/1/26.
+//  Copyright © 2018年 黄亚州. All rights reserved.
 //
 //
 
@@ -25,6 +25,6 @@
 @dynamic target_id;
 @dynamic target_type;
 @dynamic assign_res;
-@dynamic belong_user;
+@dynamic belong_session;
 
 @end

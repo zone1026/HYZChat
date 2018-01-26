@@ -42,6 +42,9 @@
 		6B944AA01FC81A2700192470 /* ChatTableCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B944A9F1FC81A2700192470 /* ChatTableCellInfo.m */; };
 		6B944AAA1FC81F8E00192470 /* CNChatMessage+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B944AA51FC81F8E00192470 /* CNChatMessage+CoreDataClass.m */; };
 		6B944AAB1FC81F8E00192470 /* CNChatMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B944AA61FC81F8E00192470 /* CNChatMessage+CoreDataProperties.m */; };
+		6B9A86BD201B29FC00E73E26 /* MsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A869B201B29FC00E73E26 /* MsgCell.m */; };
+		6B9A86CE201B2AA400E73E26 /* CNSession+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A86CC201B2AA400E73E26 /* CNSession+CoreDataClass.m */; };
+		6B9A86CF201B2AA400E73E26 /* CNSession+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A86CD201B2AA400E73E26 /* CNSession+CoreDataProperties.m */; };
 		6BA5D1671FDE6EA300B8C3C6 /* ChatDataSource+ChatMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA5D1661FDE6EA300B8C3C6 /* ChatDataSource+ChatMsg.m */; };
 		6BAC6F5B1F5FF7E200E896FB /* ChatFunctionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC6F5A1F5FF7E200E896FB /* ChatFunctionController.m */; };
 		6BAC6F5E1F5FFBD300E896FB /* ChatEmotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC6F5D1F5FFBD300E896FB /* ChatEmotionController.m */; };
@@ -132,6 +135,12 @@
 		6B944AA41FC81F8E00192470 /* CNChatMessage+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNChatMessage+CoreDataClass.h"; sourceTree = "<group>"; };
 		6B944AA51FC81F8E00192470 /* CNChatMessage+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNChatMessage+CoreDataClass.m"; sourceTree = "<group>"; };
 		6B944AA61FC81F8E00192470 /* CNChatMessage+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNChatMessage+CoreDataProperties.m"; sourceTree = "<group>"; };
+		6B9A869B201B29FC00E73E26 /* MsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgCell.m; sourceTree = "<group>"; };
+		6B9A86B3201B29FC00E73E26 /* MsgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgCell.h; sourceTree = "<group>"; };
+		6B9A86CA201B2AA400E73E26 /* CNSession+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNSession+CoreDataProperties.h"; sourceTree = "<group>"; };
+		6B9A86CB201B2AA400E73E26 /* CNSession+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNSession+CoreDataClass.h"; sourceTree = "<group>"; };
+		6B9A86CC201B2AA400E73E26 /* CNSession+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNSession+CoreDataClass.m"; sourceTree = "<group>"; };
+		6B9A86CD201B2AA400E73E26 /* CNSession+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNSession+CoreDataProperties.m"; sourceTree = "<group>"; };
 		6BA5D1651FDE6EA300B8C3C6 /* ChatDataSource+ChatMsg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatDataSource+ChatMsg.h"; sourceTree = "<group>"; };
 		6BA5D1661FDE6EA300B8C3C6 /* ChatDataSource+ChatMsg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatDataSource+ChatMsg.m"; sourceTree = "<group>"; };
 		6BAC6F591F5FF7E200E896FB /* ChatFunctionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatFunctionController.h; sourceTree = "<group>"; };
@@ -358,6 +367,33 @@
 			name = Super;
 			sourceTree = "<group>";
 		};
+		6B9A8687201B29C900E73E26 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6B9A86B3201B29FC00E73E26 /* MsgCell.h */,
+				6B9A869B201B29FC00E73E26 /* MsgCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		6B9A86D0201B2AAF00E73E26 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				6B9A86CB201B2AA400E73E26 /* CNSession+CoreDataClass.h */,
+				6B9A86CC201B2AA400E73E26 /* CNSession+CoreDataClass.m */,
+				6B9A86CA201B2AA400E73E26 /* CNSession+CoreDataProperties.h */,
+				6B9A86CD201B2AA400E73E26 /* CNSession+CoreDataProperties.m */,
+			);
+			name = Session;
+			sourceTree = "<group>";
+		};
+		6B9A86DD201B2DA700E73E26 /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Plugin;
+			sourceTree = "<group>";
+		};
 		6BCBCC641F58E8C7000B7152 = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +413,7 @@
 		6BCBCC6F1F58E8C7000B7152 /* HYZChat */ = {
 			isa = PBXGroup;
 			children = (
+				6B9A86DD201B2DA700E73E26 /* Plugin */,
 				6BCBCCA01F58FB6E000B7152 /* Utils */,
 				6B944A9A1FC8148C00192470 /* Super */,
 				6BCBCC8A1F58E934000B7152 /* Database */,
@@ -519,6 +556,7 @@
 				6B8E3DF91F5F8D3B00020626 /* CNUser+CoreDataClass.m */,
 				6B8E3DFA1F5F8D3B00020626 /* CNUser+CoreDataProperties.h */,
 				6B8E3DFB1F5F8D3B00020626 /* CNUser+CoreDataProperties.m */,
+				6B9A86D0201B2AAF00E73E26 /* Session */,
 				6B944A7B1FC80E6400192470 /* Chat */,
 			);
 			path = Objects;
@@ -529,6 +567,7 @@
 			children = (
 				6B07F0E82004974400F1E071 /* Msg.storyboard */,
 				6B07F0DE20048F8200F1E071 /* Data */,
+				6B9A8687201B29C900E73E26 /* Cells */,
 				6BB093E31FE1227300D99A79 /* MsgController.h */,
 				6BB093E41FE1227300D99A79 /* MsgController.m */,
 				6BB093E61FE1229300D99A79 /* MsgDataSource.h */,
@@ -636,13 +675,16 @@
 				6BCBCC751F58E8C7000B7152 /* AppDelegate.m in Sources */,
 				6BB093E81FE1229300D99A79 /* MsgDataSource.m in Sources */,
 				6BCBCCD51F594EC1000B7152 /* UIView+HYZFrame.m in Sources */,
+				6B9A86CF201B2AA400E73E26 /* CNSession+CoreDataProperties.m in Sources */,
 				6BCBCCBA1F590F63000B7152 /* ChatDataSource.m in Sources */,
 				6BACBB351FFF757B00A93ADB /* AMPMsgCell.m in Sources */,
 				6B8E3E011F5F8D3B00020626 /* CNUser+CoreDataProperties.m in Sources */,
+				6B9A86CE201B2AA400E73E26 /* CNSession+CoreDataClass.m in Sources */,
 				6BCBCCCC1F594CB1000B7152 /* CALayer+HYZUtil.m in Sources */,
 				6BAC6F5E1F5FFBD300E896FB /* ChatEmotionController.m in Sources */,
 				6B8E3E001F5F8D3B00020626 /* CNUser+CoreDataClass.m in Sources */,
 				6B944AAB1FC81F8E00192470 /* CNChatMessage+CoreDataProperties.m in Sources */,
+				6B9A86BD201B29FC00E73E26 /* MsgCell.m in Sources */,
 				6B48F4CE1F5EA74600C9DCDC /* ChatEmotionData.m in Sources */,
 				6B944AAA1FC81F8E00192470 /* CNChatMessage+CoreDataClass.m in Sources */,
 				6BAC6F5B1F5FF7E200E896FB /* ChatFunctionController.m in Sources */,

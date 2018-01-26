@@ -2,7 +2,7 @@
 //  CNUser+CoreDataProperties.h
 //  HYZChat
 //
-//  Created by 黄亚州 on 2018/1/25.
+//  Created by 黄亚州 on 2018/1/26.
 //  Copyright © 2018年 黄亚州. All rights reserved.
 //
 //
@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<CNUser *> *)fetchRequest;
 
+@property (nonatomic) BOOL is_login;
 @property (nonatomic) double last_time;
 @property (nonatomic) int64_t user_id;
 @property (nonatomic) int16_t user_identity;
@@ -23,17 +24,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *user_password;
 @property (nullable, nonatomic, copy) NSString *user_phone;
 @property (nonatomic) int16_t user_sex;
-@property (nonatomic) BOOL is_login;
-@property (nullable, nonatomic, retain) NSSet<CNChatMessage *> *has_chatMessages;
+@property (nullable, nonatomic, retain) NSSet<CNSession *> *has_sessions;
 
 @end
 
 @interface CNUser (CoreDataGeneratedAccessors)
 
-- (void)addHas_chatMessagesObject:(CNChatMessage *)value;
-- (void)removeHas_chatMessagesObject:(CNChatMessage *)value;
-- (void)addHas_chatMessages:(NSSet<CNChatMessage *> *)values;
-- (void)removeHas_chatMessages:(NSSet<CNChatMessage *> *)values;
+- (void)addHas_sessionsObject:(CNSession *)value;
+- (void)removeHas_sessionsObject:(CNSession *)value;
+- (void)addHas_sessions:(NSSet<CNSession *> *)values;
+- (void)removeHas_sessions:(NSSet<CNSession *> *)values;
 
 @end
 

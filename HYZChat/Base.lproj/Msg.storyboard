@@ -38,7 +38,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="msgCell" rowHeight="66" id="f8j-UO-Rpe">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="msgCell" rowHeight="66" id="f8j-UO-Rpe" customClass="MsgCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="f8j-UO-Rpe" id="EQU-Ng-pS3">
@@ -61,20 +61,20 @@
                                             <color key="textColor" red="0.36862745099999999" green="0.83137254900000002" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最近一次聊天内容" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ZV-G8-Z0l">
-                                            <rect key="frame" x="68" y="33" width="271" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="MUK-Kf-br4"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" white="0.60451931420000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81K-2Y-47P">
                                             <rect key="frame" x="295" y="13" width="72" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="72" id="GRc-fE-gbA"/>
                                                 <constraint firstAttribute="height" constant="18" id="dar-3a-q85"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.60451931420000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最近一次聊天内容" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ZV-G8-Z0l">
+                                            <rect key="frame" x="68" y="33" width="271" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="MUK-Kf-br4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.60451931420000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -87,13 +87,14 @@
                                                 <constraint firstAttribute="width" secondItem="AhO-Rm-nu8" secondAttribute="height" multiplier="1:1" id="EBq-7O-lvK"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4h9-fb-sB1">
-                                            <rect key="frame" x="44.5" y="-3" width="32" height="22"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99   " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4h9-fb-sB1">
+                                            <rect key="frame" x="44.5" y="-3" width="31" height="22"/>
                                             <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="Bhr-oN-bVh"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="NZg-ne-QCR"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -116,6 +117,14 @@
                                         <constraint firstItem="IOM-KT-cfA" firstAttribute="leading" secondItem="m8A-HK-vRV" secondAttribute="trailing" constant="8" id="xMq-yj-hTX"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imgLogo" destination="m8A-HK-vRV" id="xfs-ib-D2y"/>
+                                    <outlet property="imgShield" destination="AhO-Rm-nu8" id="aTv-Xb-KlB"/>
+                                    <outlet property="lblLastMsg" destination="3ZV-G8-Z0l" id="VUI-xS-K67"/>
+                                    <outlet property="lblTime" destination="81K-2Y-47P" id="7o6-Lo-wxc"/>
+                                    <outlet property="lblTitle" destination="IOM-KT-cfA" id="49r-ij-lgn"/>
+                                    <outlet property="lblUnreadNum" destination="4h9-fb-sB1" id="HdO-kA-iME"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -11,13 +11,23 @@
         <attribute name="target_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="target_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="assign_res" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CNChatResource" inverseName="belong_chatMessage" inverseEntity="CNChatResource" syncable="YES"/>
-        <relationship name="belong_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNUser" inverseName="has_chatMessages" inverseEntity="CNUser" syncable="YES"/>
+        <relationship name="belong_session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNSession" inverseName="has_chatMsgs" inverseEntity="CNSession" syncable="YES"/>
     </entity>
     <entity name="CNChatResource" representedClassName="CNChatResource" syncable="YES">
         <attribute name="res_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="res_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="res_url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="belong_chatMessage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNChatMessage" inverseName="assign_res" inverseEntity="CNChatMessage" syncable="YES"/>
+    </entity>
+    <entity name="CNSession" representedClassName="CNSession" syncable="YES">
+        <attribute name="last_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="session_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="session_logo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="session_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="session_shield" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="unread_Num" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="belong_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNUser" inverseName="has_sessions" inverseEntity="CNUser" syncable="YES"/>
+        <relationship name="has_chatMsgs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CNChatMessage" inverseName="belong_session" inverseEntity="CNChatMessage" syncable="YES"/>
     </entity>
     <entity name="CNUser" representedClassName="CNUser" syncable="YES">
         <attribute name="is_login" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -28,11 +38,12 @@
         <attribute name="user_password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_sex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="has_chatMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CNChatMessage" inverseName="belong_user" inverseEntity="CNChatMessage" syncable="YES"/>
+        <relationship name="has_sessions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CNSession" inverseName="belong_user" inverseEntity="CNSession" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CNChatMessage" positionX="-540" positionY="-162" width="128" height="210"/>
-        <element name="CNChatResource" positionX="-245" positionY="-105" width="128" height="103"/>
-        <element name="CNUser" positionX="-747" positionY="72" width="128" height="180"/>
+        <element name="CNChatMessage" positionX="-218" positionY="71" width="128" height="208"/>
+        <element name="CNChatResource" positionX="-225" positionY="-171" width="128" height="103"/>
+        <element name="CNSession" positionX="-479" positionY="72" width="128" height="163"/>
+        <element name="CNUser" positionX="-747" positionY="72" width="128" height="178"/>
     </elements>
 </model>

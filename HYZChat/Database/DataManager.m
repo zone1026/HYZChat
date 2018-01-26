@@ -44,9 +44,8 @@ static NSString *const coreDataModelFileName = @"HYZChat";
     if ([[NSFileManager defaultManager] fileExistsAtPath:coreDataDir] == NO) {
         NSError *error = nil;
         [[NSFileManager defaultManager] createDirectoryAtPath:coreDataDir withIntermediateDirectories:YES attributes:nil error:&error];
-        if(error != nil){
+        if(error != nil)
             NSLog(@"Error: %@", error);
-        }
     }
     return [NSURL fileURLWithPath:[coreDataDir stringByAppendingString:[NSString stringWithFormat:@"%@.sqlite", coreDataModelFileName]]];
 }
@@ -156,7 +155,7 @@ static NSString *const coreDataModelFileName = @"HYZChat";
         user.user_password = @"";
         user.user_sex = UserSexMan;
         user.last_time = [HYZUtil getCurrentTimestamp];
-        user.has_chatMessages = nil;
+        user.has_sessions = nil;
         return user;
     }
     return (CNUser *)result[0];

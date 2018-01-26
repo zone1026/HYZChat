@@ -2,7 +2,7 @@
 //  CNUser+CoreDataProperties.m
 //  HYZChat
 //
-//  Created by 黄亚州 on 2018/1/25.
+//  Created by 黄亚州 on 2018/1/26.
 //  Copyright © 2018年 黄亚州. All rights reserved.
 //
 //
@@ -15,6 +15,7 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"CNUser"];
 }
 
+@dynamic is_login;
 @dynamic last_time;
 @dynamic user_id;
 @dynamic user_identity;
@@ -22,7 +23,6 @@
 @dynamic user_password;
 @dynamic user_phone;
 @dynamic user_sex;
-@dynamic is_login;
-@dynamic has_chatMessages;
+@dynamic has_sessions;
 
 @end

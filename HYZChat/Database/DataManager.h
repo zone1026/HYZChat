@@ -7,6 +7,7 @@
 //
 
 #import "CNUser+CoreDataClass.h"
+#import "CNChatMessage+CoreDataClass.h"
 
 @interface DataManager : NSObject
 
