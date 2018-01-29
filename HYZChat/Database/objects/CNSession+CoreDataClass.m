@@ -11,6 +11,65 @@
 
 @implementation CNSession
 
+- (NSArray *)obtainSubChatMessageSequenceData {
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"send_time" ascending:NO]];//send_time是unix时间戳
+    return [self.has_chatMsgs sortedArrayUsingDescriptors:sortDesc];
+}
+
+- (UIColor *)sessionNameColorByType {
+    UIColor *color = nil;
+    switch (self.type) {
+        case SessionTypeOrganization:
+        case SessionTypeOfficial:
+            color = [UIColor colorWithRed:0.0f green:0.5f blue:1.0f alpha:1.0f];
+            break;
+        
+        case SessionTypeFriend:
+        case SessionTypeGroup:
+        case SessionTypeSystem:
+        default:
+            color = [UIColor blackColor];
+            break;
+    }
+    return color;
+}
+
+- (NSString *)sessionLastChatMsgContent {
+    if (nil == self.has_chatMsgs || self.has_chatMsgs.count <= 0)
+        return @"";
+    
+    NSString *msgUiContent;
+    NSArray *chatMsgArr = [self obtainSubChatMessageSequenceData];
+    CNChatMessage *chatMessage = [chatMsgArr firstObject];
+    switch (chatMessage.msg_type) {
+        case ChatMsgTypeText:
+            msgUiContent = chatMessage.msg_content;
+            break;
+         case ChatMsgTypeImage:
+            msgUiContent = @"【图片】";
+            break;
+        case ChatMsgTypeAudio:
+            msgUiContent = @"【语音】";
+            break;
+        case ChatMsgTypeVideo:
+            msgUiContent = @"【小视频】";
+            break;
+        default:
+            msgUiContent = @"类型未知";
+            break;
+    }
+    return msgUiContent;
+}
+
+- (NSString *)sessionUnreadMsgNumDesc {
+    if (self.unread_Num <= 0)
+        return @"";
+    
+    if (self.unread_Num > 99)
+        return @" 99+ ";
+    
+    return [NSString stringWithFormat:@"%lld", self.unread_Num];
+}
 
 
 @end

@@ -13,6 +13,27 @@
  * @description 获取当前时间戳
  */
 + (NSTimeInterval)getCurrentTimestamp;
+/**
+ * @description 将字符串转化成日期时间
+ * @param str 日期字符串
+ * @param fStr 日期格式
+ */
++ (NSDate *)dateFromStr:(NSString *)str withFormatterStr:(NSString *)fStr;
+/**
+ * @description 将日期转化成 yyyy-MM-dd 格式
+ * @param date 日期 如：2018-01-01 12:12:12
+ */
++ (NSString *)dateStringByDate:(NSDate *)date;
+/**
+ * @description 将日期转化成 HH:mm:ss 格式
+ * @param date 日期 如：2018-01-01 12:12:12
+ */
++ (NSString *)timeStringByDate:(NSDate *)date;
+/**
+ * @description 对时间戳格式化描述
+ * @param timeStamp 时间戳 如：1517213195
+ */
++ (NSString *)timeStampFormatDesc:(CGFloat)timeStamp;
 
 /**
  * @description 检测字符串是否是空字符串

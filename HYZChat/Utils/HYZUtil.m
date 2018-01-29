@@ -8,6 +8,7 @@
 
 #import "HYZUtil.h"
 #import <CoreText/CoreText.h>
+#import "NSDate+Calendar.h"
 
 @implementation HYZUtil
 
@@ -17,6 +18,62 @@
     NSDate *date = [NSDate date];
     NSTimeInterval timestamp = [date timeIntervalSince1970];
     return timestamp;
+}
+
++ (NSDate *)dateFromStr:(NSString *)str withFormatterStr:(NSString *)fStr {
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat = fStr;
+    df.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    NSDate *date = [df dateFromString:str];
+    if (nil == date)
+        NSLog(@"dateFromStr 参数格式不对！！");
+    return date;
+}
+
++ (NSString *)dateStringByDate:(NSDate *)date {
+    NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString* timeString = [formatter stringFromDate:date];
+    return timeString;
+}
+
++ (NSString *)timeStringByDate:(NSDate *)date {
+    NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString* timeString = [formatter stringFromDate:date];
+    return timeString;
+}
+
++ (NSString *)timeStampFormatDesc:(CGFloat)timeStamp {
+    if (timeStamp <= 0)
+        return @"未知";
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+
+    NSDate *timeStampDate = [NSDate dateWithTimeIntervalSince1970:timeStamp];
+    NSString *timeStampDateStr = [self dateStringByDate:timeStampDate];
+    timeStampDate = [formatter dateFromString:timeStampDateStr];//日期
+    
+    NSDate *todayDate = [formatter dateFromString:[self dateStringByDate:[NSDate date]]];//今天
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];//公历日历
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay | NSCalendarUnitHour
+                                               fromDate:timeStampDate toDate:todayDate options:0];
+    NSInteger day = [components day];//两个之间相差几天。以小时为单位计算的
+    
+    if (day >= 7)//超出一周
+        return [self dateStringByDate:timeStampDate];
+    else if (day > 1 && day < 7) //星期几
+        return [NSDate weekStringFromNumber:[timeStampDate weekValueForDate]];
+    else if (1 == day)//昨天的
+        return @"昨天";
+    
+    //今天的
+    timeStampDate = [NSDate dateWithTimeIntervalSince1970:timeStamp];
+    [formatter setDateFormat:@"HH:mm"];
+    return [formatter stringFromDate:timeStampDate];
 }
 
 #pragma mark - /// 其他相关静态方法 ///

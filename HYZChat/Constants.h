@@ -60,4 +60,13 @@ typedef NS_ENUM(NSInteger, UserSex) {
     UserSexWoman
 };
 
+//会话的类型
+typedef NS_ENUM(NSInteger, SessionType) {
+    SessionTypeFriend,  //好友
+    SessionTypeGroup,   //群组
+    SessionTypeSystem,  //系统
+    SessionTypeOrganization,    //企业/机构
+    SessionTypeOfficial //公众号
+};
+
 #endif /* Constants_h */

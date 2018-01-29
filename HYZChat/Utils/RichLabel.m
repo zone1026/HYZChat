@@ -631,6 +631,8 @@
 #pragma mark - 共有方法
 
 - (void)updateTextContent:(NSString *)content {
+    if ([HYZUtil isEmptyOrNull:content] == YES)
+        content = @" ";
     NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:self.font, NSFontAttributeName, nil];
     //设置换行模式，表情图标出界自动换行
     [attributes setValuesForKeysWithDictionary:[HYZUtil getWrapModeAttributes]];

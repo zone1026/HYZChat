@@ -7,6 +7,7 @@
 //
 
 #import "MsgDataSource.h"
+#import "MsgCell.h"
 
 @interface MsgDataSource ()
 
@@ -25,7 +26,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"msgCell" forIndexPath:indexPath];
+    MsgCell *cell = [tableView dequeueReusableCellWithIdentifier:@"msgCell" forIndexPath:indexPath];
+    [cell updateCellInfo:nil];
     return cell;
 }
 

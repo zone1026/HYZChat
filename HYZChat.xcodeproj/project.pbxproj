@@ -30,6 +30,7 @@
 		6B48F4D41F5ED74100C9DCDC /* ChatFunctionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4D31F5ED74100C9DCDC /* ChatFunctionData.m */; };
 		6B48F4D71F5ED92700C9DCDC /* PlusFunctionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4D61F5ED92700C9DCDC /* PlusFunctionInfo.m */; };
 		6B68C187201EB903003ECBA1 /* UIImageView+WebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B68C186201EB903003ECBA1 /* UIImageView+WebImage.m */; };
+		6B68C18A201EF305003ECBA1 /* NSDate+Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B68C189201EF305003ECBA1 /* NSDate+Calendar.m */; };
 		6B8954541FFF59E900A20676 /* ChatRelate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B8954521FFF59E900A20676 /* ChatRelate.storyboard */; };
 		6B8954591FFF5C2D00A20676 /* AMPTextMsgContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8954581FFF5C2D00A20676 /* AMPTextMsgContentController.m */; };
 		6B8E3DE81F5F810F00020626 /* Chat.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B8E3DE61F5F810F00020626 /* Chat.plist */; };
@@ -116,6 +117,8 @@
 		6B48F4D61F5ED92700C9DCDC /* PlusFunctionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlusFunctionInfo.m; sourceTree = "<group>"; };
 		6B68C185201EB903003ECBA1 /* UIImageView+WebImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImageView+WebImage.h"; path = "Utils/UIImageView+WebImage.h"; sourceTree = "<group>"; };
 		6B68C186201EB903003ECBA1 /* UIImageView+WebImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+WebImage.m"; path = "Utils/UIImageView+WebImage.m"; sourceTree = "<group>"; };
+		6B68C188201EF305003ECBA1 /* NSDate+Calendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSDate+Calendar.h"; path = "Utils/NSDate+Calendar.h"; sourceTree = "<group>"; };
+		6B68C189201EF305003ECBA1 /* NSDate+Calendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Calendar.m"; path = "Utils/NSDate+Calendar.m"; sourceTree = "<group>"; };
 		6B8954531FFF59E900A20676 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChatRelate.storyboard; sourceTree = "<group>"; };
 		6B8954571FFF5C2D00A20676 /* AMPTextMsgContentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPTextMsgContentController.h; sourceTree = "<group>"; };
 		6B8954581FFF5C2D00A20676 /* AMPTextMsgContentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPTextMsgContentController.m; sourceTree = "<group>"; };
@@ -362,10 +365,10 @@
 		6B944A7B1FC80E6400192470 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				6B944AA31FC81F8E00192470 /* CNChatMessage+CoreDataProperties.h */,
-				6B944AA61FC81F8E00192470 /* CNChatMessage+CoreDataProperties.m */,
 				6B944AA41FC81F8E00192470 /* CNChatMessage+CoreDataClass.h */,
 				6B944AA51FC81F8E00192470 /* CNChatMessage+CoreDataClass.m */,
+				6B944AA31FC81F8E00192470 /* CNChatMessage+CoreDataProperties.h */,
+				6B944AA61FC81F8E00192470 /* CNChatMessage+CoreDataProperties.m */,
 				6B944A8E1FC810B800192470 /* CNChatResource+CoreDataClass.h */,
 				6B944A8B1FC810B800192470 /* CNChatResource+CoreDataClass.m */,
 				6B944A8F1FC810B800192470 /* CNChatResource+CoreDataProperties.h */,
@@ -534,6 +537,8 @@
 				6B45DDB41FEA4B7500AEF8CB /* CustomResponderTextView.m */,
 				6B68C185201EB903003ECBA1 /* UIImageView+WebImage.h */,
 				6B68C186201EB903003ECBA1 /* UIImageView+WebImage.m */,
+				6B68C188201EF305003ECBA1 /* NSDate+Calendar.h */,
+				6B68C189201EF305003ECBA1 /* NSDate+Calendar.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -781,6 +786,7 @@
 				6BA5D1671FDE6EA300B8C3C6 /* ChatDataSource+ChatMsg.m in Sources */,
 				6B944AA01FC81A2700192470 /* ChatTableCellInfo.m in Sources */,
 				6B944A9D1FC8151500192470 /* SuperDataSource.m in Sources */,
+				6B68C18A201EF305003ECBA1 /* NSDate+Calendar.m in Sources */,
 				6B8E3E041F5F970D00020626 /* ChatFunctionCell.m in Sources */,
 				6B944A931FC810B900192470 /* CNChatResource+CoreDataClass.m in Sources */,
 				6B10F0D31F692813008D40C0 /* ChatDataSource+TableView.m in Sources */,

@@ -12,7 +12,6 @@
 @interface MsgCell : UITableViewCell
 /** cell会话信息 */
 @property (strong, nonatomic) CNSession *cellData;
-
 /**
  * @description 更新cell信息
  * @param chatSession 会话信息

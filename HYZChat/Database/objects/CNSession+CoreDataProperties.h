@@ -18,10 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *last_time;
 @property (nullable, nonatomic, copy) NSString *session_id;
 @property (nullable, nonatomic, copy) NSString *logo_src;
-@property (nullable, nonatomic, copy) NSString *session_name;
-@property (nonatomic) BOOL session_shield;
+@property (nullable, nonatomic, copy) NSString *name;
+@property (nonatomic) BOOL shield;
 @property (nonatomic) int64_t unread_Num;
 @property (nullable, nonatomic, copy) NSString *logo_thumb;
+@property (nonatomic) int16_t type;
 @property (nullable, nonatomic, retain) CNUser *belong_user;
 @property (nullable, nonatomic, retain) NSSet<CNChatMessage *> *has_chatMsgs;
 

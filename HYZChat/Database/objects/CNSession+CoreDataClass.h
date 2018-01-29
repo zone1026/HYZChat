@@ -15,6 +15,22 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CNSession : NSManagedObject
+/**
+ * @description 获取会话中的消息列表数据
+ */
+- (NSArray *)obtainSubChatMessageSequenceData;
+/**
+ * @description 通过会话的类型获取回话名字的颜色
+ */
+- (UIColor *)sessionNameColorByType;
+/**
+ * @description 会话的最近一条聊天信息内容
+ */
+- (NSString *)sessionLastChatMsgContent;
+/**
+ * @description 会话的最近一条聊天信息内容
+ */
+- (NSString *)sessionUnreadMsgNumDesc;
 
 @end
 

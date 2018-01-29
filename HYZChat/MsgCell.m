@@ -7,7 +7,9 @@
 //
 
 #import "MsgCell.h"
+#import "RichLabel.h"
 #import "UIImageView+WebImage.h"
+#import "UIView+HYZFrame.h"
 
 @interface MsgCell ()
 /** 消息头像 */
@@ -17,7 +19,7 @@
 /** 消息时间 */
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
 /** 最近一次消息的内容 */
-@property (weak, nonatomic) IBOutlet UILabel *lblLastMsg;
+@property (weak, nonatomic) IBOutlet RichLabel *lblLastMsg;
 /** 是否已对消息屏蔽 */
 @property (weak, nonatomic) IBOutlet UIImageView *imgShield;
 /** 未读消息个数 */
@@ -30,6 +32,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    [self.lblUnreadNum.layer setCornerRadius:self.lblUnreadNum.height*0.5f];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -39,7 +43,15 @@
 }
 
 - (void)updateCellInfo:(CNSession *)chatSession {
-    [self.imgLogo web_logoImage:chatSession.logo_src withThumbImageURLStr:chatSession.logo_thumb];
+    self.cellData = chatSession;
+    [self.imgLogo web_logoImage:self.cellData.logo_src withThumbImageURLStr:self.cellData.logo_thumb];
+    self.lblTitle.text = self.cellData.name;
+    self.lblTitle.textColor = [self.cellData sessionNameColorByType];
+    self.lblTime.text = [HYZUtil timeStampFormatDesc:[self.cellData.last_time floatValue]];
+    [self.lblLastMsg updateTextContent:[self.cellData sessionLastChatMsgContent]];
+    self.imgShield.hidden = !self.cellData.shield;
+    self.lblUnreadNum.hidden = self.cellData.unread_Num <= 0;
+    self.lblUnreadNum.text = [self.cellData sessionUnreadMsgNumDesc];
 }
 
 @end

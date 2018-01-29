@@ -17,10 +17,11 @@
 @dynamic last_time;
 @dynamic session_id;
 @dynamic logo_src;
-@dynamic session_name;
-@dynamic session_shield;
+@dynamic name;
+@dynamic shield;
 @dynamic unread_Num;
 @dynamic logo_thumb;
+@dynamic type;
 @dynamic belong_user;
 @dynamic has_chatMsgs;
 

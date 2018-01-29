@@ -23,9 +23,10 @@
         <attribute name="last_time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="logo_src" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="logo_thumb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="session_id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="session_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="session_shield" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="shield" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="unread_Num" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="belong_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNUser" inverseName="has_sessions" inverseEntity="CNUser" syncable="YES"/>
         <relationship name="has_chatMsgs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CNChatMessage" inverseName="belong_session" inverseEntity="CNChatMessage" syncable="YES"/>
@@ -44,7 +45,7 @@
     <elements>
         <element name="CNChatMessage" positionX="-218" positionY="71" width="128" height="208"/>
         <element name="CNChatResource" positionX="-225" positionY="-171" width="128" height="103"/>
-        <element name="CNSession" positionX="-479" positionY="72" width="128" height="180"/>
+        <element name="CNSession" positionX="-479" positionY="72" width="128" height="195"/>
         <element name="CNUser" positionX="-747" positionY="72" width="128" height="178"/>
     </elements>
 </model>
