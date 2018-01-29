@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D48566B1F5BB4AD0008AFB9 /* InputEmotionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48566A1F5BB4AD0008AFB9 /* InputEmotionData.m */; };
 		0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48566D1F5BBCE80008AFB9 /* ChatEmotionCell.m */; };
+		62CAC9A195B71F921742F8A9 /* libPods-HYZChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E337BFEB7FDC3ED2BDCCEAC9 /* libPods-HYZChat.a */; };
 		6B07F0EA2004974400F1E071 /* Msg.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0E82004974400F1E071 /* Msg.storyboard */; };
 		6B07F0F320049A3600F1E071 /* Contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0F120049A3600F1E071 /* Contact.storyboard */; };
 		6B07F0F620049AA800F1E071 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0F420049AA800F1E071 /* Feed.storyboard */; };
@@ -77,6 +78,7 @@
 		0D48566A1F5BB4AD0008AFB9 /* InputEmotionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputEmotionData.m; sourceTree = "<group>"; };
 		0D48566C1F5BBCE80008AFB9 /* ChatEmotionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatEmotionCell.h; sourceTree = "<group>"; };
 		0D48566D1F5BBCE80008AFB9 /* ChatEmotionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatEmotionCell.m; sourceTree = "<group>"; };
+		39D23463CF1225E7DB6E1B6E /* Pods-HYZChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYZChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYZChat/Pods-HYZChat.debug.xcconfig"; sourceTree = "<group>"; };
 		6B07F0E92004974400F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Msg.storyboard; sourceTree = "<group>"; };
 		6B07F0F220049A3600F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Contact.storyboard; sourceTree = "<group>"; };
 		6B07F0F520049AA800F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Feed.storyboard; sourceTree = "<group>"; };
@@ -191,6 +193,8 @@
 		6BCBCCD41F594EC1000B7152 /* UIView+HYZFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+HYZFrame.m"; path = "Utils/UIView+HYZFrame.m"; sourceTree = "<group>"; };
 		6BCBCCD61F5951B2000B7152 /* InputViewFrameChanageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputViewFrameChanageData.h; sourceTree = "<group>"; };
 		6BCBCCD71F5951B2000B7152 /* InputViewFrameChanageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputViewFrameChanageData.m; sourceTree = "<group>"; };
+		6EEACFF0A711FAEA8039E916 /* Pods-HYZChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYZChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-HYZChat/Pods-HYZChat.release.xcconfig"; sourceTree = "<group>"; };
+		E337BFEB7FDC3ED2BDCCEAC9 /* libPods-HYZChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HYZChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,12 +202,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62CAC9A195B71F921742F8A9 /* libPods-HYZChat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13D9D2D9DEE98E18B4A51480 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E337BFEB7FDC3ED2BDCCEAC9 /* libPods-HYZChat.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6B07F0DE20048F8200F1E071 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +412,8 @@
 			children = (
 				6BCBCC6F1F58E8C7000B7152 /* HYZChat */,
 				6BCBCC6E1F58E8C7000B7152 /* Products */,
+				A92F7A13C4C0C515AAB9CDE9 /* Pods */,
+				13D9D2D9DEE98E18B4A51480 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -576,6 +591,15 @@
 			name = Msg;
 			sourceTree = "<group>";
 		};
+		A92F7A13C4C0C515AAB9CDE9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				39D23463CF1225E7DB6E1B6E /* Pods-HYZChat.debug.xcconfig */,
+				6EEACFF0A711FAEA8039E916 /* Pods-HYZChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -583,9 +607,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BCBCC871F58E8C7000B7152 /* Build configuration list for PBXNativeTarget "HYZChat" */;
 			buildPhases = (
+				E94DCC23AD2179177A8C07F8 /* [CP] Check Pods Manifest.lock */,
 				6BCBCC691F58E8C7000B7152 /* Sources */,
 				6BCBCC6A1F58E8C7000B7152 /* Frameworks */,
 				6BCBCC6B1F58E8C7000B7152 /* Resources */,
+				B6D51425180A51ABBC70FC3B /* [CP] Embed Pods Frameworks */,
+				FFE25ED41DD899D5B42618E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -651,6 +678,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B6D51425180A51ABBC70FC3B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HYZChat/Pods-HYZChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E94DCC23AD2179177A8C07F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HYZChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFE25ED41DD899D5B42618E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HYZChat/Pods-HYZChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6BCBCC691F58E8C7000B7152 /* Sources */ = {
@@ -893,6 +971,7 @@
 		};
 		6BCBCC881F58E8C7000B7152 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39D23463CF1225E7DB6E1B6E /* Pods-HYZChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = K2K29JTT29;
@@ -907,6 +986,7 @@
 		};
 		6BCBCC891F58E8C7000B7152 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EEACFF0A711FAEA8039E916 /* Pods-HYZChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = K2K29JTT29;
