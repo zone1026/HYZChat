@@ -29,6 +29,7 @@
 		6B48F4D11F5EBD1400C9DCDC /* ChatEmotionTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4D01F5EBD1400C9DCDC /* ChatEmotionTabCell.m */; };
 		6B48F4D41F5ED74100C9DCDC /* ChatFunctionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4D31F5ED74100C9DCDC /* ChatFunctionData.m */; };
 		6B48F4D71F5ED92700C9DCDC /* PlusFunctionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4D61F5ED92700C9DCDC /* PlusFunctionInfo.m */; };
+		6B68C187201EB903003ECBA1 /* UIImageView+WebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B68C186201EB903003ECBA1 /* UIImageView+WebImage.m */; };
 		6B8954541FFF59E900A20676 /* ChatRelate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B8954521FFF59E900A20676 /* ChatRelate.storyboard */; };
 		6B8954591FFF5C2D00A20676 /* AMPTextMsgContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8954581FFF5C2D00A20676 /* AMPTextMsgContentController.m */; };
 		6B8E3DE81F5F810F00020626 /* Chat.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B8E3DE61F5F810F00020626 /* Chat.plist */; };
@@ -113,6 +114,8 @@
 		6B48F4D31F5ED74100C9DCDC /* ChatFunctionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatFunctionData.m; sourceTree = "<group>"; };
 		6B48F4D51F5ED92700C9DCDC /* PlusFunctionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlusFunctionInfo.h; sourceTree = "<group>"; };
 		6B48F4D61F5ED92700C9DCDC /* PlusFunctionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlusFunctionInfo.m; sourceTree = "<group>"; };
+		6B68C185201EB903003ECBA1 /* UIImageView+WebImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImageView+WebImage.h"; path = "Utils/UIImageView+WebImage.h"; sourceTree = "<group>"; };
+		6B68C186201EB903003ECBA1 /* UIImageView+WebImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+WebImage.m"; path = "Utils/UIImageView+WebImage.m"; sourceTree = "<group>"; };
 		6B8954531FFF59E900A20676 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChatRelate.storyboard; sourceTree = "<group>"; };
 		6B8954571FFF5C2D00A20676 /* AMPTextMsgContentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPTextMsgContentController.h; sourceTree = "<group>"; };
 		6B8954581FFF5C2D00A20676 /* AMPTextMsgContentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPTextMsgContentController.m; sourceTree = "<group>"; };
@@ -529,6 +532,8 @@
 				6B31AC5C1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m */,
 				6B45DDB31FEA4B7500AEF8CB /* CustomResponderTextView.h */,
 				6B45DDB41FEA4B7500AEF8CB /* CustomResponderTextView.m */,
+				6B68C185201EB903003ECBA1 /* UIImageView+WebImage.h */,
+				6B68C186201EB903003ECBA1 /* UIImageView+WebImage.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -763,6 +768,7 @@
 				6B8E3E001F5F8D3B00020626 /* CNUser+CoreDataClass.m in Sources */,
 				6B944AAB1FC81F8E00192470 /* CNChatMessage+CoreDataProperties.m in Sources */,
 				6B9A86BD201B29FC00E73E26 /* MsgCell.m in Sources */,
+				6B68C187201EB903003ECBA1 /* UIImageView+WebImage.m in Sources */,
 				6B48F4CE1F5EA74600C9DCDC /* ChatEmotionData.m in Sources */,
 				6B944AAA1FC81F8E00192470 /* CNChatMessage+CoreDataClass.m in Sources */,
 				6BAC6F5B1F5FF7E200E896FB /* ChatFunctionController.m in Sources */,

@@ -25,6 +25,7 @@
     #import "ChatManager.h"
     #import "HYZAlert.h"
     #import "Chat.pch"
+    #import <AFNetworking.h>
 #endif
 
 // 三色值配色

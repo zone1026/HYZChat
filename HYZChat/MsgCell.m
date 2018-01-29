@@ -7,7 +7,7 @@
 //
 
 #import "MsgCell.h"
-#import <UIImageView+WebCache.h>
+#import "UIImageView+WebImage.h"
 
 @interface MsgCell ()
 /** 消息头像 */
@@ -39,7 +39,7 @@
 }
 
 - (void)updateCellInfo:(CNSession *)chatSession {
-    [self.imgLogo sd_setImageWithURL:[self.cellData obtainLogoURL] placeholderImage:[UIImage imageNamed:@"DEFAULT_LOGO"]];
+    [self.imgLogo web_logoImage:chatSession.logo_src withThumbImageURLStr:chatSession.logo_thumb];
 }
 
 @end

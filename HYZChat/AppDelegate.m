@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "DataManager.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +17,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // 监控网络状态
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+    
     return YES;
 }
 

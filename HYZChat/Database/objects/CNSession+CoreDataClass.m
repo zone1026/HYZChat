@@ -11,12 +11,6 @@
 
 @implementation CNSession
 
-- (NSString *)obtainLogoURLStr {
-    return self.session_logo;
-}
 
-- (NSURL *)obtainLogoURL {
-    return [NSURL URLWithString:[self obtainLogoURLStr]];
-}
 
 @end

@@ -1,9 +1,8 @@
 //
 //  CNSession+CoreDataProperties.m
-//  HYZChat
+//  
 //
-//  Created by 黄亚州 on 2018/1/26.
-//  Copyright © 2018年 黄亚州. All rights reserved.
+//  Created by 黄亚州 on 2018/1/29.
 //
 //
 
@@ -17,10 +16,11 @@
 
 @dynamic last_time;
 @dynamic session_id;
-@dynamic session_logo;
+@dynamic logo_src;
 @dynamic session_name;
 @dynamic session_shield;
 @dynamic unread_Num;
+@dynamic logo_thumb;
 @dynamic belong_user;
 @dynamic has_chatMsgs;
 

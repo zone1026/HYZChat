@@ -21,8 +21,9 @@
     </entity>
     <entity name="CNSession" representedClassName="CNSession" syncable="YES">
         <attribute name="last_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logo_src" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logo_thumb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="session_id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="session_logo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="session_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="session_shield" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="unread_Num" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -43,7 +44,7 @@
     <elements>
         <element name="CNChatMessage" positionX="-218" positionY="71" width="128" height="208"/>
         <element name="CNChatResource" positionX="-225" positionY="-171" width="128" height="103"/>
-        <element name="CNSession" positionX="-479" positionY="72" width="128" height="163"/>
+        <element name="CNSession" positionX="-479" positionY="72" width="128" height="180"/>
         <element name="CNUser" positionX="-747" positionY="72" width="128" height="178"/>
     </elements>
 </model>

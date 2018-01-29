@@ -15,14 +15,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CNSession : NSManagedObject
-/**
- * @deciption 获取logo的URL字符串
- */
-- (NSString *)obtainLogoURLStr;
-/**
- * @deciption 获取logo的URL
- */
-- (NSURL *)obtainLogoURL;
 
 @end
 
