@@ -15,6 +15,27 @@
 
 @implementation MsgDataSource
 
+- (id)init {
+    if (self = [super init]) {
+        
+    }
+    return self;
+}
+
+- (BOOL)isEmptyData {
+    if (nil == self.sessionArr || self.sessionArr.count <= 0)
+        return YES;
+    return NO;
+}
+
+- (NSMutableArray <CNSession *> *)sessionArr {
+    if (_sessionArr == nil) {
+        CNUser *currentUser = [DataManager sharedManager].currentUser;
+        _sessionArr = [[currentUser getSubSessionSequence] mutableCopy];
+    }
+    return _sessionArr;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -22,12 +43,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    if ([self isEmptyData] == YES)
+        return 1;
+    return self.sessionArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self isEmptyData] == YES) {
+        UITableViewCell *emptyCell = [tableView dequeueReusableCellWithIdentifier:@"emptyCell" forIndexPath:indexPath];
+        emptyCell.separatorInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, tableView.bounds.size.width);
+        return emptyCell;
+    }
+
     MsgCell *cell = [tableView dequeueReusableCellWithIdentifier:@"msgCell" forIndexPath:indexPath];
-    [cell updateCellInfo:nil];
+    CNSession *session = [self.sessionArr objectAtIndex:indexPath.row];
+    [cell updateCellInfo:session];
     return cell;
 }
 
@@ -35,10 +65,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    [[ChatManager sharedManager] openChatView:ChatTargetTypeP2P withFromViewController:self];
+
+    if (nil != self.delegate && [self.delegate respondsToSelector:@selector(didSelectCellEnterChatUI:)]) {
+        if (self.sessionArr.count > indexPath.row) {
+            CNSession *session = [self.sessionArr objectAtIndex:indexPath.row];
+            [self.delegate didSelectCellEnterChatUI:session];
+        }
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [self isEmptyData] == NO;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self isEmptyData] == YES)
+        return kScreenHeight*0.5f;
     return 70.0f;
 }
 

@@ -11,7 +11,7 @@
 
 @implementation CNUser
 
-- (NSArray *)getSubChatMessageSequence {
+- (NSArray *)getSubSessionSequence {
     NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"last_time" ascending:NO]];//last_time是unix时间戳
     return [self.has_sessions sortedArrayUsingDescriptors:sortDesc];
 }

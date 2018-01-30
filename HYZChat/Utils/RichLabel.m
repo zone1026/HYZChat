@@ -534,14 +534,6 @@
         }
     }
     return YES;
-    
-    //在链接内的文本不换行
-    //    NSRange range;
-    //    NSURL *linkURL = [layoutManager.textStorage attribute:NSLinkAttributeName
-    //                                                  atIndex:charIndex
-    //                                           effectiveRange:&range];
-    //
-    //    return !(linkURL && (charIndex > range.location) && (charIndex <= NSMaxRange(range)));
 }
 
 #pragma mark - Interactions
@@ -550,21 +542,14 @@
     if ((sender.view != self) || (sender.state != UIGestureRecognizerStateBegan))
         return;
     
-    /*CGPoint location = [sender locationInView:self];
-    NSDictionary *link = [self getLinkAtLocation:location];
-    if (link != nil) {
-        NSRange range = [[link objectForKey:@"range"] rangeValue];
-        NSString *linkString = [link objectForKey:@"link"];
-        LinkType linkType = (LinkType)[[link objectForKey:@"linkType"] intValue];
-        self.linkLongHandler(linkType, linkString, range, location);
+    if (nil != self.longHandler) {
         self.selectedRange = NSMakeRange(0, self.text.length);
-    }*/
-    self.selectedRange = NSMakeRange(0, self.text.length);
-    self.longHandler();
+        self.longHandler();
+    }
 }
 
 - (void)doubleTapLabelGesture:(UITapGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateEnded)
+    if (sender.state == UIGestureRecognizerStateEnded && nil != self.doubleTapHandler)
         self.doubleTapHandler();
 }
 

@@ -226,6 +226,8 @@
 		6B07F0DE20048F8200F1E071 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				6BB093E61FE1229300D99A79 /* MsgDataSource.h */,
+				6BB093E71FE1229300D99A79 /* MsgDataSource.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -595,8 +597,6 @@
 				6B9A8687201B29C900E73E26 /* Cells */,
 				6BB093E31FE1227300D99A79 /* MsgController.h */,
 				6BB093E41FE1227300D99A79 /* MsgController.m */,
-				6BB093E61FE1229300D99A79 /* MsgDataSource.h */,
-				6BB093E71FE1229300D99A79 /* MsgDataSource.m */,
 			);
 			name = Msg;
 			sourceTree = "<group>";

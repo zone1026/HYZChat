@@ -44,8 +44,9 @@ typedef NS_ENUM(NSInteger, ChatMsgState) {
 
 //聊天目标
 typedef NS_ENUM(NSInteger, ChatTargetType) {
-    ChatTargetTypeP2P,//私聊
-    ChatTargetTypeP2G//群聊
+    ChatTargetTypeP2P,  //私聊
+    ChatTargetTypeP2G,   //群聊
+    ChatTargetTypeSubscription //订阅
 };
 
 //用户身份

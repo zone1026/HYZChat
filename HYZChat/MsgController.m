@@ -9,7 +9,7 @@
 #import "MsgController.h"
 #import "MsgDataSource.h"
 
-@interface MsgController ()
+@interface MsgController ()<MsgDataSourceDelegate>
 @property (strong, nonatomic) IBOutlet MsgDataSource *msgDataSource;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barBtnAdd;
 
@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.msgDataSource.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,5 +42,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - MsgDataSourceDelegate
+
+- (void)didSelectCellEnterChatUI:(CNSession *)session {
+    if (nil == session) {
+        [HYZAlert showInfo:@"抱歉，会话数据为空" underTitle:@"提示"];
+        return;
+    }
+    [[ChatManager sharedManager] openChatView:[session chatTargetTypeBySessionType] withFromViewController:self];
+}
 
 @end

@@ -34,7 +34,7 @@
     return color;
 }
 
-- (NSString *)sessionLastChatMsgContent {
+- (NSString *)sessionMsgUiContent {
     if (nil == self.has_chatMsgs || self.has_chatMsgs.count <= 0)
         return @"";
     
@@ -71,5 +71,21 @@
     return [NSString stringWithFormat:@"%lld", self.unread_Num];
 }
 
+- (ChatTargetType)chatTargetTypeBySessionType {
+    ChatTargetType type = ChatTargetTypeP2P;
+    switch (self.type) {
+        case SessionTypeOrganization:
+        case SessionTypeOfficial:
+        case SessionTypeSystem:
+            type = ChatTargetTypeSubscription;
+            break;
+        case SessionTypeGroup:
+            type = ChatTargetTypeP2G;
+            break;
+        default:
+            break;
+    }
+    return type;
+}
 
 @end

@@ -26,11 +26,15 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @description 会话的最近一条聊天信息内容
  */
-- (NSString *)sessionLastChatMsgContent;
+- (NSString *)sessionMsgUiContent;
 /**
  * @description 会话的最近一条聊天信息内容
  */
 - (NSString *)sessionUnreadMsgNumDesc;
+/**
+ * @description 通过会话类型获取聊天目标的类型（会影响ChatController）
+ */
+- (ChatTargetType)chatTargetTypeBySessionType;
 
 @end
 
