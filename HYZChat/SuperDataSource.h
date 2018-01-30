@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SuperDataSource : NSObject
+@interface SuperDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 /**
  * @description 数据源数据是否为空

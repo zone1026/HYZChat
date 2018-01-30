@@ -33,7 +33,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="START_ICON" translatesAutoresizingMaskIntoConstraints="NO" id="abO-zo-UK9">
                                 <rect key="frame" x="147" y="190" width="80" height="159"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="START_BG" translatesAutoresizingMaskIntoConstraints="NO" id="ezb-Om-IJe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="START_BG" translatesAutoresizingMaskIntoConstraints="NO" id="ezb-Om-IJe">
                                 <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
                             </imageView>
                         </subviews>

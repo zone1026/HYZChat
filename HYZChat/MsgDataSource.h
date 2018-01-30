@@ -20,7 +20,7 @@
 
 @end
 
-@interface MsgDataSource : SuperDataSource <UITableViewDelegate, UITableViewDataSource>
+@interface MsgDataSource : SuperDataSource
 /** 会话的代理 */
 @property (weak, nonatomic) id <MsgDataSourceDelegate> delegate;
 /** 会话列表的数据 */

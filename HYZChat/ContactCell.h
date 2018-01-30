@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ContactCell : UITableViewCell
+/**
+ * @description 更新Cell界面
+ * @param logoURLStr 头像URL
+ * @param name 联系人的名字
+ * @param checkMode 是否处于勾选模式下
+ */
+- (void)updateCellUI:(NSString *)logoURLStr withContactName:(NSString *)name withCheckMode:(BOOL)checkMode;
 
 @end

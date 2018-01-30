@@ -7,6 +7,16 @@
 //
 
 #import "ContactCell.h"
+#import "UIImageView+WebImage.h"
+
+@interface ContactCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgCheck;
+@property (weak, nonatomic) IBOutlet UIImageView *imgLogo;
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgLogoConstraintLeft;
+
+@end
 
 @implementation ContactCell
 
@@ -19,6 +29,13 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)updateCellUI:(NSString *)logoURLStr withContactName:(NSString *)name withCheckMode:(BOOL)checkMode {
+    [self.imgLogo web_logoImage:logoURLStr withThumbImageURLStr:logoURLStr];
+    self.lblName.text = name;
+    self.imgLogoConstraintLeft.constant = (checkMode == YES ? 44.0f : 10.0f);
+    self.imgCheck.hidden = !checkMode;
 }
 
 @end

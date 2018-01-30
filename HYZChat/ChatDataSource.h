@@ -22,7 +22,7 @@
 
 @end
 
-@interface ChatDataSource : SuperDataSource <UITableViewDelegate, UITableViewDataSource>
+@interface ChatDataSource : SuperDataSource
 
 /** 聊天界面代理 */
 @property (weak, nonatomic) id <ChatDataSourceDelegate> delegate;

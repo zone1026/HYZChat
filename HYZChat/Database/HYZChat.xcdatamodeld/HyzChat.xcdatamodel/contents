@@ -19,6 +19,25 @@
         <attribute name="res_url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="belong_chatMessage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNChatMessage" inverseName="assign_res" inverseEntity="CNChatMessage" syncable="YES"/>
     </entity>
+    <entity name="CNFriend" representedClassName="CNFriend" syncable="YES">
+        <attribute name="f_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="f_identity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="f_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="f_phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="f_sex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="f_src" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="f_thumb" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belong_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNUser" inverseName="has_friends" inverseEntity="CNUser" syncable="YES"/>
+    </entity>
+    <entity name="CNGroup" representedClassName="CNGroup" syncable="YES">
+        <attribute name="g_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="g_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="g_public" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="g_src" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="g_thumb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="max_num" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="belong_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNUser" inverseName="has_groups" inverseEntity="CNUser" syncable="YES"/>
+    </entity>
     <entity name="CNSession" representedClassName="CNSession" syncable="YES">
         <attribute name="last_time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="logo_src" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,7 +51,7 @@
         <relationship name="has_chatMsgs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CNChatMessage" inverseName="belong_session" inverseEntity="CNChatMessage" syncable="YES"/>
     </entity>
     <entity name="CNUser" representedClassName="CNUser" syncable="YES">
-        <attribute name="is_login" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="is_login" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="last_time" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="user_id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="user_identity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -40,12 +59,16 @@
         <attribute name="user_password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_sex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="has_friends" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CNFriend" inverseName="belong_user" inverseEntity="CNFriend" syncable="YES"/>
+        <relationship name="has_groups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CNGroup" inverseName="belong_user" inverseEntity="CNGroup" syncable="YES"/>
         <relationship name="has_sessions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CNSession" inverseName="belong_user" inverseEntity="CNSession" syncable="YES"/>
     </entity>
     <elements>
         <element name="CNChatMessage" positionX="-218" positionY="71" width="128" height="208"/>
         <element name="CNChatResource" positionX="-225" positionY="-171" width="128" height="103"/>
         <element name="CNSession" positionX="-479" positionY="72" width="128" height="195"/>
-        <element name="CNUser" positionX="-747" positionY="72" width="128" height="178"/>
+        <element name="CNUser" positionX="-747" positionY="72" width="128" height="208"/>
+        <element name="CNFriend" positionX="-747" positionY="-207" width="128" height="163"/>
+        <element name="CNGroup" positionX="-747" positionY="419" width="128" height="148"/>
     </elements>
 </model>
