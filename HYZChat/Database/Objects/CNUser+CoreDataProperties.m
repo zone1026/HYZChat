@@ -1,9 +1,8 @@
 //
 //  CNUser+CoreDataProperties.m
-//  HYZChat
+//  
 //
-//  Created by 黄亚州 on 2018/1/26.
-//  Copyright © 2018年 黄亚州. All rights reserved.
+//  Created by 黄亚州 on 2018/1/30.
 //
 //
 
@@ -24,5 +23,7 @@
 @dynamic user_phone;
 @dynamic user_sex;
 @dynamic has_sessions;
+@dynamic has_groups;
+@dynamic has_friends;
 
 @end

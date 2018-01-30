@@ -1,9 +1,8 @@
 //
 //  CNUser+CoreDataProperties.h
-//  HYZChat
+//  
 //
-//  Created by 黄亚州 on 2018/1/26.
-//  Copyright © 2018年 黄亚州. All rights reserved.
+//  Created by 黄亚州 on 2018/1/30.
 //
 //
 
@@ -25,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *user_phone;
 @property (nonatomic) int16_t user_sex;
 @property (nullable, nonatomic, retain) NSSet<CNSession *> *has_sessions;
+@property (nullable, nonatomic, retain) NSSet<CNGroup *> *has_groups;
+@property (nullable, nonatomic, retain) NSSet<CNFriend *> *has_friends;
 
 @end
 
@@ -34,6 +35,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeHas_sessionsObject:(CNSession *)value;
 - (void)addHas_sessions:(NSSet<CNSession *> *)values;
 - (void)removeHas_sessions:(NSSet<CNSession *> *)values;
+
+- (void)addHas_groupsObject:(CNGroup *)value;
+- (void)removeHas_groupsObject:(CNGroup *)value;
+- (void)addHas_groups:(NSSet<CNGroup *> *)values;
+- (void)removeHas_groups:(NSSet<CNGroup *> *)values;
+
+- (void)addHas_friendsObject:(CNFriend *)value;
+- (void)removeHas_friendsObject:(CNFriend *)value;
+- (void)addHas_friends:(NSSet<CNFriend *> *)values;
+- (void)removeHas_friends:(NSSet<CNFriend *> *)values;
 
 @end
 
