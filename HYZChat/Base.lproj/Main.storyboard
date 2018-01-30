@@ -121,6 +121,10 @@
         <scene sceneID="lvW-og-fPt">
             <objects>
                 <viewController id="tO6-o4-aiV" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GSw-5z-iu6"/>
+                        <viewControllerLayoutGuide type="bottom" id="ddb-6v-LOZ"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BSI-bc-Qh1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,7 +148,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="START_BG" width="253" height="450"/>
+        <image name="START_BG" width="621" height="1104"/>
         <image name="TAB_MAIN_CONTACT" width="32" height="32"/>
         <image name="TAB_MAIN_FEED" width="26" height="26"/>
         <image name="TAB_MAIN_ME" width="26" height="26"/>

@@ -33,12 +33,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="START_ICON" translatesAutoresizingMaskIntoConstraints="NO" id="abO-zo-UK9">
                                 <rect key="frame" x="147" y="190" width="80" height="159"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="START_BG" translatesAutoresizingMaskIntoConstraints="NO" id="ezb-Om-IJe">
+                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="abO-zo-UK9" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-64" id="7XY-t8-y6C"/>
+                            <constraint firstItem="ezb-Om-IJe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Erv-2o-OA9"/>
+                            <constraint firstItem="ezb-Om-IJe" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="GLc-zm-Z7R"/>
                             <constraint firstItem="abO-zo-UK9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="RHu-eg-neL"/>
+                            <constraint firstItem="ezb-Om-IJe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="W2x-I0-e3E"/>
                             <constraint firstItem="vcF-Ff-Lg0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eZa-hw-Jid"/>
+                            <constraint firstItem="ezb-Om-IJe" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="j8l-qK-RRg"/>
                             <constraint firstAttribute="bottom" secondItem="vcF-Ff-Lg0" secondAttribute="bottom" constant="64" id="oGk-0f-PEq"/>
                             <constraint firstItem="vcF-Ff-Lg0" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="wUz-KP-Tgi"/>
                         </constraints>
@@ -50,6 +57,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="START_BG" width="621" height="1104"/>
         <image name="START_ICON" width="80" height="159"/>
     </resources>
 </document>
