@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ContactController : UIViewController
+/** 是否是勾选模式 */
+@property (assign, nonatomic) BOOL checkMode;
 
 @end

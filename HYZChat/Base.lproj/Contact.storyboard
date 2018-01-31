@@ -44,9 +44,47 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.94110500809999997" green="0.93685287240000004" blue="0.96157747510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="IsI-ni-58O" customClass="ContactHeaderView">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qkE-ip-4K8">
+                                            <rect key="frame" x="0.0" y="8" width="375" height="50"/>
+                                            <color key="barTintColor" red="0.94110500812530518" green="0.93685287237167358" blue="0.96157747507095337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="y5I-DY-OTZ" id="CCY-Tx-P99"/>
+                                            </connections>
+                                        </searchBar>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fW8-Fw-GAk">
+                                            <rect key="frame" x="343" y="22" width="20" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="fW8-Fw-GAk" secondAttribute="height" multiplier="10:11" id="YtH-Oq-KQm"/>
+                                                <constraint firstAttribute="width" constant="20" id="dCb-8j-keZ"/>
+                                            </constraints>
+                                            <state key="normal" image="CONTACT_BTN_VOICE"/>
+                                            <connections>
+                                                <action selector="btnVoiceTouchUpInside:" destination="y5I-DY-OTZ" eventType="touchUpInside" id="z2x-QY-qVf"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.92531567811965942" green="0.92510318756103516" blue="0.94985872507095337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="qkE-ip-4K8" firstAttribute="centerY" secondItem="IsI-ni-58O" secondAttribute="centerY" id="FBV-Up-KqZ"/>
+                                        <constraint firstItem="qkE-ip-4K8" firstAttribute="height" secondItem="IsI-ni-58O" secondAttribute="height" constant="-16" id="eMF-ms-xD9"/>
+                                        <constraint firstItem="qkE-ip-4K8" firstAttribute="centerX" secondItem="IsI-ni-58O" secondAttribute="centerX" id="iJI-VW-N0j"/>
+                                        <constraint firstItem="qkE-ip-4K8" firstAttribute="width" secondItem="IsI-ni-58O" secondAttribute="width" id="jnV-QK-q2N"/>
+                                        <constraint firstItem="fW8-Fw-GAk" firstAttribute="centerY" secondItem="IsI-ni-58O" secondAttribute="centerY" id="keH-P4-Qdw"/>
+                                        <constraint firstAttribute="trailing" secondItem="fW8-Fw-GAk" secondAttribute="trailing" constant="12" id="p5i-MR-Zcj"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="btnVoice" destination="fW8-Fw-GAk" id="R75-5v-SFz"/>
+                                        <outlet property="searchBar" destination="qkE-ip-4K8" id="hEJ-fZ-oFs"/>
+                                    </connections>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" id="Wbd-Ze-J1H" customClass="ContactCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="94" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wbd-Ze-J1H" id="cOa-J0-d8A">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -93,44 +131,6 @@
                                             <outlet property="lblName" destination="dJd-Tl-xrT" id="lQx-Oa-zkw"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="60" id="Za8-rh-Byn" customClass="SearchCell">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Za8-rh-Byn" id="yT4-xJ-aOD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qkE-ip-4K8">
-                                                    <rect key="frame" x="0.0" y="7" width="375" height="44"/>
-                                                    <color key="barTintColor" red="0.94110500812530518" green="0.93685287237167358" blue="0.96157747507095337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="Za8-rh-Byn" id="WzP-QE-MdU"/>
-                                                    </connections>
-                                                </searchBar>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fW8-Fw-GAk">
-                                                    <rect key="frame" x="343" y="18" width="20" height="22"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="fW8-Fw-GAk" secondAttribute="height" multiplier="10:11" id="YtH-Oq-KQm"/>
-                                                        <constraint firstAttribute="width" constant="20" id="dCb-8j-keZ"/>
-                                                    </constraints>
-                                                    <state key="normal" image="CONTACT_BTN_VOICE"/>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.94110500812530518" green="0.93685287237167358" blue="0.96157747507095337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="qkE-ip-4K8" firstAttribute="height" secondItem="yT4-xJ-aOD" secondAttribute="height" constant="-16" id="CNx-7U-QgA"/>
-                                                <constraint firstItem="qkE-ip-4K8" firstAttribute="centerY" secondItem="yT4-xJ-aOD" secondAttribute="centerY" id="NnN-aO-4b0"/>
-                                                <constraint firstItem="qkE-ip-4K8" firstAttribute="width" secondItem="yT4-xJ-aOD" secondAttribute="width" id="aVo-GW-LI0"/>
-                                                <constraint firstAttribute="trailing" secondItem="fW8-Fw-GAk" secondAttribute="trailing" constant="12" id="g1M-6j-Ndd"/>
-                                                <constraint firstItem="fW8-Fw-GAk" firstAttribute="centerY" secondItem="yT4-xJ-aOD" secondAttribute="centerY" id="wwt-g2-8hQ"/>
-                                                <constraint firstItem="qkE-ip-4K8" firstAttribute="centerX" secondItem="yT4-xJ-aOD" secondAttribute="centerX" id="z1m-sL-eD3"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="searchBar" destination="qkE-ip-4K8" id="mL8-QO-w6q"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="fBb-xp-ut6" id="60S-ik-I37"/>
@@ -151,6 +151,7 @@
                     <connections>
                         <outlet property="contactDataSource" destination="fBb-xp-ut6" id="TZ4-Ry-TR0"/>
                         <outlet property="contactTableView" destination="fuC-Od-u3B" id="HTc-OR-Shy"/>
+                        <outlet property="headerView" destination="IsI-ni-58O" id="qCQ-Ha-3xt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nft-zt-4Tf" userLabel="First Responder" sceneMemberID="firstResponder"/>

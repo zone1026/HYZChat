@@ -17,6 +17,11 @@
 
 - (void)web_srcImageURLStr:(NSString *)src withThumbImageURLStr:(NSString *)thumb
    withPlaceholderImageName:(NSString *)imageName {
+    UIImage *locolSrcImage = [UIImage imageNamed:src];
+    if (nil != locolSrcImage) {
+        self.image = locolSrcImage;
+        return;
+    }
     // 占位图片
     UIImage *placeholder = [UIImage imageNamed:imageName];
     // 从内存/沙盒缓存中获得原图

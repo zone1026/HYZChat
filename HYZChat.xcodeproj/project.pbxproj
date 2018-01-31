@@ -42,7 +42,7 @@
 		6B8954591FFF5C2D00A20676 /* AMPTextMsgContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8954581FFF5C2D00A20676 /* AMPTextMsgContentController.m */; };
 		6B8B3EFB20216CA50064D252 /* ContactDefaultCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8B3EFA20216CA50064D252 /* ContactDefaultCellData.m */; };
 		6B8B3EFD202170DC0064D252 /* Contact.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B8B3EFC202170DC0064D252 /* Contact.plist */; };
-		6B8B3F002021A76D0064D252 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8B3EFF2021A76D0064D252 /* SearchCell.m */; };
+		6B8B3F042021BCE60064D252 /* ContactHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8B3F032021BCE60064D252 /* ContactHeaderView.m */; };
 		6B8E3DE81F5F810F00020626 /* Chat.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B8E3DE61F5F810F00020626 /* Chat.plist */; };
 		6B8E3DE91F5F810F00020626 /* Emotion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B8E3DE71F5F810F00020626 /* Emotion.plist */; };
 		6B8E3E001F5F8D3B00020626 /* CNUser+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E3DF91F5F8D3B00020626 /* CNUser+CoreDataClass.m */; };
@@ -149,8 +149,8 @@
 		6B8B3EF920216CA50064D252 /* ContactDefaultCellData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactDefaultCellData.h; sourceTree = "<group>"; };
 		6B8B3EFA20216CA50064D252 /* ContactDefaultCellData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactDefaultCellData.m; sourceTree = "<group>"; };
 		6B8B3EFC202170DC0064D252 /* Contact.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Contact.plist; sourceTree = "<group>"; };
-		6B8B3EFE2021A76D0064D252 /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
-		6B8B3EFF2021A76D0064D252 /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		6B8B3F022021BCE60064D252 /* ContactHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactHeaderView.h; sourceTree = "<group>"; };
+		6B8B3F032021BCE60064D252 /* ContactHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactHeaderView.m; sourceTree = "<group>"; };
 		6B8E3DE61F5F810F00020626 /* Chat.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Chat.plist; sourceTree = "<group>"; };
 		6B8E3DE71F5F810F00020626 /* Emotion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Emotion.plist; sourceTree = "<group>"; };
 		6B8E3DF81F5F8D3B00020626 /* CNUser+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CNUser+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -266,7 +266,7 @@
 			children = (
 				6B07F0F120049A3600F1E071 /* Contact.storyboard */,
 				6B5052B0202070A9000C34BF /* Data */,
-				6B5052B4202070F3000C34BF /* Cells */,
+				6B8B3F012021BCAF0064D252 /* Views */,
 				6B5052AD20206E06000C34BF /* ContactController.h */,
 				6B5052AE20206E06000C34BF /* ContactController.m */,
 			);
@@ -393,8 +393,6 @@
 			children = (
 				6B5052B520207115000C34BF /* ContactCell.h */,
 				6B5052B620207115000C34BF /* ContactCell.m */,
-				6B8B3EFE2021A76D0064D252 /* SearchCell.h */,
-				6B8B3EFF2021A76D0064D252 /* SearchCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -432,6 +430,16 @@
 				6B8954581FFF5C2D00A20676 /* AMPTextMsgContentController.m */,
 			);
 			name = AMP;
+			sourceTree = "<group>";
+		};
+		6B8B3F012021BCAF0064D252 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6B5052B4202070F3000C34BF /* Cells */,
+				6B8B3F022021BCE60064D252 /* ContactHeaderView.h */,
+				6B8B3F032021BCE60064D252 /* ContactHeaderView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		6B944A7B1FC80E6400192470 /* Chat */ = {
@@ -833,7 +841,6 @@
 				6BB093E51FE1227300D99A79 /* MsgController.m in Sources */,
 				6B5052B720207115000C34BF /* ContactCell.m in Sources */,
 				6B944A961FC810B900192470 /* CNChatResource+CoreDataProperties.m in Sources */,
-				6B8B3F002021A76D0064D252 /* SearchCell.m in Sources */,
 				6BCBCC911F58E96A000B7152 /* ChatViewController.m in Sources */,
 				6B944A991FC810E600192470 /* HYZChat.xcdatamodeld in Sources */,
 				6BCBCC751F58E8C7000B7152 /* AppDelegate.m in Sources */,
@@ -858,6 +865,7 @@
 				6BAC6F5B1F5FF7E200E896FB /* ChatFunctionController.m in Sources */,
 				6B5052B3202070C9000C34BF /* ContactDataSource.m in Sources */,
 				6B45DDB51FEA4B7500AEF8CB /* CustomResponderTextView.m in Sources */,
+				6B8B3F042021BCE60064D252 /* ContactHeaderView.m in Sources */,
 				6B5052C120207BEB000C34BF /* CNFriend+CoreDataProperties.m in Sources */,
 				6BCBCCBD1F593733000B7152 /* ChatBottomController.m in Sources */,
 				0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */,

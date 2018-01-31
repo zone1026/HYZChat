@@ -26,7 +26,7 @@
 @property (weak, nonatomic) id <ContactDataSourceDelegate> delegate;
 /** 通讯录列表 */
 @property (strong, nonatomic) NSMutableDictionary *contactDict;
-/** 是否处于勾选模式下 */
+/** 是否处于勾选模式下,勾选模式下没有默认相关的cell */
 @property (assign, nonatomic) BOOL checkMode;
 
 @end
