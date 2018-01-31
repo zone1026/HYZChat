@@ -82,5 +82,10 @@
  * @param name ViewController所在storyboard的文件名
  */
 + (UIViewController *)instantiateViewController:(NSString *)identifier withStoryboardName:(NSString *)name;
+/**
+ * @decription 汉字转化成大写全拼音
+ * @param chineseStr ViewController的标识
+ */
++ (NSString *)chineseCharactersChange2UpperPhoneticize:(NSString *)chineseStr;
 
 @end

@@ -16,4 +16,9 @@
     return [self.has_sessions sortedArrayUsingDescriptors:sortDesc];
 }
 
+- (NSArray *)obtainSubFriendSequence {
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"f_upperPhoneticize" ascending:YES]];//f_upperPhoneticize是昵称大写全拼
+    return [self.has_friends sortedArrayUsingDescriptors:sortDesc];
+}
+
 @end

@@ -220,4 +220,14 @@
     return [storyboard instantiateViewControllerWithIdentifier:identifier];
 }
 
++ (NSString *)chineseCharactersChange2UpperPhoneticize:(NSString *)chineseStr {
+    NSMutableString *mStr = [[NSMutableString alloc] initWithString:chineseStr];
+    //带声仄；不能注释掉
+    if (CFStringTransform((__bridge CFMutableStringRef)mStr, 0,kCFStringTransformMandarinLatin, NO)) {}
+    
+    if (CFStringTransform((__bridge CFMutableStringRef)mStr, 0,kCFStringTransformStripDiacritics, NO))
+        return [mStr uppercaseString]; // bigStr 是转换成功后的拼音
+    return mStr;
+}
+
 @end

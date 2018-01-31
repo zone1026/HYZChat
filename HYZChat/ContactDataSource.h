@@ -7,7 +7,26 @@
 //
 
 #import "SuperDataSource.h"
+#import "CNFriend+CoreDataClass.h"
+
+@protocol ContactDataSourceDelegate <NSObject>
+
+@optional
+/**
+ * @description 点击通讯录cell跳转详细资料界面
+ * @param targetId 目标ID
+ * @param type cell的类型
+ */
+- (void)didSelectCellEnterContactInfoUI:(long long)targetId withCellType:(ContactCellType)type;
+
+@end
 
 @interface ContactDataSource : SuperDataSource
+/** 通讯录对应的代理 */
+@property (weak, nonatomic) id <ContactDataSourceDelegate> delegate;
+/** 通讯录列表 */
+@property (strong, nonatomic) NSMutableDictionary *contactDict;
+/** 是否处于勾选模式下 */
+@property (assign, nonatomic) BOOL checkMode;
 
 @end

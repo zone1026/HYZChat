@@ -7,9 +7,11 @@
 //
 
 #import "ContactController.h"
+#import "ContactDataSource.h"
 
-@interface ContactController ()
+@interface ContactController () <ContactDataSourceDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *contactTableView;
+@property (strong, nonatomic) IBOutlet ContactDataSource *contactDataSource;
 
 @end
 
@@ -18,6 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UIView *headerView = [self.contactTableView dequeueReusableCellWithIdentifier:@"searchCell"].contentView;
+    headerView.frame = CGRectMake(0.0f, 0.0f, kScreenWidth, 66.0f);
+    self.contactTableView.tableHeaderView = headerView;
+    
+    self.contactDataSource.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,5 +45,10 @@
     
 }
 
+#pragma mark - ContactDataSourceDelegate
+
+- (void)didSelectCellEnterContactInfoUI:(long long)targetId withCellType:(ContactCellType)type {
+    
+}
 
 @end

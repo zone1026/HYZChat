@@ -2,7 +2,7 @@
 //  CNFriend+CoreDataProperties.h
 //  
 //
-//  Created by 黄亚州 on 2018/1/30.
+//  Created by 黄亚州 on 2018/1/31.
 //
 //
 
@@ -16,12 +16,16 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSFetchRequest<CNFriend *> *)fetchRequest;
 
 @property (nonatomic) int64_t f_id;
-@property (nullable, nonatomic, copy) NSString *f_name;
+@property (nonatomic) int16_t f_identity;
+@property (nullable, nonatomic, copy) NSString *f_userName;
+@property (nullable, nonatomic, copy) NSString *f_phone;
+@property (nonatomic) int16_t f_sex;
 @property (nullable, nonatomic, copy) NSString *f_src;
 @property (nullable, nonatomic, copy) NSString *f_thumb;
-@property (nonatomic) int16_t f_sex;
-@property (nullable, nonatomic, copy) NSString *f_phone;
-@property (nonatomic) int16_t f_identity;
+@property (nullable, nonatomic, copy) NSString *f_upperPhoneticize;
+@property (nullable, nonatomic, copy) NSString *f_addDate;
+@property (nullable, nonatomic, copy) NSString *f_nickName;
+@property (nonatomic) int16_t f_type;
 @property (nullable, nonatomic, retain) CNUser *belong_user;
 
 @end

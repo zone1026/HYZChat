@@ -70,4 +70,25 @@ typedef NS_ENUM(NSInteger, SessionType) {
     SessionTypeOfficial //公众号
 };
 
+//通讯录默认Cell标识
+typedef NS_ENUM(NSInteger, ContactCellType) {
+    ContactCellTypeDefault,    //系统默认的
+    ContactCellTypeCompany,    //企业
+    ContactCellTypeFriend    //好友
+};
+
+//通讯录默认Cell标识
+typedef NS_ENUM(NSInteger, ContactDefaultCellIdentify) {
+    ContactDefaultCellIdentifyNewFriend,    //新的朋友
+    ContactDefaultCellIdentifyGroupChat,    //群聊
+    ContactDefaultCellIdentifyLabel,    //标签
+    ContactDefaultCellIdentifyOfficial  //公众号
+};
+
+//好友的类别
+typedef NS_ENUM(NSInteger, FriendType) {
+    FriendTypeNormal,
+    FriendTypeeCompany
+};
+
 #endif /* Constants_h */

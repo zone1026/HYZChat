@@ -16,9 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CNUser : NSManagedObject
 
 /**
- * @description 获取用户的会话信息
+ * @description 获取用户的会话列表
  */
 - (NSArray *)getSubSessionSequence;
+/**
+ * @description 获取用户的好友列表
+ */
+- (NSArray *)obtainSubFriendSequence;
 
 @end
 
