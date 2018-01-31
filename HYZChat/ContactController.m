@@ -55,7 +55,7 @@
 #pragma mark - ContactDataSourceDelegate
 
 - (void)didSelectCellEnterContactInfoUI:(long long)targetId withCellType:(ContactCellType)type {
-    
+
 }
 
 #pragma mark - UISearchBarDelegate

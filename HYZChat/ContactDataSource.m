@@ -82,15 +82,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (0 == section && self.checkMode == NO)//顶部默认section
-        return self.delfaultCell.defaultCellInfoArr.count;//新的朋友、群聊、标签、公共号
+    if (0 == section)//顶部默认section
+        return self.checkMode == YES ? 0 : self.delfaultCell.defaultCellInfoArr.count;//新的朋友、群聊、标签、公共号
     
     return [self eachGroupContactData:section].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell" forIndexPath:indexPath];
-    if (0 == indexPath.section && self.checkMode == NO) {
+    if (0 == indexPath.section) {
         DefaultCellInfo *info = [self.delfaultCell.defaultCellInfoArr objectAtIndex:indexPath.row];
         [cell updateCellUI:info.imgName withContactName:info.name withCheckMode:self.checkMode];
     }
@@ -110,7 +110,7 @@
     if (nil != self.delegate && [self.delegate respondsToSelector:@selector(didSelectCellEnterContactInfoUI:withCellType:)]) {
         long long targetId = 0;
         ContactCellType cellType = ContactCellTypeFriend;
-        if (0 == indexPath.section && self.checkMode == YES) {
+        if (0 == indexPath.section) {
             DefaultCellInfo *info = [self.delfaultCell.defaultCellInfoArr objectAtIndex:indexPath.row];
             targetId = info.cellIdentify;
             cellType = ContactCellTypeDefault;
