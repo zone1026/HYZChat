@@ -9,6 +9,7 @@
 #import "ContactController.h"
 #import "ContactDataSource.h"
 #import "ContactHeaderView.h"
+#import "UIView+HYZFrame.h"
 
 @interface ContactController () <ContactDataSourceDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *contactTableView;
@@ -49,6 +50,53 @@
 }
 
 - (IBAction)addContactSelector:(UIBarButtonItem *)sender {
+    [self openContactAlertView];
+}
+
+#pragma mark - 私有方法
+
+/** 打开添加联系人时的提示框 */
+- (void)openContactAlertView {
+    UIAlertController *sheetController = [UIAlertController alertControllerWithTitle:@"添加新的通讯对象" message:nil
+                                                                      preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *searcUserAction = [UIAlertAction actionWithTitle:@"搜索本地其他用户" style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction * _Nonnull action) {
+                                                                [self searchLocalCNUser];
+                                                            }];
+    UIAlertAction *searcGroupAction = [UIAlertAction actionWithTitle:@"搜索本地其他用户的新建的群组" style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 
+                                                             }];
+    UIAlertAction *createGroupAction = [UIAlertAction actionWithTitle:@"新建群组" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * _Nonnull action) {
+                                                                  
+                                                              }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [sheetController addAction:searcUserAction];
+    [sheetController addAction:searcGroupAction];
+    [sheetController addAction:createGroupAction];
+    [sheetController addAction:cancelAction];
+    UIPopoverPresentationController *popover = sheetController.popoverPresentationController;
+    if (nil != popover) {
+        popover.sourceView = self.view;
+        CGRect soureceRect = popover.sourceRect;
+        soureceRect.origin = CGPointMake(self.view.width, 0.0f);
+        popover.sourceRect = soureceRect;
+        popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+    }
+    [self presentViewController:sheetController animated:YES completion:nil];
+}
+
+/** 搜索本地的用户，发现未添加时，自动添加到好友列表 */
+- (void)searchLocalCNUser {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user_phone != %@", [DataManager sharedManager].currentUser.user_phone];
+    NSArray *result = [[DataManager sharedManager] arrayFromCoreData:@"CNUser" predicate:predicate
+                                                            limitNum:NSIntegerMax offset:0 orderBy:nil];
+    if (nil == result || result.count <= 0) {
+        [HYZAlert showInfo:@"未发现本地用户" underTitle:@"提示"];
+        return;
+    }
     
 }
 

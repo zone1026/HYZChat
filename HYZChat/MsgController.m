@@ -8,7 +8,6 @@
 
 #import "MsgController.h"
 #import "MsgDataSource.h"
-#import "UIView+HYZFrame.h"
 
 @interface MsgController ()<MsgDataSourceDelegate>
 @property (strong, nonatomic) IBOutlet MsgDataSource *msgDataSource;
@@ -31,35 +30,6 @@
 #pragma mark - event
 
 - (IBAction)barBtnAddSelector:(UIBarButtonItem *)sender {
-    UIAlertController *sheetController = [UIAlertController alertControllerWithTitle:@"添加新的会话" message:nil
-                                                                      preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *searcUserAction = [UIAlertAction actionWithTitle:@"搜索本地其他用户" style:UIAlertActionStyleDefault
-                                                        handler:^(UIAlertAction * _Nonnull action) {
-        
-                                                        }];
-    UIAlertAction *searcGroupAction = [UIAlertAction actionWithTitle:@"搜索本地其他用户的新建的群组" style:UIAlertActionStyleDefault
-                                                             handler:^(UIAlertAction * _Nonnull action) {
-                                                                 
-                                                             }];
-    UIAlertAction *createGroupAction = [UIAlertAction actionWithTitle:@"新建群组" style:UIAlertActionStyleDefault
-                                                        handler:^(UIAlertAction * _Nonnull action) {
-                                                            
-                                                        }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    
-    [sheetController addAction:searcUserAction];
-    [sheetController addAction:searcGroupAction];
-    [sheetController addAction:createGroupAction];
-    [sheetController addAction:cancelAction];
-    UIPopoverPresentationController *popover = sheetController.popoverPresentationController;
-    if (nil != popover) {
-        popover.sourceView = self.view;
-        CGRect soureceRect = popover.sourceRect;
-        soureceRect.origin = CGPointMake(self.view.width, 0.0f);
-        popover.sourceRect = soureceRect;
-        popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
-    }
-    [self presentViewController:sheetController animated:YES completion:nil];
 }
 
 /*
@@ -87,6 +57,5 @@
 - (void)createNewGroup {
     
 }
-
 
 @end

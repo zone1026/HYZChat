@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (weak, nonatomic) IBOutlet UIView *welcomeView;
 
-//是否在登录界面
+/** 是否在登录界面 */
 @property (assign, nonatomic) BOOL inShowLogin;
 
 @end
