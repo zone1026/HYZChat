@@ -20,7 +20,7 @@
         <relationship name="belong_chatMessage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNChatMessage" inverseName="assign_res" inverseEntity="CNChatMessage" syncable="YES"/>
     </entity>
     <entity name="CNFriend" representedClassName="CNFriend" syncable="YES">
-        <attribute name="f_addDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="f_addDate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="f_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="f_identity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="f_nickName" optional="YES" attributeType="String" syncable="YES"/>

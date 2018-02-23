@@ -9,6 +9,9 @@
 #ifndef DataBaseHeader_h
 #define DataBaseHeader_h
 
+#import "DataManager+User.h"
+
 #import "CNUserInfo+CoreDataClass.h"
+#import "CNFriend+CoreDataClass.h"
 
 #endif /* DataBaseHeader_h */

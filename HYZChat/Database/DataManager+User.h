@@ -10,4 +10,11 @@
 
 @interface DataManager (User)
 
+/**
+ * @description 通过用户信息添加到好友列表
+ * @param user 用户的信息
+ * @return 该用户是否已存在好友列表中
+ */
+- (BOOL)addFriendByUserInfo:(CNUser *)user;
+
 @end

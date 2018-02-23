@@ -52,12 +52,10 @@
         if ([HYZUtil isEmptyOrNull:friend.f_upperPhoneticize] == YES)
             continue;//如果昵称为空，跳过；一般情况下应该是非空的
         
-        if ([friend.f_upperPhoneticize isEqualToString:firstLetter] == NO) {
-            if ([firstLetter isEqualToString:@"START"] == NO)
-                [friendDict setObject:groupingArr forKey:firstLetter];//将上一个分组添加至字典
-
-            firstLetter = friend.f_upperPhoneticize;
+        if ([[friend.f_upperPhoneticize substringToIndex:1] isEqualToString:firstLetter] == NO) {
+            firstLetter = [friend.f_upperPhoneticize substringToIndex:1];
             groupingArr = [NSMutableArray array];
+            [friendDict setObject:groupingArr forKey:firstLetter];//将上一个分组添加至字典
         }
         
         [groupingArr addObject:friend];
@@ -71,8 +69,8 @@
  * @param section 分组索引
  */
 - (NSMutableArray *)eachGroupContactData:(NSInteger)section {
-    if (self.contactDict.allKeys.count > section)
-        [self.contactDict.allValues objectAtIndex:section];
+    if (self.contactDict.allKeys.count > (section - 1))
+        return [self.contactDict.allValues objectAtIndex:(section - 1)];
     return [NSMutableArray array];
 }
 #pragma mark - UITableViewDataSource
@@ -127,5 +125,18 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 55.0f;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (0 == section)
+        return nil;
+    
+    if (self.contactDict.allKeys.count > (section - 1)) {
+        NSString *title = [self.contactDict.allKeys objectAtIndex:(section - 1)];
+        return [title substringToIndex:1];
+    }
+
+    return nil;
+}
+
 
 @end

@@ -30,6 +30,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    self.contactDataSource.contactDict = nil;
+    [self.contactTableView reloadData];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -98,6 +100,20 @@
         return;
     }
     
+    NSInteger addCount = 0;
+    for (CNUser *user in result) {
+       BOOL exist = [[DataManager sharedManager] addFriendByUserInfo:user];
+        if (NO == exist)
+            addCount ++;
+    }
+    
+    if (addCount > 0)
+        [HYZAlert showInfo:[NSString stringWithFormat:@"搜索到%ld名用户信息，已添加到好友列表中", (long)addCount] underTitle:@"提示"];
+    else
+        [HYZAlert showInfo:@"发现本地用户都已经存在好友列表中" underTitle:@"提示"];
+    [[DataManager sharedManager] saveContext];
+    self.contactDataSource.contactDict = nil;
+    [self.contactTableView reloadData];
 }
 
 #pragma mark - ContactDataSourceDelegate
