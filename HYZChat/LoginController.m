@@ -129,8 +129,6 @@
         user.user_name = self.tfNickName.text;
         user.assign_userInfo.u_sex = self.switchSex.on == YES ? UserSexMan : UserSexWoman;
         user.assign_userInfo.u_identity = self.switchVip.on == YES ? UserIdentityVIP : UserIdentityNormal;
-        user.last_time = [HYZUtil getCurrentTimestamp];
-        user.is_login = YES;
         
         self.isExistUser = YES;
         self.tfPhone.enabled = YES;
@@ -156,8 +154,6 @@
                 [HYZAlert showInfo:[NSString stringWithFormat:@"密码错误，您之前设置的密码是：< %@ >，请您重新输入", user.user_password] underTitle:@"提示"];
                 return;
             }
-            user.last_time = [HYZUtil getCurrentTimestamp];
-            user.is_login = YES;
             [self loginSuccess];
         }
     }
@@ -165,9 +161,8 @@
 
 /** 登录成功 */
 - (void)loginSuccess {
-    [[DataManager sharedManager] saveContext];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:NotiUserLoginSuccess object:nil];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

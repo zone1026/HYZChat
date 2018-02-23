@@ -73,6 +73,10 @@
 
 - (void)handleNotiUserLoginSuccess:(NSNotification *)notification {
     self.inShowLogin = NO;
+    CNUser *currentUser = [DataManager sharedManager].currentUser;
+    currentUser.is_login = YES;
+    currentUser.last_time = [HYZUtil getCurrentTimestamp];
+    [[DataManager sharedManager] saveContext];
 }
 
 #pragma mark - 私有方法
