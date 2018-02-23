@@ -24,6 +24,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.inShowLogin = NO;
     [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiUserLoginNeeded:)
+                                                 name:NotiUserLoginNeeded object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -59,6 +61,12 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - 消息通知
+
+- (void)handleNotiUserLoginNeeded:(NSNotification *)notification {
+    [self openLoginView];
 }
 
 #pragma mark - 私有方法

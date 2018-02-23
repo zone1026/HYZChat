@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface MeInfoCell : UITableViewCell
+/**
+ * @description 更新UI消息
+ */
+- (void)updateUIInfo;
 
 @end

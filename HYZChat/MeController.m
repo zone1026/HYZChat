@@ -7,8 +7,10 @@
 //
 
 #import "MeController.h"
+#import "MeInfoCell.h"
 
 @interface MeController ()<UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet MeInfoCell *meInfoCell;
 
 @end
 
@@ -24,6 +26,12 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 15.0f)];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (nil != self.meInfoCell)
+        [self.meInfoCell updateUIInfo];
 }
 
 - (void)didReceiveMemoryWarning {

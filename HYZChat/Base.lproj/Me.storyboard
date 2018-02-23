@@ -321,6 +321,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="我" id="Ogz-7F-uYw"/>
+                    <connections>
+                        <outlet property="meInfoCell" destination="OlP-Hl-aMq" id="OJU-rD-SCH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sq5-F3-5EC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
