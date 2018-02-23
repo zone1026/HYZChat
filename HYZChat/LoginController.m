@@ -34,7 +34,8 @@
     self.viewSupplementConstraintHeight.constant = 0.0f;
     CNUser *lastUser = [[DataManager sharedManager] lastLoginUser];
     if (lastUser != nil) {
-        self.lblDesc.text = [NSString stringWithFormat:@"欢迎您回来，%@%@", lastUser.user_name, lastUser.user_sex == UserSexMan ? @"先生" : @"女士"];
+        self.lblDesc.text = [NSString stringWithFormat:@"欢迎您回来，%@%@",
+                             lastUser.user_name, lastUser.assign_userInfo.u_sex == UserSexMan ? @"先生" : @"女士"];
         self.tfPhone.text = lastUser.user_phone;
         self.tfPassword.text = lastUser.user_password;
         self.tfNickName.text = lastUser.user_name;
@@ -126,8 +127,8 @@
         }
         CNUser *user = [DataManager sharedManager].currentUser;
         user.user_name = self.tfNickName.text;
-        user.user_sex = self.switchSex.on == YES ? UserSexMan : UserSexWoman;
-        user.user_identity = self.switchVip.on == YES ? UserIdentityVIP : UserIdentityNormal;
+        user.assign_userInfo.u_sex = self.switchSex.on == YES ? UserSexMan : UserSexWoman;
+        user.assign_userInfo.u_identity = self.switchVip.on == YES ? UserIdentityVIP : UserIdentityNormal;
         user.last_time = [HYZUtil getCurrentTimestamp];
         user.is_login = YES;
         

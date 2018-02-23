@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class CNSession, CNFriend, CNGroup;
+@class CNSession, CNFriend, CNGroup, CNUserInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 

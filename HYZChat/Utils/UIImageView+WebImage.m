@@ -44,4 +44,9 @@
     }
 }
 
+- (void)web_meLogoImage {
+    CNUser *currentUser = [DataManager sharedManager].currentUser;
+    [self web_logoImage:currentUser.assign_userInfo.u_src withThumbImageURLStr:currentUser.assign_userInfo.u_thumb];
+}
+
 @end

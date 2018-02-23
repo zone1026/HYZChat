@@ -149,13 +149,12 @@ static NSString *const coreDataModelFileName = @"HYZChat";
     if (result == nil || result.count <= 0) {//不存在 则创建
         CNUser *user = (CNUser *)[self insertIntoCoreData:@"CNUser"];
         user.user_id = [phoneStr longLongValue];
-        user.user_identity = UserIdentityNormal;
         user.user_name = phoneStr;
         user.user_phone = phoneStr;
         user.user_password = @"";
-        user.user_sex = UserSexMan;
         user.last_time = [HYZUtil getCurrentTimestamp];
         user.has_sessions = nil;
+        user.assign_userInfo = [self syncUserUserInfo:nil];
         return user;
     }
     return (CNUser *)result[0];
@@ -167,6 +166,34 @@ static NSString *const coreDataModelFileName = @"HYZChat";
     if (result == nil || result.count <= 0)
         return nil;
     return (CNUser *)result[0];
+}
+
+/** 同步用户信息 */
+- (CNUserInfo *)syncUserUserInfo:(NSDictionary *)dicData {
+    if (dicData == nil)
+        return nil;
+    
+    CNUserInfo *userInfo = [self userInfoFromCoredataByUser:self.currentUser];
+    userInfo.u_sex = UserSexMan;//[dicData[@"sex"] integerValue];
+    userInfo.u_identity = UserIdentityNormal;//dicData[@"identity"];
+    userInfo.u_birthday = dicData[@"birthday"];
+    userInfo.u_city = dicData[@"city"];
+    userInfo.u_email = dicData[@"email"];
+    userInfo.u_src = @"DEFAULT_LOGO";
+    userInfo.u_thumb = @"DEFAULT_LOGO";
+    
+    return userInfo;
+}
+
+/** 从coredata中读取用户信息 */
+- (CNUserInfo *)userInfoFromCoredataByUser:(CNUser *)user {
+    if (user.assign_userInfo != nil)
+        return user.assign_userInfo;
+    
+    CNUserInfo *userInfo = (CNUserInfo *)[self insertIntoCoreData:@"CNUserInfo"];
+    userInfo.belong_user = user;
+    
+    return userInfo;
 }
 
 @end

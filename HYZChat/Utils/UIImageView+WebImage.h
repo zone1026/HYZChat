@@ -24,5 +24,9 @@
  */
 - (void)web_srcImageURLStr:(NSString *)src withThumbImageURLStr:(NSString *)thumb
    withPlaceholderImageName:(NSString *)imageName;
+/**
+ * @description 展示自己的头像网络图片
+ */
+- (void)web_meLogoImage;
 
 @end

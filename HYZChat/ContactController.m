@@ -81,7 +81,7 @@
     if (nil != popover) {
         popover.sourceView = self.view;
         CGRect soureceRect = popover.sourceRect;
-        soureceRect.origin = CGPointMake(self.view.width, 0.0f);
+        soureceRect.origin = CGPointMake(self.view.width, self.topLayoutGuide.length);
         popover.sourceRect = soureceRect;
         popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
     }

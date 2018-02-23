@@ -21,6 +21,8 @@
     #import "Constants.h"
     #import "NotificationName.h"
     #import "HYZUtil.h"
+    #import "DataBaseHeader.h"
+
     #import "DataManager.h"
     #import "ChatManager.h"
     #import "HYZAlert.h"

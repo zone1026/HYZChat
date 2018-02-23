@@ -62,6 +62,12 @@
 		6BAC6F5B1F5FF7E200E896FB /* ChatFunctionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC6F5A1F5FF7E200E896FB /* ChatFunctionController.m */; };
 		6BAC6F5E1F5FFBD300E896FB /* ChatEmotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC6F5D1F5FFBD300E896FB /* ChatEmotionController.m */; };
 		6BACBB351FFF757B00A93ADB /* AMPMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BACBB341FFF757B00A93ADB /* AMPMsgCell.m */; };
+		6BACBBFC203FB51D0027B8F1 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BACBBFB203FB51D0027B8F1 /* MeController.m */; };
+		6BACBC03203FB63C0027B8F1 /* MeInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BACBC02203FB63C0027B8F1 /* MeInfoCell.m */; };
+		6BACBC0D203FDE3B0027B8F1 /* CNUserInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BACBC09203FDE3A0027B8F1 /* CNUserInfo+CoreDataClass.m */; };
+		6BACBC0E203FDE3B0027B8F1 /* CNUserInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BACBC0A203FDE3A0027B8F1 /* CNUserInfo+CoreDataProperties.m */; };
+		6BACBC17203FE7D50027B8F1 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BACBC15203FE7D50027B8F1 /* Setting.storyboard */; };
+		6BACBC1A203FF2320027B8F1 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BACBC19203FF2320027B8F1 /* SettingController.m */; };
 		6BB093E51FE1227300D99A79 /* MsgController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB093E41FE1227300D99A79 /* MsgController.m */; };
 		6BB093E81FE1229300D99A79 /* MsgDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB093E71FE1229300D99A79 /* MsgDataSource.m */; };
 		6BCBCC721F58E8C7000B7152 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBCC711F58E8C7000B7152 /* main.m */; };
@@ -186,6 +192,18 @@
 		6BAC6F5D1F5FFBD300E896FB /* ChatEmotionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatEmotionController.m; sourceTree = "<group>"; };
 		6BACBB331FFF757B00A93ADB /* AMPMsgCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPMsgCell.h; sourceTree = "<group>"; };
 		6BACBB341FFF757B00A93ADB /* AMPMsgCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPMsgCell.m; sourceTree = "<group>"; };
+		6BACBBFA203FB51D0027B8F1 /* MeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeController.h; sourceTree = "<group>"; };
+		6BACBBFB203FB51D0027B8F1 /* MeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeController.m; sourceTree = "<group>"; };
+		6BACBC01203FB63C0027B8F1 /* MeInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeInfoCell.h; sourceTree = "<group>"; };
+		6BACBC02203FB63C0027B8F1 /* MeInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeInfoCell.m; sourceTree = "<group>"; };
+		6BACBC09203FDE3A0027B8F1 /* CNUserInfo+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CNUserInfo+CoreDataClass.m"; path = "/Users/hyz/Documents/HYZChat/HYZChat/Database/Objects/CNUserInfo+CoreDataClass.m"; sourceTree = "<absolute>"; };
+		6BACBC0A203FDE3A0027B8F1 /* CNUserInfo+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CNUserInfo+CoreDataProperties.m"; path = "/Users/hyz/Documents/HYZChat/HYZChat/Database/Objects/CNUserInfo+CoreDataProperties.m"; sourceTree = "<absolute>"; };
+		6BACBC0B203FDE3A0027B8F1 /* CNUserInfo+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CNUserInfo+CoreDataClass.h"; path = "/Users/hyz/Documents/HYZChat/HYZChat/Database/Objects/CNUserInfo+CoreDataClass.h"; sourceTree = "<absolute>"; };
+		6BACBC0C203FDE3A0027B8F1 /* CNUserInfo+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CNUserInfo+CoreDataProperties.h"; path = "/Users/hyz/Documents/HYZChat/HYZChat/Database/Objects/CNUserInfo+CoreDataProperties.h"; sourceTree = "<absolute>"; };
+		6BACBC10203FE1150027B8F1 /* DataBaseHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataBaseHeader.h; sourceTree = "<group>"; };
+		6BACBC16203FE7D50027B8F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setting.storyboard; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xml; };
+		6BACBC18203FF2320027B8F1 /* SettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
+		6BACBC19203FF2320027B8F1 /* SettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
 		6BB093E31FE1227300D99A79 /* MsgController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MsgController.h; sourceTree = "<group>"; };
 		6BB093E41FE1227300D99A79 /* MsgController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MsgController.m; sourceTree = "<group>"; };
 		6BB093E61FE1229300D99A79 /* MsgDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MsgDataSource.h; sourceTree = "<group>"; };
@@ -284,7 +302,11 @@
 		6B07F0ED2004998C00F1E071 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				6BACBC11203FE6A70027B8F1 /* Setting */,
+				6BACBC00203FB5ED0027B8F1 /* Cells */,
 				6B07F0F720049AD200F1E071 /* Me.storyboard */,
+				6BACBBFA203FB51D0027B8F1 /* MeController.h */,
+				6BACBBFB203FB51D0027B8F1 /* MeController.m */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -493,6 +515,36 @@
 			name = Plugin;
 			sourceTree = "<group>";
 		};
+		6BACBC00203FB5ED0027B8F1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6BACBC01203FB63C0027B8F1 /* MeInfoCell.h */,
+				6BACBC02203FB63C0027B8F1 /* MeInfoCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		6BACBC0F203FDF720027B8F1 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				6BACBC0B203FDE3A0027B8F1 /* CNUserInfo+CoreDataClass.h */,
+				6BACBC09203FDE3A0027B8F1 /* CNUserInfo+CoreDataClass.m */,
+				6BACBC0C203FDE3A0027B8F1 /* CNUserInfo+CoreDataProperties.h */,
+				6BACBC0A203FDE3A0027B8F1 /* CNUserInfo+CoreDataProperties.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		6BACBC11203FE6A70027B8F1 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				6BACBC15203FE7D50027B8F1 /* Setting.storyboard */,
+				6BACBC18203FF2320027B8F1 /* SettingController.h */,
+				6BACBC19203FF2320027B8F1 /* SettingController.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
 		6BCBCC641F58E8C7000B7152 = {
 			isa = PBXGroup;
 			children = (
@@ -545,6 +597,7 @@
 				6BCBCCC11F593C2E000B7152 /* CommonPrefix.pch */,
 				6BCBCCC21F593D97000B7152 /* Constants.h */,
 				6BCBCCC31F593DD3000B7152 /* NotificationName.h */,
+				6BACBC10203FE1150027B8F1 /* DataBaseHeader.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -662,6 +715,7 @@
 				6B8E3DF91F5F8D3B00020626 /* CNUser+CoreDataClass.m */,
 				6B8E3DFA1F5F8D3B00020626 /* CNUser+CoreDataProperties.h */,
 				6B8E3DFB1F5F8D3B00020626 /* CNUser+CoreDataProperties.m */,
+				6BACBC0F203FDF720027B8F1 /* User */,
 				6B9A86D0201B2AAF00E73E26 /* Session */,
 				6B944A7B1FC80E6400192470 /* Chat */,
 				6B5052B820207B91000C34BF /* Contact */,
@@ -761,6 +815,7 @@
 				6B8B3EFD202170DC0064D252 /* Contact.plist in Resources */,
 				6B07F0EA2004974400F1E071 /* Msg.storyboard in Resources */,
 				6BCBCC941F58E972000B7152 /* Chat.storyboard in Resources */,
+				6BACBC17203FE7D50027B8F1 /* Setting.storyboard in Resources */,
 				6B07F0FD2004BD5A00F1E071 /* Login.storyboard in Resources */,
 				6B8E3DE81F5F810F00020626 /* Chat.plist in Resources */,
 				6BCBCC7B1F58E8C7000B7152 /* Main.storyboard in Resources */,
@@ -835,6 +890,7 @@
 				6BCBCCC01F5938AE000B7152 /* ChatBottomDataSource.m in Sources */,
 				6B48F4D11F5EBD1400C9DCDC /* ChatEmotionTabCell.m in Sources */,
 				6B5052C420207BEB000C34BF /* CNGroup+CoreDataProperties.m in Sources */,
+				6BACBC03203FB63C0027B8F1 /* MeInfoCell.m in Sources */,
 				6B31AC5A1FDF89BA00F69C6F /* HYZAlert.m in Sources */,
 				6B31AC5D1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m in Sources */,
 				6B48F4CB1F5EA6C300C9DCDC /* ChatTabEmotionData.m in Sources */,
@@ -852,14 +908,17 @@
 				6BACBB351FFF757B00A93ADB /* AMPMsgCell.m in Sources */,
 				6B8E3E011F5F8D3B00020626 /* CNUser+CoreDataProperties.m in Sources */,
 				6B9A86CE201B2AA400E73E26 /* CNSession+CoreDataClass.m in Sources */,
+				6BACBC0E203FDE3B0027B8F1 /* CNUserInfo+CoreDataProperties.m in Sources */,
 				6BCBCCCC1F594CB1000B7152 /* CALayer+HYZUtil.m in Sources */,
 				6BAC6F5E1F5FFBD300E896FB /* ChatEmotionController.m in Sources */,
 				6B8B3EFB20216CA50064D252 /* ContactDefaultCellData.m in Sources */,
 				6B8E3E001F5F8D3B00020626 /* CNUser+CoreDataClass.m in Sources */,
 				6B944AAB1FC81F8E00192470 /* CNChatMessage+CoreDataProperties.m in Sources */,
+				6BACBBFC203FB51D0027B8F1 /* MeController.m in Sources */,
 				6B5052C220207BEB000C34BF /* CNGroup+CoreDataClass.m in Sources */,
 				6B9A86BD201B29FC00E73E26 /* MsgCell.m in Sources */,
 				6B68C187201EB903003ECBA1 /* UIImageView+WebImage.m in Sources */,
+				6BACBC0D203FDE3B0027B8F1 /* CNUserInfo+CoreDataClass.m in Sources */,
 				6B48F4CE1F5EA74600C9DCDC /* ChatEmotionData.m in Sources */,
 				6B944AAA1FC81F8E00192470 /* CNChatMessage+CoreDataClass.m in Sources */,
 				6BAC6F5B1F5FF7E200E896FB /* ChatFunctionController.m in Sources */,
@@ -868,6 +927,7 @@
 				6B8B3F042021BCE60064D252 /* ContactHeaderView.m in Sources */,
 				6B5052C120207BEB000C34BF /* CNFriend+CoreDataProperties.m in Sources */,
 				6BCBCCBD1F593733000B7152 /* ChatBottomController.m in Sources */,
+				6BACBC1A203FF2320027B8F1 /* SettingController.m in Sources */,
 				0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */,
 				6BCBCC721F58E8C7000B7152 /* main.m in Sources */,
 				6BCBCCD81F5951B2000B7152 /* InputViewFrameChanageData.m in Sources */,
@@ -940,6 +1000,14 @@
 				6B8954531FFF59E900A20676 /* Base */,
 			);
 			name = ChatRelate.storyboard;
+			sourceTree = "<group>";
+		};
+		6BACBC15203FE7D50027B8F1 /* Setting.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BACBC16203FE7D50027B8F1 /* Base */,
+			);
+			name = Setting.storyboard;
 			sourceTree = "<group>";
 		};
 		6BCBCC791F58E8C7000B7152 /* Main.storyboard */ = {
