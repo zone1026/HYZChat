@@ -137,7 +137,7 @@
         self.tfPassword.enabled = YES;
         self.viewSupplementConstraintHeight.constant = 0.0f;
         [self.btnStart setTitle:@"登  录" forState:UIControlStateNormal];
-        [self openChatUI];
+        [self loginSuccess];
     }
     else {
         CNUser *user = [[DataManager sharedManager] findUserFromCoredataByPhone:self.tfPhone.text];
@@ -158,15 +158,16 @@
             }
             user.last_time = [HYZUtil getCurrentTimestamp];
             user.is_login = YES;
-            [self openChatUI];
+            [self loginSuccess];
         }
     }
 }
 
-/** 打开聊天界面 */
-- (void)openChatUI {
+/** 登录成功 */
+- (void)loginSuccess {
     [[DataManager sharedManager] saveContext];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotiUserLoginSuccess object:nil];
 }
 
 @end

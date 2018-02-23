@@ -15,6 +15,14 @@
  * @description 通知需要用户登录
  */
 #define NotiUserLoginNeeded         @"NotiUserLoginNeeded"
+/**
+ * @abstract 通知用户登录成功
+ */
+#define NotiUserLoginSuccess        @"NotiUserLoginSuccess"
+/**
+ * @abstract 通知用户登录失败
+ */
+#define NotiUserLoginFailed         @"NotiUserLoginFailed"
 
 //////////////////////////////////////////////////// 聊天相关 /////////////////////////////////////////////////////////////////
 

@@ -26,6 +26,8 @@
     [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiUserLoginNeeded:)
                                                  name:NotiUserLoginNeeded object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotiUserLoginSuccess:)
+                                                 name:NotiUserLoginSuccess object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,6 +69,10 @@
 
 - (void)handleNotiUserLoginNeeded:(NSNotification *)notification {
     [self openLoginView];
+}
+
+- (void)handleNotiUserLoginSuccess:(NSNotification *)notification {
+    self.inShowLogin = NO;
 }
 
 #pragma mark - 私有方法
