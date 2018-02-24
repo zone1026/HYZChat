@@ -309,7 +309,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="7io-T1-59k" kind="push" id="etO-PP-bkF"/>
+                                            <segue destination="7io-T1-59k" kind="show" id="etO-PP-bkF"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
