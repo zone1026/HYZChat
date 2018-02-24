@@ -21,6 +21,7 @@
 		6B31AC5A1FDF89BA00F69C6F /* HYZAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B31AC591FDF89BA00F69C6F /* HYZAlert.m */; };
 		6B31AC5D1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B31AC5C1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m */; };
 		6B31AC601FDFAD2F00F69C6F /* DataManager+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B31AC5F1FDFAD2F00F69C6F /* DataManager+User.m */; };
+		6B3492CB2041121600ECC294 /* ContactFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3492CA2041121600ECC294 /* ContactFooterView.m */; };
 		6B39DFE31FC6F74400FFF7AD /* ChatMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B39DFE21FC6F74400FFF7AD /* ChatMsgCell.m */; };
 		6B39DFE61FC6F77E00FFF7AD /* ChatMsgTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B39DFE51FC6F77E00FFF7AD /* ChatMsgTextCell.m */; };
 		6B45DDB51FEA4B7500AEF8CB /* CustomResponderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B45DDB41FEA4B7500AEF8CB /* CustomResponderTextView.m */; };
@@ -114,6 +115,8 @@
 		6B31AC5C1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIAlertAction+ButtonIndex.m"; path = "Utils/UIAlertAction+ButtonIndex.m"; sourceTree = "<group>"; };
 		6B31AC5E1FDFAD2F00F69C6F /* DataManager+User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DataManager+User.h"; sourceTree = "<group>"; };
 		6B31AC5F1FDFAD2F00F69C6F /* DataManager+User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DataManager+User.m"; sourceTree = "<group>"; };
+		6B3492C92041121600ECC294 /* ContactFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactFooterView.h; sourceTree = "<group>"; };
+		6B3492CA2041121600ECC294 /* ContactFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactFooterView.m; sourceTree = "<group>"; };
 		6B39DFE11FC6F74400FFF7AD /* ChatMsgCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatMsgCell.h; sourceTree = "<group>"; };
 		6B39DFE21FC6F74400FFF7AD /* ChatMsgCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatMsgCell.m; sourceTree = "<group>"; };
 		6B39DFE41FC6F77E00FFF7AD /* ChatMsgTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatMsgTextCell.h; sourceTree = "<group>"; };
@@ -460,6 +463,8 @@
 				6B5052B4202070F3000C34BF /* Cells */,
 				6B8B3F022021BCE60064D252 /* ContactHeaderView.h */,
 				6B8B3F032021BCE60064D252 /* ContactHeaderView.m */,
+				6B3492C92041121600ECC294 /* ContactFooterView.h */,
+				6B3492CA2041121600ECC294 /* ContactFooterView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -929,6 +934,7 @@
 				6BCBCCBD1F593733000B7152 /* ChatBottomController.m in Sources */,
 				6BACBC1A203FF2320027B8F1 /* SettingController.m in Sources */,
 				0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */,
+				6B3492CB2041121600ECC294 /* ContactFooterView.m in Sources */,
 				6BCBCC721F58E8C7000B7152 /* main.m in Sources */,
 				6BCBCCD81F5951B2000B7152 /* InputViewFrameChanageData.m in Sources */,
 				6B0AB7A31F9F0CBB002A2797 /* ChatManager.m in Sources */,

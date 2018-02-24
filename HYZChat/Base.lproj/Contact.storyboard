@@ -82,6 +82,37 @@
                                         <outlet property="searchBar" destination="qkE-ip-4K8" id="hEJ-fZ-oFs"/>
                                     </connections>
                                 </view>
+                                <view key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" id="2ee-yn-um8" customClass="ContactFooterView">
+                                    <rect key="frame" x="0.0" y="138" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q23-IS-qQs" userLabel="分割线">
+                                            <rect key="frame" x="-0.5" y="0.0" width="375" height="0.5"/>
+                                            <color key="backgroundColor" red="0.86271864175796509" green="0.85864102840423584" blue="0.87091827392578125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="0.5" id="2KC-2V-PT0"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99位联系人" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5w-BL-0UZ">
+                                            <rect key="frame" x="7.5" y="12.5" width="359" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.58815717697143555" green="0.5882001519203186" blue="0.59224468469619751" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="Q23-IS-qQs" firstAttribute="width" secondItem="2ee-yn-um8" secondAttribute="width" id="Bhs-um-OUh"/>
+                                        <constraint firstItem="V5w-BL-0UZ" firstAttribute="centerY" secondItem="2ee-yn-um8" secondAttribute="centerY" id="PsN-SP-NSQ"/>
+                                        <constraint firstItem="Q23-IS-qQs" firstAttribute="top" secondItem="2ee-yn-um8" secondAttribute="top" id="TY1-Rj-Lee"/>
+                                        <constraint firstItem="V5w-BL-0UZ" firstAttribute="centerX" secondItem="2ee-yn-um8" secondAttribute="centerX" id="kOR-Gu-zny"/>
+                                        <constraint firstItem="Q23-IS-qQs" firstAttribute="centerX" secondItem="2ee-yn-um8" secondAttribute="centerX" id="omF-jo-Uq9"/>
+                                        <constraint firstItem="V5w-BL-0UZ" firstAttribute="width" secondItem="2ee-yn-um8" secondAttribute="width" constant="-16" id="pQA-A6-JRY"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="lblNum" destination="V5w-BL-0UZ" id="XQR-lb-7Zn"/>
+                                    </connections>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" id="Wbd-Ze-J1H" customClass="ContactCell">
                                         <rect key="frame" x="0.0" y="94" width="375" height="44"/>
@@ -151,6 +182,7 @@
                     <connections>
                         <outlet property="contactDataSource" destination="fBb-xp-ut6" id="TZ4-Ry-TR0"/>
                         <outlet property="contactTableView" destination="fuC-Od-u3B" id="HTc-OR-Shy"/>
+                        <outlet property="footerView" destination="2ee-yn-um8" id="qah-jM-rLg"/>
                         <outlet property="headerView" destination="IsI-ni-58O" id="qCQ-Ha-3xt"/>
                     </connections>
                 </viewController>

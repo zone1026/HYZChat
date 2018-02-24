@@ -10,11 +10,13 @@
 #import "ContactDataSource.h"
 #import "ContactHeaderView.h"
 #import "UIView+HYZFrame.h"
+#import "ContactFooterView.h"
 
 @interface ContactController () <ContactDataSourceDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *contactTableView;
 @property (strong, nonatomic) IBOutlet ContactDataSource *contactDataSource;
 @property (weak, nonatomic) IBOutlet ContactHeaderView *headerView;
+@property (weak, nonatomic) IBOutlet ContactFooterView *footerView;
 
 @end
 
@@ -32,6 +34,8 @@
     [super viewDidAppear:animated];
     self.contactDataSource.contactDict = nil;
     [self.contactTableView reloadData];
+    
+    [self updateContactTableViewFooterView];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -114,6 +118,18 @@
     [[DataManager sharedManager] saveContext];
     self.contactDataSource.contactDict = nil;
     [self.contactTableView reloadData];
+}
+
+/** 更新通讯录表格的页脚视图 */
+- (void)updateContactTableViewFooterView {
+    CNUser *currentUser = [DataManager sharedManager].currentUser;
+    if (currentUser.has_friends.count > 0) {
+        self.footerView.frame = CGRectMake(0.0f, 0.0f, self.view.width, 44.0f);
+        self.footerView.lblNum.text = [NSString stringWithFormat:@"%ld位联系人", (long)currentUser.has_friends.count];
+    }
+    else
+        self.footerView.frame = CGRectMake(0.0f, 0.0f, self.view.width, 0.01f);
+    self.contactTableView.tableFooterView = self.footerView;
 }
 
 #pragma mark - ContactDataSourceDelegate
