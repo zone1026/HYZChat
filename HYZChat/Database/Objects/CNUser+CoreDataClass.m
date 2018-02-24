@@ -17,7 +17,8 @@
 }
 
 - (NSArray *)obtainSubFriendSequence {
-    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"f_upperPhoneticize" ascending:YES]];//f_upperPhoneticize是昵称大写全拼
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"f_upperPhoneticize" ascending:YES],
+                          [[NSSortDescriptor alloc] initWithKey:@"f_nickName" ascending:YES]];//f_upperPhoneticize是昵称大写全拼
     return [self.has_friends sortedArrayUsingDescriptors:sortDesc];
 }
 

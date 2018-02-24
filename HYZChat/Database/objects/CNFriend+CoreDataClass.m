@@ -15,10 +15,10 @@
     
     NSString *upperPhoneTicize = [HYZUtil chineseCharactersChange2UpperPhoneticize:newNickName];//大写的全拼音
     NSString *firstLetter = [upperPhoneTicize substringToIndex:1];
-    if ([firstLetter characterAtIndex:0] >= 'A' && [firstLetter characterAtIndex:0] <= 'Z')//首字母是否是A～Z
-        self.f_upperPhoneticize = upperPhoneTicize;
+    if ([firstLetter characterAtIndex:0] >= 'A' && [firstLetter characterAtIndex:0] <= 'Z')//首字母是否是A～Z（ASCII值65～90）
+        self.f_upperPhoneticize = [upperPhoneTicize stringByReplacingOccurrencesOfString:@" " withString:@""];
     else
-        self.f_upperPhoneticize = @"###";
+        self.f_upperPhoneticize = @"[[[";//PS:"["的ASCII值是91，大于Z；对好友列表排序时会用到
 }
 
 - (ContactCellType)contactCellTypeByFriendType {

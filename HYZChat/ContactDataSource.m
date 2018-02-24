@@ -48,14 +48,16 @@
     
     NSString *firstLetter = @"START";
     NSMutableArray *groupingArr = nil;
+    NSInteger section = 0;
     for (CNFriend *friend in friendArr) {
         if ([HYZUtil isEmptyOrNull:friend.f_upperPhoneticize] == YES)
             continue;//如果昵称为空，跳过；一般情况下应该是非空的
         
         if ([[friend.f_upperPhoneticize substringToIndex:1] isEqualToString:firstLetter] == NO) {
+            section ++;
             firstLetter = [friend.f_upperPhoneticize substringToIndex:1];
             groupingArr = [NSMutableArray array];
-            [friendDict setObject:groupingArr forKey:firstLetter];//将上一个分组添加至字典
+            [friendDict setObject:groupingArr forKey:@(section)];//将上一个分组添加至字典，key键和tableView的section关联
         }
         
         [groupingArr addObject:friend];
@@ -70,7 +72,7 @@
  */
 - (NSMutableArray *)eachGroupContactData:(NSInteger)section {
     if (self.contactDict.allKeys.count > (section - 1))
-        return [self.contactDict.allValues objectAtIndex:(section - 1)];
+        return [self.contactDict objectForKey:@(section)];
     return [NSMutableArray array];
 }
 #pragma mark - UITableViewDataSource
@@ -131,12 +133,14 @@
         return nil;
     
     if (self.contactDict.allKeys.count > (section - 1)) {
-        NSString *title = [self.contactDict.allKeys objectAtIndex:(section - 1)];
-        return [title substringToIndex:1];
+        NSMutableArray *sectionArr = [self.contactDict objectForKey:@(section)];
+        NSString *title = [((CNFriend *)[sectionArr firstObject]).f_upperPhoneticize substringToIndex:1];
+        if ([title isEqualToString:@"["] == YES)
+            return @"#";
+        return title;
     }
 
     return nil;
 }
-
 
 @end
