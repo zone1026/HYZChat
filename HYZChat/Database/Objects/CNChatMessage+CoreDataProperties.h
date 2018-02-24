@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *send_nick;
 @property (nonatomic) int64_t send_time;
 @property (nonatomic) int64_t send_userId;
+@property (nonatomic) int64_t target_id;
+@property (nonatomic) int16_t target_type;
 @property (nullable, nonatomic, retain) CNChatResource *assign_res;
 @property (nullable, nonatomic, retain) CNSession *belong_session;
 

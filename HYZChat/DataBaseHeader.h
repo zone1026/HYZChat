@@ -14,5 +14,6 @@
 #import "CNUserInfo+CoreDataClass.h"
 #import "CNFriend+CoreDataClass.h"
 #import "CNSession+CoreDataClass.h"
+#import "CNChatMessage+CoreDataClass.h"
 
 #endif /* DataBaseHeader_h */

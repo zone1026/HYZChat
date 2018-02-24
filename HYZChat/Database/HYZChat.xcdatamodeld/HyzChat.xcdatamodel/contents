@@ -8,6 +8,8 @@
         <attribute name="send_nick" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="send_time" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="send_userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="target_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="target_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="assign_res" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CNChatResource" inverseName="belong_chatMessage" inverseEntity="CNChatResource" syncable="YES"/>
         <relationship name="belong_session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNSession" inverseName="has_chatMsgs" inverseEntity="CNSession" syncable="YES"/>
     </entity>
@@ -77,7 +79,7 @@
         <relationship name="belong_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNUser" inverseName="assign_userInfo" inverseEntity="CNUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CNChatMessage" positionX="-218" positionY="71" width="128" height="178"/>
+        <element name="CNChatMessage" positionX="-218" positionY="71" width="128" height="208"/>
         <element name="CNChatResource" positionX="-225" positionY="-180" width="128" height="103"/>
         <element name="CNFriend" positionX="-747" positionY="-207" width="128" height="223"/>
         <element name="CNGroup" positionX="-747" positionY="419" width="128" height="148"/>

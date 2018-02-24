@@ -19,6 +19,8 @@
     chatMessage.send_userId = currentUser.user_id;
     chatMessage.send_nick = currentUser.user_name;
     chatMessage.send_time = [HYZUtil getCurrentTimestamp];
+    chatMessage.target_id = [ChatManager sharedManager].chatSession.target_id;
+    chatMessage.target_type = [ChatManager sharedManager].chatSession.target_type;
     chatMessage.belong_session = [ChatManager sharedManager].chatSession;
     
     if (type == ChatMsgTypeText) {

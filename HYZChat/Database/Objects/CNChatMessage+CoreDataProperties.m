@@ -21,6 +21,8 @@
 @dynamic send_nick;
 @dynamic send_time;
 @dynamic send_userId;
+@dynamic target_id;
+@dynamic target_type;
 @dynamic assign_res;
 @dynamic belong_session;
 

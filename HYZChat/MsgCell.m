@@ -7,7 +7,6 @@
 //
 
 #import "MsgCell.h"
-#import "RichLabel.h"
 #import "UIImageView+WebImage.h"
 #import "UIView+HYZFrame.h"
 
@@ -19,7 +18,7 @@
 /** 消息时间 */
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
 /** 最近一次消息的内容 */
-@property (weak, nonatomic) IBOutlet RichLabel *lblLastMsg;
+@property (weak, nonatomic) IBOutlet UILabel *lblLastMsg;
 /** 是否已对消息屏蔽 */
 @property (weak, nonatomic) IBOutlet UIImageView *imgShield;
 /** 未读消息个数 */
@@ -49,7 +48,8 @@
     self.lblTitle.text = self.cellData.name;
     self.lblTitle.textColor = [self.cellData sessionNameColorByType];
     self.lblTime.text = [HYZUtil timeStampFormatDesc:self.cellData.last_time];
-    [self.lblLastMsg updateTextContent:[self.cellData sessionMsgUiContent]];
+//    [self.lblLastMsg updateTextContent:[self.cellData sessionMsgUiContent]];
+    self.lblLastMsg.text = [self.cellData sessionMsgUiContent];
     self.imgShield.hidden = !self.cellData.shield;
     self.lblUnreadNum.hidden = self.cellData.unread_Num <= 0;
     self.lblUnreadNum.text = [self.cellData sessionUnreadMsgNumDesc];
