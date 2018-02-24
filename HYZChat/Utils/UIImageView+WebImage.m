@@ -17,6 +17,15 @@
 
 - (void)web_srcImageURLStr:(NSString *)src withThumbImageURLStr:(NSString *)thumb
    withPlaceholderImageName:(NSString *)imageName {
+    //没有网络图片的URL，使用占位图片
+    if ([HYZUtil isEmptyOrNull:src] == YES && [HYZUtil isEmptyOrNull:thumb] == YES) {
+        if ([HYZUtil isEmptyOrNull:imageName] == YES) //占位图片为空，使用指定的默认图片
+            self.image = [UIImage imageNamed:@"DEFAULT_LOGO"];
+        else
+            self.image = [UIImage imageNamed:imageName];
+        return;
+    }
+    
     UIImage *locolSrcImage = [UIImage imageNamed:src];
     if (nil != locolSrcImage) {
         self.image = locolSrcImage;

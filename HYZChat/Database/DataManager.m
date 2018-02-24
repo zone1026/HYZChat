@@ -170,17 +170,22 @@ static NSString *const coreDataModelFileName = @"HYZChat";
 
 /** 同步用户信息 */
 - (CNUserInfo *)syncUserUserInfo:(NSDictionary *)dicData {
-    if (dicData == nil)
-        return nil;
+//    if (dicData == nil)
+//        return nil;
     
+    NSArray *srcArr = @[@"http://5b0988e595225.cdn.sohucs.com/images/20180222/49e6db2df9624172a70ff24c4a6b60d0.jpeg",
+                        @"http://c.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=5a9a9c7a2ff5e0feee4d81056950189e/d62a6059252dd42a82b192c8013b5bb5c9eab81d.jpg",
+                        @"http://www.qqzhi.com/uploadpic/2014-10-05/043159494.jpg",
+                        @"http://img3.duitang.com/uploads/item/201509/11/20150911222356_tnzGS.thumb.700_0.jpeg"];
+    NSInteger randomIndex = arc4random() % srcArr.count;
     CNUserInfo *userInfo = [self userInfoFromCoredataByUser:self.currentUser];
     userInfo.u_sex = UserSexMan;//[dicData[@"sex"] integerValue];
     userInfo.u_identity = UserIdentityNormal;//dicData[@"identity"];
     userInfo.u_birthday = dicData[@"birthday"];
     userInfo.u_city = dicData[@"city"];
     userInfo.u_email = dicData[@"email"];
-    userInfo.u_src = @"DEFAULT_LOGO";
-    userInfo.u_thumb = @"DEFAULT_LOGO";
+    userInfo.u_src = srcArr[randomIndex];// @"DEFAULT_LOGO";
+    userInfo.u_thumb = srcArr[randomIndex];
     
     return userInfo;
 }
