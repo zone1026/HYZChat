@@ -2,7 +2,7 @@
 //  CNSession+CoreDataProperties.h
 //  
 //
-//  Created by 黄亚州 on 2018/1/29.
+//  Created by 黄亚州 on 2018/2/24.
 //
 //
 
@@ -15,14 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<CNSession *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSString *last_time;
-@property (nullable, nonatomic, copy) NSString *session_id;
+@property (nonatomic) int64_t last_time;
 @property (nullable, nonatomic, copy) NSString *logo_src;
-@property (nullable, nonatomic, copy) NSString *name;
-@property (nonatomic) BOOL shield;
-@property (nonatomic) int64_t unread_Num;
 @property (nullable, nonatomic, copy) NSString *logo_thumb;
+@property (nullable, nonatomic, copy) NSString *name;
+@property (nonatomic) int64_t session_id;
+@property (nonatomic) BOOL shield;
 @property (nonatomic) int16_t type;
+@property (nonatomic) int64_t unread_Num;
+@property (nonatomic) int64_t target_id;
+@property (nonatomic) int16_t target_type;
 @property (nullable, nonatomic, retain) CNUser *belong_user;
 @property (nullable, nonatomic, retain) NSSet<CNChatMessage *> *has_chatMsgs;
 

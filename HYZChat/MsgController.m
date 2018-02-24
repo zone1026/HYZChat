@@ -20,6 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.msgDataSource.delegate = self;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.msgDataSource.sessionArr = nil;
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +56,7 @@
         [HYZAlert showInfo:@"抱歉，会话数据为空" underTitle:@"提示"];
         return;
     }
-    [[ChatManager sharedManager] openChatView:[session chatTargetTypeBySessionType] withFromViewController:self];
+    [[ChatManager sharedManager] openChatView:session withFromViewController:self];
 }
 
 #pragma mark - 私有方法

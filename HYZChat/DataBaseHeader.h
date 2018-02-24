@@ -13,5 +13,6 @@
 
 #import "CNUserInfo+CoreDataClass.h"
 #import "CNFriend+CoreDataClass.h"
+#import "CNSession+CoreDataClass.h"
 
 #endif /* DataBaseHeader_h */

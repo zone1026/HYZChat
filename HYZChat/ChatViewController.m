@@ -74,12 +74,13 @@
     self.breakLayoutViewScrollTable = NO;
     
     //导航栏bar button item
-    [self.barBtnInfo setImage:[UIImage imageNamed:([ChatManager sharedManager].chatTargetType == ChatTargetTypeP2G) ?
+    [self.barBtnInfo setImage:[UIImage imageNamed:([ChatManager sharedManager].chatSession.target_type == ChatTargetTypeP2G) ?
                                @"NAVI_BTN_GROUPINFO" : @"NAVI_BTN_ROLEINFO"]];
     self.navigationItem.leftBarButtonItem = self.barBtnBack;
     self.navigationItem.rightBarButtonItem = self.barBtnInfo;
     
     [self.navigationController setToolbarHidden:YES animated:NO];
+    self.title = [ChatManager sharedManager].chatSession.name;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

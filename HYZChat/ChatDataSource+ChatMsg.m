@@ -18,14 +18,11 @@
     chatMessage.msg_state = ChatMsgStateNoSend;
     chatMessage.send_userId = currentUser.user_id;
     chatMessage.send_nick = currentUser.user_name;
-    chatMessage.send_time = [NSString stringWithFormat:@"%.2f", [HYZUtil getCurrentTimestamp]];
-    chatMessage.target_id = 0;
-    chatMessage.target_type = [ChatManager sharedManager].chatTargetType;
-//    chatMessage.belong_session = currentUser;
+    chatMessage.send_time = [HYZUtil getCurrentTimestamp];
+    chatMessage.belong_session = [ChatManager sharedManager].chatSession;
     
     if (type == ChatMsgTypeText) {
         chatMessage.msg_content = content;
-        chatMessage.assign_res = nil;
     }
     else if (type == ChatMsgTypeImage) {
         
@@ -36,6 +33,8 @@
     else if (type == ChatMsgTypeVideo) {
         
     }
+    
+    [ChatManager sharedManager].chatSession.last_time = chatMessage.send_time;
     
     [self.chatMsgArr addObject:chatMessage];//添加到消息列表中
     [[DataManager sharedManager] saveContext];

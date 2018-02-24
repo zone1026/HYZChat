@@ -116,7 +116,7 @@
 
 /** 消息内容的长按手势响应方法 */
 - (void)viewMsgContentLongPressGestureSelector:(UILongPressGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateBegan && [ChatManager sharedManager].chatTargetType != ChatTargetTypeP2P
+    if (sender.state == UIGestureRecognizerStateBegan && [ChatManager sharedManager].chatSession.target_type != ChatTargetTypeP2P
                         && self.cellData != nil && self.cellData.msg_type != ChatMsgTypeText)//文本消息由自己的长按事件
         [[NSNotificationCenter defaultCenter] postNotificationName:NotiMsgContentLongPressGesture object:self];
 }
@@ -128,7 +128,7 @@
         return @"描述：cell数据源为空";
     
     return [NSString stringWithFormat:@"描述>>>\"消息发送方:%@，消息类型:%d，消息目标类型:%d \"",self.cellData.send_nick, self.cellData.msg_type,
-            self.cellData.target_type];
+            self.cellData.belong_session.target_type];
 }
 
 @end

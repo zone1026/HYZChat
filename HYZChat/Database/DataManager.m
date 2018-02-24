@@ -154,7 +154,7 @@ static NSString *const coreDataModelFileName = @"HYZChat";
         user.user_password = @"";
         user.last_time = [HYZUtil getCurrentTimestamp];
         user.has_sessions = nil;
-        user.assign_userInfo = [self syncUserUserInfo:nil];
+        [self syncUserUserInfo:nil withUser:user];
         return user;
     }
     return (CNUser *)result[0];
@@ -169,7 +169,7 @@ static NSString *const coreDataModelFileName = @"HYZChat";
 }
 
 /** 同步用户信息 */
-- (CNUserInfo *)syncUserUserInfo:(NSDictionary *)dicData {
+- (CNUserInfo *)syncUserUserInfo:(NSDictionary *)dicData withUser:(CNUser *)user {
 //    if (dicData == nil)
 //        return nil;
     
@@ -178,7 +178,7 @@ static NSString *const coreDataModelFileName = @"HYZChat";
                         @"http://www.qqzhi.com/uploadpic/2014-10-05/043159494.jpg",
                         @"http://img3.duitang.com/uploads/item/201509/11/20150911222356_tnzGS.thumb.700_0.jpeg"];
     NSInteger randomIndex = arc4random() % srcArr.count;
-    CNUserInfo *userInfo = [self userInfoFromCoredataByUser:self.currentUser];
+    CNUserInfo *userInfo = [self userInfoFromCoredataByUser:user];
     userInfo.u_sex = UserSexMan;//[dicData[@"sex"] integerValue];
     userInfo.u_identity = UserIdentityNormal;//dicData[@"identity"];
     userInfo.u_birthday = dicData[@"birthday"];

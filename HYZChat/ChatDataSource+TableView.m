@@ -76,7 +76,7 @@
     switch (chatMsg.msg_type) {
         case ChatMsgTypeText:
         {
-            CGFloat cellHeight = [[self.cellHeightDict objectForKey:chatMsg.send_time] floatValue];
+            CGFloat cellHeight = [[self.cellHeightDict objectForKey:@(chatMsg.send_time)] floatValue];
             if (cellHeight == 0.0f) {
                 NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16.0f], NSFontAttributeName, nil];
                 //设置换行模式，表情图标出界自动换行
@@ -108,7 +108,7 @@
                 //文本内容距离cell顶部(包含昵称label的高度)32.0f；距离cell底部20.0f；
                 cellHeight = 32.0f - ([chatMsg checkShowNickName] == YES ? 0.0f: ChatNickNameDefaultHeight) + textHeight + 20.0f;
                 
-                [self.cellHeightDict setObject:@(cellHeight) forKey:chatMsg.send_time];//缓存高度
+                [self.cellHeightDict setObject:@(cellHeight) forKey:@(chatMsg.send_time)];//缓存高度
             }
             return cellHeight;
         }

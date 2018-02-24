@@ -16,5 +16,11 @@
  * @return 该用户是否已存在好友列表中
  */
 - (BOOL)addFriendByUserInfo:(CNUser *)user;
+/**
+ * @description 通过好友信息添加私聊会话
+ * @param fid 用户的信息
+ * @return 会话信息
+ */
+- (CNSession *)addChatSessionByFriendId:(long long)fid;
 
 @end

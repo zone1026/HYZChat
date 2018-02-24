@@ -2,7 +2,7 @@
 //  CNSession+CoreDataProperties.m
 //  
 //
-//  Created by 黄亚州 on 2018/1/29.
+//  Created by 黄亚州 on 2018/2/24.
 //
 //
 
@@ -15,13 +15,15 @@
 }
 
 @dynamic last_time;
-@dynamic session_id;
 @dynamic logo_src;
-@dynamic name;
-@dynamic shield;
-@dynamic unread_Num;
 @dynamic logo_thumb;
+@dynamic name;
+@dynamic session_id;
+@dynamic shield;
 @dynamic type;
+@dynamic unread_Num;
+@dynamic target_id;
+@dynamic target_type;
 @dynamic belong_user;
 @dynamic has_chatMsgs;
 

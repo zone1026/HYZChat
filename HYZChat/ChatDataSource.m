@@ -51,8 +51,7 @@
 
 /** 加载本地数据库中的消息数据*/
 - (void)loadLocalChatMsgData {
-    CNUser *currentUser = [DataManager sharedManager].currentUser;
-    NSArray *userMsgArr = [currentUser getSubSessionSequence];
+    NSArray *userMsgArr = [[ChatManager sharedManager].chatSession obtainSubChatMessageSequenceData];
     for (CNChatMessage *chatMsg in userMsgArr) {
         if ([chatMsg checkMsgTypeCanSupport] == YES)
             [self.chatMsgArr addObject:chatMsg];

@@ -21,9 +21,9 @@
     if ([self checkOneselfSendMsg])//自己不显示
         return NO;
     
-    if (self.target_type == ChatTargetTypeP2P)
+    if (self.belong_session.target_type == ChatTargetTypeP2P)
         return NO;
-    else if (self.target_type == ChatTargetTypeP2G) {
+    else if (self.belong_session.target_type == ChatTargetTypeP2G) {
         //群组是否开启了显示昵称。。。
     }
     

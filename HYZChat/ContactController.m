@@ -132,10 +132,40 @@
     self.contactTableView.tableFooterView = self.footerView;
 }
 
+/** 打开好友私聊界面 */
+- (void)openFriendChatUI:(long long)tragetID {
+    CNUser *currentUser = [DataManager sharedManager].currentUser;
+    
+    CNSession *chatSession = nil;
+    if (nil != currentUser.has_sessions) {
+        for (CNSession *session in currentUser.has_sessions) {
+            if (session.target_type == ChatTargetTypeP2P && session.target_id == tragetID) {
+                chatSession = session;
+                break;
+            }
+        }
+    }
+    
+    if (nil == chatSession) {
+        chatSession = [[DataManager sharedManager] addChatSessionByFriendId:tragetID];
+        [[DataManager sharedManager] saveContext];
+    }
+    
+    [[ChatManager sharedManager] openChatView:chatSession withFromViewController:self];
+}
+
 #pragma mark - ContactDataSourceDelegate
 
 - (void)didSelectCellEnterContactInfoUI:(long long)targetId withCellType:(ContactCellType)type {
-
+    switch (type) {
+        case ContactCellTypeDefault:
+            break;
+        case ContactCellTypeCompany:
+            break;
+        default:
+            [self openFriendChatUI:targetId];
+            break;
+    }
 }
 
 #pragma mark - UISearchBarDelegate

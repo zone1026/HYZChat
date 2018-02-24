@@ -48,7 +48,7 @@
     [self.imgLogo web_logoImage:self.cellData.logo_src withThumbImageURLStr:self.cellData.logo_thumb];
     self.lblTitle.text = self.cellData.name;
     self.lblTitle.textColor = [self.cellData sessionNameColorByType];
-    self.lblTime.text = [HYZUtil timeStampFormatDesc:[self.cellData.last_time floatValue]];
+    self.lblTime.text = [HYZUtil timeStampFormatDesc:self.cellData.last_time];
     [self.lblLastMsg updateTextContent:[self.cellData sessionMsgUiContent]];
     self.imgShield.hidden = !self.cellData.shield;
     self.lblUnreadNum.hidden = self.cellData.unread_Num <= 0;

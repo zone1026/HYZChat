@@ -12,7 +12,7 @@
 @implementation CNSession
 
 - (NSArray *)obtainSubChatMessageSequenceData {
-    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"send_time" ascending:NO]];//send_time是unix时间戳
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"send_time" ascending:YES]];//send_time是unix时间戳
     return [self.has_chatMsgs sortedArrayUsingDescriptors:sortDesc];
 }
 
@@ -40,7 +40,7 @@
     
     NSString *msgUiContent;
     NSArray *chatMsgArr = [self obtainSubChatMessageSequenceData];
-    CNChatMessage *chatMessage = [chatMsgArr firstObject];
+    CNChatMessage *chatMessage = [chatMsgArr lastObject];
     switch (chatMessage.msg_type) {
         case ChatMsgTypeText:
             msgUiContent = chatMessage.msg_content;

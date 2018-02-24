@@ -25,7 +25,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _chatTargetType = ChatTargetTypeP2P;
+        
     }
     return self;
 }
@@ -42,8 +42,13 @@
     return _emotionTextDict;
 }
 
-- (void)openChatView:(ChatTargetType)type withFromViewController:(UIViewController *)fromVc {
-    self.chatTargetType = type;
+- (void)openChatView:(CNSession *)session withFromViewController:(UIViewController *)fromVc {
+    if (nil == session) {
+        [HYZAlert showInfo:@"数据为空，不能进入聊天页" underTitle:@"提示"];
+        return;
+    }
+    
+    self.chatSession = session;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Chat" bundle:nil];
     UINavigationController *nc = [storyboard instantiateViewControllerWithIdentifier:@"NaviChat"];
     [fromVc presentViewController:nc animated:YES completion:nil];
