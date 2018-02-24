@@ -21,6 +21,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    [self.imgLogo.layer setCornerRadius:5.0f];
     [self updateUIInfo];
 }
 

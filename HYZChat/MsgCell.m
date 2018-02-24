@@ -31,7 +31,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    
+    [self.imgLogo.layer setCornerRadius:5.0f];
     [self.lblUnreadNum.layer setCornerRadius:self.lblUnreadNum.height*0.5f];
 }
 
