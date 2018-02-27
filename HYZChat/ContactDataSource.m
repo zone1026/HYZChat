@@ -75,6 +75,19 @@
         return [self.contactDict objectForKey:@(section)];
     return [NSMutableArray array];
 }
+
+/** 好友备注 */
+- (void)friendRemarkByCellIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *currentGroupContactArr = [self eachGroupContactData:indexPath.section];
+    if (currentGroupContactArr.count <= 0)
+        return;
+    if (currentGroupContactArr.count > indexPath.row) {
+        CNFriend *friend = [currentGroupContactArr objectAtIndex:indexPath.row];
+        if (nil != friend && nil != self.delegate && [self.delegate respondsToSelector:@selector(doFriendRemarks:)])
+            [self.delegate doFriendRemarks:friend];
+    }
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -100,6 +113,13 @@
     }
     
     return cell;
+}
+
+/** cell是否可编辑 */
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (0 == indexPath.section)
+        return NO;
+    return YES;
 }
 
 #pragma mark - UITableViewDelegate
@@ -141,6 +161,17 @@
     }
 
     return nil;
+}
+
+/** 左侧滑操作 */
+- (NSArray <UITableViewRowAction *>*)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    __weak typeof(self) weakSelf = self;
+    UITableViewRowAction *remarkAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
+                                                                            title:@"备注" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+                                                                                [weakSelf friendRemarkByCellIndexPath:indexPath];
+                                                                            }];
+    remarkAction.backgroundColor = [UIColor lightGrayColor];
+    return @[remarkAction];
 }
 
 @end

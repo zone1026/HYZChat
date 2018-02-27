@@ -18,6 +18,7 @@
 		6B07F1002004BE1800F1E071 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07F0FF2004BE1800F1E071 /* LoginController.m */; };
 		6B0AB7A31F9F0CBB002A2797 /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0AB7A21F9F0CBB002A2797 /* ChatManager.m */; };
 		6B10F0D31F692813008D40C0 /* ChatDataSource+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F0D21F692813008D40C0 /* ChatDataSource+TableView.m */; };
+		6B2372EB2045567A0082142F /* RemarksController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2372EA2045567A0082142F /* RemarksController.m */; };
 		6B31AC5A1FDF89BA00F69C6F /* HYZAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B31AC591FDF89BA00F69C6F /* HYZAlert.m */; };
 		6B31AC5D1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B31AC5C1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.m */; };
 		6B31AC601FDFAD2F00F69C6F /* DataManager+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B31AC5F1FDFAD2F00F69C6F /* DataManager+User.m */; };
@@ -109,6 +110,8 @@
 		6B0AB7A21F9F0CBB002A2797 /* ChatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatManager.m; sourceTree = "<group>"; };
 		6B10F0D11F692813008D40C0 /* ChatDataSource+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChatDataSource+TableView.h"; sourceTree = "<group>"; };
 		6B10F0D21F692813008D40C0 /* ChatDataSource+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChatDataSource+TableView.m"; sourceTree = "<group>"; };
+		6B2372E92045567A0082142F /* RemarksController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemarksController.h; sourceTree = "<group>"; };
+		6B2372EA2045567A0082142F /* RemarksController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemarksController.m; sourceTree = "<group>"; };
 		6B31AC581FDF89BA00F69C6F /* HYZAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HYZAlert.h; path = Utils/HYZAlert.h; sourceTree = "<group>"; };
 		6B31AC591FDF89BA00F69C6F /* HYZAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HYZAlert.m; path = Utils/HYZAlert.m; sourceTree = "<group>"; };
 		6B31AC5B1FDF8B3700F69C6F /* UIAlertAction+ButtonIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIAlertAction+ButtonIndex.h"; path = "Utils/UIAlertAction+ButtonIndex.h"; sourceTree = "<group>"; };
@@ -285,6 +288,7 @@
 		6B07F0EB2004997000F1E071 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				6B2372E8204553600082142F /* Remarks */,
 				6B07F0F120049A3600F1E071 /* Contact.storyboard */,
 				6B5052B0202070A9000C34BF /* Data */,
 				6B8B3F012021BCAF0064D252 /* Views */,
@@ -372,6 +376,15 @@
 				6BAC6F5D1F5FFBD300E896FB /* ChatEmotionController.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		6B2372E8204553600082142F /* Remarks */ = {
+			isa = PBXGroup;
+			children = (
+				6B2372E92045567A0082142F /* RemarksController.h */,
+				6B2372EA2045567A0082142F /* RemarksController.m */,
+			);
+			name = Remarks;
 			sourceTree = "<group>";
 		};
 		6B39DFE01FC6F6B000FFF7AD /* chatMsgCell */ = {
@@ -916,6 +929,7 @@
 				6BACBC0E203FDE3B0027B8F1 /* CNUserInfo+CoreDataProperties.m in Sources */,
 				6BCBCCCC1F594CB1000B7152 /* CALayer+HYZUtil.m in Sources */,
 				6BAC6F5E1F5FFBD300E896FB /* ChatEmotionController.m in Sources */,
+				6B2372EB2045567A0082142F /* RemarksController.m in Sources */,
 				6B8B3EFB20216CA50064D252 /* ContactDefaultCellData.m in Sources */,
 				6B8E3E001F5F8D3B00020626 /* CNUser+CoreDataClass.m in Sources */,
 				6B944AAB1FC81F8E00192470 /* CNChatMessage+CoreDataProperties.m in Sources */,

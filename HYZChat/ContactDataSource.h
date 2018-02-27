@@ -18,6 +18,11 @@
  * @param type cell的类型
  */
 - (void)didSelectCellEnterContactInfoUI:(long long)targetId withCellType:(ContactCellType)type;
+/**
+ * @description 对好友备注
+ * @param friendInfo 好友数据
+ */
+- (void)doFriendRemarks:(CNFriend *)friendInfo;
 
 @end
 

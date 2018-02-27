@@ -11,6 +11,7 @@
 #import "ContactHeaderView.h"
 #import "UIView+HYZFrame.h"
 #import "ContactFooterView.h"
+#import "RemarksController.h"
 
 @interface ContactController () <ContactDataSourceDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *contactTableView;
@@ -166,6 +167,14 @@
             [self openFriendChatUI:targetId];
             break;
     }
+}
+
+- (void)doFriendRemarks:(CNFriend *)friendInfo {
+    UINavigationController *nc = [self.storyboard instantiateViewControllerWithIdentifier:@"NaviRemarks"];//同一个storyboad
+    RemarksController *vc = (RemarksController *)nc.topViewController;
+    vc.friendInfo = friendInfo;
+    [self showDetailViewController:nc sender:friendInfo];
+//    [self presentViewController:nc animated:YES completion:nil];
 }
 
 #pragma mark - UISearchBarDelegate
