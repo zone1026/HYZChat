@@ -2,7 +2,7 @@
 //  CNSession+CoreDataProperties.h
 //  
 //
-//  Created by 黄亚州 on 2018/2/24.
+//  Created by 黄亚州 on 2018/2/27.
 //
 //
 
@@ -21,10 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *name;
 @property (nonatomic) int64_t session_id;
 @property (nonatomic) BOOL shield;
-@property (nonatomic) int16_t type;
-@property (nonatomic) int64_t unread_Num;
 @property (nonatomic) int64_t target_id;
 @property (nonatomic) int16_t target_type;
+@property (nonatomic) int16_t type;
+@property (nonatomic) int64_t unread_num;
 @property (nullable, nonatomic, retain) CNUser *belong_user;
 @property (nullable, nonatomic, retain) NSSet<CNChatMessage *> *has_chatMsgs;
 

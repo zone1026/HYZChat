@@ -39,13 +39,13 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([self isEmptyData] == YES)
         return 1;
     return self.sessionArr.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -56,7 +56,7 @@
     }
 
     MsgCell *cell = [tableView dequeueReusableCellWithIdentifier:@"msgCell" forIndexPath:indexPath];
-    CNSession *session = [self.sessionArr objectAtIndex:indexPath.row];
+    CNSession *session = [self.sessionArr objectAtIndex:indexPath.section];
     [cell updateCellInfo:session];
     return cell;
 }
@@ -72,8 +72,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     if (nil != self.delegate && [self.delegate respondsToSelector:@selector(didSelectCellEnterChatUI:)]) {
-        if (self.sessionArr.count > indexPath.row) {
-            CNSession *session = [self.sessionArr objectAtIndex:indexPath.row];
+        if (self.sessionArr.count > indexPath.section) {
+            CNSession *session = [self.sessionArr objectAtIndex:indexPath.section];
             [self.delegate didSelectCellEnterChatUI:session];
         }
     }
@@ -91,27 +91,44 @@
 
 /** 添加左拉抽屉操作 */
 - (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    __weak typeof(self) weakSelf = self;
     // 删除按钮
-    UITableViewRowAction *delAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除用户"
+    UITableViewRowAction *delAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive
+                                                                         title:@"删除用户"
                                                                              handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-                                                                                 
+                                                                                 [weakSelf deleteMsgCellByCellIndexPath:indexPath];
+                                                                                 if (weakSelf.sessionArr.count <= 0)
+                                                                                     [tableView reloadData];
+                                                                                 else
+                                                                                     [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
                                                                              }];
     UITableViewRowAction *secondAction = nil;
-    CNSession *session = [self.sessionArr objectAtIndex:indexPath.row];
+    CNSession *session = [self.sessionArr objectAtIndex:indexPath.section];
     switch (session.type) {
         case SessionTypeFriend:
         case SessionTypeGroup:
-            secondAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:(session.unread_Num > 0 ? @"标记已读" : @"标记未读")
+        {
+            secondAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
+                                                              title:(session.unread_num > 0 ? @"标记已读" : @"标记未读")
                                                             handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-                
+                                                                [weakSelf sessionUnreadMsgSignOpt:indexPath];
+                                                                [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                                                             }];
+        }
             break;
         case SessionTypeOrganization:
         case SessionTypeOfficial:
-            secondAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"取消关注"
+        {
+            secondAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
+                                                              title:@"取消关注"
                                                             handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-                
+                                                                [weakSelf cancelConcernContact:indexPath];
+                                                                if (weakSelf.sessionArr.count <= 0)
+                                                                    [tableView reloadData];
+                                                                else
+                                                                    [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
                                                             }];
+        }
             break;
         default:
             break;
@@ -123,6 +140,29 @@
     secondAction.backgroundColor = [UIColor lightGrayColor];
     // 将设置好的按钮放到数组中返回
     return @[delAction, secondAction];
+}
+
+#pragma mark - 私有方法
+
+/** 左侧滑删除消息 */
+- (void)deleteMsgCellByCellIndexPath:(NSIndexPath *)indexPath {
+    CNSession *session = [self.sessionArr objectAtIndex:indexPath.section];
+    session.belong_user = nil;
+    [[DataManager sharedManager] deleteFromCoreData:session];
+    [self.sessionArr removeObject:session];
+}
+
+/** 标记回话的已读/未读操作 */
+- (void)sessionUnreadMsgSignOpt:(NSIndexPath *)indexPath {
+    CNSession *session = [self.sessionArr objectAtIndex:indexPath.section];
+    session.unread_num = session.unread_num > 0 ? 0 : 1;
+}
+
+/** 取消关注*/
+- (void)cancelConcernContact:(NSIndexPath *)indexPath {
+    CNSession *session = [self.sessionArr objectAtIndex:indexPath.section];
+    [[DataManager sharedManager] deleteCurrentUserFriendByFid:session.target_id];//先删除好友数据
+    [self deleteMsgCellByCellIndexPath:indexPath];//再做删除会话
 }
 
 @end

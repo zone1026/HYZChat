@@ -79,11 +79,25 @@
     session.name = friend.f_nickName;
     session.shield = NO;//是否屏蔽
     session.type = SessionTypeFriend;
-    session.unread_Num = 0;
+    session.unread_num = 0;
     session.target_id = friend.f_id;
     session.target_type = ChatTargetTypeP2P;
     
     return session;
+}
+
+- (BOOL)deleteCurrentUserFriendByFid:(long long)fid {
+    if (nil != self.currentUser.has_friends) {
+        for (CNFriend *friend in self.currentUser.has_friends) {
+            if (friend.f_id == fid) {//找到好友，删除数据
+                friend.belong_user = nil;
+                [self deleteFromCoreData:friend];
+                [self saveContext];
+                return YES;
+            }
+        }
+    }
+    return NO;
 }
 
 @end

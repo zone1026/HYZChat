@@ -62,13 +62,13 @@
 }
 
 - (NSString *)sessionUnreadMsgNumDesc {
-    if (self.unread_Num <= 0)
+    if (self.unread_num <= 0)
         return @"";
     
-    if (self.unread_Num > 99)
+    if (self.unread_num > 99)
         return @" 99+ ";
     
-    return [NSString stringWithFormat:@"%lld", self.unread_Num];
+    return [NSString stringWithFormat:@"%lld", self.unread_num];
 }
 
 - (ChatTargetType)chatTargetTypeBySessionType {

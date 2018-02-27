@@ -51,7 +51,7 @@
 //    [self.lblLastMsg updateTextContent:[self.cellData sessionMsgUiContent]];
     self.lblLastMsg.text = [self.cellData sessionMsgUiContent];
     self.imgShield.hidden = !self.cellData.shield;
-    self.lblUnreadNum.hidden = self.cellData.unread_Num <= 0;
+    self.lblUnreadNum.hidden = self.cellData.unread_num <= 0;
     self.lblUnreadNum.text = [self.cellData sessionUnreadMsgNumDesc];
 }
 

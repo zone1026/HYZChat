@@ -22,5 +22,11 @@
  * @return 会话信息
  */
 - (CNSession *)addChatSessionByFriendId:(long long)fid;
+/**
+ * @description 根据好友删除当前用户的某位好友
+ * @param fid 用户的信息
+ * @return 是否找到了该好友信息
+ */
+- (BOOL)deleteCurrentUserFriendByFid:(long long)fid;
 
 @end

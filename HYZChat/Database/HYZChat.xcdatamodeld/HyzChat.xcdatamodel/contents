@@ -52,7 +52,7 @@
         <attribute name="target_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="target_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="unread_Num" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="unread_num" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="belong_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNUser" inverseName="has_sessions" inverseEntity="CNUser" syncable="YES"/>
         <relationship name="has_chatMsgs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CNChatMessage" inverseName="belong_session" inverseEntity="CNChatMessage" syncable="YES"/>
     </entity>
@@ -83,7 +83,7 @@
         <element name="CNChatResource" positionX="-225" positionY="-180" width="128" height="103"/>
         <element name="CNFriend" positionX="-747" positionY="-207" width="128" height="223"/>
         <element name="CNGroup" positionX="-747" positionY="419" width="128" height="148"/>
-        <element name="CNSession" positionX="-479" positionY="72" width="128" height="223"/>
+        <element name="CNSession" positionX="-479" positionY="72" width="128" height="225"/>
         <element name="CNUser" positionX="-747" positionY="72" width="128" height="193"/>
         <element name="CNUserInfo" positionX="-918" positionY="197" width="128" height="163"/>
     </elements>
