@@ -61,6 +61,11 @@
     return cell;
 }
 
+/** 可编辑 */
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -82,6 +87,42 @@
     if ([self isEmptyData] == YES)
         return kScreenHeight*0.5f;
     return 70.0f;
+}
+
+/** 添加左拉抽屉操作 */
+- (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    // 删除按钮
+    UITableViewRowAction *delAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除用户"
+                                                                             handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+                                                                                 
+                                                                             }];
+    UITableViewRowAction *secondAction = nil;
+    CNSession *session = [self.sessionArr objectAtIndex:indexPath.row];
+    switch (session.type) {
+        case SessionTypeFriend:
+        case SessionTypeGroup:
+            secondAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:(session.unread_Num > 0 ? @"标记已读" : @"标记未读")
+                                                            handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+                
+                                                            }];
+            break;
+        case SessionTypeOrganization:
+        case SessionTypeOfficial:
+            secondAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"取消关注"
+                                                            handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+                
+                                                            }];
+            break;
+        default:
+            break;
+    }
+    
+    if (nil == secondAction)
+        return @[delAction];
+    
+    secondAction.backgroundColor = [UIColor lightGrayColor];
+    // 将设置好的按钮放到数组中返回
+    return @[delAction, secondAction];
 }
 
 @end
