@@ -20,11 +20,11 @@ typedef NS_ENUM(NSInteger, CellSection) {
 };
 
 @interface RemarksController ()<UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *lblRemarksTips;
 /** 好友的备注信息 */
 @property (strong, nonatomic) RemarksInfo *friendRemarksInfo;
 /** 好友的电话数量 */
 @property (assign, nonatomic) NSInteger friendPhoneNum;
-@property (weak, nonatomic) IBOutlet UILabel *lblRemarksTips;
 
 @end
 
@@ -50,6 +50,30 @@ typedef NS_ENUM(NSInteger, CellSection) {
 }
 
 #pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return CellSectionNum;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    switch (section) {
+        case CellSectionRemarks:
+            return 1;
+            break;
+        case CellSectionTags:
+            return 1;
+            break;
+        case CellSectionPhone:
+            return 6;
+            break;
+        case CellSectionDesc:
+            return 2;
+            break;
+        default:
+            break;
+    }
+    return 0;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -84,15 +108,19 @@ typedef NS_ENUM(NSInteger, CellSection) {
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == CellSectionPhone)
+    if (indexPath.section == CellSectionPhone && !(0 == indexPath.row && [self.friendInfo checkFriendFristPhoneIsContactPhone]))//第一个是好友绑定手机号码，不可编辑
         return YES;
     return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        self.friendPhoneNum --;
-        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        UITextField *tf = [cell viewWithTag:((indexPath.section + 1)*1000 + indexPath.row)];
+        [self.friendRemarksInfo removeOnePhone:tf.text];
+        self.friendPhoneNum = self.friendRemarksInfo.phonesArr.count;
+        [tableView reloadData];
+        [self enabledRightBarBtnItemState];
     }
 }
 
@@ -108,6 +136,11 @@ typedef NS_ENUM(NSInteger, CellSection) {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (CellSectionPhone == indexPath.section) {
+        [self.friendRemarksInfo addOnePhone:[NSString stringWithFormat:@"++%ld", (long)self.friendPhoneNum]];
+        self.friendPhoneNum = self.friendRemarksInfo.phonesArr.count;
+        [tableView reloadData];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -156,6 +189,12 @@ typedef NS_ENUM(NSInteger, CellSection) {
     return UITableViewCellEditingStyleDelete;
 }
 
+/** accessoryButton 响应事件 */
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    if (CellSectionPhone == indexPath.section && 0 == indexPath.row)
+        [HYZAlert showInfo:nil underTitle:@"从手机通讯录中匹配的号码，无法删除"];
+}
+
 #pragma mark - UITextViewDelegate
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -169,8 +208,10 @@ typedef NS_ENUM(NSInteger, CellSection) {
     if (textView.height != size.height) {
         CGFloat height = size.height;
         [textView addHeight:height - textView.height];
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:CellSectionDesc]]
-                              withRowAnimation:UITableViewRowAnimationAutomatic];//更新cell的高度
+//        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:CellSectionDesc]]
+//                              withRowAnimation:UITableViewRowAnimationAutomatic];//更新cell的高度
+        self.friendRemarksInfo.remarksDesc = textView.text;
+//        [self.tableView reloadData];
     }
     
     BOOL needScrollToLastLine = NO;
@@ -187,8 +228,8 @@ typedef NS_ENUM(NSInteger, CellSection) {
     if (needScrollToLastLine)
         [textView scrollRangeToVisible:NSMakeRange(textView.text.length - 1, 1)];
     
-    if (self.navigationItem.rightBarButtonItem.isEnabled == NO)
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+    self.lblRemarksTips.hidden = textView.text.length > 0;
+    [self enabledRightBarBtnItemState];
 }
 
 #pragma mark - Navigation
@@ -233,8 +274,7 @@ typedef NS_ENUM(NSInteger, CellSection) {
                 break;
         }
     }
-    if (self.navigationItem.rightBarButtonItem.isEnabled == NO)
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+    [self enabledRightBarBtnItemState];
 }
 
 #pragma mark - 私有方法
@@ -244,6 +284,12 @@ typedef NS_ENUM(NSInteger, CellSection) {
     if ([HYZUtil isEmptyOrNull:self.friendRemarksInfo.remarksImage] == NO) {//需要上传图片
         
     }
+}
+
+/** 更新导航右按钮的激活状态 */
+- (void)enabledRightBarBtnItemState {
+    if (self.navigationItem.rightBarButtonItem.isEnabled == NO)
+        self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
 @end

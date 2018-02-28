@@ -31,6 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
  * @description 获取好友的标签数据（标签是自己对好友设置的）
  */
 - (NSMutableArray *)obtainFriendTagsArray;
+/**
+ * @description 检测第一个手机号是否是通讯录手机号码
+ */
+- (BOOL)checkFriendFristPhoneIsContactPhone;
 
 @end
 

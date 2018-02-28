@@ -55,10 +55,23 @@
 }
 
 - (void)updateFriendPhoneTextField:(UITextField *)tf withIndex:(NSInteger)index {
+    tf.enabled = (index == 0 && [self.friendInfo checkFriendFristPhoneIsContactPhone] == YES) ? NO : YES;
+    tf.textColor = tf.isEnabled == YES ? [UIColor blackColor] : [UIColor lightGrayColor];
     if (self.phonesArr.count > index)
         tf.text = [self.phonesArr objectAtIndex:index];
     else
         tf.text = @"";
+}
+
+- (void)removeOnePhone:(NSString *)phone {
+    if (self.phonesArr.count > 0) {
+        if ([self.phonesArr containsObject:phone])
+            [self.phonesArr removeObject:phone];
+    }
+}
+
+- (void)addOnePhone:(NSString *)phone {
+    [self.phonesArr addObject:phone];
 }
 
 @end

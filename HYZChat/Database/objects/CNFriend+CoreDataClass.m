@@ -51,4 +51,8 @@
     return tagsArr;
 }
 
+- (BOOL)checkFriendFristPhoneIsContactPhone {
+    return YES;
+}
+
 @end

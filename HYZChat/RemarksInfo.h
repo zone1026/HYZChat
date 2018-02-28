@@ -33,5 +33,15 @@
  * @param index 号码的索引
  */
 - (void)updateFriendPhoneTextField:(UITextField *)tf withIndex:(NSInteger)index;
+/**
+ * @description 移除一个手机号码
+ * @param phone 号码
+ */
+- (void)removeOnePhone:(NSString *)phone;
+/**
+ * @description 添加一个手机号码
+ * @param phone 号码
+ */
+- (void)addOnePhone:(NSString *)phone;
 
 @end
