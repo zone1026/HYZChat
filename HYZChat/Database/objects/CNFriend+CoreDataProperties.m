@@ -2,7 +2,7 @@
 //  CNFriend+CoreDataProperties.m
 //  
 //
-//  Created by 黄亚州 on 2018/2/23.
+//  Created by 黄亚州 on 2018/2/28.
 //
 //
 
@@ -25,6 +25,9 @@
 @dynamic f_type;
 @dynamic f_upperPhoneticize;
 @dynamic f_userName;
+@dynamic f_tags;
+@dynamic remarks_desc;
+@dynamic remarks_src;
 @dynamic belong_user;
 
 @end

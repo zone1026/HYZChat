@@ -2,7 +2,7 @@
 //  CNFriend+CoreDataProperties.h
 //  
 //
-//  Created by 黄亚州 on 2018/2/23.
+//  Created by 黄亚州 on 2018/2/28.
 //
 //
 
@@ -26,6 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int16_t f_type;
 @property (nullable, nonatomic, copy) NSString *f_upperPhoneticize;
 @property (nullable, nonatomic, copy) NSString *f_userName;
+@property (nullable, nonatomic, copy) NSString *f_tags;
+@property (nullable, nonatomic, copy) NSString *remarks_desc;
+@property (nullable, nonatomic, copy) NSString *remarks_src;
 @property (nullable, nonatomic, retain) CNUser *belong_user;
 
 @end

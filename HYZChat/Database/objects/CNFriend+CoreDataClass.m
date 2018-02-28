@@ -33,4 +33,22 @@
     return type;
 }
 
+- (NSMutableArray *)obtainFriendPhoneArray {
+    NSMutableArray *phoneArr;
+    if ([HYZUtil isEmptyOrNull:self.f_phone] == NO)
+        phoneArr = [[self.f_phone componentsSeparatedByString:@","] mutableCopy];
+    else
+        phoneArr = [NSMutableArray array];
+    return phoneArr;
+}
+
+- (NSMutableArray *)obtainFriendTagsArray {
+    NSMutableArray *tagsArr;
+    if ([HYZUtil isEmptyOrNull:self.f_tags] == NO)
+        tagsArr = [[self.f_tags componentsSeparatedByString:@","] mutableCopy];
+    else
+        tagsArr = [NSMutableArray array];
+    return tagsArr;
+}
+
 @end

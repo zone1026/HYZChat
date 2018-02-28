@@ -27,10 +27,13 @@
         <attribute name="f_phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="f_sex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="f_src" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="f_tags" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="f_thumb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="f_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="f_upperPhoneticize" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="f_userName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remarks_desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remarks_src" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="belong_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNUser" inverseName="has_friends" inverseEntity="CNUser" syncable="YES"/>
     </entity>
     <entity name="CNGroup" representedClassName="CNGroup" syncable="YES">
@@ -81,7 +84,7 @@
     <elements>
         <element name="CNChatMessage" positionX="-218" positionY="71" width="128" height="208"/>
         <element name="CNChatResource" positionX="-225" positionY="-180" width="128" height="103"/>
-        <element name="CNFriend" positionX="-747" positionY="-207" width="128" height="223"/>
+        <element name="CNFriend" positionX="-747" positionY="-207" width="128" height="268"/>
         <element name="CNGroup" positionX="-747" positionY="419" width="128" height="148"/>
         <element name="CNSession" positionX="-479" positionY="72" width="128" height="225"/>
         <element name="CNUser" positionX="-747" positionY="72" width="128" height="193"/>

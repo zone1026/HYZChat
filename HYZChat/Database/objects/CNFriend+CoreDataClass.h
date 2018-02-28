@@ -23,6 +23,14 @@ NS_ASSUME_NONNULL_BEGIN
  * @description 通过好友的类型得到在通讯录中的cell类型
  */
 - (ContactCellType)contactCellTypeByFriendType;
+/**
+ * @description 获取好友的电话号码数据
+ */
+- (NSMutableArray *)obtainFriendPhoneArray;
+/**
+ * @description 获取好友的标签数据（标签是自己对好友设置的）
+ */
+- (NSMutableArray *)obtainFriendTagsArray;
 
 @end
 
