@@ -22,4 +22,16 @@
 /** 好友信息 */
 @property (weak, nonatomic) CNFriend *friendInfo;
 
+/**
+ * @description 更新好友标签描述label
+ * @param lblDesc 标签label
+ */
+- (void)updateFriendTagsDescLabel:(UILabel *)lblDesc;
+/**
+ * @description 更新好友电话号码
+ * @param tf 号码textfield
+ * @param index 号码的索引
+ */
+- (void)updateFriendPhoneTextField:(UITextField *)tf withIndex:(NSInteger)index;
+
 @end

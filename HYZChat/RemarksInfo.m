@@ -40,4 +40,25 @@
     self.remarksImage = friendInfo.remarks_src;
 }
 
+- (void)updateFriendTagsDescLabel:(UILabel *)lblDesc {
+    NSString *desc = nil;
+    if (self.tagsArr.count > 0)
+        desc = [self.tagsArr componentsJoinedByString:@"、"];
+    if ([HYZUtil isEmptyOrNull:desc] == YES) {
+        lblDesc.text = @"通过标签给联系人分类";
+        lblDesc.textColor = [UIColor lightGrayColor];
+    }
+    else {
+        lblDesc.text = desc;
+        lblDesc.textColor = RGB_COLOR(0.0f, 160.0f, 0.0f);
+    }
+}
+
+- (void)updateFriendPhoneTextField:(UITextField *)tf withIndex:(NSInteger)index {
+    if (self.phonesArr.count > index)
+        tf.text = [self.phonesArr objectAtIndex:index];
+    else
+        tf.text = @"";
+}
+
 @end

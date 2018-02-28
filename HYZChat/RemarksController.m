@@ -9,6 +9,7 @@
 #import "RemarksController.h"
 #import "RemarksInfo.h"
 #import "UIView+HYZFrame.h"
+#import "UIImageView+WebImage.h"
 
 typedef NS_ENUM(NSInteger, CellSection) {
     CellSectionRemarks = 0, //备注
@@ -23,6 +24,7 @@ typedef NS_ENUM(NSInteger, CellSection) {
 @property (strong, nonatomic) RemarksInfo *friendRemarksInfo;
 /** 好友的电话数量 */
 @property (assign, nonatomic) NSInteger friendPhoneNum;
+@property (weak, nonatomic) IBOutlet UILabel *lblRemarksTips;
 
 @end
 
@@ -47,11 +49,38 @@ typedef NS_ENUM(NSInteger, CellSection) {
     // Dispose of any resources that can be recreated.
 }
 
-
 #pragma mark - Table view data source
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    NSInteger tag = (indexPath.section + 1)*1000 + indexPath.row;
+    UIView *view = [cell viewWithTag:tag];
+    if (nil != view) {
+        switch (indexPath.section) {
+            case CellSectionRemarks:
+                if ([view isKindOfClass:[UITextField class]])
+                    ((UITextField *)view).text = self.friendRemarksInfo.nickName;
+                break;
+             case CellSectionTags:
+                if ([view isKindOfClass:[UILabel class]])
+                    [self.friendRemarksInfo updateFriendTagsDescLabel:((UILabel *)view)];
+                break;
+            case CellSectionPhone:
+                if ([view isKindOfClass:[UITextField class]])
+                    [self.friendRemarksInfo updateFriendPhoneTextField:((UITextField *)view) withIndex:indexPath.row];
+                break;
+            case CellSectionDesc:
+                if ([view isKindOfClass:[UITextView class]])
+                    ((UITextView *)view).text = [HYZUtil isEmptyOrNull:self.friendRemarksInfo.remarksDesc] == YES ? @"" : self.friendRemarksInfo.remarksDesc;
+                else if ([view isKindOfClass:[UIImageView class]])
+                    [((UIImageView *)view) web_srcImageURLStr:self.friendRemarksInfo.remarksImage
+                                         withThumbImageURLStr:self.friendRemarksInfo.remarksImage withPlaceholderImageName:@"IMG_REMARKS_TIPS"];
+                break;
+            default:
+                break;
+        }
+    }
+    return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -215,8 +244,6 @@ typedef NS_ENUM(NSInteger, CellSection) {
     if ([HYZUtil isEmptyOrNull:self.friendRemarksInfo.remarksImage] == NO) {//需要上传图片
         
     }
-    
-    
 }
 
 @end
