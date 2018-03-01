@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, CellSection) {
 };
 
 @interface RemarksController ()<UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *lblRemarksTips;
 /** 好友的备注信息 */
 @property (strong, nonatomic) RemarksInfo *friendRemarksInfo;
@@ -119,9 +120,12 @@ typedef NS_ENUM(NSInteger, CellSection) {
         UITextField *tf = [cell viewWithTag:((indexPath.section + 1)*1000 + indexPath.row)];
         [self.friendRemarksInfo removeOnePhone:tf.text];
         self.friendPhoneNum = self.friendRemarksInfo.phonesArr.count;
-        [tableView reloadData];
-        [self enabledRightBarBtnItemState];
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
     }
+    else if (editingStyle == UITableViewCellEditingStyleInsert)
+        [self addOneFriendPhone];
+    [self enabledRightBarBtnItemState];
 }
 
 #pragma mark - table view delegate
@@ -136,11 +140,8 @@ typedef NS_ENUM(NSInteger, CellSection) {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (CellSectionPhone == indexPath.section) {
-        [self.friendRemarksInfo addOnePhone:[NSString stringWithFormat:@"++%ld", (long)self.friendPhoneNum]];
-        self.friendPhoneNum = self.friendRemarksInfo.phonesArr.count;
-        [tableView reloadData];
-    }
+    if (CellSectionPhone == indexPath.section)
+        [self addOneFriendPhone];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -162,9 +163,8 @@ typedef NS_ENUM(NSInteger, CellSection) {
     }
     else if (indexPath.section == CellSectionDesc) {
         if (0 == indexPath.row) {
-            CGFloat textViewHeight = [HYZUtil autoFitSizeOfStr:self.friendRemarksInfo.remarksDesc withWidth:tableView.width - 40.0f
-                                                      withFont:[UIFont systemFontOfSize:15.0f]].height;
-            return MAX(textViewHeight, 24.0f) + 16.0f;
+            CGFloat textViewHeight = [self.textView sizeThatFits:CGSizeMake(self.textView.contentSize.width, CGFLOAT_MAX)].height;
+            return MAX(textViewHeight, 32.0f) + 16.0f + 1.0f;//多加1.0，放大滚动区域；不可滚动
         }
         else if (1 == indexPath.row) {
             CGSize imgSize;
@@ -195,38 +195,29 @@ typedef NS_ENUM(NSInteger, CellSection) {
         [HYZAlert showInfo:nil underTitle:@"从手机通讯录中匹配的号码，无法删除"];
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC));
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        if (0.0f == cell.alpha)
+            cell.alpha = 1.0f;
+    });
+}
+
 #pragma mark - UITextViewDelegate
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    if (textView.text.length >= 120)
+    if ([text isEqualToString:@"\n"] || (text.length > 0 && textView.text.length >= 120))
         return NO;
     return YES;
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
+    self.friendRemarksInfo.remarksDesc = textView.text;
     CGSize size = [textView sizeThatFits:CGSizeMake(textView.contentSize.width, CGFLOAT_MAX)];
-    if (textView.height != size.height) {
-        CGFloat height = size.height;
-        [textView addHeight:height - textView.height];
-//        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:CellSectionDesc]]
-//                              withRowAnimation:UITableViewRowAnimationAutomatic];//更新cell的高度
-        self.friendRemarksInfo.remarksDesc = textView.text;
-//        [self.tableView reloadData];
+    if (fabs((size.height - textView.height)) > 6.0f) {
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
     }
-    
-    BOOL needScrollToLastLine = NO;
-    if (textView.markedTextRange != nil) {//中文输入法输入的内容
-        UITextPosition *beginning = textView.beginningOfDocument;
-        NSInteger endLocation = [textView offsetFromPosition:beginning toPosition:textView.markedTextRange.end];
-        if (endLocation == textView.text.length)
-            needScrollToLastLine = YES;
-    }
-    else {
-        if (textView.selectedRange.location >= textView.text.length)
-            needScrollToLastLine = YES;
-    }
-    if (needScrollToLastLine)
-        [textView scrollRangeToVisible:NSMakeRange(textView.text.length - 1, 1)];
     
     self.lblRemarksTips.hidden = textView.text.length > 0;
     [self enabledRightBarBtnItemState];
@@ -290,6 +281,16 @@ typedef NS_ENUM(NSInteger, CellSection) {
 - (void)enabledRightBarBtnItemState {
     if (self.navigationItem.rightBarButtonItem.isEnabled == NO)
         self.navigationItem.rightBarButtonItem.enabled = YES;
+}
+
+/** 新增一个好友手机号码 */
+- (void)addOneFriendPhone {
+    [self.friendRemarksInfo addOnePhone:[NSString stringWithFormat:@"++%ld", (long)self.friendPhoneNum]];
+    self.friendPhoneNum = self.friendRemarksInfo.phonesArr.count;
+    [UIView performWithoutAnimation:^{
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:(self.friendPhoneNum - 1) inSection:CellSectionPhone]]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
 }
 
 @end
