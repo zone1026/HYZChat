@@ -25,6 +25,7 @@
 		6B3492CB2041121600ECC294 /* ContactFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3492CA2041121600ECC294 /* ContactFooterView.m */; };
 		6B39DFE31FC6F74400FFF7AD /* ChatMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B39DFE21FC6F74400FFF7AD /* ChatMsgCell.m */; };
 		6B39DFE61FC6F77E00FFF7AD /* ChatMsgTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B39DFE51FC6F77E00FFF7AD /* ChatMsgTextCell.m */; };
+		6B3E0DCC204936CF00BB34C5 /* RemarksDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3E0DCB204936CF00BB34C5 /* RemarksDataSource.m */; };
 		6B45DDB51FEA4B7500AEF8CB /* CustomResponderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B45DDB41FEA4B7500AEF8CB /* CustomResponderTextView.m */; };
 		6B48F4CB1F5EA6C300C9DCDC /* ChatTabEmotionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4CA1F5EA6C300C9DCDC /* ChatTabEmotionData.m */; };
 		6B48F4CE1F5EA74600C9DCDC /* ChatEmotionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B48F4CD1F5EA74600C9DCDC /* ChatEmotionData.m */; };
@@ -60,7 +61,6 @@
 		6B9A86BD201B29FC00E73E26 /* MsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A869B201B29FC00E73E26 /* MsgCell.m */; };
 		6B9A86CE201B2AA400E73E26 /* CNSession+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A86CC201B2AA400E73E26 /* CNSession+CoreDataClass.m */; };
 		6B9A86CF201B2AA400E73E26 /* CNSession+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A86CD201B2AA400E73E26 /* CNSession+CoreDataProperties.m */; };
-		6BA4F1FB204646E4001AE407 /* RemarksInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA4F1FA204646E4001AE407 /* RemarksInfo.m */; };
 		6BA5D1671FDE6EA300B8C3C6 /* ChatDataSource+ChatMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA5D1661FDE6EA300B8C3C6 /* ChatDataSource+ChatMsg.m */; };
 		6BAC6F5B1F5FF7E200E896FB /* ChatFunctionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC6F5A1F5FF7E200E896FB /* ChatFunctionController.m */; };
 		6BAC6F5E1F5FFBD300E896FB /* ChatEmotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC6F5D1F5FFBD300E896FB /* ChatEmotionController.m */; };
@@ -125,6 +125,8 @@
 		6B39DFE21FC6F74400FFF7AD /* ChatMsgCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatMsgCell.m; sourceTree = "<group>"; };
 		6B39DFE41FC6F77E00FFF7AD /* ChatMsgTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatMsgTextCell.h; sourceTree = "<group>"; };
 		6B39DFE51FC6F77E00FFF7AD /* ChatMsgTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatMsgTextCell.m; sourceTree = "<group>"; };
+		6B3E0DCA204936CF00BB34C5 /* RemarksDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemarksDataSource.h; sourceTree = "<group>"; };
+		6B3E0DCB204936CF00BB34C5 /* RemarksDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemarksDataSource.m; sourceTree = "<group>"; };
 		6B45DDB21FE9F2CF00AEF8CB /* Chat.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Chat.pch; path = Pch/Chat.pch; sourceTree = "<group>"; };
 		6B45DDB31FEA4B7500AEF8CB /* CustomResponderTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomResponderTextView.h; path = Utils/CustomResponderTextView.h; sourceTree = "<group>"; };
 		6B45DDB41FEA4B7500AEF8CB /* CustomResponderTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CustomResponderTextView.m; path = Utils/CustomResponderTextView.m; sourceTree = "<group>"; };
@@ -191,8 +193,6 @@
 		6B9A86CB201B2AA400E73E26 /* CNSession+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNSession+CoreDataClass.h"; sourceTree = "<group>"; };
 		6B9A86CC201B2AA400E73E26 /* CNSession+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNSession+CoreDataClass.m"; sourceTree = "<group>"; };
 		6B9A86CD201B2AA400E73E26 /* CNSession+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNSession+CoreDataProperties.m"; sourceTree = "<group>"; };
-		6BA4F1F9204646E4001AE407 /* RemarksInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemarksInfo.h; sourceTree = "<group>"; };
-		6BA4F1FA204646E4001AE407 /* RemarksInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemarksInfo.m; sourceTree = "<group>"; };
 		6BA5D1651FDE6EA300B8C3C6 /* ChatDataSource+ChatMsg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatDataSource+ChatMsg.h"; sourceTree = "<group>"; };
 		6BA5D1661FDE6EA300B8C3C6 /* ChatDataSource+ChatMsg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatDataSource+ChatMsg.m"; sourceTree = "<group>"; };
 		6BAC6F591F5FF7E200E896FB /* ChatFunctionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatFunctionController.h; sourceTree = "<group>"; };
@@ -291,10 +291,10 @@
 		6B07F0EB2004997000F1E071 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
-				6B2372E8204553600082142F /* Remarks */,
 				6B07F0F120049A3600F1E071 /* Contact.storyboard */,
 				6B5052B0202070A9000C34BF /* Data */,
 				6B8B3F012021BCAF0064D252 /* Views */,
+				6B2372E8204553600082142F /* Remarks */,
 				6B5052AD20206E06000C34BF /* ContactController.h */,
 				6B5052AE20206E06000C34BF /* ContactController.m */,
 			);
@@ -384,7 +384,8 @@
 		6B2372E8204553600082142F /* Remarks */ = {
 			isa = PBXGroup;
 			children = (
-				6BA4F1F82046469E001AE407 /* Data */,
+				6B3E0DCA204936CF00BB34C5 /* RemarksDataSource.h */,
+				6B3E0DCB204936CF00BB34C5 /* RemarksDataSource.m */,
 				6B2372E92045567A0082142F /* RemarksController.h */,
 				6B2372EA2045567A0082142F /* RemarksController.m */,
 			);
@@ -535,15 +536,6 @@
 			children = (
 			);
 			name = Plugin;
-			sourceTree = "<group>";
-		};
-		6BA4F1F82046469E001AE407 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				6BA4F1F9204646E4001AE407 /* RemarksInfo.h */,
-				6BA4F1FA204646E4001AE407 /* RemarksInfo.m */,
-			);
-			name = Data;
 			sourceTree = "<group>";
 		};
 		6BACBC00203FB5ED0027B8F1 /* Cells */ = {
@@ -969,6 +961,7 @@
 				6BA5D1671FDE6EA300B8C3C6 /* ChatDataSource+ChatMsg.m in Sources */,
 				6B944AA01FC81A2700192470 /* ChatTableCellInfo.m in Sources */,
 				6B944A9D1FC8151500192470 /* SuperDataSource.m in Sources */,
+				6B3E0DCC204936CF00BB34C5 /* RemarksDataSource.m in Sources */,
 				6B68C18A201EF305003ECBA1 /* NSDate+Calendar.m in Sources */,
 				6B8E3E041F5F970D00020626 /* ChatFunctionCell.m in Sources */,
 				6B944A931FC810B900192470 /* CNChatResource+CoreDataClass.m in Sources */,
@@ -981,7 +974,6 @@
 				6B39DFE31FC6F74400FFF7AD /* ChatMsgCell.m in Sources */,
 				6BCBCCAE1F590A8B000B7152 /* ChatMessageAttribute.m in Sources */,
 				6B8954591FFF5C2D00A20676 /* AMPTextMsgContentController.m in Sources */,
-				6BA4F1FB204646E4001AE407 /* RemarksInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

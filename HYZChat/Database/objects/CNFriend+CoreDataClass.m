@@ -8,9 +8,15 @@
 
 #import "CNFriend+CoreDataClass.h"
 
+/** 对好友备注的最大电话号码个数 */
+static const NSInteger remarksFriendMaxPhoneNum = 5;
+
 @implementation CNFriend
 
 - (void)modificationFirendNickName:(NSString *)newNickName {
+    if ([HYZUtil isEmptyOrNull:newNickName] == YES)//如果新的昵称为空，昵称就是好友的用户名
+        newNickName = self.f_userName;
+    
     self.f_nickName = newNickName;
     
     NSString *upperPhoneTicize = [HYZUtil chineseCharactersChange2UpperPhoneticize:newNickName];//大写的全拼音
@@ -39,6 +45,12 @@
         phoneArr = [[self.f_phone componentsSeparatedByString:@","] mutableCopy];
     else
         phoneArr = [NSMutableArray array];
+    
+    if (phoneArr.count < remarksFriendMaxPhoneNum) {//没有到达最大值
+        NSInteger start = phoneArr.count;
+        for (NSInteger i = start; i < remarksFriendMaxPhoneNum; i++)
+            [phoneArr addObject:@"placeholder"];//占位手机号
+    }
     return phoneArr;
 }
 

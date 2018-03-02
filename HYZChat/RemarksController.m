@@ -7,25 +7,15 @@
 //
 
 #import "RemarksController.h"
-#import "RemarksInfo.h"
+#import "RemarksDataSource.h"
 #import "UIView+HYZFrame.h"
 #import "UIImageView+WebImage.h"
 
-typedef NS_ENUM(NSInteger, CellSection) {
-    CellSectionRemarks = 0, //备注
-    CellSectionTags,        //标签
-    CellSectionPhone,       //电话号码
-    CellSectionDesc,        //描述
-    CellSectionNum          //section总数
-};
-
 @interface RemarksController ()<UITextViewDelegate>
+/** controller的数据源 */
+@property (strong, nonatomic) IBOutlet RemarksDataSource *cDataSource;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *lblRemarksTips;
-/** 好友的备注信息 */
-@property (strong, nonatomic) RemarksInfo *friendRemarksInfo;
-/** 好友的电话数量 */
-@property (assign, nonatomic) NSInteger friendPhoneNum;
 
 @end
 
@@ -39,10 +29,9 @@ typedef NS_ENUM(NSInteger, CellSection) {
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     [self.tableView setEditing:YES animated:NO];
-    self.friendRemarksInfo = [[RemarksInfo alloc] init];
-    self.friendRemarksInfo.friendInfo = self.friendInfo;
-    self.friendPhoneNum = self.friendRemarksInfo.phonesArr.count;
+    self.cDataSource.friendInfo = self.friendInfo;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,30 +41,6 @@ typedef NS_ENUM(NSInteger, CellSection) {
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return CellSectionNum;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch (section) {
-        case CellSectionRemarks:
-            return 1;
-            break;
-        case CellSectionTags:
-            return 1;
-            break;
-        case CellSectionPhone:
-            return 6;
-            break;
-        case CellSectionDesc:
-            return 2;
-            break;
-        default:
-            break;
-    }
-    return 0;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     NSInteger tag = (indexPath.section + 1)*1000 + indexPath.row;
@@ -84,22 +49,24 @@ typedef NS_ENUM(NSInteger, CellSection) {
         switch (indexPath.section) {
             case CellSectionRemarks:
                 if ([view isKindOfClass:[UITextField class]])
-                    ((UITextField *)view).text = self.friendRemarksInfo.nickName;
+                    ((UITextField *)view).text = self.cDataSource.nickName;
                 break;
              case CellSectionTags:
                 if ([view isKindOfClass:[UILabel class]])
-                    [self.friendRemarksInfo updateFriendTagsDescLabel:((UILabel *)view)];
+                    [self.cDataSource updateFriendTagsDescLabel:((UILabel *)view)];
                 break;
             case CellSectionPhone:
                 if ([view isKindOfClass:[UITextField class]])
-                    [self.friendRemarksInfo updateFriendPhoneTextField:((UITextField *)view) withIndex:indexPath.row];
+                    [self.cDataSource updateFriendPhoneTextField:((UITextField *)view) withIndex:indexPath.row];
                 break;
             case CellSectionDesc:
-                if ([view isKindOfClass:[UITextView class]])
-                    ((UITextView *)view).text = [HYZUtil isEmptyOrNull:self.friendRemarksInfo.remarksDesc] == YES ? @"" : self.friendRemarksInfo.remarksDesc;
+                if ([view isKindOfClass:[UITextView class]]) {
+                    ((UITextView *)view).text = [HYZUtil isEmptyOrNull:self.cDataSource.remarksDesc] == YES ? @"" : self.cDataSource.remarksDesc;
+                    self.lblRemarksTips.hidden = [HYZUtil isEmptyOrNull:self.cDataSource.remarksDesc] == NO;
+                }
                 else if ([view isKindOfClass:[UIImageView class]])
-                    [((UIImageView *)view) web_srcImageURLStr:self.friendRemarksInfo.remarksImage
-                                         withThumbImageURLStr:self.friendRemarksInfo.remarksImage withPlaceholderImageName:@"IMG_REMARKS_TIPS"];
+                    [((UIImageView *)view) web_srcImageURLStr:self.cDataSource.remarksImage
+                                         withThumbImageURLStr:self.cDataSource.remarksImage withPlaceholderImageName:@"IMG_REMARKS_TIPS"];
                 break;
             default:
                 break;
@@ -116,12 +83,10 @@ typedef NS_ENUM(NSInteger, CellSection) {
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        UITextField *tf = [cell viewWithTag:((indexPath.section + 1)*1000 + indexPath.row)];
-        [self.friendRemarksInfo removeOnePhone:tf.text];
-        self.friendPhoneNum = self.friendRemarksInfo.phonesArr.count;
-        [self.tableView beginUpdates];
-        [self.tableView endUpdates];
+        [self.cDataSource removeOnePhone:indexPath.row];
+        [UIView performWithoutAnimation:^{
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:CellSectionPhone] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }];
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert)
         [self addOneFriendPhone];
@@ -132,7 +97,8 @@ typedef NS_ENUM(NSInteger, CellSection) {
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     if (CellSectionTags == indexPath.section ||
-        (CellSectionPhone == indexPath.section && ([tableView numberOfRowsInSection:indexPath.section] - 1) == indexPath.row))
+        (CellSectionPhone == indexPath.section && ([tableView numberOfRowsInSection:indexPath.section] - 1) == indexPath.row)
+        || (CellSectionDesc == indexPath.section && ([tableView numberOfRowsInSection:indexPath.section] - 1) == indexPath.row))
         return YES;
         
     return NO;
@@ -142,6 +108,9 @@ typedef NS_ENUM(NSInteger, CellSection) {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (CellSectionPhone == indexPath.section)
         [self addOneFriendPhone];
+    else if (CellSectionDesc == indexPath.section)
+        [HYZAlert showInfo:@"打开相册没有做" underTitle:@"提示"];
+    [self enabledRightBarBtnItemState];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -149,14 +118,14 @@ typedef NS_ENUM(NSInteger, CellSection) {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == CellSectionPhone){
-        if (self.friendPhoneNum >= [tableView numberOfRowsInSection:indexPath.section] - 1) {
+    if (indexPath.section == CellSectionPhone) {
+        if ([self.cDataSource obtainHasAddedPhoneNum] >= [tableView numberOfRowsInSection:indexPath.section] - 1) {//此时添加cell应该被隐藏
             if (indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1)//隐藏添加Cell
                 return 0.01f;
         }
         else {
-            if (indexPath.row != [tableView numberOfRowsInSection:indexPath.section] - 1) {
-                if (self.friendPhoneNum <= indexPath.row)
+            if (indexPath.row != [tableView numberOfRowsInSection:indexPath.section] - 1) {//不是添加cell
+                if ([self.cDataSource checkPhoneIsHideByIndex:indexPath.row] == YES)
                     return 0.01f;
             }
         }
@@ -169,12 +138,18 @@ typedef NS_ENUM(NSInteger, CellSection) {
         else if (1 == indexPath.row) {
             CGSize imgSize;
             CGFloat roate = 9.0f / 16.0f;
-            if ([HYZUtil isEmptyOrNull:self.friendRemarksInfo.remarksImage] == YES) {
+            if ([HYZUtil isEmptyOrNull:self.cDataSource.remarksImage] == YES) {
                 imgSize = [UIImage imageNamed:@"IMG_REMARKS_TIPS"].size;
                 roate = imgSize.height / imgSize.width;
             }
             else {
-                
+                UIImageView *tempImage = [[UIImageView alloc] init];
+                [tempImage web_srcImageURLStr:self.cDataSource.remarksImage withThumbImageURLStr:self.cDataSource.remarksImage
+                     withPlaceholderImageName:@"IMG_REMARKS_TIPS"];
+                if (nil != tempImage.image) {
+                    imgSize = tempImage.image.size;
+                    roate = imgSize.height / imgSize.width;
+                }
             }
             return (tableView.width - 32.0f)*roate + 16.0f;
         }
@@ -212,7 +187,7 @@ typedef NS_ENUM(NSInteger, CellSection) {
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
-    self.friendRemarksInfo.remarksDesc = textView.text;
+    self.cDataSource.remarksDesc = textView.text;
     CGSize size = [textView sizeThatFits:CGSizeMake(textView.contentSize.width, CGFLOAT_MAX)];
     if (fabs((size.height - textView.height)) > 6.0f) {
         [self.tableView beginUpdates];
@@ -256,15 +231,9 @@ typedef NS_ENUM(NSInteger, CellSection) {
     NSInteger section = (tag / 1000) - 1;
     NSInteger row = tag % 1000;
     if (CellSectionRemarks == section)
-        self.friendRemarksInfo.nickName = sender.text;
-    else if (CellSectionPhone == section) {
-        switch (row) {
-            case 0:
-                break;
-            default:
-                break;
-        }
-    }
+        self.cDataSource.nickName = sender.text;
+    else if (CellSectionPhone == section)
+        [self.cDataSource updatePhoneNum:sender.text withIndex:row];
     [self enabledRightBarBtnItemState];
 }
 
@@ -272,9 +241,8 @@ typedef NS_ENUM(NSInteger, CellSection) {
 
 /** 保存对好友备注信息 */
 - (void)saveRemarksData {
-    if ([HYZUtil isEmptyOrNull:self.friendRemarksInfo.remarksImage] == NO) {//需要上传图片
-        
-    }
+    if ([HYZUtil isEmptyOrNull:self.cDataSource.remarksImage] == NO) {}//需要上传图片
+    [self.cDataSource saveEidtInfo];
 }
 
 /** 更新导航右按钮的激活状态 */
@@ -285,11 +253,9 @@ typedef NS_ENUM(NSInteger, CellSection) {
 
 /** 新增一个好友手机号码 */
 - (void)addOneFriendPhone {
-    [self.friendRemarksInfo addOnePhone:[NSString stringWithFormat:@"++%ld", (long)self.friendPhoneNum]];
-    self.friendPhoneNum = self.friendRemarksInfo.phonesArr.count;
+    [self.cDataSource addOnePhone];
     [UIView performWithoutAnimation:^{
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:(self.friendPhoneNum - 1) inSection:CellSectionPhone]]
-                              withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:CellSectionPhone] withRowAnimation:UITableViewRowAnimationAutomatic];
     }];
 }
 

@@ -13,8 +13,9 @@
  * @description 更新Cell界面
  * @param logoURLStr 头像URL
  * @param name 联系人的名字
+ * @param remarksDesc 备注信息
  * @param checkMode 是否处于勾选模式下
  */
-- (void)updateCellUI:(NSString *)logoURLStr withContactName:(NSString *)name withCheckMode:(BOOL)checkMode;
+- (void)updateCellUI:(NSString *)logoURLStr withContactName:(NSString *)name withRemarksDesc:(NSString *)remarksDesc withCheckMode:(BOOL)checkMode;
 
 @end

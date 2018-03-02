@@ -135,8 +135,8 @@
                                                         <constraint firstAttribute="width" constant="40" id="OWP-Zh-5CV"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJd-Tl-xrT">
-                                                    <rect key="frame" x="92" y="12" width="275" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJd-Tl-xrT">
+                                                    <rect key="frame" x="92" y="4" width="275" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="N0a-Rm-VQv"/>
                                                     </constraints>
@@ -144,14 +144,26 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注信息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqM-0y-mfe">
+                                                    <rect key="frame" x="92" y="24" width="251" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="9Fw-yp-Qbc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="dJd-Tl-xrT" firstAttribute="centerY" secondItem="egq-39-vU2" secondAttribute="centerY" constant="-8" id="3XX-TB-wUZ"/>
                                                 <constraint firstItem="egq-39-vU2" firstAttribute="centerY" secondItem="cOa-J0-d8A" secondAttribute="centerY" id="4zY-wV-fWt"/>
                                                 <constraint firstItem="egq-39-vU2" firstAttribute="leading" secondItem="cOa-J0-d8A" secondAttribute="leading" constant="44" id="Dhb-4Q-uG9"/>
                                                 <constraint firstItem="dJd-Tl-xrT" firstAttribute="leading" secondItem="egq-39-vU2" secondAttribute="trailing" constant="8" id="H6e-Tr-Nb6"/>
-                                                <constraint firstItem="dJd-Tl-xrT" firstAttribute="centerY" secondItem="egq-39-vU2" secondAttribute="centerY" id="Sb9-rH-Pjd"/>
                                                 <constraint firstItem="750-vF-ASd" firstAttribute="leading" secondItem="cOa-J0-d8A" secondAttribute="leading" constant="10" id="UJo-8M-Vm9"/>
+                                                <constraint firstItem="BqM-0y-mfe" firstAttribute="leading" secondItem="egq-39-vU2" secondAttribute="trailing" constant="8" id="fzY-2S-RPP"/>
+                                                <constraint firstItem="BqM-0y-mfe" firstAttribute="bottom" secondItem="egq-39-vU2" secondAttribute="bottom" constant="-3" id="syw-eQ-IQJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="dJd-Tl-xrT" secondAttribute="trailing" constant="8" id="t1M-1t-d7J"/>
+                                                <constraint firstAttribute="trailing" secondItem="BqM-0y-mfe" secondAttribute="trailing" constant="32" id="umk-nY-LbX"/>
                                                 <constraint firstItem="750-vF-ASd" firstAttribute="centerY" secondItem="cOa-J0-d8A" secondAttribute="centerY" id="x9E-15-gol"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -160,6 +172,8 @@
                                             <outlet property="imgLogo" destination="egq-39-vU2" id="V2i-kI-qMY"/>
                                             <outlet property="imgLogoConstraintLeft" destination="Dhb-4Q-uG9" id="2sN-tH-hHe"/>
                                             <outlet property="lblName" destination="dJd-Tl-xrT" id="lQx-Oa-zkw"/>
+                                            <outlet property="lblNameConstraintCenter" destination="3XX-TB-wUZ" id="Ncu-eM-TbZ"/>
+                                            <outlet property="lblRemarksDesc" destination="BqM-0y-mfe" id="sb2-Bq-8oT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -267,7 +281,7 @@
                                                     <rect key="frame" x="20" y="8" width="287" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                     <connections>
                                                         <action selector="tfEditingChanged:" destination="BLs-Xf-Mro" eventType="editingChanged" id="8hf-D0-D1j"/>
                                                     </connections>
@@ -292,7 +306,7 @@
                                                     <rect key="frame" x="20" y="8" width="335" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                     <connections>
                                                         <action selector="tfEditingChanged:" destination="BLs-Xf-Mro" eventType="editingChanged" id="wJl-5X-wvR"/>
                                                     </connections>
@@ -317,7 +331,7 @@
                                                     <rect key="frame" x="20" y="8" width="335" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                     <connections>
                                                         <action selector="tfEditingChanged:" destination="BLs-Xf-Mro" eventType="editingChanged" id="CdV-hM-pA0"/>
                                                     </connections>
@@ -342,7 +356,7 @@
                                                     <rect key="frame" x="20" y="8" width="335" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                     <connections>
                                                         <action selector="tfEditingChanged:" destination="BLs-Xf-Mro" eventType="editingChanged" id="CKf-xA-Dbv"/>
                                                     </connections>
@@ -367,7 +381,7 @@
                                                     <rect key="frame" x="20" y="8" width="335" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                     <connections>
                                                         <action selector="tfEditingChanged:" destination="BLs-Xf-Mro" eventType="editingChanged" id="o1b-6C-iRv"/>
                                                     </connections>
@@ -413,7 +427,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raa-J3-GcS">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="4000" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raa-J3-GcS">
                                                     <rect key="frame" x="19.5" y="8" width="335" height="33.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -448,6 +462,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="4001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_REMARKS_TIPS" translatesAutoresizingMaskIntoConstraints="NO" id="qbk-IS-o88">
                                                     <rect key="frame" x="16" y="8" width="343" height="191.5"/>
+                                                    <gestureRecognizers/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -462,8 +477,8 @@
                             </tableViewSection>
                         </sections>
                         <connections>
-                            <outlet property="dataSource" destination="BLs-Xf-Mro" id="Ljg-q6-aFx"/>
-                            <outlet property="delegate" destination="BLs-Xf-Mro" id="CfU-fy-jBE"/>
+                            <outlet property="dataSource" destination="BLs-Xf-Mro" id="fOU-W1-vYO"/>
+                            <outlet property="delegate" destination="BLs-Xf-Mro" id="ijY-rf-J2m"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="设置备注及标签" id="vBg-ft-c3x">
@@ -481,11 +496,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cDataSource" destination="NwP-k3-Rwv" id="NWv-t9-SCm"/>
                         <outlet property="lblRemarksTips" destination="hMq-49-QiQ" id="VwG-HB-cIQ"/>
                         <outlet property="textView" destination="raa-J3-GcS" id="7fa-Kv-6IH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfb-N7-Zde" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="NwP-k3-Rwv" customClass="RemarksDataSource"/>
             </objects>
             <point key="canvasLocation" x="1000" y="800"/>
         </scene>

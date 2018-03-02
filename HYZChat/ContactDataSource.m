@@ -105,11 +105,11 @@
     ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell" forIndexPath:indexPath];
     if (0 == indexPath.section) {
         DefaultCellInfo *info = [self.delfaultCell.defaultCellInfoArr objectAtIndex:indexPath.row];
-        [cell updateCellUI:info.imgName withContactName:info.name withCheckMode:self.checkMode];
+        [cell updateCellUI:info.imgName withContactName:info.name withRemarksDesc:nil withCheckMode:self.checkMode];
     }
     else {
         CNFriend *friend = [[self eachGroupContactData:indexPath.section] objectAtIndex:indexPath.row];
-        [cell updateCellUI:friend.f_thumb withContactName:friend.f_nickName withCheckMode:self.checkMode];
+        [cell updateCellUI:friend.f_thumb withContactName:friend.f_nickName withRemarksDesc:friend.remarks_desc withCheckMode:self.checkMode];
     }
     
     return cell;

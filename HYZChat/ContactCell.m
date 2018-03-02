@@ -14,7 +14,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgCheck;
 @property (weak, nonatomic) IBOutlet UIImageView *imgLogo;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UILabel *lblRemarksDesc;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgLogoConstraintLeft;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lblNameConstraintCenter;
 
 @end
 
@@ -31,11 +34,15 @@
     // Configure the view for the selected state
 }
 
-- (void)updateCellUI:(NSString *)logoURLStr withContactName:(NSString *)name withCheckMode:(BOOL)checkMode {
+- (void)updateCellUI:(NSString *)logoURLStr withContactName:(NSString *)name withRemarksDesc:(NSString *)remarksDesc
+       withCheckMode:(BOOL)checkMode {
     [self.imgLogo web_logoImage:logoURLStr withThumbImageURLStr:logoURLStr];
     self.lblName.text = name;
     self.imgLogoConstraintLeft.constant = (checkMode == YES ? 44.0f : 10.0f);
     self.imgCheck.hidden = !checkMode;
+    self.lblRemarksDesc.text = [HYZUtil isEmptyOrNull:remarksDesc] == YES ? @"" : remarksDesc;
+    self.lblRemarksDesc.hidden = [HYZUtil isEmptyOrNull:remarksDesc];
+    self.lblNameConstraintCenter.constant = [HYZUtil isEmptyOrNull:remarksDesc] == YES ? 0.0f : -8.0f;
 }
 
 @end
