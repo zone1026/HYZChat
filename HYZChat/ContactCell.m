@@ -42,7 +42,7 @@
     self.imgCheck.hidden = !checkMode;
     self.lblRemarksDesc.text = [HYZUtil isEmptyOrNull:remarksDesc] == YES ? @"" : remarksDesc;
     self.lblRemarksDesc.hidden = [HYZUtil isEmptyOrNull:remarksDesc];
-    self.lblNameConstraintCenter.constant = [HYZUtil isEmptyOrNull:remarksDesc] == YES ? 0.0f : -8.0f;
+    self.lblNameConstraintCenter.constant = [HYZUtil isEmptyOrNull:remarksDesc] == YES ? 0.0f : -10.0f;
 }
 
 @end

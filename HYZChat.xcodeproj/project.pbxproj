@@ -312,9 +312,9 @@
 		6B07F0ED2004998C00F1E071 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				6B07F0F720049AD200F1E071 /* Me.storyboard */,
 				6BACBC11203FE6A70027B8F1 /* Setting */,
 				6BACBC00203FB5ED0027B8F1 /* Cells */,
-				6B07F0F720049AD200F1E071 /* Me.storyboard */,
 				6BACBBFA203FB51D0027B8F1 /* MeController.h */,
 				6BACBBFB203FB51D0027B8F1 /* MeController.m */,
 			);

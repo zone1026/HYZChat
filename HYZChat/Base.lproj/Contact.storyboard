@@ -18,6 +18,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="xjK-Ok-KyS">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="y5I-DY-OTZ" kind="relationship" relationship="rootViewController" id="7WT-IY-u7b"/>
@@ -136,32 +137,32 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJd-Tl-xrT">
-                                                    <rect key="frame" x="92" y="4" width="275" height="20"/>
+                                                    <rect key="frame" x="92" y="2" width="275" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="N0a-Rm-VQv"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注信息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqM-0y-mfe">
-                                                    <rect key="frame" x="92" y="24" width="251" height="15"/>
+                                                    <rect key="frame" x="92" y="25" width="251" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="9Fw-yp-Qbc"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="dJd-Tl-xrT" firstAttribute="centerY" secondItem="egq-39-vU2" secondAttribute="centerY" constant="-8" id="3XX-TB-wUZ"/>
+                                                <constraint firstItem="dJd-Tl-xrT" firstAttribute="centerY" secondItem="egq-39-vU2" secondAttribute="centerY" constant="-10" id="3XX-TB-wUZ"/>
                                                 <constraint firstItem="egq-39-vU2" firstAttribute="centerY" secondItem="cOa-J0-d8A" secondAttribute="centerY" id="4zY-wV-fWt"/>
                                                 <constraint firstItem="egq-39-vU2" firstAttribute="leading" secondItem="cOa-J0-d8A" secondAttribute="leading" constant="44" id="Dhb-4Q-uG9"/>
                                                 <constraint firstItem="dJd-Tl-xrT" firstAttribute="leading" secondItem="egq-39-vU2" secondAttribute="trailing" constant="8" id="H6e-Tr-Nb6"/>
                                                 <constraint firstItem="750-vF-ASd" firstAttribute="leading" secondItem="cOa-J0-d8A" secondAttribute="leading" constant="10" id="UJo-8M-Vm9"/>
                                                 <constraint firstItem="BqM-0y-mfe" firstAttribute="leading" secondItem="egq-39-vU2" secondAttribute="trailing" constant="8" id="fzY-2S-RPP"/>
-                                                <constraint firstItem="BqM-0y-mfe" firstAttribute="bottom" secondItem="egq-39-vU2" secondAttribute="bottom" constant="-3" id="syw-eQ-IQJ"/>
+                                                <constraint firstItem="BqM-0y-mfe" firstAttribute="bottom" secondItem="egq-39-vU2" secondAttribute="bottom" constant="-2" id="syw-eQ-IQJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="dJd-Tl-xrT" secondAttribute="trailing" constant="8" id="t1M-1t-d7J"/>
                                                 <constraint firstAttribute="trailing" secondItem="BqM-0y-mfe" secondAttribute="trailing" constant="32" id="umk-nY-LbX"/>
                                                 <constraint firstItem="750-vF-ASd" firstAttribute="centerY" secondItem="cOa-J0-d8A" secondAttribute="centerY" id="x9E-15-gol"/>
@@ -204,6 +205,23 @@
                 <customObject id="fBb-xp-ut6" customClass="ContactDataSource"/>
             </objects>
             <point key="canvasLocation" x="1000" y="0.0"/>
+        </scene>
+        <!--备注Navi-->
+        <scene sceneID="Vd2-tX-J3F">
+            <objects>
+                <navigationController storyboardIdentifier="NaviRemarks" id="HZx-u8-O7Y" userLabel="备注Navi" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Ktw-Qs-VDj">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BLs-Xf-Mro" kind="relationship" relationship="rootViewController" id="VYP-jf-dZQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uzu-cO-EVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="800"/>
         </scene>
         <!--设置备注及标签-->
         <scene sceneID="yxY-YW-qbM">
@@ -505,22 +523,6 @@
                 <customObject id="NwP-k3-Rwv" customClass="RemarksDataSource"/>
             </objects>
             <point key="canvasLocation" x="1000" y="800"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Vd2-tX-J3F">
-            <objects>
-                <navigationController storyboardIdentifier="NaviRemarks" id="HZx-u8-O7Y" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Ktw-Qs-VDj">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="BLs-Xf-Mro" kind="relationship" relationship="rootViewController" id="VYP-jf-dZQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uzu-cO-EVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="0.0" y="800"/>
         </scene>
     </scenes>
     <resources>
