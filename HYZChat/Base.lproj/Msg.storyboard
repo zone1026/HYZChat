@@ -54,7 +54,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="聊天名称聊" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOM-KT-cfA">
-                                            <rect key="frame" x="68" y="13" width="219" height="18"/>
+                                            <rect key="frame" x="68" y="13" width="213" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="gTc-Ro-eVS"/>
                                             </constraints>
@@ -62,10 +62,10 @@
                                             <color key="textColor" red="0.36862745099999999" green="0.83137254900000002" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81K-2Y-47P">
-                                            <rect key="frame" x="295" y="13" width="72" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8888/88/88" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81K-2Y-47P">
+                                            <rect key="frame" x="289" y="13" width="78" height="18"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="72" id="GRc-fE-gbA"/>
+                                                <constraint firstAttribute="width" constant="78" id="GRc-fE-gbA"/>
                                                 <constraint firstAttribute="height" constant="18" id="dar-3a-q85"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>

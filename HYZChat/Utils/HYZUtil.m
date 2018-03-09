@@ -31,8 +31,12 @@
 }
 
 + (NSString *)dateStringByDate:(NSDate *)date {
+    return [self dateStringByDate:date withFormatterStr:@"yyyy-MM-dd"];
+}
+
++ (NSString *)dateStringByDate:(NSDate *)date withFormatterStr:(NSString *)fStr {
     NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setDateFormat:fStr];
     NSString* timeString = [formatter stringFromDate:date];
     return timeString;
 }
@@ -63,8 +67,8 @@
                                                fromDate:timeStampDate toDate:todayDate options:0];
     NSInteger day = [components day];//两个之间相差几天。以小时为单位计算的
     
-    if (day >= 7)//超出一周
-        return [self dateStringByDate:timeStampDate];
+    if (day >= 7) //超出一周
+        return [self dateStringByDate:timeStampDate withFormatterStr:@"yyyy/MM/dd"];
     else if (day > 1 && day < 7) //星期几
         return [NSDate weekStringFromNumber:[timeStampDate weekValueForDate]];
     else if (1 == day)//昨天的
