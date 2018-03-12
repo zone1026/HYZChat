@@ -15,6 +15,10 @@
 		6B07F0F920049AD200F1E071 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0F720049AD200F1E071 /* Me.storyboard */; };
 		6B07F0FD2004BD5A00F1E071 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0FB2004BD5A00F1E071 /* Login.storyboard */; };
 		6B07F1002004BE1800F1E071 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07F0FF2004BE1800F1E071 /* LoginController.m */; };
+		6B099B75205678550027833A /* HYZCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B099B74205678550027833A /* HYZCollectionViewLayout.m */; };
+		6B099B78205678970027833A /* HYZCollectionViewCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B099B77205678970027833A /* HYZCollectionViewCellInfo.m */; };
+		6B099B7C2056822F0027833A /* FeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B099B7B2056822F0027833A /* FeedDataSource.m */; };
+		6B099B80205683090027833A /* FeedDataSource+CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B099B7F205683090027833A /* FeedDataSource+CollectionView.m */; };
 		6B0AB7A31F9F0CBB002A2797 /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0AB7A21F9F0CBB002A2797 /* ChatManager.m */; };
 		6B10F0D31F692813008D40C0 /* ChatDataSource+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F0D21F692813008D40C0 /* ChatDataSource+TableView.m */; };
 		6B2372EB2045567A0082142F /* RemarksController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2372EA2045567A0082142F /* RemarksController.m */; };
@@ -108,6 +112,14 @@
 		6B07F0FC2004BD5A00F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		6B07F0FE2004BE1800F1E071 /* LoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		6B07F0FF2004BE1800F1E071 /* LoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		6B099B73205678550027833A /* HYZCollectionViewLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HYZCollectionViewLayout.h; path = Utils/HYZCollectionViewLayout.h; sourceTree = "<group>"; };
+		6B099B74205678550027833A /* HYZCollectionViewLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HYZCollectionViewLayout.m; path = Utils/HYZCollectionViewLayout.m; sourceTree = "<group>"; };
+		6B099B76205678970027833A /* HYZCollectionViewCellInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HYZCollectionViewCellInfo.h; path = Utils/HYZCollectionViewCellInfo.h; sourceTree = "<group>"; };
+		6B099B77205678970027833A /* HYZCollectionViewCellInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HYZCollectionViewCellInfo.m; path = Utils/HYZCollectionViewCellInfo.m; sourceTree = "<group>"; };
+		6B099B7A2056822F0027833A /* FeedDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedDataSource.h; sourceTree = "<group>"; };
+		6B099B7B2056822F0027833A /* FeedDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedDataSource.m; sourceTree = "<group>"; };
+		6B099B7E205683080027833A /* FeedDataSource+CollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedDataSource+CollectionView.h"; sourceTree = "<group>"; };
+		6B099B7F205683090027833A /* FeedDataSource+CollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FeedDataSource+CollectionView.m"; sourceTree = "<group>"; };
 		6B0AB7A11F9F0CBB002A2797 /* ChatManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatManager.h; sourceTree = "<group>"; };
 		6B0AB7A21F9F0CBB002A2797 /* ChatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatManager.m; sourceTree = "<group>"; };
 		6B10F0D11F692813008D40C0 /* ChatDataSource+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChatDataSource+TableView.h"; sourceTree = "<group>"; };
@@ -340,6 +352,35 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		6B099B72205677910027833A /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				6B099B73205678550027833A /* HYZCollectionViewLayout.h */,
+				6B099B74205678550027833A /* HYZCollectionViewLayout.m */,
+				6B099B76205678970027833A /* HYZCollectionViewCellInfo.h */,
+				6B099B77205678970027833A /* HYZCollectionViewCellInfo.m */,
+			);
+			name = CollectionView;
+			sourceTree = "<group>";
+		};
+		6B099B7D205682BB0027833A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6B099B7A2056822F0027833A /* FeedDataSource.h */,
+				6B099B7B2056822F0027833A /* FeedDataSource.m */,
+				6B099B7E205683080027833A /* FeedDataSource+CollectionView.h */,
+				6B099B7F205683090027833A /* FeedDataSource+CollectionView.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		6B099B81205686980027833A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		6B10F0D41F692A76008D40C0 /* Function */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +508,8 @@
 		6B8302162056766B00E124A3 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				6B099B81205686980027833A /* Cells */,
+				6B099B7D205682BB0027833A /* Data */,
 				6B8302172056767F00E124A3 /* FeedController.h */,
 				6B8302182056767F00E124A3 /* FeedController.m */,
 			);
@@ -697,6 +740,7 @@
 		6BCBCCA01F58FB6E000B7152 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6B099B72205677910027833A /* CollectionView */,
 				6BCBCCA11F58FBAE000B7152 /* RichLabel */,
 				6BCBCCCA1F594CB1000B7152 /* CALayer+HYZUtil.h */,
 				6BCBCCCB1F594CB1000B7152 /* CALayer+HYZUtil.m */,
@@ -926,6 +970,7 @@
 				6BCBCC781F58E8C7000B7152 /* FrameController.m in Sources */,
 				6BCBCCCF1F594DD1000B7152 /* HYZUtil.m in Sources */,
 				6B8302192056767F00E124A3 /* FeedController.m in Sources */,
+				6B099B7C2056822F0027833A /* FeedDataSource.m in Sources */,
 				0D48566B1F5BB4AD0008AFB9 /* InputEmotionData.m in Sources */,
 				6BCBCC8D1F58E934000B7152 /* DataManager.m in Sources */,
 				6BCBCCA41F58FBDD000B7152 /* RichLabel.m in Sources */,
@@ -938,6 +983,7 @@
 				6B48F4CB1F5EA6C300C9DCDC /* ChatTabEmotionData.m in Sources */,
 				6BB093E51FE1227300D99A79 /* MsgController.m in Sources */,
 				6B5052B720207115000C34BF /* ContactCell.m in Sources */,
+				6B099B75205678550027833A /* HYZCollectionViewLayout.m in Sources */,
 				6B944A961FC810B900192470 /* CNChatResource+CoreDataProperties.m in Sources */,
 				6BCBCC911F58E96A000B7152 /* ChatViewController.m in Sources */,
 				6B944A991FC810E600192470 /* HYZChat.xcdatamodeld in Sources */,
@@ -969,6 +1015,7 @@
 				6B45DDB51FEA4B7500AEF8CB /* CustomResponderTextView.m in Sources */,
 				6B8B3F042021BCE60064D252 /* ContactHeaderView.m in Sources */,
 				6B5052C120207BEB000C34BF /* CNFriend+CoreDataProperties.m in Sources */,
+				6B099B78205678970027833A /* HYZCollectionViewCellInfo.m in Sources */,
 				6BCBCCBD1F593733000B7152 /* ChatBottomController.m in Sources */,
 				6BACBC1A203FF2320027B8F1 /* SettingController.m in Sources */,
 				0D48566E1F5BBCE80008AFB9 /* ChatEmotionCell.m in Sources */,
@@ -982,6 +1029,7 @@
 				6B944A9D1FC8151500192470 /* SuperDataSource.m in Sources */,
 				6B3E0DCC204936CF00BB34C5 /* RemarksDataSource.m in Sources */,
 				6B68C18A201EF305003ECBA1 /* NSDate+Calendar.m in Sources */,
+				6B099B80205683090027833A /* FeedDataSource+CollectionView.m in Sources */,
 				6B8E3E041F5F970D00020626 /* ChatFunctionCell.m in Sources */,
 				6B944A931FC810B900192470 /* CNChatResource+CoreDataClass.m in Sources */,
 				6B10F0D31F692813008D40C0 /* ChatDataSource+TableView.m in Sources */,

@@ -7,8 +7,11 @@
 //
 
 #import "FeedController.h"
+#import "FeedDataSource.h"
 
 @interface FeedController ()
+/** controller 所需的数据源 */
+@property (strong, nonatomic) IBOutlet FeedDataSource *vcDataSource;
 
 @end
 

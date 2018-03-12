@@ -410,12 +410,12 @@
         <!--朋友圈-->
         <scene sceneID="wvN-Yq-JES">
             <objects>
-                <collectionViewController hidesBottomBarWhenPushed="YES" id="vYX-se-fez" sceneMemberID="viewController">
+                <collectionViewController hidesBottomBarWhenPushed="YES" id="vYX-se-fez" customClass="FeedController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="sAL-W5-jrt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N8S-gR-rHF">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N8S-gR-rHF" customClass="HYZCollectionViewLayoutDataSource">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -669,8 +669,8 @@
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="vYX-se-fez" id="mYZ-Qs-IE5"/>
-                            <outlet property="delegate" destination="vYX-se-fez" id="4y8-CB-95d"/>
+                            <outlet property="dataSource" destination="2Bs-EV-XrX" id="WG9-Kp-7ix"/>
+                            <outlet property="delegate" destination="2Bs-EV-XrX" id="ODF-qe-FjS"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="朋友圈" id="0fQ-CM-8ty">
@@ -678,8 +678,12 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="vcDataSource" destination="2Bs-EV-XrX" id="ezx-4H-bKi"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNQ-Fq-S2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="2Bs-EV-XrX" customClass="FeedDataSource"/>
             </objects>
             <point key="canvasLocation" x="2000" y="0.0"/>
         </scene>
