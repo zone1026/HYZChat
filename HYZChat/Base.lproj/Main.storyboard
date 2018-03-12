@@ -100,7 +100,7 @@
         <!--发现Navi-->
         <scene sceneID="t83-wD-k4t">
             <objects>
-                <viewControllerPlaceholder storyboardName="Feed" id="vMk-6l-uo8" userLabel="发现Navi" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Discover" id="vMk-6l-uo8" userLabel="发现Navi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title=" 发现" image="TAB_MAIN_FEED" id="VDP-g3-Djd"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4wt-9l-KGH" userLabel="First Responder" sceneMemberID="firstResponder"/>

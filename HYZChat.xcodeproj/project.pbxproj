@@ -12,7 +12,6 @@
 		62CAC9A195B71F921742F8A9 /* libPods-HYZChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E337BFEB7FDC3ED2BDCCEAC9 /* libPods-HYZChat.a */; };
 		6B07F0EA2004974400F1E071 /* Msg.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0E82004974400F1E071 /* Msg.storyboard */; };
 		6B07F0F320049A3600F1E071 /* Contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0F120049A3600F1E071 /* Contact.storyboard */; };
-		6B07F0F620049AA800F1E071 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0F420049AA800F1E071 /* Feed.storyboard */; };
 		6B07F0F920049AD200F1E071 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0F720049AD200F1E071 /* Me.storyboard */; };
 		6B07F0FD2004BD5A00F1E071 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B07F0FB2004BD5A00F1E071 /* Login.storyboard */; };
 		6B07F1002004BE1800F1E071 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07F0FF2004BE1800F1E071 /* LoginController.m */; };
@@ -41,6 +40,9 @@
 		6B5052C420207BEB000C34BF /* CNGroup+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5052C020207BEB000C34BF /* CNGroup+CoreDataProperties.m */; };
 		6B68C187201EB903003ECBA1 /* UIImageView+WebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B68C186201EB903003ECBA1 /* UIImageView+WebImage.m */; };
 		6B68C18A201EF305003ECBA1 /* NSDate+Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B68C189201EF305003ECBA1 /* NSDate+Calendar.m */; };
+		6B830212205675AC00E124A3 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B830210205675AC00E124A3 /* Discover.storyboard */; };
+		6B830215205675CA00E124A3 /* DiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B830214205675CA00E124A3 /* DiscoverController.m */; };
+		6B8302192056767F00E124A3 /* FeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8302182056767F00E124A3 /* FeedController.m */; };
 		6B8954541FFF59E900A20676 /* ChatRelate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B8954521FFF59E900A20676 /* ChatRelate.storyboard */; };
 		6B8954591FFF5C2D00A20676 /* AMPTextMsgContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8954581FFF5C2D00A20676 /* AMPTextMsgContentController.m */; };
 		6B8B3EFB20216CA50064D252 /* ContactDefaultCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8B3EFA20216CA50064D252 /* ContactDefaultCellData.m */; };
@@ -102,7 +104,6 @@
 		39D23463CF1225E7DB6E1B6E /* Pods-HYZChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYZChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYZChat/Pods-HYZChat.debug.xcconfig"; sourceTree = "<group>"; };
 		6B07F0E92004974400F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Msg.storyboard; sourceTree = "<group>"; };
 		6B07F0F220049A3600F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Contact.storyboard; sourceTree = "<group>"; };
-		6B07F0F520049AA800F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Feed.storyboard; sourceTree = "<group>"; };
 		6B07F0F820049AD200F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Me.storyboard; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xml; };
 		6B07F0FC2004BD5A00F1E071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		6B07F0FE2004BE1800F1E071 /* LoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
@@ -158,6 +159,11 @@
 		6B68C186201EB903003ECBA1 /* UIImageView+WebImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+WebImage.m"; path = "Utils/UIImageView+WebImage.m"; sourceTree = "<group>"; };
 		6B68C188201EF305003ECBA1 /* NSDate+Calendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSDate+Calendar.h"; path = "Utils/NSDate+Calendar.h"; sourceTree = "<group>"; };
 		6B68C189201EF305003ECBA1 /* NSDate+Calendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Calendar.m"; path = "Utils/NSDate+Calendar.m"; sourceTree = "<group>"; };
+		6B830211205675AC00E124A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Discover.storyboard; sourceTree = "<group>"; };
+		6B830213205675CA00E124A3 /* DiscoverController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoverController.h; sourceTree = "<group>"; };
+		6B830214205675CA00E124A3 /* DiscoverController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoverController.m; sourceTree = "<group>"; };
+		6B8302172056767F00E124A3 /* FeedController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedController.h; sourceTree = "<group>"; };
+		6B8302182056767F00E124A3 /* FeedController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedController.m; sourceTree = "<group>"; };
 		6B8954531FFF59E900A20676 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChatRelate.storyboard; sourceTree = "<group>"; };
 		6B8954571FFF5C2D00A20676 /* AMPTextMsgContentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPTextMsgContentController.h; sourceTree = "<group>"; };
 		6B8954581FFF5C2D00A20676 /* AMPTextMsgContentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPTextMsgContentController.m; sourceTree = "<group>"; };
@@ -301,12 +307,15 @@
 			name = Contact;
 			sourceTree = "<group>";
 		};
-		6B07F0EC2004998500F1E071 /* Feed */ = {
+		6B07F0EC2004998500F1E071 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				6B07F0F420049AA800F1E071 /* Feed.storyboard */,
+				6B8302162056766B00E124A3 /* Feed */,
+				6B830210205675AC00E124A3 /* Discover.storyboard */,
+				6B830213205675CA00E124A3 /* DiscoverController.h */,
+				6B830214205675CA00E124A3 /* DiscoverController.m */,
 			);
-			name = Feed;
+			name = Discover;
 			sourceTree = "<group>";
 		};
 		6B07F0ED2004998C00F1E071 /* Me */ = {
@@ -455,6 +464,15 @@
 			name = Contact;
 			sourceTree = "<group>";
 		};
+		6B8302162056766B00E124A3 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				6B8302172056767F00E124A3 /* FeedController.h */,
+				6B8302182056767F00E124A3 /* FeedController.m */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
 		6B8954551FFF5B8300A20676 /* Relate */ = {
 			isa = PBXGroup;
 			children = (
@@ -597,7 +615,7 @@
 				6BCBCC8E1F58E937000B7152 /* Chat */,
 				6BD6E5A11FE0D18E0095BB50 /* Msg */,
 				6B07F0EB2004997000F1E071 /* Contact */,
-				6B07F0EC2004998500F1E071 /* Feed */,
+				6B07F0EC2004998500F1E071 /* Discover */,
 				6B07F0ED2004998C00F1E071 /* Me */,
 				6BCBCC731F58E8C7000B7152 /* AppDelegate.h */,
 				6BCBCC741F58E8C7000B7152 /* AppDelegate.m */,
@@ -829,8 +847,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B07F0F620049AA800F1E071 /* Feed.storyboard in Resources */,
 				6BCBCC831F58E8C7000B7152 /* LaunchScreen.storyboard in Resources */,
+				6B830212205675AC00E124A3 /* Discover.storyboard in Resources */,
 				6B07F0F320049A3600F1E071 /* Contact.storyboard in Resources */,
 				6B8954541FFF59E900A20676 /* ChatRelate.storyboard in Resources */,
 				6BCBCC801F58E8C7000B7152 /* Assets.xcassets in Resources */,
@@ -907,6 +925,7 @@
 				6B39DFE61FC6F77E00FFF7AD /* ChatMsgTextCell.m in Sources */,
 				6BCBCC781F58E8C7000B7152 /* FrameController.m in Sources */,
 				6BCBCCCF1F594DD1000B7152 /* HYZUtil.m in Sources */,
+				6B8302192056767F00E124A3 /* FeedController.m in Sources */,
 				0D48566B1F5BB4AD0008AFB9 /* InputEmotionData.m in Sources */,
 				6BCBCC8D1F58E934000B7152 /* DataManager.m in Sources */,
 				6BCBCCA41F58FBDD000B7152 /* RichLabel.m in Sources */,
@@ -969,6 +988,7 @@
 				6B48F4D71F5ED92700C9DCDC /* PlusFunctionInfo.m in Sources */,
 				6B07F1002004BE1800F1E071 /* LoginController.m in Sources */,
 				6B48F4D41F5ED74100C9DCDC /* ChatFunctionData.m in Sources */,
+				6B830215205675CA00E124A3 /* DiscoverController.m in Sources */,
 				6B31AC601FDFAD2F00F69C6F /* DataManager+User.m in Sources */,
 				6BCBCCA71F59006D000B7152 /* NSAttributedString+TextAttachment.m in Sources */,
 				6B39DFE31FC6F74400FFF7AD /* ChatMsgCell.m in Sources */,
@@ -996,14 +1016,6 @@
 			name = Contact.storyboard;
 			sourceTree = "<group>";
 		};
-		6B07F0F420049AA800F1E071 /* Feed.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6B07F0F520049AA800F1E071 /* Base */,
-			);
-			name = Feed.storyboard;
-			sourceTree = "<group>";
-		};
 		6B07F0F720049AD200F1E071 /* Me.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1018,6 +1030,14 @@
 				6B07F0FC2004BD5A00F1E071 /* Base */,
 			);
 			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+		6B830210205675AC00E124A3 /* Discover.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B830211205675AC00E124A3 /* Base */,
+			);
+			name = Discover.storyboard;
 			sourceTree = "<group>";
 		};
 		6B8954521FFF59E900A20676 /* ChatRelate.storyboard */ = {
